@@ -1,3 +1,5 @@
+import classes from './Input.module.scss'
+
 export const Input = ({
   type,
   placeholder,
@@ -15,7 +17,8 @@ export const Input = ({
   };
 
   return (
-    <input
+    <input 
+      className={classes.input}
       type={type}
       placeholder={placeholder}
       value={name}
