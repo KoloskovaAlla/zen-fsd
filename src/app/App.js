@@ -1,8 +1,14 @@
 import { SectionBase } from 'widgets/SectionBase';
+import { Input } from 'shared/ui/Input';
 
 export const App = () => {
   return (
-    <SectionBase />
+    <div>
+      <SectionBase />
+      <Input        
+         placeholder='Надо заполнить'       
+      />
+    </div>
   );
 }
 
