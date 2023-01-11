@@ -1,6 +1,8 @@
-export const Select = ({options}) => {
+import classes from "./Select.module.scss";
+
+export const Select = ({ options }) => {
   return (
-    <select>
+    <select className={classes.select}>
       <option value=""></option>
       {options.length > 0 &&
         options.map((option, index) => (
