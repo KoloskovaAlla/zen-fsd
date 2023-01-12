@@ -1,8 +1,9 @@
-import { Input, Select } from "shared/ui";
+import { Input, Select, Checkbox } from "shared/ui";
 
-import classes from './Form.module.scss';
+import classes from "./Form.module.scss";
 
-export const Form = ({ options, connect, label }) => {
+export const Form = ({ options, connect, label, url, content, form }) => {
+  const { inputPolicy } = form;
   return (
     <div>
       <label className={classes.field}>
@@ -21,6 +22,8 @@ export const Form = ({ options, connect, label }) => {
         {connect === "" && <span>{label}</span>}
         <Select options={options} />
       </label>
+
+      <Checkbox inputPolicy={inputPolicy} />
     </div>
   );
 };

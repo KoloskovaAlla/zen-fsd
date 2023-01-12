@@ -1,6 +1,6 @@
 import { SectionBase } from "widgets/SectionBase";
 import { Form } from "entities/Form";
-import './styles/reset.scss';
+import "./styles/reset.scss";
 
 export const App = () => {
   const options = [
@@ -21,16 +21,19 @@ export const App = () => {
       value: "email",
     },
   ];
-  const connect=''
-  const label = 'Connection'
+  const connect = "";
+  const label = "Connection";
+  const form = {
+    inputPolicy: {
+      content: "Privacy policy",
+      type: "checkbox",
+      url: "https://www.google.com/",
+    },
+  };
   return (
     <div>
       <SectionBase />
-      <Form 
-        options={options} 
-        connect={connect}
-        label={label}
-       />
+      <Form options={options} connect={connect} label={label} form={form} />
     </div>
   );
 };
