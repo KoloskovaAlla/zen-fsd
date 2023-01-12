@@ -1,8 +1,8 @@
 import { Input, Select } from "shared/ui";
 
-import classes from "./Form.module.scss";
+import classes from './Form.module.scss';
 
-export const Form = ({ options }) => {
+export const Form = ({ options, connect, label }) => {
   return (
     <div>
       <label className={classes.field}>
@@ -18,6 +18,7 @@ export const Form = ({ options }) => {
       </label>
 
       <label className={classes.select}>
+        {connect === "" && <span>{label}</span>}
         <Select options={options} />
       </label>
     </div>

@@ -1,5 +1,6 @@
 import { SectionBase } from "widgets/SectionBase";
 import { Form } from "entities/Form";
+import './styles/reset.scss';
 
 export const App = () => {
   const options = [
@@ -20,10 +21,16 @@ export const App = () => {
       value: "email",
     },
   ];
+  const connect=''
+  const label = 'Connection'
   return (
     <div>
       <SectionBase />
-      <Form options={options} />
+      <Form 
+        options={options} 
+        connect={connect}
+        label={label}
+       />
     </div>
   );
 };
