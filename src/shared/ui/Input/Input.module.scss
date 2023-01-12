@@ -1,13 +1,13 @@
- .input {
-    display: block;
-    width: 100%;
-    height: 100%;
-    padding-left: 5px;
-    font-size: 16px;
-    outline: none;
-    border-bottom: 1px solid var(--border-color);
+.input {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding-left: 5px;
+  font-size: 16px;
+  outline: none;
+  border-bottom: 1px solid #aaaaaa;
 
-    &::placeholder {
-      color: #aaaaaa;
-    }
+  &::placeholder {
+    color: #aaaaaa;
   }
+}
