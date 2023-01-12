@@ -1,4 +1,4 @@
-import classes from './Input.module.scss'
+import classes from "./Input.module.scss";
 
 export const Input = ({
   type,
@@ -16,13 +16,16 @@ export const Input = ({
     setIsValidInput(validateInput(value));
   };
 
-  return (
-    <input 
-      className={classes.input}
-      type={type}
-      placeholder={placeholder}
-      value={name}
-      onChange={handleInputChange}
-    />
-  );
+  if (type === "text" || type === "tel" || type === "email")
+    return (
+      <input
+        className={classes.input}
+        type={type}
+        placeholder={placeholder}
+        value={name}
+        onChange={handleInputChange}
+      />
+    );
+
+  if (type === "checkbox") return <input type={type} />;
 };
