@@ -1,6 +1,9 @@
 import { SectionBase } from "widgets/SectionBase";
+// import { SectionBase } from "widgets";
 import { Form } from "entities/Form";
+// import { Form } from "entities";
 import "./styles/reset.scss";
+// import "./styles/index.scss";
 
 export const App = () => {
   const options = [
