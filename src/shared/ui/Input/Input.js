@@ -8,47 +8,48 @@ import {
 import { useState } from 'react';
 
 export const Input = ({
-  type,
+  className,
   placeholder,
-  name,
-  onInputChange,
-  validateInput,
+  disabled,
+  value,
+  onFocus,
+  onChange,
+  onBlur,
 }) => {
   const [input, setInput] = useState(null);
   const [isValidInput, setIsValidInput] = useState(false);
 
-  const handleInputChange = (event) => {
-    console.log(event.target.value);
-    const value = event.target.value;
-    setInput(event.target.value);
+  // const handleInputChange = (event) => {
+  //   console.log(event.target.value);
+  //   const value = event.target.value;
+  //   setInput(event.target.value);
 
-    switch (type) {
-      case 'text':
-        setIsValidInput(validateName(value));
-        break;
-      case 'tel':
-        setIsValidInput(validateTel(value));
-        break;
-      case 'email':
-        setIsValidInput(validateEmail(value));
-        break;
-      default:
-        setIsValidInput(validateConnect(value));
-    }
+  //   switch (type) {
+  //     case 'text':
+  //       setIsValidInput(validateName(value));
+  //       break;
+  //     case 'tel':
+  //       setIsValidInput(validateTel(value));
+  //       break;
+  //     case 'email':
+  //       setIsValidInput(validateEmail(value));
+  //       break;
+  //     default:
+  //       setIsValidInput(validateConnect(value));
+  //   }
 
-    console.log(isValidInput);
-  };
+  //   console.log(isValidInput);
+  // };
 
-  if (type === 'text' || type === 'tel' || type === 'email')
+  // if (type === 'text' || type === 'tel' || type === 'email')
     return (
       <input
-        className={classes.input}
-        type={type}
+        className={className}
         placeholder={placeholder}
-        value={name}
-        onChange={handleInputChange}
+        value={value}
+        onChange={onChange}
       />
     );
 
-  if (type === 'checkbox') return <input type={type} />;
+  // if (type === 'checkbox') return <input type={type} />;
 };
