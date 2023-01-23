@@ -7,17 +7,16 @@ import {
 } from 'shared/lib';
 import { useState } from 'react';
 
-export const Input = ({
-  className,
-  placeholder,
+export const InputText = ({
+  className, //+
+  placeholder, //+
   disabled,
-  value,
+  value, //+
   onFocus,
   onChange,
   onBlur,
 }) => {
   const [input, setInput] = useState(null);
-  const [isValidInput, setIsValidInput] = useState(false);
 
   // const handleInputChange = (event) => {
   //   console.log(event.target.value);
@@ -42,14 +41,14 @@ export const Input = ({
   // };
 
   // if (type === 'text' || type === 'tel' || type === 'email')
-    return (
-      <input
-        className={className}
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-      />
-    );
+  return (
+    <input
+      className={className}
+      placeholder={placeholder}
+      value={value}
+      onChange={onChange}
+    />
+  );
 
   // if (type === 'checkbox') return <input type={type} />;
 };
