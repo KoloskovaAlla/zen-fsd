@@ -6,7 +6,7 @@ import {
   validateConnect,
 } from 'shared/lib';
 import { useState, useEffect } from 'react';
-
+import { classNames } from 'shared/lib';
 import classes from './Form.module.scss';
 
 export const Form = ({ form }) => {
@@ -24,21 +24,21 @@ export const Form = ({ form }) => {
       .catch();
   }, [lang]);
 
-  if (data) console.log(data.connection);
+  if (data) console.log(data);
 
   const { inputPolicy } = form;
 
   const [name, setName] = useState('');
-  const [isValidName, setIsValidName] = useState(true);
+  const [isValidName, setIsValidName] = useState(false);
 
   const [tel, setTel] = useState('');
-  const [isValidTel, setIsValidTel] = useState(true);
+  const [isValidTel, setIsValidTel] = useState(false);
 
   const [email, setEmail] = useState('');
-  const [isValidEmail, setIsValidEmail] = useState(true);
+  const [isValidEmail, setIsValidEmail] = useState(false);
 
   const [connect, setConnect] = useState('');
-  const [isValidConnect, setIsValidConnect] = useState(true);
+  const [isValidConnect, setIsValidConnect] = useState(false);
 
   const [isChecked, setIsChecked] = useState(false);
 
@@ -76,9 +76,32 @@ export const Form = ({ form }) => {
     setIsChecked(!isChecked);
   };
 
+  const classNameName = classNames(
+    classes.field,
+    {
+      [classes.succes]: isValidName,
+    },
+    []
+  );
+  const classNameTel = classNames(
+    classes.field,
+    {
+      [classes.succes]: isValidTel,
+    },
+    []
+  );
+  const classNameEmail = classNames(
+    classes.field,
+    {
+      [classes.succes]: isValidEmail,
+    },
+    []
+  );
+
+
   return (
-    <form>
-      <label className={classes.field}>
+    <form className={classes.form}>
+      <label className={classNameName}>
         <InputText
           placeholder='NAME'
           onChange={handleNameChange}
@@ -89,7 +112,7 @@ export const Form = ({ form }) => {
         />
       </label>
 
-      <label className={classes.field}>
+      <label className={classNameTel}>
         <InputText
           placeholder='PHONE NUMBER'
           onChange={handleTelChange}
@@ -100,7 +123,7 @@ export const Form = ({ form }) => {
         />
       </label>
 
-      <label className={classes.field}>
+      <label className={classNameEmail}>
         <InputText
           placeholder='EMAIL'
           onChange={handleEmailChange}
@@ -112,7 +135,7 @@ export const Form = ({ form }) => {
       </label>
 
       {data && (
-        <label className={classes.select}>
+        <label className={classes.connection}>
           {connect === '' && <span>{data.connection.label}</span>}
           <Select
             onChange={handleConnectChange}
@@ -123,11 +146,15 @@ export const Form = ({ form }) => {
         </label>
       )}
 
-      <label className={classes.policy}>
-        <InputCheckbox isChecked={isChecked} onChange={handleCheckboxChange} />
-
-        {/* <a href={url}>{content}</a> */}
-      </label>
+      {data && (
+        <label className={classes.policy}>
+          <InputCheckbox
+            isChecked={isChecked}
+            onChange={handleCheckboxChange}
+          />
+          <a href={data.inputPolicy.url}>{data.inputPolicy.content}</a>
+        </label>
+      )}
     </form>
   );
 };
