@@ -14,9 +14,7 @@ export const Form = ({ options, connect, label, url, content, form }) => {
     setName(value);
     setIsValidName(validateName(value)); //import { setIsValidName, validateName } from 'shared/lib';
   };
-
   const handleNameFocus = () => {};
-
   const handleNameBlur = () => {};
 
   return (
@@ -35,7 +33,7 @@ export const Form = ({ options, connect, label, url, content, form }) => {
       {/* <label className={classes.field}>
         <InputText
           placeholder='PHONE NUMBER'
-          onChange={handleTelhange}
+          onChange={handleTelChange}
           className={classes.inputTel}
         />
       </label> */}
