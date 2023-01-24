@@ -1,5 +1,4 @@
 import { Form } from 'features/Form';
-import { Title } from 'shared/ui/Title';
 import { useEffect, useState } from 'react';
 import API_BASE_URL from 'constants';
 
@@ -14,6 +13,7 @@ export const Modal = () => {
       .then((data) => {
         setData(data);
         console.log(data);
+        console.log('test');
       })
       .catch();
   }, [lang]);
