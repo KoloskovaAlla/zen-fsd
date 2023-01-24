@@ -1,3 +1,3 @@
-export { Input } from "./Input";
-export { Select } from "./Select";
-export { Checkbox } from "./Checkbox";
+export { InputText } from './InputText';
+export { Select } from './Select';
+export { InputCheckbox } from './InputCheckbox';
