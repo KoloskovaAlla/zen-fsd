@@ -1,9 +1,7 @@
-import classes from "./Select.module.scss";
-
-export const Select = ({ options }) => {
+export const Select = ({ options, className, value, onChange }) => {
   return (
-    <select className={classes.select}>
-      <option value=""></option>
+    <select className={className} value={value} onChange={onChange}>
+      <option value=''></option>
       {options.length > 0 &&
         options.map((option, index) => (
           <option value={option.value} key={index}>

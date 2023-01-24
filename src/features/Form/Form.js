@@ -1,10 +1,15 @@
-import { InputText, Select, Checkbox } from 'shared/ui';
-import { validateName, validateTel, validateEmail } from 'shared/lib';
+import { InputText, Select, InputCheckbox } from 'shared/ui';
+import {
+  validateName,
+  validateTel,
+  validateEmail,
+  validateConnect,
+} from 'shared/lib';
 import { useState, useEffect } from 'react';
 
 import classes from './Form.module.scss';
 
-export const Form = ({ connect, url, content, form }) => {
+export const Form = ({ form }) => {
   const lang = 'en';
 
   const [data, setData] = useState(null);
@@ -32,6 +37,11 @@ export const Form = ({ connect, url, content, form }) => {
   const [email, setEmail] = useState('');
   const [isValidEmail, setIsValidEmail] = useState(true);
 
+  const [connect, setConnect] = useState('');
+  const [isValidConnect, setIsValidConnect] = useState(true);
+
+  const [isChecked, setIsChecked] = useState(false);
+
   const handleNameChange = (event) => {
     const value = event.target.value;
     setName(value);
@@ -55,6 +65,16 @@ export const Form = ({ connect, url, content, form }) => {
   };
   const handleEmailFocus = (event) => {};
   const handleEmailBlur = (event) => {};
+
+  const handleConnectChange = (event) => {
+    const value = event.target.value;
+    setConnect(value);
+    setIsValidConnect(validateConnect(value));
+  };
+
+  const handleCheckboxChange = () => {
+    setIsChecked(!isChecked);
+  };
 
   return (
     <form>
@@ -94,11 +114,20 @@ export const Form = ({ connect, url, content, form }) => {
       {data && (
         <label className={classes.select}>
           {connect === '' && <span>{data.connection.label}</span>}
-          <Select options={data.connection.options} />
+          <Select
+            onChange={handleConnectChange}
+            options={data.connection.options}
+            className={classes.select}
+            value={connect}
+          />
         </label>
       )}
 
-      <Checkbox inputPolicy={inputPolicy} />
+      <label className={classes.policy}>
+        <InputCheckbox isChecked={isChecked} onChange={handleCheckboxChange} />
+
+        {/* <a href={url}>{content}</a> */}
+      </label>
     </form>
   );
 };
