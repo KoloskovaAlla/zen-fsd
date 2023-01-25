@@ -9,7 +9,7 @@ import { useState, useEffect } from 'react';
 import { classNames } from 'shared/lib';
 import classes from './Form.module.scss';
 
-export const Form = ({ form }) => {
+export const OrderForm = ({ form }) => {
   const lang = 'en';
 
   const [data, setData] = useState(null);
@@ -23,10 +23,6 @@ export const Form = ({ form }) => {
       })
       .catch();
   }, [lang]);
-
-  if (data) console.log(data);
-
-  const { inputPolicy } = form;
 
   const [name, setName] = useState('');
   const [isValidName, setIsValidName] = useState(false);
@@ -47,24 +43,18 @@ export const Form = ({ form }) => {
     setName(value);
     setIsValidName(validateName(value));
   };
-  const handleNameFocus = () => {};
-  const handleNameBlur = () => {};
 
   const handleTelChange = (event) => {
     const value = event.target.value;
     setTel(value);
     setIsValidTel(validateTel(value));
   };
-  const handleTelFocus = (event) => {};
-  const handleTelBlur = (event) => {};
 
   const handleEmailChange = (event) => {
     const value = event.target.value;
     setEmail(value);
     setIsValidEmail(validateEmail(value));
   };
-  const handleEmailFocus = (event) => {};
-  const handleEmailBlur = (event) => {};
 
   const handleConnectChange = (event) => {
     const value = event.target.value;
@@ -107,8 +97,6 @@ export const Form = ({ form }) => {
         <InputText
           placeholder='NAME'
           onChange={handleNameChange}
-          onFocus={handleNameFocus}
-          onBlur={handleNameBlur}
           className={classes.inputName}
           value={name}
         />
@@ -118,8 +106,6 @@ export const Form = ({ form }) => {
         <InputText
           placeholder='PHONE NUMBER'
           onChange={handleTelChange}
-          onFocus={handleTelFocus}
-          onBlur={handleTelBlur}
           className={classes.inputTel}
           value={tel}
         />
@@ -129,8 +115,6 @@ export const Form = ({ form }) => {
         <InputText
           placeholder='EMAIL'
           onChange={handleEmailChange}
-          onFocus={handleEmailFocus}
-          onBlur={handleEmailBlur}
           className={classes.inputEmail}
           value={email}
         />
