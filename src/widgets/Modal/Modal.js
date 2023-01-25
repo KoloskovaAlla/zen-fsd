@@ -2,6 +2,8 @@ import { OrderForm } from 'features/OrderForm';
 import { useEffect, useState } from 'react';
 // import API_BASE_URL from 'constants';
 import classes from './Modal.module.scss';
+import {ButtonIcon} from 'shared/ui'
+import { IconClose } from 'shared/icons';
 
 export const Modal = () => {
   const lang = 'en';
@@ -20,6 +22,8 @@ export const Modal = () => {
 
   return (
     <div>
+      <ButtonIcon icon={<IconClose />} />
+
       {data && <h3 className={classes.title}> {data.title.content}</h3>}
       <OrderForm />
     </div>
