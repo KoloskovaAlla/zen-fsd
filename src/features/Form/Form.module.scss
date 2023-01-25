@@ -7,12 +7,13 @@
   display: block;
   margin-top: 15px;
   height: 30px;
+  border-bottom: 1px solid #aaa;
 
   &:first-of-type {
     margin-top: 0;
   }
 
-  &.invalid {
+  &.error {
     border-bottom: 1px solid red;
   }
 
@@ -27,7 +28,6 @@
     padding-left: 5px;
     font-size: 16px;
     outline: none;
-    border-bottom: 1px solid var(--border-color);
 
     &::placeholder {
       color: #aaaaaa;
@@ -35,47 +35,39 @@
   }
 }
 
-  .connection {
+.select {
+  position: relative;
+  display: block;
+  margin-top: 15px;
+  height: 30px;
+  border-bottom: 1px solid #aaa;
+
+  span {
+    position: absolute;
+    font-size: 16px;
+    left: 5px;
+    color: #aaaaaa;
+  }
+
+  select {
     position: relative;
-    display: block;
-    margin-top: 15px;
-    height: 30px;
-    border-bottom: 1px solid var(--color-border);
+    font-size: 16px;
+    padding-left: 5px;
+    width: 100%;
+    background: transparent;
+    outline: none;
+    color: #aaaaaa;
 
-    &.valid {
-      border-bottom: 1px solid green;
-
-      span {
-        display: none;
-      }
-    }
-
-    span {
-      position: absolute;
+    option {
       font-size: 16px;
-      left: 5px;
       color: #aaaaaa;
     }
+  }
 
-    select {
-      position: relative;
-      font-size: 16px;
-      padding-left: 5px;
-      width: 100%;
-      background: transparent;
-      outline: none;
-
-
-      option {
-        font-size: 16px;
-        color: #aaaaaa;
-      }
-    }
-
-    &:after {
-      content: '';
-      position: absolute;
-      background-image: url('data:image/svg+xml,\
+  &:after {
+    content: '';
+    position: absolute;
+    background-image: url('data:image/svg+xml,\
         <svg \
           width="10" \
           height="9" \
@@ -89,28 +81,23 @@
           /> \
         </svg> \
       ');
-      background-repeat: no-repeat;
-      display: block;
-      width: 10px;
-      height: 9px;
-      right: 0px;
-      bottom: 13px;
-      z-index: -1;
-      //background: #ee82ee;  
-    }
-  }
-.select {
-  position: relative;
-  font-size: 16px;
-  padding-left: 5px;
-  width: 100%;
-  background: transparent;
-  outline: none;
-
-  option {
-    font-size: 16px;
-    color: #aaaaaa;
+    background-repeat: no-repeat;
+    display: block;
+    width: 10px;
+    height: 9px;
+    right: 0px;
+    bottom: 13px;
+    z-index: -1;
   }
 }
 
+.checkbox {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
 
+  a {
+    margin-left: 10px;
+    text-decoration: underline;
+  }
+}

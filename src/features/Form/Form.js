@@ -80,6 +80,7 @@ export const Form = ({ form }) => {
     classes.field,
     {
       [classes.succes]: isValidName,
+      // [classes.error]: !isValidName,
     },
     []
   );
@@ -87,6 +88,7 @@ export const Form = ({ form }) => {
     classes.field,
     {
       [classes.succes]: isValidTel,
+      // [classes.error]: !isValidTel,
     },
     []
   );
@@ -94,10 +96,10 @@ export const Form = ({ form }) => {
     classes.field,
     {
       [classes.succes]: isValidEmail,
+      // [classes.error]: !isValidEmail,
     },
     []
   );
-
 
   return (
     <form className={classes.form}>
@@ -135,7 +137,7 @@ export const Form = ({ form }) => {
       </label>
 
       {data && (
-        <label className={classes.connection}>
+        <label className={classes.select}>
           {connect === '' && <span>{data.connection.label}</span>}
           <Select
             onChange={handleConnectChange}
@@ -147,7 +149,7 @@ export const Form = ({ form }) => {
       )}
 
       {data && (
-        <label className={classes.policy}>
+        <label className={classes.checkbox}>
           <InputCheckbox
             isChecked={isChecked}
             onChange={handleCheckboxChange}
@@ -158,34 +160,3 @@ export const Form = ({ form }) => {
     </form>
   );
 };
-
-// type,
-// placeholder,
-// name,
-// onInputChange,
-// setInput,
-// setIsValidInput,
-// validateInput,
-
-// const handleInputTextChange = (event) => {
-//   console.log(event.target.value);
-
-//   const value = event.target.value;
-//   setInput(value);
-
-//   switch (type) {
-//     case 'name':
-//       setIsValidInput(validateName(value));
-//       break;
-//     case 'tel':
-//       setIsValidInput(validateTel(value));
-//       break;
-//     case 'email':
-//       setIsValidInput(validateEmail(value));
-//       break;
-//     default:
-//       setIsValidInput(validateConnect(value));
-//   }
-
-//   console.log(isValidInput);
-// };
