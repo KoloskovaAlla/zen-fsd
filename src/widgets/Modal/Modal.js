@@ -22,10 +22,10 @@ export const Modal = () => {
 
   return (
     <div className={classes.modal}>
-      {/* <ButtonIcon className={classes.close} icon={<IconClose />} /> */}
-      <button className={classes.close}>{<IconClose />}</button>
+      <ButtonIcon className={classes.close} icon={<IconClose />} />    
 
       {data && <h3 className={classes.title}> {data.title.content}</h3>}
+      
       <OrderForm />
     </div>
   );
