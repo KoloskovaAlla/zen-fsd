@@ -7,4 +7,3 @@ const root = createRoot($root);
 root.render(
     <App />
 );
-

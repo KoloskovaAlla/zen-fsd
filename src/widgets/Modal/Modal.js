@@ -22,7 +22,9 @@ export const Modal = () => {
 
   return (
     <div className={classes.modal}>
-      <ButtonIcon className={classes.close} icon={<IconClose />} />    
+      <button className={classes.close} >    
+        <IconClose />
+      </button>   
 
       {data && <h3 className={classes.title}> {data.title.content}</h3>}
       
