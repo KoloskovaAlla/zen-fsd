@@ -1,15 +1,15 @@
 import { Route, Routes } from 'react-router-dom'
 import { Suspense, lazy} from 'react'
 
-export const Router = () => {
-  const LazyHomePage = lazy(() => import('./HomePage'));
-  const LazyDownloadPage = lazy(() => import('./DownloadPage'));
-  const LazyWarrantyPage = lazy(() => import('./WarrantyPage'));
-  const LazyCarePage = lazy(() => import('./CarePage'));
-  const LazyCashbackPage = lazy(() => import('./CashbackPage'));
-  const LazyClientsPage = lazy(() => import('./ClientsPage'));
-  const LazyPostsPage = lazy(() => import('./PostsPage'));
+const LazyHomePage = lazy(() => import('./HomePage'));
+const LazyDownloadPage = lazy(() => import('./DownloadPage'));
+const LazyWarrantyPage = lazy(() => import('./WarrantyPage'));
+const LazyCarePage = lazy(() => import('./CarePage'));
+const LazyCashbackPage = lazy(() => import('./CashbackPage'));
+const LazyClientsPage = lazy(() => import('./ClientsPage'));
+const LazyPostsPage = lazy(() => import('./PostsPage'));
 
+export const Router = () => {
 return (
   <Suspense fallback={<div>Loading...</div>}>
     <Routes>
