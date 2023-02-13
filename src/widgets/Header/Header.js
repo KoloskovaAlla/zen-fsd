@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import classes from './Header.module.scss';
-import { classNames } from 'shared/lib/classNames';
+import { classNames } from 'shared/lib';
 import { API_BASE_URL } from 'shared/constants/api';
 
 const HeaderPage = () => {
@@ -12,32 +12,17 @@ const HeaderPage = () => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch(`${API_BASE_URL}/${lang}/header.json`)
-      .then((response) => response.json())
-      .then((data) => {
-        setData(data);
-        console.log(data);
-      })
-      .catch();
-  }, [lang]);
-
-  const getData = async (url) => {
-    const response = await fetch(url);
-    const data = response.json();
-    return data;
-  };
-
-  useEffect(() => {
     (async () => {
-      const data = await getData(
-        `https://zenproject-ce905-default-rtdb.firebaseio.com/${lang}/header.json`
-      );
+      const response = await fetch(`${API_BASE_URL}/${lang}/header.json`);
+      const data = response.json();
       setData(await data);
     })();
   }, []);
 
   const handleItemClick = () => {
-    isMenuActive ? setIsMenuActive(false) : setIsMenuActive(true);
+    isMenuActive 
+      ? setIsMenuActive(false) 
+      : setIsMenuActive(true);
   };
 
   const classNameMenu = classNames(
