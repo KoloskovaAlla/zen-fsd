@@ -1,6 +1,5 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { langReducer } from 'reducers';
-import { themeReducer } from 'reducers';
+import { langReducer, themeReducer } from 'shared/model/reducers';
 
 const rootReducer = combineReducers({
   langReducer,
@@ -8,5 +7,5 @@ const rootReducer = combineReducers({
 });
 
 export const store = configureStore({
-  reducer: rootReducer, 
+  reducer: rootReducer,
 });

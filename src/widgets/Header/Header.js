@@ -10,21 +10,28 @@ const HeaderPage = () => {
   const [isMenuActive, setIsMenuActive] = useState(false);
 
   const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     (async () => {
       try {
-        const response = await fetch(`${API_BASE_URL}/${lang}/header.json`);
+        const url = `${API_BASE_URL}/${lang}/header.json`;
+        const response = await fetch(url);
         const data = await response.json();
         setData(data);
+
+        if (!response.ok) throw new Error('Data not received');
       } catch (error) {
-        console.log(error);
+        console.error(error);
+        setError(error);
       }
     })();
   }, []);
 
   const handleItemClick = () => {
-    isMenuActive ? setIsMenuActive(false) : setIsMenuActive(true);
+    isMenuActive 
+      ? setIsMenuActive(false) 
+      : setIsMenuActive(true);
   };
 
   const classNameMenu = classNames(
