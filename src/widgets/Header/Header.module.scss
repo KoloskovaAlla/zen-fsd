@@ -1,0 +1,11 @@
+.menu {
+  display: flex;
+}
+
+.item {
+  margin-left: 20px;
+}
+
+a:global.active {
+  border-bottom: 2px solid #aaa;
+}
