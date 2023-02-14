@@ -13,16 +13,18 @@ const HeaderPage = () => {
 
   useEffect(() => {
     (async () => {
-      const response = await fetch(`${API_BASE_URL}/${lang}/header.json`);
-      const data = response.json();
-      setData(await data);
+      try {
+        const response = await fetch(`${API_BASE_URL}/${lang}/header.json`);
+        const data = await response.json();
+        setData(data);
+      } catch (error) {
+        console.log(error);
+      }
     })();
   }, []);
 
   const handleItemClick = () => {
-    isMenuActive 
-      ? setIsMenuActive(false) 
-      : setIsMenuActive(true);
+    isMenuActive ? setIsMenuActive(false) : setIsMenuActive(true);
   };
 
   const classNameMenu = classNames(
