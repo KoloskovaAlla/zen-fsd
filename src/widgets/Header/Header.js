@@ -3,10 +3,12 @@ import { NavLink } from 'react-router-dom';
 import classes from './Header.module.scss';
 import { classNames } from 'shared/lib';
 import { API_BASE_URL } from 'shared/constants/api';
+import { useLang, useTheme } from 'shared/model/hooks'
 
-const HeaderPage = () => {
-  const lang = 'en';
-  const theme = 'light';
+const Header = () => {
+  const { lang } = useLang();
+  const { theme } = useTheme();
+
   const [isMenuActive, setIsMenuActive] = useState(false);
 
   const [data, setData] = useState(null);
@@ -21,8 +23,8 @@ const HeaderPage = () => {
         if (!response.ok) throw new Error('Data not received');
 
         const data = await response.json();
-        setData(data);        
-      } 
+        setData(data);
+      }
       catch (error) {
         console.error(error);
         setError(error);
@@ -31,8 +33,8 @@ const HeaderPage = () => {
   }, []);
 
   const handleItemClick = () => {
-    isMenuActive 
-      ? setIsMenuActive(false) 
+    isMenuActive
+      ? setIsMenuActive(false)
       : setIsMenuActive(true);
   };
 
@@ -72,4 +74,4 @@ const HeaderPage = () => {
   );
 };
 
-export default HeaderPage;
+export default Header;
