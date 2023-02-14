@@ -17,11 +17,13 @@ const HeaderPage = () => {
       try {
         const url = `${API_BASE_URL}/${lang}/header.json`;
         const response = await fetch(url);
-        const data = await response.json();
-        setData(data);
 
         if (!response.ok) throw new Error('Data not received');
-      } catch (error) {
+
+        const data = await response.json();
+        setData(data);        
+      } 
+      catch (error) {
         console.error(error);
         setError(error);
       }
