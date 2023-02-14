@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import classes from './Header.module.scss';
 import { classNames } from 'shared/lib';
 import { API_BASE_URL } from 'shared/constants/api';
-import { useLang, useTheme } from 'shared/model/hooks'
+import { useLang, useTheme } from 'shared/model/hooks';
 
 const Header = () => {
   const { lang } = useLang();

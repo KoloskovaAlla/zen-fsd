@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { setTheme } from '../reducers/themeSlice'
+import { setTheme } from '../reducers/themeSlice';
 import { useSelector } from 'react-redux';
 
 export const useTheme = () => {
