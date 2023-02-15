@@ -9,7 +9,7 @@ export const previewSlice = createSlice({
   initialState,
   reducers: {
     setPreviewDetails: (state, { payload }) => {
-      state.previewDetails = payload
+      state.previewDetails = payload;
     },
   },
 });
