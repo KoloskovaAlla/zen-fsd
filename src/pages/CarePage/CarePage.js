@@ -6,4 +6,4 @@ const CarePage = () => {
   )
 }
 
-export default CarePage
+export default CarePage;

@@ -1,1 +1,1 @@
-export {default} from './WarrantyPage'
+export {default} from './WarrantyPage';

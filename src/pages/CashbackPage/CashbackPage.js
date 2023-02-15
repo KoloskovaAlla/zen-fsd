@@ -6,4 +6,4 @@ const CashbackPage = () => {
   )
 }
 
-export default CashbackPage
+export default CashbackPage;
