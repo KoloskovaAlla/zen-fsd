@@ -8,7 +8,7 @@ export const modalSlice = createSlice({
   name: 'modal',
   initialState,
   reducers: {
-    setIsModalActive: (state, {payload}) => {
+    setIsModalActive: (state, { payload }) => {
       state.isModalActive = payload;
     },
   },
