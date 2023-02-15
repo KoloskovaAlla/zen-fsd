@@ -3,18 +3,18 @@ import {
   langReducer,
   themeReducer,
   modalReducer,
-  reviewReducer,
+  previewReducer,
   sliderReducer,
-  currentPageReducer
+  pageReducer
 } from 'shared/model/reducers';
 
 const rootReducer = combineReducers({
   langReducer,
   themeReducer,
   modalReducer,
-  reviewReducer,
+  previewReducer,
   sliderReducer,
-  currentPageReducer
+  pageReducer
 });
 
 export const store = configureStore({
