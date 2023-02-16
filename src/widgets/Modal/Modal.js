@@ -1,8 +1,7 @@
 import { OrderForm } from 'features/OrderForm';
 import { useEffect, useState } from 'react';
-// import API_BASE_URL from 'constants';
+import { API_BASE_URL } from 'shared/constants/api';
 import classes from './Modal.module.scss';
-import { ButtonIcon } from 'shared/ui';
 import { IconClose } from 'shared/icons';
 
 export const Modal = () => {
@@ -10,8 +9,8 @@ export const Modal = () => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch(`https://zenproject-ce905-default-rtdb.firebaseio.com/${lang}/.json`)
-      // fetch(`${API_BASE_URL}/${lang}/.json`)
+    // fetch(`https://zenproject-ce905-default-rtdb.firebaseio.com/${lang}/.json`)
+      fetch(`${API_BASE_URL}/${lang}/.json`)
       .then((response) => response.json())
       .then((data) => {
         setData(data.modal);

@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { setLang } from '../reducers/langSlice'
+import { setLang } from '../reducers/langSlice';
 import { useSelector } from 'react-redux';
 
 export const useLang = () => {

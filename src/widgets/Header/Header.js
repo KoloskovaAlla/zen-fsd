@@ -30,7 +30,7 @@ const Header = () => {
         setError(error);
       }
     })();
-  }, []);
+  }, [lang]);
 
   const handleItemClick = () => {
     isMenuActive

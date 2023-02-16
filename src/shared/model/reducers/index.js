@@ -1,5 +1,6 @@
 export { langReducer } from './langSlice';
 export { themeReducer } from './themeSlice';
-export { modalSlice } from './modalSlice';
-export { previewSlice } from './previewSlice';
-export { pageSlice } from './pageSlice';
+export { modalReducer } from './modalSlice';
+export { previewReducer } from './previewSlice';
+export { pageReducer } from './pageSlice';
+export { sliderReducer } from './sliderSlice';
