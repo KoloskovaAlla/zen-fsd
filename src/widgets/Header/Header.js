@@ -5,7 +5,7 @@ import { classNames } from 'shared/lib';
 import { API_BASE_URL } from 'shared/constants/api';
 import { useLang, useTheme } from 'shared/model/hooks';
 
-const Header = () => {
+export const Header = () => {
   const { lang } = useLang();
   const { theme } = useTheme();
 
@@ -73,5 +73,3 @@ const Header = () => {
     </div>
   );
 };
-
-export default Header;

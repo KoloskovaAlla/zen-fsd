@@ -1,6 +1,6 @@
 import './styles/index.scss';
 import { Router } from 'pages';
-import Header from 'widgets/Header';
+import { Header } from 'widgets';
 
 export const App = () => {
   return (
