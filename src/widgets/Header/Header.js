@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import classes from './Header.module.scss';
 import { classNames } from 'shared/lib';
 import { API_BASE_URL } from 'shared/constants/api';
 import { useLang, useTheme } from 'shared/model/hooks';
+import { IconLogoHeader } from 'shared/icons'
 
 export const Header = () => {
   const { lang } = useLang();
@@ -49,6 +50,10 @@ export const Header = () => {
 
   return (
     <div>
+      <Link to='/' className={classes.logo}>      
+        <IconLogoHeader />
+      </Link>
+
       {data && (
         <ul className={classNameMenu} theme={theme}>
           {data.menuItems.length > 0 &&
