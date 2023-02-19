@@ -4,7 +4,10 @@ import classes from './Header.module.scss';
 import { classNames } from 'shared/lib';
 import { API_BASE_URL } from 'shared/constants/api';
 import { useLang, useTheme } from 'shared/model/hooks';
-import { IconLogoHeader } from 'shared/icons'
+import { IconLogoHeader } from 'shared/icons';
+import { Select } from 'shared/ui'
+import { useDispatch } from 'react-redux';
+import { setLang } from 'shared/model/reducers/langSlice';
 
 export const Header = () => {
   const { lang } = useLang();
@@ -31,12 +34,19 @@ export const Header = () => {
         setError(error);
       }
     })();
-  }, [lang]);
+  }, [lang]); 
 
   const handleItemClick = () => {
     isMenuActive
       ? setIsMenuActive(false)
       : setIsMenuActive(true);
+  };
+
+  const dispatch = useDispatch()
+
+  const handleLanguageChange = (event) => {
+    const langValue = event.currentTarget.value;
+    dispatch(setLang(langValue));
   };
 
   const classNameMenu = classNames(
@@ -55,7 +65,7 @@ export const Header = () => {
       </Link>
 
       {data && (
-        <ul className={classNameMenu} theme={theme}>
+        <ul className={ classNameMenu } theme={theme}>
           {data.menuItems.length > 0 &&
             data.menuItems.map((menuItem, index) => (
               <li
@@ -75,6 +85,15 @@ export const Header = () => {
             ))}
         </ul>
       )}
+
+      {data && (
+        <Select 
+          options={data.languages} 
+          className={classes.select} 
+          onChange={handleLanguageChange}
+          value={localStorage.getItem('lang') ?? 'en'}
+        />)       
+      }
     </div>
   );
 };
