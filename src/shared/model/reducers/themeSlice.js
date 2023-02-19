@@ -4,6 +4,7 @@ const initialState = {
   theme: localStorage.getItem('theme') ?? 'light'
 };
 
+
 export const themeSlice = createSlice({
   name: 'theme',
   initialState,

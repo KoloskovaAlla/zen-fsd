@@ -4,14 +4,15 @@ import classes from './Header.module.scss';
 import { classNames } from 'shared/lib';
 import { API_BASE_URL } from 'shared/constants/api';
 import { useLang, useTheme } from 'shared/model/hooks';
-import { IconLogoHeader } from 'shared/icons';
-import { Select } from 'shared/ui'
+import { IconLogoHeader,  IconSun, IconMoon } from 'shared/icons';
+import { Select } from 'shared/ui';
 import { useDispatch } from 'react-redux';
 import { setLang } from 'shared/model/reducers/langSlice';
+import { setTheme } from 'shared/model/reducers/themeSlice';
 
 export const Header = () => {
   const { lang } = useLang();
-  const { theme } = useTheme();
+  const { theme } = useTheme(); 
 
   const [isMenuActive, setIsMenuActive] = useState(false);
 
@@ -58,6 +59,13 @@ export const Header = () => {
     []
   );
 
+  const toggleTheme = () => {
+    theme === 'dark' ? dispatch(setTheme('light')) : dispatch(setTheme('dark'));
+  }
+
+  console.log(theme)
+  console.log(lang)
+
   return (
     <div>
       <Link to='/' className={classes.logo}>      
@@ -94,6 +102,10 @@ export const Header = () => {
           value={localStorage.getItem('lang') ?? 'en'}
         />)       
       }
+
+      <button onClick={toggleTheme} className={classes.theme}>
+        {theme === 'dark' ? <IconSun /> : <IconMoon />}
+    </button>
     </div>
   );
 };
