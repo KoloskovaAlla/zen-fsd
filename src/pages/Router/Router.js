@@ -1,13 +1,13 @@
-import {  Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 
-const LazyHomePage = lazy(() => import('./HomePage'));
-const LazyDownloadPage = lazy(() => import('./DownloadPage'));
-const LazyWarrantyPage = lazy(() => import('./WarrantyPage'));
-const LazyCarePage = lazy(() => import('./CarePage'));
-const LazyCashbackPage = lazy(() => import('./CashbackPage'));
-const LazyClientsPage = lazy(() => import('./ClientsPage'));
-const LazyPostsPage = lazy(() => import('./PostsPage'));
+const LazyHomePage = lazy(() => import('../HomePage'));
+const LazyDownloadPage = lazy(() => import('../DownloadPage'));
+const LazyWarrantyPage = lazy(() => import('../WarrantyPage'));
+const LazyCarePage = lazy(() => import('../CarePage'));
+const LazyCashbackPage = lazy(() => import('../CashbackPage'));
+const LazyClientsPage = lazy(() => import('../ClientsPage'));
+const LazyPostsPage = lazy(() => import('../PostsPage'));
 
 export const Router = () => {
   return (
@@ -21,6 +21,6 @@ export const Router = () => {
         <Route path="/clients" element={<LazyClientsPage />} />
         <Route path="/posts" element={<LazyPostsPage />} />
       </Routes>
-  </Suspense>
+    </Suspense>
   )
 };

@@ -12,7 +12,7 @@ export const pageSlice = createSlice({
       state.currentPage = payload;
     }
   }
-})
+});
 
 export const { reducer: pageReducer } = pageSlice;
 export const { setCurrentPage } = pageSlice.actions;

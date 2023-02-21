@@ -1,11 +1,11 @@
-import { ArrowIcon } from 'shared/icons';
+import { IconArrow } from 'shared/icons';
 
 export const Select = ({ options, className, onChange, value }) => {
   return (
     <label className={className}>
       <select
-        value={ value }
-        onChange={ onChange }
+        value={value}
+        onChange={onChange}
       >
         {options.map((option) => (
           <option value={option.value} key={option.value}>
@@ -14,7 +14,7 @@ export const Select = ({ options, className, onChange, value }) => {
         ))}
       </select>
 
-      <ArrowIcon />
+      <IconArrow />
     </label>
   );
 };

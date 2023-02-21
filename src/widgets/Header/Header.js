@@ -4,18 +4,14 @@ import classes from './Header.module.scss';
 import { classNames } from 'shared/lib';
 import { API_BASE_URL } from 'shared/constants/api';
 import { useLang, useTheme } from 'shared/model/hooks';
-import { IconLogoHeader,  IconSun, IconMoon } from 'shared/icons';
+import { IconLogoHeader, IconSun, IconMoon } from 'shared/icons';
 import { Select } from 'shared/ui';
 import { useDispatch } from 'react-redux';
-import { setLang } from 'shared/model/reducers/langSlice';
-import { setTheme } from 'shared/model/reducers/themeSlice';
 
 export const Header = () => {
-  const { lang } = useLang();
-  const { theme } = useTheme(); 
-
+  const { lang, setLang } = useLang();
+  const { theme, setTheme } = useTheme();
   const [isMenuActive, setIsMenuActive] = useState(false);
-
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
 
@@ -35,7 +31,7 @@ export const Header = () => {
         setError(error);
       }
     })();
-  }, [lang]); 
+  }, [lang]);
 
   const handleItemClick = () => {
     isMenuActive
@@ -43,12 +39,9 @@ export const Header = () => {
       : setIsMenuActive(true);
   };
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  const handleLanguageChange = (event) => {
-    const langValue = event.currentTarget.value;
-    dispatch(setLang(langValue));
-  };
+  const onLanguageChange = (value) => dispatch(setLang(value));
 
   const classNameMenu = classNames(
     classes.menu,
@@ -60,20 +53,19 @@ export const Header = () => {
   );
 
   const toggleTheme = () => {
-    theme === 'dark' ? dispatch(setTheme('light')) : dispatch(setTheme('dark'));
-  }
-
-  console.log(theme)
-  console.log(lang)
+    theme === 'dark'
+      ? dispatch(setTheme('light'))
+      : dispatch(setTheme('dark'));
+  };
 
   return (
     <div>
-      <Link to='/' className={classes.logo}>      
+      <Link to='/' className={classes.logo}>
         <IconLogoHeader />
       </Link>
 
       {data && (
-        <ul className={ classNameMenu } theme={theme}>
+        <ul className={classNameMenu} theme={theme}>
           {data.menuItems.length > 0 &&
             data.menuItems.map((menuItem, index) => (
               <li
@@ -95,17 +87,21 @@ export const Header = () => {
       )}
 
       {data && (
-        <Select 
-          options={data.languages} 
-          className={classes.select} 
-          onChange={handleLanguageChange}
+        <Select
+          options={data.languages}
+          className={classes.select}
+          onChange={({ target: { value } }) => onLanguageChange(value)}
           value={localStorage.getItem('lang') ?? 'en'}
-        />)       
+        />)
       }
 
       <button onClick={toggleTheme} className={classes.theme}>
-        {theme === 'dark' ? <IconSun /> : <IconMoon />}
-    </button>
+        {
+          theme === 'dark'
+            ? <IconSun />
+            : <IconMoon />
+        }
+      </button>
     </div>
   );
 };

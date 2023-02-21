@@ -3,7 +3,7 @@ import { setTheme } from '../reducers/themeSlice';
 import { useSelector } from 'react-redux';
 
 export const useTheme = () => {
-  const { theme } = useSelector((state) => state.themeReducer); 
+  const { theme } = useSelector((state) => state.themeReducer);
 
   useEffect(() => {
     localStorage.setItem('theme', theme);
@@ -11,5 +11,5 @@ export const useTheme = () => {
 
   return {
     theme, setTheme
-  }
+  };
 };

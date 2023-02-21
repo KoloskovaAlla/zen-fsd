@@ -9,7 +9,7 @@ const dataForTests = {
     },
     expectedClassString: 'one two three'
   }
-}
+};
 
 describe('classNames:', () => {
   it('Unit test 1', () => {
@@ -17,5 +17,5 @@ describe('classNames:', () => {
     const { argString, argObject, argArray } = classItems;
     const classString = classNames(argString, argObject, argArray);
     expect(classString).toEqual(expectedClassString);
-  })
-})
+  });
+});
