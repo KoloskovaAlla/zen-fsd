@@ -22,5 +22,5 @@ export const Router = () => {
         <Route path="/posts" element={<LazyPostsPage />} />
       </Routes>
     </Suspense>
-  )
+  );
 };
