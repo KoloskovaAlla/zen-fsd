@@ -3,7 +3,7 @@ const DownloadPage = () => {
     <div>
       <h1>DownloadPage Title</h1>
     </div>
-  )
-}
+  );
+};
 
-export default DownloadPage
+export default DownloadPage;

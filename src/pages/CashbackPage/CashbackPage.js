@@ -3,7 +3,7 @@ const CashbackPage = () => {
     <div>
       <h1>CashbackPage Title</h1>
     </div>
-  )
-}
+  );
+};
 
-export default CashbackPage
+export default CashbackPage;

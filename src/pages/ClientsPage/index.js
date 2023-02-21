@@ -1,1 +1,1 @@
-export {default} from './ClientsPage'
+export { default } from './ClientsPage';

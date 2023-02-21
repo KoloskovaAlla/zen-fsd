@@ -1,1 +1,1 @@
-export {default} from './CashbackPage'
+export { default } from './CashbackPage';

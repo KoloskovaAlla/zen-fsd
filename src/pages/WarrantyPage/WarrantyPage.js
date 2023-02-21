@@ -3,7 +3,7 @@ const WarrantyPage = () => {
     <div>
       <h1>WarrantyPage Title</h1>
     </div>
-  )
-}
+  );
+};
 
-export default WarrantyPage
+export default WarrantyPage;

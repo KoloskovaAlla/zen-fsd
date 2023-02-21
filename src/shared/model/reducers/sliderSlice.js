@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   slides: [],
-  sliderDescription: null,
+  sliderDescription: null
 };
 
 export const sliderSlice = createSlice({

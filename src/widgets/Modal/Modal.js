@@ -1,24 +1,32 @@
-import { OrderForm } from 'features/OrderForm';
 import { useEffect, useState } from 'react';
-// import API_BASE_URL from 'constants';
+import { API_BASE_URL } from 'shared/constants/api';
 import classes from './Modal.module.scss';
-import { ButtonIcon } from 'shared/ui';
 import { IconClose } from 'shared/icons';
+import { useLang } from 'shared/model/hooks';
 
 export const Modal = () => {
-  const lang = 'en';
+  const { lang } = useLang();
   const [data, setData] = useState(null);
+   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch(`https://zenproject-ce905-default-rtdb.firebaseio.com/${lang}/.json`)
-      // fetch(`${API_BASE_URL}/${lang}/.json`)
-      .then((response) => response.json())
-      .then((data) => {
-        setData(data.modal);
-        console.log(data.modal.title.content);
-      })
-      .catch();
+    (async () => {
+      try {
+        const url = `${API_BASE_URL}/${lang}/modal.json`;
+        const response = await fetch(url);
+
+        if (!response.ok) throw new Error('Data not received');
+
+        const data = await response.json();
+        setData(data);
+      }
+      catch (error) {
+        console.error(error);
+        setError(error);
+      }
+    })();
   }, [lang]);
+
 
   return (
     <div className={classes.modal}>
@@ -26,9 +34,7 @@ export const Modal = () => {
         <IconClose />
       </button>   
 
-      {data && <h3 className={classes.title}> {data.title.content}</h3>}
-      
-      <OrderForm />
+      {data && <h3 className={classes.title}> {data.title.content}</h3>}      
     </div>
   );
 };

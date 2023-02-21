@@ -1,16 +1,17 @@
 import { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import classes from './Header.module.scss';
 import { classNames } from 'shared/lib';
 import { API_BASE_URL } from 'shared/constants/api';
 import { useLang, useTheme } from 'shared/model/hooks';
+import { IconLogoHeader, IconSun, IconMoon } from 'shared/icons';
+import { Select } from 'shared/ui';
+import { useDispatch } from 'react-redux';
 
-const Header = () => {
-  const { lang } = useLang();
-  const { theme } = useTheme();
-
+export const Header = () => {
+  const { lang, setLang } = useLang();
+  const { theme, setTheme } = useTheme();
   const [isMenuActive, setIsMenuActive] = useState(false);
-
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
 
@@ -30,13 +31,17 @@ const Header = () => {
         setError(error);
       }
     })();
-  }, []);
+  }, [lang]);
 
   const handleItemClick = () => {
     isMenuActive
       ? setIsMenuActive(false)
       : setIsMenuActive(true);
   };
+
+  const dispatch = useDispatch();
+
+  const onLanguageChange = (value) => dispatch(setLang(value));
 
   const classNameMenu = classNames(
     classes.menu,
@@ -47,8 +52,18 @@ const Header = () => {
     []
   );
 
+  const toggleTheme = () => {
+    theme === 'dark'
+      ? dispatch(setTheme('light'))
+      : dispatch(setTheme('dark'));
+  };
+
   return (
     <div>
+      <Link to='/' className={classes.logo}>
+        <IconLogoHeader />
+      </Link>
+
       {data && (
         <ul className={classNameMenu} theme={theme}>
           {data.menuItems.length > 0 &&
@@ -70,8 +85,23 @@ const Header = () => {
             ))}
         </ul>
       )}
+
+      {data && (
+        <Select
+          options={data.languages}
+          className={classes.select}
+          onChange={({ target: { value } }) => onLanguageChange(value)}
+          value={localStorage.getItem('lang') ?? 'en'}
+        />)
+      }
+
+      <button onClick={toggleTheme} className={classes.theme}>
+        {
+          theme === 'dark'
+            ? <IconSun />
+            : <IconMoon />
+        }
+      </button>
     </div>
   );
 };
-
-export default Header;
