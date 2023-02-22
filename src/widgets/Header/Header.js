@@ -110,12 +110,15 @@ export const Header = () => {
         </div>
 
         {data && (
-          <Select
-            options={data.languages}
-            className={classes.select}
-            onChange={({ target: { value } }) => onLanguageChange(value)}
-            value={localStorage.getItem('lang') ?? 'en'}
-          />)
+          <div className={classes.language}>
+            <Select
+              options={data.languages}
+              className={classes.select}
+              onChange={({ target: { value } }) => onLanguageChange(value)}
+              value={localStorage.getItem('lang') ?? 'en'}
+            />
+          </div>
+        )
         }
 
         <button onClick={toggleTheme} className={classes.theme}>

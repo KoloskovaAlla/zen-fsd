@@ -1,4 +1,5 @@
 @import 'app/styles/breakpoints';
+@import 'app/styles/vars';
 
 .header {
   position: fixed;
@@ -26,7 +27,7 @@
     align-items: center;
     height: 100%;
     max-width: var(--container-max-width);
-    margin: 0 auto;
+    margin: 0 auto;   
   }
 }
 
@@ -39,6 +40,7 @@
 }
 
 .logo {
+  display: block;
   position: relative;
   width: 80px;
   height: 30px;
@@ -94,6 +96,66 @@
 
 a:global.active {
   border-bottom: 2px solid #aaa;
+}
+
+.language {
+  width: 50px;
+  height: 30px;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  z-index: 1;
+  position: relative;
+  color: currentColor;
+  margin-left: auto;
+
+  @media (min-width: $breakpoint_lg) {
+    height: 40px;
+    margin-left: 40px;
+  }
+
+  select {
+    width: 100%;
+    height: 100%;
+    appearance: none;
+    padding: 6px;
+    color: currentColor;
+    position: relative;
+    background: inherit;
+  }
+
+  svg {
+    position: absolute;
+    top: 11px;
+    right: 5px;
+    z-index: -1;
+    fill: currentColor;
+
+    @media (min-width: $breakpoint_lg) {
+      top: 16px;
+    }
+  }
+}
+
+.theme {
+  margin-left: 20px;
+  width: 30px;
+  height: 30px;
+  color: currentColor;
+  z-index: 1;
+
+  @media (min-width: $breakpoint_md) {
+    margin-left: 30px;
+  }
+
+  @media (min-width: $breakpoint_lg) {
+    height: 40px; //!!
+  }
+
+  svg {
+    height: 100%;
+    width: 100%;
+    fill: currentColor;
+  }
 }
 
 .burger {

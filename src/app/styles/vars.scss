@@ -3,4 +3,13 @@
   --color: #000;
   --bg-color: #fff;
   --header-height: 50px;
+  --container-max-width: 690px;
+
+  @media (min-width: 1152px) {
+    --container-max-width: 930px;
+  }
+
+  @media (min-width: 1440px) {
+    --container-max-width: 1110px;
+  }
 }
