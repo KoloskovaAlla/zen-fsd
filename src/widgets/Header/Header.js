@@ -58,6 +58,23 @@ export const Header = () => {
       : dispatch(setTheme('dark'));
   };
 
+
+
+  const classNameBurger = classNames(
+    classes.burger,
+    {
+      [classes.active]: isMenuActive,
+    }
+  );
+
+  console.log(isMenuActive)
+
+  const handleBurgerClick = () => {
+    isMenuActive
+      ? setIsMenuActive(false)
+      : setIsMenuActive(true);
+  };
+
   return (
     <div>
       <Link to='/' className={classes.logo}>
@@ -101,6 +118,14 @@ export const Header = () => {
             ? <IconSun />
             : <IconMoon />
         }
+      </button>
+
+      <button
+        onClick={handleBurgerClick}
+        className={classNameBurger}
+        type="button"
+      >
+        <span></span>
       </button>
     </div>
   );
