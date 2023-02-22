@@ -47,7 +47,7 @@ export const Header = () => {
     classes.menu,
     {
       [classes.active]: isMenuActive,
-      dark: theme === 'dark',
+      [classes.dark]: theme === 'dark',
     },
     []
   );
@@ -71,58 +71,69 @@ export const Header = () => {
       : setIsMenuActive(true);
   };
 
+  const classNameHeader = classNames(
+    classes.header,
+    {
+      [classes.dark]: theme === 'dark',
+    }
+  );
+
   return (
-    <div>
-      <Link to='/' className={classes.logo}>
-        <IconLogoHeader />
-      </Link>
+    <header className={classNameHeader}>
+      <div className={classes.wrapper}>
+        <div className={classes.navigation}>
+          <Link to='/' className={classes.logo}>
+            <IconLogoHeader />
+          </Link>
 
-      {data && (
-        <ul className={classNameMenu} theme={theme}>
-          {data.menuItems.length > 0 &&
-            data.menuItems.map((menuItem, index) => (
-              <li
-                onClick={handleItemClick}
-                className={classes.item}
-                key={index}
-              >
-                <NavLink
-                  to={`/${menuItem.target}`}
-                  className={({ isActive }) =>
-                    isActive ? 'active' : 'inactive'
-                  }
-                >
-                  {menuItem.text}
-                </NavLink>
-              </li>
-            ))}
-        </ul>
-      )}
+          {data && (
+            <ul className={classNameMenu} theme={theme}>
+              {data.menuItems.length > 0 &&
+                data.menuItems.map((menuItem, index) => (
+                  <li
+                    onClick={handleItemClick}
+                    className={classes.item}
+                    key={index}
+                  >
+                    <NavLink
+                      to={`/${menuItem.target}`}
+                      className={({ isActive }) =>
+                        isActive ? 'active' : 'inactive'
+                      }
+                    >
+                      {menuItem.text}
+                    </NavLink>
+                  </li>
+                ))}
+            </ul>
+          )}
+        </div>
 
-      {data && (
-        <Select
-          options={data.languages}
-          className={classes.select}
-          onChange={({ target: { value } }) => onLanguageChange(value)}
-          value={localStorage.getItem('lang') ?? 'en'}
-        />)
-      }
-
-      <button onClick={toggleTheme} className={classes.theme}>
-        {
-          theme === 'dark'
-            ? <IconSun />
-            : <IconMoon />
+        {data && (
+          <Select
+            options={data.languages}
+            className={classes.select}
+            onChange={({ target: { value } }) => onLanguageChange(value)}
+            value={localStorage.getItem('lang') ?? 'en'}
+          />)
         }
-      </button>
 
-      <button
-        onClick={handleBurgerClick}
-        className={classNameBurger}
-        type="button"
-      >
-        <span></span>
-      </button>
-    </div>
+        <button onClick={toggleTheme} className={classes.theme}>
+          {
+            theme === 'dark'
+              ? <IconSun />
+              : <IconMoon />
+          }
+        </button>
+
+        <button
+          onClick={handleBurgerClick}
+          className={classNameBurger}
+          type="button"
+        >
+          <span></span>
+        </button>
+      </div>
+    </header>
   );
 };
