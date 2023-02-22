@@ -58,16 +58,12 @@ export const Header = () => {
       : dispatch(setTheme('dark'));
   };
 
-
-
   const classNameBurger = classNames(
     classes.burger,
     {
       [classes.active]: isMenuActive,
     }
   );
-
-  console.log(isMenuActive)
 
   const handleBurgerClick = () => {
     isMenuActive
