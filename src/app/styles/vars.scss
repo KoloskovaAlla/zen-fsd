@@ -4,9 +4,12 @@
   --bg-color: #fff;
   --header-height: 50px;
   --container-max-width: 690px;
+  --header-height: 50px;
+  --border-color: #aaaaaa;
 
   @media (min-width: 1152px) {
     --container-max-width: 930px;
+    --header-height: 80px;
   }
 
   @media (min-width: 1440px) {
