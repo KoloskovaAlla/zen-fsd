@@ -1,6 +1,6 @@
 import './styles/index.scss';
 import { Router } from 'pages';
-import { Header } from 'widgets';
+import { Header, Footer } from 'widgets';
 import { useSelector } from 'react-redux';
 
 export const App = () => {
@@ -10,6 +10,7 @@ export const App = () => {
     <div className={`app ${theme}`}>
       <Header />
       <Router />
+      <Footer />
     </div>
   );
 };
