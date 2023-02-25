@@ -6,8 +6,8 @@ export const Link = ({ link }) => {
       return (
         <a href={url}>
           <img
-            src={content?.image?.source && content.image.source}
-            alt={content?.image?.alternate && content.image.alternate}
+            src={content?.image?.source}
+            alt={content?.image?.alternate}
           />
         </a>
       )
@@ -15,7 +15,7 @@ export const Link = ({ link }) => {
     case 'email':
       return (
         <a href={url}>
-          {content?.email && content.email}
+          {content?.email}
         </a>
       )
 

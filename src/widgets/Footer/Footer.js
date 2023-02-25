@@ -2,7 +2,7 @@ import classes from './Footer.module.scss';
 import { useEffect, useState } from 'react';
 import { API_BASE_URL } from 'shared/constants/api';
 import { useLang } from 'shared/model/hooks';
-import { Column } from './ui'
+import { Column } from './ui';
 
 export const Footer = () => {
   const { lang, setLang } = useLang();
@@ -25,24 +25,18 @@ export const Footer = () => {
         setError(error);
       }
     })();
-  }, [lang]);
+  }, [lang]); 
 
   return (
-    <footer>   
+    <footer className={classes.footer}>   
       <div className={classes.wrapper}>
       {data && (
         <ul className={classes.columns}>
-          {data.columns?.length > 0 && (
+          {data?.columns.length > 0 && (
             data.columns.map((column, index) =>
               <Column
-                key={index}
-                className={classes.column}
-                dataTitle={column.title}
-                classNameTitle={classes.title}
-                dataLinks={column.links}
-                classNameList={classes.list}
-                classNameItem={classes.item}
-                classNameLink={classes.link}
+                key={index}             
+                details={{ title: column.title, links: column.links }}                         
               />)
           )}
         </ul>

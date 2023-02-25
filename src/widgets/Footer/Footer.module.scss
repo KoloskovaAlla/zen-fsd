@@ -1,0 +1,27 @@
+@import 'app/styles/breakpoints';
+
+.footer {
+  background: #484848;
+  color: #FFFFFF;
+  padding: var(--section-padding);
+}
+
+.wrapper {
+  margin: 0 auto;
+  max-width: var(--container-max-width);
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+
+  @media (min-width: $breakpoint_md) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @media (min-width: $breakpoint_lg) {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 110px;
+  }
+}
