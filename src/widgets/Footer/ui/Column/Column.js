@@ -14,7 +14,10 @@ export const Column = ({ details }) => {
           {links.length > 0 && (
             links.map((link, index) =>
               <li className={classes.item}>
-                <Link link={link} key={index}/>
+                <Link 
+                  link={link} 
+                  key={index}
+                />
               </li>
             )
           )}

@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { API_BASE_URL } from 'shared/constants/api';
 import { useLang } from 'shared/model/hooks';
 import { Column } from './ui';
+import { IconLogoFooter } from 'shared/icons';
 
 export const Footer = () => {
   const { lang, setLang } = useLang();
@@ -27,20 +28,45 @@ export const Footer = () => {
     })();
   }, [lang]); 
 
+  console.log(data)
+
   return (
     <footer className={classes.footer}>   
       <div className={classes.wrapper}>
-      {data && (
-        <ul className={classes.columns}>
-          {data?.columns.length > 0 && (
-            data.columns.map((column, index) =>
-              <Column
-                key={index}             
-                details={{ title: column.title, links: column.links }}                         
-              />)
+        {data && (
+          <ul className={classes.columns}>
+            {data?.columns.length > 0 && (
+              data.columns.map((column, index) =>
+                <Column
+                  key={index}             
+                  details={{ title: column.title, links: column.links }}                         
+                />)
+            )}
+          </ul>
+        )}
+
+        <div className={classes.info}>
+          <div className={classes.logo}>
+            <IconLogoFooter />
+          </div>
+
+          {data?.infoData?.texts?.length > 0 && (
+            data.infoData.texts.map((text, index) =>
+              <p
+                className={classes.copy} 
+                key={index}
+              >
+                {text}
+              </p>   
+            )
           )}
-        </ul>
-      )}
+          <a className={classes.developer} href={data?.infoData?.developer?.url}>
+            <img
+              src={data?.infoData?.developer?.content?.image?.source}
+              alt={data?.infoData?.developer?.content?.image?.alternate}
+            />
+          </a>
+        </div>
       </div>
     </footer>
   );
