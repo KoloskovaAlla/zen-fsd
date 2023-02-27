@@ -1,5 +1,5 @@
 export const Link = ({ link }) => {
-  const { type, url, content } = link
+  const { type, url, content } = link;
 
   switch (type) {
     case 'image':

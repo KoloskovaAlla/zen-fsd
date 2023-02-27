@@ -6,9 +6,9 @@ import { Column } from './ui';
 import { IconLogoFooter } from 'shared/icons';
 
 export const Footer = () => {
-  const { lang, setLang } = useLang();
-  const [data, setData] = useState(null); 
-  const [error, setError] = useState(null);
+  const { lang } = useLang();
+  const [data, setData] = useState(null);
+  const [setError] = useState(null);
 
   useEffect(() => {
     (async () => {
@@ -26,20 +26,18 @@ export const Footer = () => {
         setError(error);
       }
     })();
-  }, [lang]); 
-
-  console.log(data)
+  }, [lang, setError]);
 
   return (
-    <footer className={classes.footer}>   
+    <footer className={classes.footer}>
       <div className={classes.wrapper}>
         {data && (
           <ul className={classes.columns}>
             {data?.columns.length > 0 && (
               data.columns.map((column, index) =>
                 <Column
-                  key={index}             
-                  details={{ title: column.title, links: column.links }}                         
+                  key={index}
+                  details={{ title: column.title, links: column.links }}
                 />)
             )}
           </ul>
@@ -53,11 +51,11 @@ export const Footer = () => {
           {data?.infoData?.texts?.length > 0 && (
             data.infoData.texts.map((text, index) =>
               <p
-                className={classes.copy} 
+                className={classes.copy}
                 key={index}
               >
                 {text}
-              </p>   
+              </p>
             )
           )}
           <a className={classes.developer} href={data?.infoData?.developer?.url}>

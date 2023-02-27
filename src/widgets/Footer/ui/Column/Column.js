@@ -1,9 +1,9 @@
-import {classNames} from 'shared/lib'
-import { Link } from '../Link'
-import classes from './Column.module.scss'
+import { classNames } from 'shared/lib';
+import { Link } from '../Link';
+import classes from './Column.module.scss';
 
-export const Column = ({ details }) => {  
-  const { title, links } = details
+export const Column = ({ details }) => {
+  const { title, links } = details;
 
   return (
     <li className={classNames.column}>
@@ -14,8 +14,8 @@ export const Column = ({ details }) => {
           {links.length > 0 && (
             links.map((link, index) =>
               <li className={classes.item}>
-                <Link 
-                  link={link} 
+                <Link
+                  link={link}
                   key={index}
                 />
               </li>

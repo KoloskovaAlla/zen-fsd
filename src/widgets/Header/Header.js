@@ -13,7 +13,7 @@ export const Header = () => {
   const { theme, setTheme } = useTheme();
   const [isMenuActive, setIsMenuActive] = useState(false);
   const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
+  const [setError] = useState(null);
 
   useEffect(() => {
     (async () => {
@@ -31,7 +31,7 @@ export const Header = () => {
         setError(error);
       }
     })();
-  }, [lang]);
+  }, [lang, setError]);
 
   const handleItemClick = () => {
     isMenuActive

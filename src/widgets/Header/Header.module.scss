@@ -1,5 +1,4 @@
-@import 'app/styles/breakpoints';
-@import 'app/styles/vars';
+@import 'shared/styles/breakpoints';
 
 .header {
   position: fixed;
@@ -27,7 +26,7 @@
     align-items: center;
     height: 100%;
     max-width: var(--container-max-width);
-    margin: 0 auto;   
+    margin: 0 auto;
   }
 }
 

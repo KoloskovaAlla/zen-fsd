@@ -1,4 +1,4 @@
-@import 'app/styles/breakpoints';
+@import 'shared/styles/breakpoints';
 
 .title {
   font-size: 16px;
@@ -10,25 +10,22 @@
 }
 
 .list {
-    margin-top: 20px;
-} 
-
-.item {
-    margin-top: 10px;
-
-    @media (min-width: $breakpoint_lg) {
-      margin-top: 15px;
-      font-size: 16px;
-    }
-
-    &:first-of-type {
-      margin-top: 0;
-    }
-
-    img {
-      width: 40px;
-    }
+  margin-top: 20px;
 }
 
+.item {
+  margin-top: 10px;
 
+  @media (min-width: $breakpoint_lg) {
+    margin-top: 15px;
+    font-size: 16px;
+  }
 
+  &:first-of-type {
+    margin-top: 0;
+  }
+
+  img {
+    width: 40px;
+  }
+}
