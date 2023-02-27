@@ -31,7 +31,7 @@ export const Header = () => {
         setError(error);
       }
     })();
-  }, [lang]);
+  }, [lang, setError]);
 
   const handleItemClick = () => {
     isMenuActive

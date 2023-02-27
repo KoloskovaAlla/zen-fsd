@@ -1,0 +1,76 @@
+@import 'shared/styles/breakpoints';
+
+.footer {
+  background: #484848;
+  color: #FFFFFF;
+  padding: var(--section-padding);
+}
+
+.wrapper {
+  margin: 0 auto;
+  max-width: var(--container-max-width);
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+
+  @media (min-width: $breakpoint_md) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @media (min-width: $breakpoint_lg) {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 110px;
+  }
+}
+
+.info {
+  margin-top: 30px;
+  position: relative;
+
+  @media (min-width: $breakpoint_lg) {
+    margin-top: 40px;
+    font-size: 16px;
+  }
+
+  svg {
+    height: 100%;
+    fill: currentColor;
+  }
+}
+
+.logo {
+  height: 24px;
+}
+
+.copy {
+  margin-top: 10px;
+
+  @media (min-width: $breakpoint_md) {
+    max-width: 500px;
+  }
+
+  @media (min-width: $breakpoint_lg) {
+    max-width: 650px;
+  }
+}
+
+.developer {
+  display: block;
+  margin: 10px auto 0;
+  width: 130px;
+
+  @media (min-width: $breakpoint_md) {
+    position: absolute;
+    margin: 0;
+    top: 0;
+    right: 0;
+    width: 160px;
+  }
+
+  img {
+    width: 100%;
+  }
+}
