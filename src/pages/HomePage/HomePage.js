@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { API_BASE_URL } from 'shared/constants/api';
-// import SectionBase from '';
+import { SectionBase } from 'widgets';
 // import Cashback from '';
 // import Modal from '';
 import { useLang, useTheme } from 'shared/model/hooks';
@@ -38,8 +38,8 @@ const HomePage = () => {
 
   return (
     <div className={`app ${theme}`}> 
-      {/* {data?.download && <SectionBase data={data.download} />}
-      {data?.warranty && <SectionBase data={data.warranty} reverse />}
+      {data?.download && <SectionBase data={data.download} />}
+      {/* {data?.warranty && <SectionBase data={data.warranty} reverse />}
       {data?.care && <SectionBase data={data.care} />}
       {data?.cashback && <Cashback data={data.cashback} />}
       {data?.modal && <Modal data={data.modal} />}     */}

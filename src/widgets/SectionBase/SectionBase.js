@@ -1,5 +1,8 @@
 import classes from './SectionBase.module.scss';
-import { classNames } from 'utils/helpers';
+import { IconApple } from 'shared/icons';
+import { IconGoogle } from 'shared/icons';
+import { Preview } from './ui';
+import { classNames } from 'shared/lib';
 
 export const SectionBase = ({ data, reverse, type }) => {
   const classNameBody = classNames(
@@ -15,11 +18,9 @@ export const SectionBase = ({ data, reverse, type }) => {
   return (
     <section id={name} className={classes.section}>
       <div className={classes.wrapper}>
-        <div className={classNameBody}>
-
-          {type === "primary" && <h1 className={classes.title}>data.title</h1>}
-          {type === "secondary" && <h2 className={classes.title}>data.title</h2>}
-
+        <div className={classNameBody}>      
+          {type === "primary" && <h1 className={classes.title}>{title}</h1>}
+          {type === "secondary" && <h2 className={classes.title}>{title}</h2>}
 
           {data.texts?.length > 0 &&
             data.texts.map((text, index) => (
@@ -34,26 +35,22 @@ export const SectionBase = ({ data, reverse, type }) => {
           <ul className={classes.links}>
             {data.links?.length > 0 &&
               data.links.map((link, index) => (
-                <li className={classes.link}>
+                <li 
+                  className={classes.link}
+                  key={index}
+                >
                   <a href={link.url && link.url}>
                     {link.name === 'apple'
-                      ? <AppleIcon />
-                      : <GoogleIcon />
+                      ? <IconApple />
+                      : <IconGoogle />
                     }
                   </a>
                 </li>
               ))}
           </ul>
         </div>
-
-        {/* {data.image && (
-          <Image
-            className={classes.image}
-            imageData={data.image}
-          />)
-        } */}
-
-        <Preview imageData={data.image} />
+ 
+        {data.image && <Preview />}
       </div>
     </section>
   );

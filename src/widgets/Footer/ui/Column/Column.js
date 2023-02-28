@@ -13,10 +13,12 @@ export const Column = ({ details }) => {
         <ul className={classes.list}>
           {links.length > 0 && (
             links.map((link, index) =>
-              <li className={classes.item}>
+              <li 
+                className={classes.item}
+                key={index}
+              >
                 <Link
-                  link={link}
-                  key={index}
+                  link={link}               
                 />
               </li>
             )
