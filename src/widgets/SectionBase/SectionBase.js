@@ -1,10 +1,10 @@
 import classes from './SectionBase.module.scss';
 import { IconApple } from 'shared/icons';
 import { IconGoogle } from 'shared/icons';
-import { Preview } from './ui';
+import { Preview } from 'features';
 import { classNames } from 'shared/lib';
 
-export const SectionBase = ({ data, reverse, type }) => {
+export const SectionBase = ({ data, type, reverse }) => {
   const classNameBody = classNames(
     classes.body,
     {
@@ -14,13 +14,14 @@ export const SectionBase = ({ data, reverse, type }) => {
   );
 
   const { title, name } = data;
+  console.log(data.image)
 
   return (
-    <section id={name} className={classes.section}>
+    <section className={classes.section}>
       <div className={classes.wrapper}>
-        <div className={classNameBody}>      
-          {type === "primary" && <h1 className={classes.title}>{title}</h1>}
-          {type === "secondary" && <h2 className={classes.title}>{title}</h2>}
+        <div className={classNameBody}>
+          {type === 'primary' && <h1 className={classes.title}>{title.content}</h1>}
+          {type === 'secondary' && <h2 className={classes.title}>{title.content}</h2>}
 
           {data.texts?.length > 0 &&
             data.texts.map((text, index) => (
@@ -35,7 +36,7 @@ export const SectionBase = ({ data, reverse, type }) => {
           <ul className={classes.links}>
             {data.links?.length > 0 &&
               data.links.map((link, index) => (
-                <li 
+                <li
                   className={classes.link}
                   key={index}
                 >
@@ -49,8 +50,8 @@ export const SectionBase = ({ data, reverse, type }) => {
               ))}
           </ul>
         </div>
- 
-        {data.image && <Preview />}
+
+        {data.image && <Preview imageData={data.image} />}
       </div>
     </section>
   );

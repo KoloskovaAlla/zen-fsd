@@ -5,14 +5,12 @@ import { SectionBase } from 'widgets';
 // import Modal from '';
 import { useLang, useTheme } from 'shared/model/hooks';
 // import { setCurrentPage } from 'reducers/currentPageSlice';
-import { useDispatch } from 'react-redux';
 
 const HomePage = () => {
   const { lang } = useLang();
   const { theme } = useTheme();
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
-  const dispatch = useDispatch;
 
   useEffect(() => {
     (async () => {
@@ -37,12 +35,12 @@ const HomePage = () => {
   // }, []);
 
   return (
-    <div className={`app ${theme}`}> 
-      {data?.download && <SectionBase data={data.download} />}
-      {/* {data?.warranty && <SectionBase data={data.warranty} reverse />}
-      {data?.care && <SectionBase data={data.care} />}
-      {data?.cashback && <Cashback data={data.cashback} />}
-      {data?.modal && <Modal data={data.modal} />}     */}
+    <div className={`app ${theme}`}>
+      {data?.download && <SectionBase data={data.download} type='primary' />}
+      {data?.warranty && <SectionBase data={data.warranty} type='secondary' reverse />}
+      {data?.care && <SectionBase data={data.care} type='secondary' />}
+      {/* {data?.cashback && <Cashback data={data.cashback} />}
+      {data?.modal && <Modal data={data.modal} />}      */}
     </div>
   );
 };
