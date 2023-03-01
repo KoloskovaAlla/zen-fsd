@@ -18,7 +18,7 @@ const HomePage = () => {
         const url = `${API_BASE_URL}/${lang}/.json`;
         const response = await fetch(url);
 
-        if (!response.ok) throw new Error('Data not received');
+        if (!response.ok) throw new Error('Data is not received');
 
         const data = await response.json();
         setData(data);
