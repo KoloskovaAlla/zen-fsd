@@ -35,7 +35,7 @@ const HomePage = () => {
   // }, []);
 
   return (
-    <div className={`app ${theme}`}>
+    <div>
       {data?.download && <SectionBase data={data.download} type='primary' />}
       {data?.warranty && <SectionBase data={data.warranty} type='secondary' reverse />}
       {data?.care && <SectionBase data={data.care} type='secondary' />}
