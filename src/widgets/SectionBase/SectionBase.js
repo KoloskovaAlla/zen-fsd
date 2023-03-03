@@ -13,8 +13,7 @@ export const SectionBase = ({ data, type, reverse }) => {
     []
   );
 
-  const { title, name } = data;
-  console.log(data.image)
+  const { title } = data;
 
   return (
     <section className={classes.section}>
