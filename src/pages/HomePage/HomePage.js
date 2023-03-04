@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { API_BASE_URL } from 'shared/constants/api';
 import { SectionBase } from 'widgets';
+import { Cashback } from 'widgets';
 // import Cashback from '';
 // import Modal from '';
 import { useLang, useTheme } from 'shared/model/hooks';
@@ -39,8 +40,8 @@ const HomePage = () => {
       {data?.download && <SectionBase data={data.download} type='primary' />}
       {data?.warranty && <SectionBase data={data.warranty} type='secondary' reverse />}
       {data?.care && <SectionBase data={data.care} type='secondary' />}
-      {/* {data?.cashback && <Cashback data={data.cashback} />}
-      {data?.modal && <Modal data={data.modal} />}      */}
+      {data?.cashback && <Cashback data={data.cashback} />}
+      {/* {data?.modal && <Modal data={data.modal} />}      */}
     </div>
   );
 };
