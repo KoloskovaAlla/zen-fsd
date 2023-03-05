@@ -4,32 +4,19 @@ import { SectionBase } from 'widgets';
 import { Cashback } from 'widgets';
 // import Cashback from '';
 // import Modal from '';
-import { useLang, useTheme } from 'shared/model/hooks';
+import { useLang, useTheme, useHomePage } from 'shared/model/hooks';
 // import { setCurrentPage } from 'reducers/currentPageSlice';
 
 const HomePage = () => {
   const { lang } = useLang();
   const { theme } = useTheme();
-  const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
+  // const [data, setData] = useState(null);
+  // const [error, setError] = useState(null);
+  const { fetchHomePageData, isLoading, homePageData, errorMessage } = useHomePage();
 
   useEffect(() => {
-    (async () => {
-      try {
-        const url = `${API_BASE_URL}/${lang}/.json`;
-        const response = await fetch(url);
-
-        if (!response.ok) throw new Error('Data is not received');
-
-        const data = await response.json();
-        setData(data);
-      }
-      catch (error) {
-        console.error(error);
-        setError(error);
-      }
-    })();
-  }, [lang, setError]);
+    dispatch(fetchHomePageData(lang));
+  }, [lang]);
 
   // useEffect(() => {
   //   dispatch(setCurrentPage('homePage'));
@@ -37,7 +24,7 @@ const HomePage = () => {
 
   return (
     <div>
-      {data?.download && <SectionBase data={data.download} type='primary' />}
+      {homePageData?.download && <SectionBase data={data.download} type='primary' />}
       {data?.warranty && <SectionBase data={data.warranty} type='secondary' reverse />}
       {data?.care && <SectionBase data={data.care} type='secondary' />}
       {data?.cashback && <Cashback data={data.cashback} />}
