@@ -2,6 +2,10 @@ import { useEffect } from 'react';
 import { setTheme } from '../reducers/themeSlice';
 import { useSelector } from 'react-redux';
 
+/**  
+ * @returns {object}
+ */
+
 export const useTheme = () => {
   const { theme } = useSelector((state) => state.themeReducer);
 
@@ -10,6 +14,7 @@ export const useTheme = () => {
   }, [theme]);
 
   return {
-    theme, setTheme
+    theme,
+    setTheme,
   };
 };

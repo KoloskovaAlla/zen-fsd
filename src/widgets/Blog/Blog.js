@@ -5,14 +5,14 @@ import { useLang } from 'shared/model/hooks';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-export const Blog = () => {  
+export const Blog = () => {
   const [data, setData] = useState();
   const [error, setError] = useState();
   const { lang } = useLang();
   const [hiddenPosts, setHiddenPosts] = useState(false);
   const { currentPage } = useSelector((state) => state.pageReducer);
 
-    useEffect(() => {
+  useEffect(() => {
     (async () => {
       try {
         const url = `${API_BASE_URL}/${lang}/posts.json`;
@@ -99,8 +99,8 @@ export const Blog = () => {
             </ul>
 
             <Link className={classes.post} to='/posts'>
-              <button 
-                className={classes.button} 
+              <button
+                className={classes.button}
                 type='button'
               >
                 {data?.buttonText}

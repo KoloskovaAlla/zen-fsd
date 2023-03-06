@@ -1,6 +1,5 @@
 import classes from './SectionBase.module.scss';
-import { IconApple } from 'shared/icons';
-import { IconGoogle } from 'shared/icons';
+import { IconApple, IconGoogle } from 'shared/icons';
 import { Preview } from 'features';
 import { classNames } from 'shared/lib';
 

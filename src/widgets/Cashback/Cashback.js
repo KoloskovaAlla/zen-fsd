@@ -1,13 +1,14 @@
 import classes from './Cashback.module.scss';
+
 export const Cashback = ({ data }) => {
   const { title } = data;
-  const handleOrderClick = () => {}
+  const handleOrderClick = () => { }
 
   return (
     <section className={classes.section}>
       <div className={classes.wrapper}>
-        <div className={classes.body}>         
-           <h2 className={classes.title}>{title.content}</h2>
+        <div className={classes.body}>
+          <h2 className={classes.title}>{title.content}</h2>
 
           {data.texts?.length > 0 &&
             data.texts.map((text, index) => (
@@ -25,7 +26,7 @@ export const Cashback = ({ data }) => {
           >
             {data?.buttonText}
           </button>
-     
+
         </div>
       </div>
     </section>

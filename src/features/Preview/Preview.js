@@ -3,18 +3,22 @@ import classes from './Preview.module.scss';
 import { useDispatch } from 'react-redux';
 import { useSlider, usePreview } from 'shared/model/hooks';
 
-export const Preview = ({ imageData }) => {
+/** 
+ * @param {object} param
+ * @returns {ReactElement}
+ */
+
+export const Preview = ({ imageDetails }) => {
   const dispatch = useDispatch();
   const { sliderActions } = useSlider();
   const { setSlides } = sliderActions;
   const { setPreviewDetails } = usePreview();
 
   useEffect(() => {
-    dispatch(setSlides(imageData));
-  }, [imageData, setSlides]);
+    dispatch(setSlides(imageDetails));
+  }, [imageDetails, setSlides]);
 
   const handlePreviewClick = (event) => {
-    // dispatch(setIsDarkClicked(false));
     const details = event.currentTarget.getBoundingClientRect();
 
     const x = details.left;
@@ -23,8 +27,8 @@ export const Preview = ({ imageData }) => {
     const y = details.top;
     const height = details.height;
 
-    const description = imageData.alternate;
-    const id = imageData.id;
+    const description = imageDetails.alternate;
+    const id = imageDetails.id;
 
     dispatch(setPreviewDetails({
       x,
@@ -36,6 +40,19 @@ export const Preview = ({ imageData }) => {
     }));
   };
 
+  console.log(typeof (
+    <button
+      onClick={handlePreviewClick}
+      className={classes.preview}
+      type='button'
+    >
+      <img
+        src={imageDetails?.source}
+        alt={imageDetails?.alternate}
+      />
+    </button>
+  ))
+
   return (
     <button
       onClick={handlePreviewClick}
@@ -43,8 +60,8 @@ export const Preview = ({ imageData }) => {
       type='button'
     >
       <img
-        src={imageData?.source}
-        alt={imageData?.alternate}
+        src={imageDetails?.source}
+        alt={imageDetails?.alternate}
       />
     </button>
   );
