@@ -8,7 +8,12 @@ import { useDispatch } from 'react-redux';
 const HomePage = () => {
   const { lang } = useLang();
   const { theme } = useTheme();
-  const { fetchHomePageData, isLoading, homePageData, errorMessage } = useHomePage();
+  const {
+    fetchHomePageData,
+    isLoading,
+    homePageData,
+    errorMessage,
+  } = useHomePage();
   const dispatch = useDispatch();
 
   useEffect(() => {

@@ -1,49 +1,49 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { API_BASE_URL } from 'shared/constants/api';
 
-const fetchPostsData = createAsyncThunk(
+const fetchClientsData = createAsyncThunk(
   'posts/fetchData',
   async (_, thunkApi) => {
     const { lang } = thunkApi.getState().langReducer;
-    const url = `${API_BASE_URL}/${lang}/posts/.json`;
+    const url = `${API_BASE_URL}/${lang}/clients/.json`;
     try {
       const response = await fetch(url);
-      const postsData = await response.json();
-      if (!postsData) throw new Error('Failed to fetch');
-      return thunkApi.fulfillWithValue(postsData);
+      const clientsData = await response.json();
+      if (!clientsData) throw new Error('Failed to fetch');
+      return thunkApi.fulfillWithValue(clientsData);
     }
     catch (error) {
       console.error(error);
       return thunkApi.rejectWithValue(error.message);
     }
   }
-)
+);
 
 const initialState = {
   isLoading: false,
-  postsData: null,
+  clientsData: null,
   errorMessage: null,
-};
+}
 
-const postsSlice = createSlice({
-  name: 'posts',
+const clientsSlice = createSlice({
+  name: 'clients',
   initialState,
   extraReducers: {
-    [fetchPostsData.pending]: (state) => {
+    [fetchClientsData.pending]: (state) => {
       state.isLoading = true;
     },
-    [fetchPostsData.fulfilled]: (state, { payload }) => {
+    [fetchClientsData.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
-      state.postsData = payload;
+      state.clientsData = payload;
       state.errorMessage = null;
     },
-    [fetchPostsData.fulfilled]: (state, { payload }) => {
+    [fetchClientsData.rejected]: (state, { payload }) => {
       state.isLoading = false;
-      state.postsData = null;
+      state.homePageData = null;
       state.errorMessage = payload;
-    },
+    }
   }
 });
 
-export { fetchPostsData };
-export const { reducer: postsReducer } = postsSlice;
+export { fetchClientsData }
+export const { reducer: clientsReducer } = clientsSlice;

@@ -1,9 +1,9 @@
 import classes from './Posts.module.scss';
 import { useEffect, useState } from 'react';
 import { API_BASE_URL } from 'shared/constants/api';
-import { useCurrentPage, useLang } from 'shared/model/hooks';
+import { useCurrentPage, useLang, usePosts } from 'shared/model/hooks';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 export const Posts = () => {
   const [data, setData] = useState();
@@ -11,24 +11,12 @@ export const Posts = () => {
   const { lang } = useLang();
   const [hiddenPosts, setHiddenPosts] = useState(false);
   const { currentPage } = useCurrentPage();
+  const dispatch = useDispatch();
+  const { fetchPostsData } = usePosts();
 
   useEffect(() => {
-    (async () => {
-      try {
-        const url = `${API_BASE_URL}/${lang}/posts.json`;
-        const response = await fetch(url);
-
-        if (!response.ok) throw new Error('Data not received');
-
-        const data = await response.json();
-        setData(data);
-      }
-      catch (error) {
-        console.error(error);
-        setError(error);
-      }
-    })();
-  }, [lang, setError]);
+    dispatch(fetchPostsData(lang));
+  }, [lang]);
 
   useEffect(() => {
     setHiddenPosts(currentPage === 'postsPage');

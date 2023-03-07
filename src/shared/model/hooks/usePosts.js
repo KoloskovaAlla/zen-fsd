@@ -1,21 +1,24 @@
 import { useSelector } from 'react-redux';
-import { fetchHomePageData } from '../reducers/homeSlice'
+import { fetchPostsData } from '../reducers/postsSlice'
 
 /**  
  * @returns {object}
  */
 
-export const useHomePage = () => {
+export const usePosts = () => {
   const {
     isLoading,
-    homePageData,
+    postsData,
     errorMessage
   } = useSelector((state) => state.homePageReducer);
 
   return {
-    fetchHomePageData,
+    fetchPostsData,
     isLoading,
-    homePageData,
+    postsData,
     errorMessage,
   };
 };
+
+
+
