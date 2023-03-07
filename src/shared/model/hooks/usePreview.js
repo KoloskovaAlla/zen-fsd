@@ -10,7 +10,7 @@ export const usePreview = () => {
   const { previewDetails } = useSelector((state) => state.previewReducer);
 
   useEffect(() => {
-    localStorage.setItem('previewDetails', previewDetails);
+    localStorage.setItem('previewDetails', JSON).stringify(previewDetails);
   }, [previewDetails]);
 
   return {

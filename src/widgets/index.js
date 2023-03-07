@@ -4,4 +4,4 @@ export { Header } from './Header';
 export { Footer } from './Footer';
 export { Clients } from './Clients';
 export { Cashback } from './Cashback';
-export { Blog } from './Blog';
+export { Posts } from './Posts';

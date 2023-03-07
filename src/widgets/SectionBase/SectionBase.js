@@ -49,7 +49,7 @@ export const SectionBase = ({ data, type, reverse }) => {
           </ul>
         </div>
 
-        {data.image && <Preview imageData={data.image} />}
+        {data.image && <Preview imageDetails={data.image} />}
       </div>
     </section>
   );

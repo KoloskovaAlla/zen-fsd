@@ -1,16 +1,16 @@
-import classes from './Blog.module.scss';
+import classes from './Posts.module.scss';
 import { useEffect, useState } from 'react';
 import { API_BASE_URL } from 'shared/constants/api';
-import { useLang } from 'shared/model/hooks';
+import { useCurrentPage, useLang } from 'shared/model/hooks';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-export const Blog = () => {
+export const Posts = () => {
   const [data, setData] = useState();
   const [error, setError] = useState();
   const { lang } = useLang();
   const [hiddenPosts, setHiddenPosts] = useState(false);
-  const { currentPage } = useSelector((state) => state.pageReducer);
+  const { currentPage } = useCurrentPage();
 
   useEffect(() => {
     (async () => {
