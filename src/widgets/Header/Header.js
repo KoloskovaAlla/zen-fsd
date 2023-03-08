@@ -8,6 +8,10 @@ import { IconLogoHeader, IconSun, IconMoon } from 'shared/icons';
 import { Select } from 'shared/ui';
 import { useDispatch } from 'react-redux';
 
+/** 
+ * @typedef {import('./types').HeaderProps} Props
+ */
+
 export const Header = () => {
   const { lang, setLang } = useLang();
   const { theme, setTheme } = useTheme();
