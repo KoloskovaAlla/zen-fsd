@@ -10,7 +10,7 @@ export const usePosts = () => {
     isLoading,
     postsData,
     errorMessage
-  } = useSelector((state) => state.homePageReducer);
+  } = useSelector((state) => state.postsReducer);
 
   return {
     fetchPostsData,

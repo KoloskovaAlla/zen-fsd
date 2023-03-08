@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { API_BASE_URL } from 'shared/constants/api';
 
 const fetchClientsData = createAsyncThunk(
-  'posts/fetchData',
+  'clients/fetchData',
   async (_, thunkApi) => {
     const { lang } = thunkApi.getState().langReducer;
     const url = `${API_BASE_URL}/${lang}/clients/.json`;

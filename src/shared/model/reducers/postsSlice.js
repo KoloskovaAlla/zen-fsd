@@ -2,10 +2,11 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { API_BASE_URL } from 'shared/constants/api';
 
 const fetchPostsData = createAsyncThunk(
-  'posts/fetchData',
+  'posts/fetchData', 
   async (_, thunkApi) => {
     const { lang } = thunkApi.getState().langReducer;
     const url = `${API_BASE_URL}/${lang}/posts/.json`;
+
     try {
       const response = await fetch(url);
       const postsData = await response.json();
@@ -17,7 +18,7 @@ const fetchPostsData = createAsyncThunk(
       return thunkApi.rejectWithValue(error.message);
     }
   }
-)
+);
 
 const initialState = {
   isLoading: false,
@@ -37,7 +38,7 @@ const postsSlice = createSlice({
       state.postsData = payload;
       state.errorMessage = null;
     },
-    [fetchPostsData.fulfilled]: (state, { payload }) => {
+    [fetchPostsData.rejected]: (state, { payload }) => {
       state.isLoading = false;
       state.postsData = null;
       state.errorMessage = payload;
@@ -46,4 +47,4 @@ const postsSlice = createSlice({
 });
 
 export { fetchPostsData };
-export const { reducer: postsReducer } = postsSlice;
+export const { reducer: postsReducer} =  postsSlice;

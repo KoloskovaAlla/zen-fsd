@@ -1,34 +1,24 @@
 import classes from './Clients.module.scss';
-import { useTheme, useLang } from 'shared/model/hooks'
-import { API_BASE_URL } from 'shared/constants/api';
-
+import { useTheme, useLang, useClients } from 'shared/model/hooks'
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-export const Clients = () => {
-  const [data, setData] = useState();
+export const Clients = () => {  
   const { theme } = useTheme();
   const { lang } = useLang();
-  const [error, setError] = useState();
   const [hiddenClients, setHiddenClients] = useState(false);
   const { currentPage } = useSelector((state) => state.pageReducer);
+  const dispatch = useDispatch();
+
+  const {
+    fetchClientsData,
+    isLoading,
+    clientsData,
+    errorMessage,
+  } = useClients();  
 
   useEffect(() => {
-    (async () => {
-      try {
-        const url = `${API_BASE_URL}/${lang}/clients.json`;
-        const response = await fetch(url);
-
-        if (!response.ok) throw new Error('Data is not received');
-
-        const data = await response.json();
-        setData(data);
-      }
-      catch (error) {
-        console.error(error);
-        setError(error);
-      }
-    })();
+    dispatch(fetchClientsData(lang));
   }, [theme]);
 
   useEffect(() => {
@@ -37,13 +27,13 @@ export const Clients = () => {
 
   return (
     <div>
-      {data && (
+      {clientsData && (
         <section className={classes.clients}>
           {!hiddenClients && (
             <div className={classes.wrapper}>
               <ul className={classes.list}>
                 {theme === 'light'
-                  ? data.lightThemeClients.map((client, index) => (
+                  ?  clientsData.lightThemeClients.map((client, index) => (
                     <li key={index} className={classes.item}>
                       <img
                         src={client?.source}
@@ -51,7 +41,7 @@ export const Clients = () => {
                       />
                     </li>
                   ))
-                  : data.darkThemeClients.map((client, index) => (
+                  :  clientsData.darkThemeClients.map((client, index) => (
                     <li key={index} className={classes.item}>
                       <img
                         src={client?.source}

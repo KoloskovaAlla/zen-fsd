@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { fetchHomePageData } from '../reducers/homeSlice'
+import { fetchHomePageData } from '../reducers/homeSlice';
 
 /**  
  * @returns {object}
