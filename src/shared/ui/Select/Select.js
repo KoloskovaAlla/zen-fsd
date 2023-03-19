@@ -1,5 +1,9 @@
 import { IconArrow } from 'shared/icons';
 
+/**
+ * @typedef {import ('./types').SelectProps} Props
+ */
+
 export const Select = ({ options, className, onChange, value }) => {
   return (
     <label className={className}>

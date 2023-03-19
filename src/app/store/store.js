@@ -5,7 +5,10 @@ import {
   modalReducer,
   previewReducer,
   sliderReducer,
-  pageReducer
+  pageReducer,
+  homePageReducer,
+  postsReducer,
+  clientsReducer,
 } from 'shared/model/reducers';
 
 const rootReducer = combineReducers({
@@ -14,7 +17,10 @@ const rootReducer = combineReducers({
   modalReducer,
   previewReducer,
   sliderReducer,
-  pageReducer
+  pageReducer,
+  homePageReducer,
+  clientsReducer, 
+  postsReducer,
 });
 
 export const store = configureStore({

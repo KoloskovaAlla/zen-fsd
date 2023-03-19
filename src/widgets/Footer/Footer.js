@@ -8,7 +8,7 @@ import { IconLogoFooter } from 'shared/icons';
 export const Footer = () => {
   const { lang } = useLang();
   const [data, setData] = useState(null);
-  const [setError] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     (async () => {
