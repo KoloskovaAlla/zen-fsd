@@ -2,7 +2,12 @@ import { IconArrow } from 'shared/icons';
 
 /**
  * @typedef {import ('./types').SelectProps} Props
+ * @typedef {import('react').ReactElement} Element
  */
+
+/** 
+ * @type{({ options, className, onChange, value }: Props) => Element}  
+*/
 
 export const Select = ({ options, className, onChange, value }) => {
   return (

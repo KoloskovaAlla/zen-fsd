@@ -1,6 +1,7 @@
 export interface SelectProps {
-  options: object; 
-  className: string; 
-  onChange: any; 
-  value: string;  
+  options: object;
+  value: string;
+  className?: string;
+  onChange?: any;
+  disabled?: boolean;
 }
