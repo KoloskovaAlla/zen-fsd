@@ -16,7 +16,7 @@ export const Select = ({ options, className, onChange, value }) => {
         value={value}
         onChange={onChange}
       >
-        {options.map((option) => (
+        {Object.values(options).map((option) => (
           <option value={option.value} key={option.value}>
             {option.text && option.text}
           </option>
