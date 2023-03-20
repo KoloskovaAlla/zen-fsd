@@ -5,4 +5,5 @@ export { usePreview } from './usePreview';
 export { useHomePage } from './useHomePage';
 export { useCurrentPage } from './useCurrentPage';
 export { usePosts } from './usePosts';
-export { useClients } from './useClients'
+export { useClients } from './useClients';
+export { useHeader } from './useHeader';
