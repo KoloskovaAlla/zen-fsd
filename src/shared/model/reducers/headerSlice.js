@@ -2,11 +2,11 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { API_BASE_URL } from 'shared/constants/api';
 
 const fetchHeaderData = createAsyncThunk(
-  'header/fetchData', 
+  'header/fetchData',
   async (_, thunkApi) => {
-    
+
     const url = `${API_BASE_URL}/header/.json`;
-    
+
     try {
       const response = await fetch(url);
       const headerData = await response.json();
@@ -32,6 +32,7 @@ const headerSlice = createSlice({
   extraReducers: {
     [fetchHeaderData.pending]: (state) => {
       state.isLoading = true;
+      state.errorMessage = null;
     },
     [fetchHeaderData.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
@@ -47,4 +48,4 @@ const headerSlice = createSlice({
 });
 
 export { fetchHeaderData };
-export const { reducer: headerReducer} = headerSlice;
+export const { reducer: headerReducer } = headerSlice;
