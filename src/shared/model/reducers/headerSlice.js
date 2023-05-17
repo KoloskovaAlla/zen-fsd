@@ -14,32 +14,36 @@ const fetchHeaderData = createAsyncThunk(
       return thunkApi.fulfillWithValue(headerData);
     }
     catch (error) {
-      console.error(error);
-      return thunkApi.rejectWithValue(error.message);
+      /** @type {*} */
+      const { message } = error;
+      console.error(message);
+      return thunkApi.rejectWithValue(message);
     }
   }
 );
 
 const initialState = {
   isLoading: false,
-  headereData: null,
+  headerData: null,
   errorMessage: null,
 };
 
 const headerSlice = createSlice({
   name: 'header',
   initialState,
+  reducers: {},
   extraReducers: {
-    [fetchHeaderData.pending]: (state) => {
+    [`${fetchHeaderData.pending}`]: (state) => {
       state.isLoading = true;
+      state.headerData = null;
       state.errorMessage = null;
     },
-    [fetchHeaderData.fulfilled]: (state, { payload }) => {
+    [`${fetchHeaderData.fulfilled}`]: (state, { payload }) => {
       state.isLoading = false;
       state.headerData = payload;
       state.errorMessage = null;
     },
-    [fetchHeaderData.rejected]: (state, { payload }) => {
+    [`${fetchHeaderData.rejected}`]: (state, { payload }) => {
       state.isLoading = false;
       state.headerData = null;
       state.errorMessage = payload;
