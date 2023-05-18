@@ -1,3 +1,4 @@
+import { useHeader } from 'shared/model/hooks';
 import { useEffect, useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import classes from './Header.module.scss';
@@ -18,6 +19,10 @@ export const Header = () => {
   const [isMenuActive, setIsMenuActive] = useState(false);
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
+  // const {
+  //   fetchHeaderData,
+  //   headerData,
+  // } = useHeader();
 
   useEffect(() => {
     (async () => {
