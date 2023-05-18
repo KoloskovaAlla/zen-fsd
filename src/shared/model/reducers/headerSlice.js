@@ -3,9 +3,9 @@ import { API_BASE_URL } from 'shared/constants/api';
 
 const fetchHeaderData = createAsyncThunk(
   'header/fetchData',
-  async (_, thunkApi) => {
+  async (lang, thunkApi) => {
 
-    const url = `${API_BASE_URL}/header/.json`;
+    const url = `${API_BASE_URL}/${lang}/header/.json`;
 
     try {
       const response = await fetch(url);

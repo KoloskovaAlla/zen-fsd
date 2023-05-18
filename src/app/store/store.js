@@ -9,6 +9,7 @@ import {
   homePageReducer,
   postsReducer,
   clientsReducer,
+  headerReducer,
 } from 'shared/model/reducers';
 
 const rootReducer = combineReducers({
@@ -19,8 +20,9 @@ const rootReducer = combineReducers({
   sliderReducer,
   pageReducer,
   homePageReducer,
-  clientsReducer, 
+  clientsReducer,
   postsReducer,
+  headerReducer,
 });
 
 export const store = configureStore({
