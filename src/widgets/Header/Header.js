@@ -21,6 +21,9 @@ export const Header = () => {
     fetchHeaderData,
     headerData:data,
   } = useHeader();
+  
+  // @ts-ignore
+  const { menuItems } = data;
 
   const dispatch = useDispatch();
 
@@ -82,8 +85,8 @@ export const Header = () => {
 
           {data && (
             <ul className={classNameMenu} theme={theme}>
-              {data.menuItems.length > 0 &&
-                data.menuItems.map((menuItem, index) => (
+              {menuItems.length > 0 &&
+                menuItems.map((menuItem, index) => (
                   <li
                     onClick={handleItemClick}
                     className={classes.item}
