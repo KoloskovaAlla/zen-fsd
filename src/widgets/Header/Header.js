@@ -16,45 +16,18 @@ import { useDispatch } from 'react-redux';
 export const Header = () => {
   const { lang, setLang } = useLang();
   const { theme, setTheme } = useTheme();
-  const [isMenuActive, setIsMenuActive] = useState(false);
-  // const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
+  const [isMenuActive, setIsMenuActive] = useState(false);  
   const {
     fetchHeaderData,
-    headerData
+    headerData:data,
   } = useHeader();
-
-
 
   const dispatch = useDispatch();
 
   useEffect(() => {
+    // @ts-ignore
     dispatch(fetchHeaderData(lang));
-  }, [dispatch, fetchHeaderData, lang]);
-
-  // useEffect(() => {
-  //   dispatch(fetchHeaderData(lang));
-  // }, [dispatch, lang]);
-
-  console.log(fetchHeaderData);
-
-  // useEffect(() => {
-  //   (async () => {
-  //     try {
-  //       const url = `${API_BASE_URL}/${lang}/header.json`;
-  //       const response = await fetch(url);
-
-  //       if (!response.ok) throw new Error('Data not received');
-
-  //       const data = await response.json();
-  //       setData(data);
-  //     }
-  //     catch (error) {
-  //       console.error(error);
-  //       setError(error);
-  //     }
-  //   })();
-  // }, [lang, setError]);
+  }, [dispatch, fetchHeaderData, lang]); 
 
   const handleItemClick = () => {
     isMenuActive
@@ -99,65 +72,65 @@ export const Header = () => {
     }
   );
 
-  // return (
-  //   <header className={classNameHeader}>
-  //     <div className={classes.wrapper}>
-  //       <div className={classes.navigation}>
-  //         <Link to='/' className={classes.logo}>
-  //           <IconLogoHeader />
-  //         </Link>
+  return (
+    <header className={classNameHeader}>
+      <div className={classes.wrapper}>
+        <div className={classes.navigation}>
+          <Link to='/' className={classes.logo}>
+            <IconLogoHeader />
+          </Link>
 
-  //         {data && (
-  //           <ul className={classNameMenu} theme={theme}>
-  //             {data.menuItems.length > 0 &&
-  //               data.menuItems.map((menuItem, index) => (
-  //                 <li
-  //                   onClick={handleItemClick}
-  //                   className={classes.item}
-  //                   key={index}
-  //                 >
-  //                   <NavLink
-  //                     to={`/${menuItem.target}`}
-  //                     className={({ isActive }) =>
-  //                       isActive ? 'active' : 'inactive'
-  //                     }
-  //                   >
-  //                     {menuItem.text}
-  //                   </NavLink>
-  //                 </li>
-  //               ))}
-  //           </ul>
-  //         )}
-  //       </div>
+          {data && (
+            <ul className={classNameMenu} theme={theme}>
+              {data.menuItems.length > 0 &&
+                data.menuItems.map((menuItem, index) => (
+                  <li
+                    onClick={handleItemClick}
+                    className={classes.item}
+                    key={index}
+                  >
+                    <NavLink
+                      to={`/${menuItem.target}`}
+                      className={({ isActive }) =>
+                        isActive ? 'active' : 'inactive'
+                      }
+                    >
+                      {menuItem.text}
+                    </NavLink>
+                  </li>
+                ))}
+            </ul>
+          )}
+        </div>
 
-  //       {data && (
-  //         <div className={classes.language}>
-  //           <Select
-  //             options={data.languages}
-  //             className={classes.select}
-  //             onChange={({ target: { value } }) => onLanguageChange(value)}
-  //             value={localStorage.getItem('lang') ?? 'en'}
-  //           />
-  //         </div>
-  //       )
-  //       }
+        {data && (
+          <div className={classes.language}>
+            <Select
+              options={data.languages}
+              className={classes.select}
+              onChange={({ target: { value } }) => onLanguageChange(value)}
+              value={localStorage.getItem('lang') ?? 'en'}
+            />
+          </div>
+        )
+        }
 
-  //       <button onClick={toggleTheme} className={classes.theme}>
-  //         {
-  //           theme === 'dark'
-  //             ? <IconSun />
-  //             : <IconMoon />
-  //         }
-  //       </button>
+        <button onClick={toggleTheme} className={classes.theme}>
+          {
+            theme === 'dark'
+              ? <IconSun />
+              : <IconMoon />
+          }
+        </button>
 
-  //       <button
-  //         onClick={handleBurgerClick}
-  //         className={classNameBurger}
-  //         type="button"
-  //       >
-  //         <span></span>
-  //       </button>
-  //     </div>
-  //   </header>
-  // );
+        <button
+          onClick={handleBurgerClick}
+          className={classNameBurger}
+          type="button"
+        >
+          <span></span>
+        </button>
+      </div>
+    </header>
+  );
 };
