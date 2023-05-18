@@ -16,39 +16,24 @@ import { useDispatch } from 'react-redux';
 export const Header = () => {
   const { lang, setLang } = useLang();
   const { theme, setTheme } = useTheme();
-  const [isMenuActive, setIsMenuActive] = useState(false);
-  const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
-  // const {
-  //   fetchHeaderData,
-  //   headerData,
-  // } = useHeader();
+  const [isMenuActive, setIsMenuActive] = useState(false);  
+  const {
+    fetchHeaderData,
+    headerData:data,
+  } = useHeader();
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    (async () => {
-      try {
-        const url = `${API_BASE_URL}/${lang}/header.json`;
-        const response = await fetch(url);
-
-        if (!response.ok) throw new Error('Data not received');
-
-        const data = await response.json();
-        setData(data);
-      }
-      catch (error) {
-        console.error(error);
-        setError(error);
-      }
-    })();
-  }, [lang, setError]);
+    // @ts-ignore
+    dispatch(fetchHeaderData(lang));
+  }, [dispatch, fetchHeaderData, lang]); 
 
   const handleItemClick = () => {
     isMenuActive
       ? setIsMenuActive(false)
       : setIsMenuActive(true);
   };
-
-  const dispatch = useDispatch();
 
   const onLanguageChange = (value) => dispatch(setLang(value));
 
