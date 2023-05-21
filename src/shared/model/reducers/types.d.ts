@@ -1,5 +1,5 @@
 export interface DataState {
   isLoading: boolean;
-  data: object;
+  data: any;
   errorMessage: string;
 }

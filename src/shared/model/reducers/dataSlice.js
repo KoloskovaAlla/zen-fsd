@@ -1,10 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { API_BASE_URL } from 'shared/constants/api';
 
-/**
- * @typedef {import('./types').DataState} State  
- */
-
 const getData = createAsyncThunk(
   'app/getData',
   async (endPoint, thunkApi) => {
