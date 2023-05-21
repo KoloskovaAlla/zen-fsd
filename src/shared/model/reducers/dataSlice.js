@@ -1,6 +1,10 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { API_BASE_URL } from 'shared/constants/api';
 
+/**
+ * @typedef {import('./types').DataState} State  
+ */
+
 const getData = createAsyncThunk(
   'app/getData',
   async (endPoint, thunkApi) => {
@@ -14,7 +18,9 @@ const getData = createAsyncThunk(
     }
     catch (error) {
       console.error(error);
-      return thunkApi.rejectWithValue(error.message);
+      /** @type {*} */
+      const { message } = error;
+      return thunkApi.rejectWithValue(message);
     }
   }
 );
@@ -22,24 +28,25 @@ const getData = createAsyncThunk(
 const initialState = {
   isLoading: false,
   data: null,
-  errorMessage: null,
+  errorMessage: '',
 };
 
-// @ts-ignore
 const dataSlice = createSlice({
   name: 'data',
   initialState,
+  reducers: {},
   extraReducers: {
-    [getData.pending]: (state) => {
+    [`${getData.pending}`]: (state) => {
       state.isLoading = true;
       state.data = null;
+      state.errorMessage = '';
     },
-    [getData.fulfilled]: (state, { payload }) => {
+    [`${getData.fulfilled}`]: (state, { payload }) => {
       state.isLoading = false;
       state.data = payload;
-      state.errorMessage = null;
+      state.errorMessage = '';
     },
-    [getData.rejected]: (state, { payload }) => {
+    [`${getData.rejected}`]: (state, { payload }) => {
       state.isLoading = false;
       state.data = null;
       state.errorMessage = payload;
