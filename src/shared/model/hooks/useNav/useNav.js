@@ -5,21 +5,21 @@ import { getData } from 'shared/model/reducers/dataSlice';
 const callback = (store) => store.dataReducer;
 
 /** 
- * @typedef {import('./types').HeaderState} State 
+ * @typedef {import('./types').NavState} State 
  * @type {() => State}
 */
 
-export const useHeader = () => {
+export const useNav = () => {
   const {
     isLoading,
-    data: headerData,
+    data: navData,
     errorMessage
   } = useSelector(callback);
 
   return {
     getData,
     isLoading,
-    headerData,
+    navData,
     errorMessage,
   };
 };
