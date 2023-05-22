@@ -1,5 +1,5 @@
 export interface HeaderState {
-  fetchHeaderData: object,
+  getData: object,
   isLoading: boolean,
   headerData: object,
   errorMessage: string,

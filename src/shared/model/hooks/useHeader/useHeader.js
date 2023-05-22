@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux';
-import { fetchHeaderData } from 'shared/model/reducers/headerSlice';
+import { getData } from 'shared/model/reducers/dataSlice';
 
 /** @type {(store: object) => object} */
-const callback = (store) => store.headerReducer;
+const callback = (store) => store.dataReducer;
 
 /** 
  * @typedef {import('./types').HeaderState} State 
@@ -12,12 +12,12 @@ const callback = (store) => store.headerReducer;
 export const useHeader = () => {
   const {
     isLoading,
-    headerData,
+    data: headerData,
     errorMessage
   } = useSelector(callback);
 
   return {
-    fetchHeaderData,
+    getData,
     isLoading,
     headerData,
     errorMessage,
