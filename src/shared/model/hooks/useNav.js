@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { getData } from '../../reducers/dataSlice';
+import { getData } from '../reducers/dataSlice';
 
 /** @type {(store: object) => object} */
 const callback = (store) => store.dataReducer;
