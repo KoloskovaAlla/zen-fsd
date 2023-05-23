@@ -6,4 +6,4 @@ export { useHomePage } from './useHomePage';
 export { useCurrentPage } from './useCurrentPage';
 export { usePosts } from './usePosts';
 export { useClients } from './useClients';
-export { useHeader } from './useHeader';
+export { useNav } from './useNav';

@@ -7,4 +7,4 @@ export { sliderReducer } from './sliderSlice';
 export { homePageReducer } from './homeSlice';
 export { clientsReducer } from './clientsSlice';
 export { postsReducer } from './postsSlice';
-export { headerReducer } from './headerSlice';
+export { dataReducer } from './dataSlice';
