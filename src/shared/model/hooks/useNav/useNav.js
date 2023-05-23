@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { getData } from 'shared/model/reducers/dataSlice';
+import { getData } from '../../reducers/dataSlice';
 
 /** @type {(store: object) => object} */
 const callback = (store) => store.dataReducer;
@@ -12,14 +12,14 @@ const callback = (store) => store.dataReducer;
 export const useNav = () => {
   const {
     isLoading,
-    data: navData,
+    data: navItems,
     errorMessage
   } = useSelector(callback);
 
   return {
     getData,
     isLoading,
-    navData,
+    navItems,
     errorMessage,
   };
 };

@@ -1,4 +1,4 @@
-export interface MenuItem {
+export interface NavItem {
   target: string;
   text: string;
 }
@@ -6,6 +6,6 @@ export interface MenuItem {
 export interface NavState {
   getData: object,
   isLoading: boolean,
-  navData: Array<MenuItem>,
+  navItems: NavItem[],
   errorMessage: string,
 }
