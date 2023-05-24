@@ -32,6 +32,7 @@ export const useLang = () => {
     languages,
     errorMessage,
     setLang,
+    lang
   };
 };
 

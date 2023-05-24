@@ -1,9 +1,9 @@
-import { useNav } from 'shared/model/hooks';
+import { useNav, useLang } from 'shared/model/hooks';
 import { useEffect, useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import classes from './Header.module.scss';
 import { classNames } from 'shared/lib';
-import { useLang, useTheme } from 'shared/model/hooks';
+import { useTheme } from 'shared/model/hooks';
 import { IconLogoHeader, IconSun, IconMoon } from 'shared/icons';
 import { Select } from 'shared/ui';
 import { useDispatch } from 'react-redux';
@@ -13,7 +13,7 @@ import { useDispatch } from 'react-redux';
  */
 
 export const Header = () => {
-  const { lang, setLang } = useLang();
+  // const { lang, setLang } = useLang();
   const { theme, setTheme } = useTheme();
   const [isMenuActive, setIsMenuActive] = useState(false);
   // const {
@@ -22,20 +22,30 @@ export const Header = () => {
   // } = useHeader();
 
   const {
-    getData,
-    isLoading,
+    getData: getDataNav,
     navItems,
-    errorMessage,
   } = useNav();
+
+  const {
+    getData: getDataLang,
+    lang,
+    setLang,
+  } = useLang();
 
   const dispatch = useDispatch();
 
-  const endPoint = `${lang}/header/menuItems`;
+  const endPointNav = `${lang}/header/menuItems`;
+  const endPointLang = `${lang}/header/languages`;
 
   useEffect(() => {
     // @ts-ignore
-    dispatch(getData(endPoint));
-  }, [dispatch, getData, endPoint]);
+    dispatch(getDataNav(endPointNav));
+  }, [dispatch, getDataNav, endPointNav]);
+
+  useEffect(() => {
+    // @ts-ignore
+    dispatch(getDataLang(endPointLang));
+  }, [dispatch, getDataLang, endPointLang]);
 
   const handleItemClick = () => {
     isMenuActive

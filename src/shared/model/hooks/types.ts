@@ -21,4 +21,5 @@ export interface LangState {
   languages: Language[],
   errorMessage: string,
   setLang: object,
+  lang: string
 }
