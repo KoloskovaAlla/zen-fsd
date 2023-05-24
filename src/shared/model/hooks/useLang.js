@@ -1,3 +1,40 @@
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { getData } from '../reducers/dataSlice';
+import { setLang } from '../reducers/langSlice';
+
+/** @type {(store: object) => object} */
+const callback = (store) => store.dataReducer;
+
+/** 
+ * @typedef {import('./types').LangState} State 
+ * @type {() => State}
+*/
+
+export const useLang = () => {
+  const {
+    isLoading,
+    data: languages,
+    errorMessage
+  } = useSelector(callback);
+
+  /** @type {(store: object) => object} */
+  const callbackLang = (store) => store.langReducer
+  const { lang } = useSelector(callbackLang);
+
+  useEffect(() => {
+    localStorage.setItem('lang', lang);
+  }, [lang]);
+
+  return {
+    getData,
+    isLoading,
+    languages,
+    errorMessage,
+    setLang,
+  };
+};
+
 // import { useEffect } from 'react';
 // import { setLang } from '../reducers/langSlice';
 // import { useSelector } from 'react-redux';
@@ -18,32 +55,6 @@
 //     setLang
 //   };
 // };
-
-import { useSelector } from 'react-redux';
-import { getData } from '../reducers/dataSlice';
-
-/** @type {(store: object) => object} */
-const callback = (store) => store.dataReducer;
-
-/** 
- * @typedef {import('./types').LangState} State 
- * @type {() => State}
-*/
-
-export const useLang = () => {
-  const {
-    isLoading,
-    data: languages,
-    errorMessage
-  } = useSelector(callback);
-
-  return {
-    getData,
-    isLoading,
-    languages,
-    errorMessage,
-  };
-};
 
 
 
