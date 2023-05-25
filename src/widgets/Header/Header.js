@@ -13,46 +13,36 @@ import { useDispatch } from 'react-redux';
  */
 
 export const Header = () => {
-  // const { lang, setLang } = useLang();
   const { theme, setTheme } = useTheme();
   const [isMenuActive, setIsMenuActive] = useState(false);
-  // const {
-  //   fetchHeaderData,
-  //   headerData: data,
-  // } = useHeader();
 
   const {
     getNav,
     navItems,
   } = useNav();
 
+  console.log(navItems);
+
   const {
-    getData: getDataLang,
+    getLang,
     lang,
     setLang,
   } = useLang();
 
   const dispatch = useDispatch();
 
-  const endPointNav = `${lang}/header/menuItems`;
-  const endPointLang = `${lang}/header/languages`;
-
   useEffect(() => {
     // @ts-ignore
-    dispatch(getNav(endPointNav));
-  }, [dispatch, getNav, endPointNav]);
+    getNav();
+  }, [dispatch, getNav, getLang]);
 
-  useEffect(() => {
-    // @ts-ignore
-    dispatch(getDataLang(endPointLang));
-  }, [dispatch, getDataLang, endPointLang]);
 
   const handleItemClick = () => {
     isMenuActive
       ? setIsMenuActive(false)
       : setIsMenuActive(true);
   };
-  
+
   // @ts-ignore
   const onLanguageChange = (value) => dispatch(setLang(value));
 
@@ -100,6 +90,7 @@ export const Header = () => {
           </Link>
 
           {navItems && (
+            // @ts-ignore
             <ul className={classNameMenu} theme={theme}>
               {navItems.length > 0 &&
                 navItems.map((menuItem, index) => (

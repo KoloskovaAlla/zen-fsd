@@ -4,7 +4,7 @@ export interface NavItem {
 }
 
 export interface NavState {
-  getNav: object,
+  getNav: () => void,
   isLoading: boolean,
   navItems: NavItem[],
   errorMessage: string,
@@ -16,7 +16,7 @@ export interface Language {
 }
 
 export interface LangState {
-  getData: object,
+  getLang: object,
   isLoading: boolean,
   languages: Language[],
   errorMessage: string,

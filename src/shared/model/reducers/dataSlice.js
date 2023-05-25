@@ -1,10 +1,9 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { useSelector } from 'react-redux';
 import { API_BASE_URL } from 'shared/constants/api';
 
 const getData = createAsyncThunk(
   'app/getData',
-  async (endPoint, thunkApi) => {        
+  async (endPoint, thunkApi) => {
     const state = thunkApi.getState()
     // @ts-ignore
     const lang = state.langReducer.lang;

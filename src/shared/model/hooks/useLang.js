@@ -18,6 +18,10 @@ export const useLang = () => {
     errorMessage
   } = useSelector(callback);
 
+  const endPoint = 'header/languages'
+  // @ts-ignore
+  const getLang= () => { getData(endPoint); };
+
   /** @type {(store: object) => object} */
   const callbackLang = (store) => store.langReducer
   const { lang } = useSelector(callbackLang);
@@ -27,7 +31,7 @@ export const useLang = () => {
   }, [lang]);
 
   return {
-    getData,
+    getLang,
     isLoading,
     languages,
     errorMessage,
