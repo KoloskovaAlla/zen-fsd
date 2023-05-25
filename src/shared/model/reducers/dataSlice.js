@@ -4,11 +4,12 @@ import { API_BASE_URL } from 'shared/constants/api';
 const getData = createAsyncThunk(
   'app/getData',
   async (endPoint, thunkApi) => {
+    console.log(endPoint); 
     const state = thunkApi.getState()
     // @ts-ignore
     const lang = state.langReducer.lang;
 
-    const url = `${API_BASE_URL}/${lang}/${endPoint}/.json`;
+    const url = `${API_BASE_URL}/${lang}/${endPoint}/.json`;   
 
     try {
       const response = await fetch(url);

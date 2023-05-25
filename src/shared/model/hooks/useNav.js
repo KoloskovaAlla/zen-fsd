@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import { getData } from '../reducers/dataSlice';
+import { useEffect } from 'react';
 
 /** @type {(store: object) => object} */
 const callback = (store) => store.dataReducer;
@@ -14,11 +15,15 @@ export const useNav = () => {
     isLoading,
     data: navItems,
     errorMessage
-  } = useSelector(callback);
+  } = useSelector(callback);  
 
   const endPoint = 'header/menuItems';
   // @ts-ignore
   const getNav = () => { getData(endPoint); };
+
+  useEffect(() => {
+    console.log(`navItems: ${navItems}`)
+  }, [])
 
   return {
     getNav,

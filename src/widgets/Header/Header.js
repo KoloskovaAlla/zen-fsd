@@ -19,9 +19,7 @@ export const Header = () => {
   const {
     getNav,
     navItems,
-  } = useNav();
-
-  console.log(navItems);
+  } = useNav(); 
 
   const {
     getLang,
@@ -36,6 +34,9 @@ export const Header = () => {
     getNav();
   }, [dispatch, getNav, getLang]);
 
+  useEffect(() => {
+    console.log(navItems)
+  }, [navItems])
 
   const handleItemClick = () => {
     isMenuActive
