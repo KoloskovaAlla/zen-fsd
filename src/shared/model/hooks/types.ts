@@ -4,7 +4,7 @@ export interface NavItem {
 }
 
 export interface NavState {
-  getData: object,
+  getNav: object,
   isLoading: boolean,
   navItems: NavItem[],
   errorMessage: string,

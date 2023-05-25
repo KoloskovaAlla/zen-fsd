@@ -22,7 +22,7 @@ export const Header = () => {
   // } = useHeader();
 
   const {
-    getData: getDataNav,
+    getNav,
     navItems,
   } = useNav();
 
@@ -39,8 +39,8 @@ export const Header = () => {
 
   useEffect(() => {
     // @ts-ignore
-    dispatch(getDataNav(endPointNav));
-  }, [dispatch, getDataNav, endPointNav]);
+    dispatch(getNav(endPointNav));
+  }, [dispatch, getNav, endPointNav]);
 
   useEffect(() => {
     // @ts-ignore
@@ -52,7 +52,8 @@ export const Header = () => {
       ? setIsMenuActive(false)
       : setIsMenuActive(true);
   };
-
+  
+  // @ts-ignore
   const onLanguageChange = (value) => dispatch(setLang(value));
 
   const classNameMenu = classNames(
