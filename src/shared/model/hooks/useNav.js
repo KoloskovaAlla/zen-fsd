@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getData } from '../reducers/dataSlice';
 import { useEffect } from 'react';
 
@@ -15,14 +15,21 @@ export const useNav = () => {
     isLoading,
     data: navItems,
     errorMessage
-  } = useSelector(callback);  
+  } = useSelector(callback);
 
   const endPoint = 'header/menuItems';
-  // @ts-ignore
-  const getNav = () => { getData(endPoint); };
+  const dispatch = useDispatch();
+
+
+  let getNav = () => { };
 
   useEffect(() => {
-    console.log(`navItems: ${navItems}`)
+    // @ts-ignore
+    dispatch(getData(endPoint));
+    getNav = () => {
+      // @ts-ignore
+      dispatch(getData(endPoint));
+    };
   }, [])
 
   return {

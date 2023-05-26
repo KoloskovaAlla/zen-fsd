@@ -20,7 +20,7 @@ export const useLang = () => {
 
   const endPoint = 'header/languages'
   // @ts-ignore
-  const getLang= () => { getData(endPoint); };
+  // const getLang = () => { getData(endPoint); };
 
   /** @type {(store: object) => object} */
   const callbackLang = (store) => store.langReducer
@@ -31,7 +31,7 @@ export const useLang = () => {
   }, [lang]);
 
   return {
-    getLang,
+    // getLang,
     isLoading,
     languages,
     errorMessage,

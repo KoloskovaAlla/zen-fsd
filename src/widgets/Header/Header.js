@@ -19,10 +19,10 @@ export const Header = () => {
   const {
     getNav,
     navItems,
-  } = useNav(); 
+  } = useNav();
 
   const {
-    getLang,
+    // getLang,
     lang,
     setLang,
   } = useLang();
@@ -32,11 +32,11 @@ export const Header = () => {
   useEffect(() => {
     // @ts-ignore
     getNav();
-  }, [dispatch, getNav, getLang]);
+  }, [getNav]);
 
-  useEffect(() => {
-    console.log(navItems)
-  }, [navItems])
+  // useEffect(() => {
+  //   console.log(navItems)
+  // }, [navItems])
 
   const handleItemClick = () => {
     isMenuActive
