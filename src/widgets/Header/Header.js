@@ -32,7 +32,7 @@ export const Header = () => {
   useEffect(() => {
     // @ts-ignore
     getNav();
-  }, [getNav]);
+  }, []);
 
   // useEffect(() => {
   //   console.log(navItems)
