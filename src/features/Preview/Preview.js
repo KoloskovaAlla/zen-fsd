@@ -40,19 +40,6 @@ export const Preview = ({ imageDetails }) => {
     }));
   };
 
-  console.log(typeof (
-    <button
-      onClick={handlePreviewClick}
-      className={classes.preview}
-      type='button'
-    >
-      <img
-        src={imageDetails?.source}
-        alt={imageDetails?.alternate}
-      />
-    </button>
-  ))
-
   return (
     <button
       onClick={handlePreviewClick}

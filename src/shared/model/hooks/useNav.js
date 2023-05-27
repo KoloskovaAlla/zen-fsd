@@ -1,5 +1,5 @@
-import { useSelector } from 'react-redux';
-import { getData } from '../../reducers/dataSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { getData } from '../reducers/dataSlice';
 
 /** @type {(store: object) => object} */
 const callback = (store) => store.dataReducer;
@@ -14,10 +14,16 @@ export const useNav = () => {
     isLoading,
     data: navItems,
     errorMessage
-  } = useSelector(callback);
+  } = useSelector(callback);  
 
+  const endPoint = 'header/menuItems';
+  const dispatch = useDispatch(); 
+ 
+  // @ts-ignore  
+  const getNav = () => { dispatch(getData(endPoint)); };
+  
   return {
-    getData,
+    getNav,
     isLoading,
     navItems,
     errorMessage,

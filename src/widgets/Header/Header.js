@@ -1,10 +1,9 @@
-import { useHeader } from 'shared/model/hooks';
+import { useNav, useLang } from 'shared/model/hooks';
 import { useEffect, useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import classes from './Header.module.scss';
 import { classNames } from 'shared/lib';
-import { API_BASE_URL } from 'shared/constants/api';
-import { useLang, useTheme } from 'shared/model/hooks';
+import { useTheme } from 'shared/model/hooks';
 import { IconLogoHeader, IconSun, IconMoon } from 'shared/icons';
 import { Select } from 'shared/ui';
 import { useDispatch } from 'react-redux';
@@ -14,20 +13,26 @@ import { useDispatch } from 'react-redux';
  */
 
 export const Header = () => {
-  const { lang, setLang } = useLang();
   const { theme, setTheme } = useTheme();
-  const [isMenuActive, setIsMenuActive] = useState(false);  
+  const [isMenuActive, setIsMenuActive] = useState(false);
+
   const {
-    fetchHeaderData,
-    headerData:data,
-  } = useHeader();
+    getNav,
+    navItems,
+  } = useNav();
+
+  const {
+    // getLang,
+    lang,
+    setLang,
+  } = useLang();
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     // @ts-ignore
-    dispatch(fetchHeaderData(lang));
-  }, [dispatch, fetchHeaderData, lang]); 
+    getNav();
+  }, []);
 
   const handleItemClick = () => {
     isMenuActive
@@ -35,6 +40,7 @@ export const Header = () => {
       : setIsMenuActive(true);
   };
 
+  // @ts-ignore
   const onLanguageChange = (value) => dispatch(setLang(value));
 
   const classNameMenu = classNames(
@@ -80,10 +86,11 @@ export const Header = () => {
             <IconLogoHeader />
           </Link>
 
-          {data && (
+          {navItems && (
+            // @ts-ignore
             <ul className={classNameMenu} theme={theme}>
-              {data.menuItems.length > 0 &&
-                data.menuItems.map((menuItem, index) => (
+              {navItems.length > 0 &&
+                navItems.map((menuItem, index) => (
                   <li
                     onClick={handleItemClick}
                     className={classes.item}
@@ -103,7 +110,7 @@ export const Header = () => {
           )}
         </div>
 
-        {data && (
+        {/* {data && (
           <div className={classes.language}>
             <Select
               options={data.languages}
@@ -113,7 +120,7 @@ export const Header = () => {
             />
           </div>
         )
-        }
+        } */}
 
         <button onClick={toggleTheme} className={classes.theme}>
           {
@@ -134,3 +141,8 @@ export const Header = () => {
     </header>
   );
 };
+
+  // useEffect(() => {
+  //   // @ts-ignore
+  //   dispatch(fetchHeaderData(lang));
+  // }, [dispatch, fetchHeaderData, lang]);
