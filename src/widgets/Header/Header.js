@@ -34,10 +34,6 @@ export const Header = () => {
     getNav();
   }, []);
 
-  // useEffect(() => {
-  //   console.log(navItems)
-  // }, [navItems])
-
   const handleItemClick = () => {
     isMenuActive
       ? setIsMenuActive(false)

@@ -21,11 +21,7 @@ export const useNav = () => {
  
   // @ts-ignore  
   const getNav = () => { dispatch(getData(endPoint)); };
-
-  // useEffect(() => {
-  //     console.log(navItems)  
-  // }, [navItems])
-
+  
   return {
     getNav,
     isLoading,
