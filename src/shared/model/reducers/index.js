@@ -8,3 +8,4 @@ export { homePageReducer } from './homeSlice';
 export { clientsReducer } from './clientsSlice';
 export { postsReducer } from './postsSlice';
 export { dataReducer } from './dataSlice';
+export { navReducer } from './navSlice';
