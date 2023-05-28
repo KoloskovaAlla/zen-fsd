@@ -10,6 +10,7 @@ import {
   postsReducer,
   clientsReducer,
   dataReducer,
+  navReducer,  
 } from 'shared/model/reducers';
 
 const rootReducer = combineReducers({
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
   clientsReducer,
   postsReducer,
   dataReducer,
+  navReducer, 
 });
 
 export const store = configureStore({

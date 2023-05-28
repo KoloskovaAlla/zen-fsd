@@ -16,7 +16,7 @@ export interface Language {
 }
 
 export interface LangState {
-  // getLang: object,
+  getLang: object,
   isLoading: boolean,
   languages: Language[],
   errorMessage: string,

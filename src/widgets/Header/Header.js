@@ -22,17 +22,33 @@ export const Header = () => {
   } = useNav();
 
   const {
-    // getLang,
-    lang,
+    getLang,  
+    languages,   
     setLang,
   } = useLang();
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    // @ts-ignore
-    getNav();
-  }, []);
+  useEffect(() => {    
+  // @ts-ignore
+    dispatch(getNav());
+  }, [dispatch, getNav]);
+
+  useEffect(() => {    
+  // @ts-ignore
+    dispatch(getLang());
+  }, [dispatch, getLang]);
+
+  useEffect(() => {    
+    console.log(languages);
+  }, [languages]);
+
+  // useEffect(() => {
+  //   // @ts-ignore
+  //   getLang();    
+  // }, []);
+  
+
 
   const handleItemClick = () => {
     isMenuActive
@@ -110,17 +126,17 @@ export const Header = () => {
           )}
         </div>
 
-        {/* {data && (
+        {languages && (
           <div className={classes.language}>
             <Select
-              options={data.languages}
+              options={languages}
               className={classes.select}
               onChange={({ target: { value } }) => onLanguageChange(value)}
               value={localStorage.getItem('lang') ?? 'en'}
             />
           </div>
         )
-        } */}
+        }
 
         <button onClick={toggleTheme} className={classes.theme}>
           {
