@@ -3,11 +3,11 @@ import { API_BASE_URL } from 'shared/constants/api';
 
 const getNav = createAsyncThunk(
   'navigation/getData',
-  async (_, thunkApi) => {    
+  async (_, thunkApi) => {
     // @ts-ignore    
     const { lang } = thunkApi.getState().langReducer;
     const url = `${API_BASE_URL}/${lang}/header/menuItems/.json`;
-    
+
     try {
       const response = await fetch(url);
       const data = await response.json();
@@ -27,12 +27,17 @@ const initialState = {
   isLoading: false,
   navItems: null,
   errorMessage: '',
+  isNavActive: false,
 };
 
 const navSlice = createSlice({
   name: 'navigation',
   initialState,
-  reducers: {},
+  reducers: {
+    setIsNavActive: (state, { payload }) => {
+      state.isNavActive = payload;
+    },
+  },
   extraReducers: {
     [`${getNav.pending}`]: (state) => {
       state.isLoading = true;
@@ -54,3 +59,4 @@ const navSlice = createSlice({
 
 export { getNav };
 export const { reducer: navReducer } = navSlice;
+export const { setIsNavActive } = navSlice.actions;

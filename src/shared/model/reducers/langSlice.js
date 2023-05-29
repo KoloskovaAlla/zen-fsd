@@ -3,7 +3,7 @@ import { API_BASE_URL } from 'shared/constants/api';
 
 const getLang = createAsyncThunk(
   'languages/getData',
-  async (endPoint, thunkApi) => {
+  async (_, thunkApi) => {
     const state = thunkApi.getState()
     // @ts-ignore
     const lang = state.langReducer.lang;

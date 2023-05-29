@@ -7,6 +7,7 @@ import { useTheme } from 'shared/model/hooks';
 import { IconLogoHeader, IconSun, IconMoon } from 'shared/icons';
 import { Select } from 'shared/ui';
 import { useDispatch } from 'react-redux';
+import { Navigation } from 'features/Navigation';
 
 /** 
  * @typedef {import('./types').HeaderProps} Props
@@ -22,24 +23,24 @@ export const Header = () => {
   } = useNav();
 
   const {
-    getLang,  
-    languages,   
+    getLang,
+    languages,
     setLang,
   } = useLang();
 
   const dispatch = useDispatch();
 
-  useEffect(() => {    
-  // @ts-ignore
+  useEffect(() => {
+    // @ts-ignore
     dispatch(getNav());
   }, [dispatch, getNav]);
 
-  useEffect(() => {    
-  // @ts-ignore
+  useEffect(() => {
+    // @ts-ignore
     dispatch(getLang());
   }, [dispatch, getLang]);
 
-  useEffect(() => {    
+  useEffect(() => {
     console.log(languages);
   }, [languages]);
 
@@ -47,7 +48,7 @@ export const Header = () => {
   //   // @ts-ignore
   //   getLang();    
   // }, []);
-  
+
 
 
   const handleItemClick = () => {
@@ -97,7 +98,10 @@ export const Header = () => {
   return (
     <header className={classNameHeader}>
       <div className={classes.wrapper}>
-        <div className={classes.navigation}>
+        <Link to='/' className={classes.logo}>
+          <IconLogoHeader />
+        </Link>
+        {/* <div className={classes.navigation}>
           <Link to='/' className={classes.logo}>
             <IconLogoHeader />
           </Link>
@@ -124,7 +128,8 @@ export const Header = () => {
                 ))}
             </ul>
           )}
-        </div>
+        </div> */}
+        <Navigation />
 
         {languages && (
           <div className={classes.language}>
@@ -158,7 +163,3 @@ export const Header = () => {
   );
 };
 
-  // useEffect(() => {
-  //   // @ts-ignore
-  //   dispatch(fetchHeaderData(lang));
-  // }, [dispatch, fetchHeaderData, lang]);
