@@ -8,6 +8,8 @@ export interface NavState {
   isLoading: boolean,
   navItems: NavItem[],
   errorMessage: string,
+  setIsNavActive: object,
+  isNavActive: boolean,
 }
 
 export interface Language {
