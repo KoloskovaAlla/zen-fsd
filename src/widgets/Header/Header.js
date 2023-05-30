@@ -7,7 +7,8 @@ import { useTheme } from 'shared/model/hooks';
 import { IconLogoHeader, IconSun, IconMoon } from 'shared/icons';
 import { Select } from 'shared/ui';
 import { useDispatch } from 'react-redux';
-import { Navigation } from 'features/Navigation';
+import { Navigation } from 'features';
+import { Lang } from 'features';
 
 /** 
  * @typedef {import('./types').HeaderProps} Props
@@ -39,16 +40,6 @@ export const Header = () => {
     // @ts-ignore
     dispatch(getLang());
   }, [dispatch, getLang]);
-
-  useEffect(() => {
-    console.log(languages);
-  }, [languages]);
-
-  // useEffect(() => {
-  //   // @ts-ignore
-  //   getLang();    
-  // }, []);
-
 
 
   const handleItemClick = () => {
@@ -131,7 +122,7 @@ export const Header = () => {
         </div> */}
         <Navigation />
 
-        {languages && (
+        {/* {languages && (
           <div className={classes.language}>
             <Select
               options={languages}
@@ -140,8 +131,8 @@ export const Header = () => {
               value={localStorage.getItem('lang') ?? 'en'}
             />
           </div>
-        )
-        }
+        )} */}
+        <Lang />
 
         <button onClick={toggleTheme} className={classes.theme}>
           {
