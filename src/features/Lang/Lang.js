@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux';
 import { useLang } from 'shared/model/hooks';
 import { Select } from 'shared/ui';
 import classes from './Lang.module.scss';
+import { useEffect } from 'react';
 
 export const Lang = () => {
   const {
@@ -13,6 +14,10 @@ export const Lang = () => {
   const dispatch = useDispatch();
   // @ts-ignore
   const onLangChange = (value) => dispatch(setLang(value));
+
+  useEffect(() => {
+    console.log(languages)
+  }, [languages])
 
   return (
     <>
