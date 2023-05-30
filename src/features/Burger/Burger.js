@@ -4,16 +4,14 @@ import { classNames } from 'shared/lib';
 import classes from './Burger.module.scss';
 
 export const Burger = () => {
-    const {   
+  const {   
     isNavActive, 
     setIsNavActive,
   } = useNav();
 
-    const classNameBurger = classNames(
+  const classNameBurger = classNames(
     classes.burger,
-    {
-      [classes.active]: isNavActive,
-    }
+    { [classes.active]: isNavActive }
   );
 
   const dispatch = useDispatch();
@@ -32,7 +30,7 @@ export const Burger = () => {
       className={classNameBurger}
       type="button"
     >
-      <span></span>
+      <span />
     </button>
   )
 };
