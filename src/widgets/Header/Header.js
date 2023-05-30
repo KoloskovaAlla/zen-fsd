@@ -7,8 +7,8 @@ import { useTheme } from 'shared/model/hooks';
 import { IconLogoHeader, IconSun, IconMoon } from 'shared/icons';
 import { Select } from 'shared/ui';
 import { useDispatch } from 'react-redux';
-import { Navigation } from 'features';
-import { Lang } from 'features';
+import { Navigation, Lang, Theme } from 'features';
+
 
 /** 
  * @typedef {import('./types').HeaderProps} Props
@@ -60,11 +60,11 @@ export const Header = () => {
     []
   );
 
-  const toggleTheme = () => {
-    theme === 'dark'
-      ? dispatch(setTheme('light'))
-      : dispatch(setTheme('dark'));
-  };
+  // const toggleTheme = () => {
+  //   theme === 'dark'
+  //     ? dispatch(setTheme('light'))
+  //     : dispatch(setTheme('dark'));
+  // };
 
   const classNameBurger = classNames(
     classes.burger,
@@ -97,13 +97,14 @@ export const Header = () => {
 
         <Lang />
 
-        <button onClick={toggleTheme} className={classes.theme}>
+        {/* <button onClick={toggleTheme} className={classes.theme}>
           {
             theme === 'dark'
               ? <IconSun />
               : <IconMoon />
           }
-        </button>
+        </button> */}
+        <Theme />
 
         <button
           onClick={handleBurgerClick}
