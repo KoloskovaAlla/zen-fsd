@@ -1,0 +1,39 @@
+@import 'shared/constants/styles/breakpoints';
+
+.language {
+  width: 50px;
+  height: 30px;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  z-index: 1;
+  position: relative;
+  color: currentColor;
+  margin-left: auto;
+
+  @media (min-width: $breakpoint_lg) {
+    height: 40px;
+    margin-left: 40px;
+  }
+
+  select {
+    width: 100%;
+    height: 100%;
+    appearance: none;
+    padding: 6px;
+    color: currentColor;
+    position: relative;
+    background: inherit;
+  }
+
+  svg {
+    position: absolute;
+    top: 11px;
+    right: 5px;
+    z-index: -1;
+    fill: currentColor;
+
+    @media (min-width: $breakpoint_lg) {
+      top: 16px;
+    }
+  }
+}
