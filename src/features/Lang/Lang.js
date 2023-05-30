@@ -16,7 +16,7 @@ export const Lang = () => {
 
   return (
     <>
-      {languages.length > 0 && (
+      {languages?.length > 0 && (
         <div className={classes.language}>
           <Select
             options={languages}
