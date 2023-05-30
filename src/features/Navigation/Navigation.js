@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
-import { NavLink, Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import { useEffect } from 'react';
 import { classNames } from 'shared/lib';
 import { useNav, useLang, useTheme } from 'shared/model/hooks';
 import classes from './Navigation.module.scss';

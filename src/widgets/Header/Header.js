@@ -7,8 +7,8 @@ import { useTheme } from 'shared/model/hooks';
 import { IconLogoHeader, IconSun, IconMoon } from 'shared/icons';
 import { Select } from 'shared/ui';
 import { useDispatch } from 'react-redux';
-import { Navigation } from 'features';
-import { Lang } from 'features';
+import { Navigation, Lang, Theme } from 'features';
+
 
 /** 
  * @typedef {import('./types').HeaderProps} Props
@@ -60,11 +60,11 @@ export const Header = () => {
     []
   );
 
-  const toggleTheme = () => {
-    theme === 'dark'
-      ? dispatch(setTheme('light'))
-      : dispatch(setTheme('dark'));
-  };
+  // const toggleTheme = () => {
+  //   theme === 'dark'
+  //     ? dispatch(setTheme('light'))
+  //     : dispatch(setTheme('dark'));
+  // };
 
   const classNameBurger = classNames(
     classes.burger,
@@ -92,55 +92,19 @@ export const Header = () => {
         <Link to='/' className={classes.logo}>
           <IconLogoHeader />
         </Link>
-        {/* <div className={classes.navigation}>
-          <Link to='/' className={classes.logo}>
-            <IconLogoHeader />
-          </Link>
 
-          {navItems && (
-            // @ts-ignore
-            <ul className={classNameMenu} theme={theme}>
-              {navItems.length > 0 &&
-                navItems.map((menuItem, index) => (
-                  <li
-                    onClick={handleItemClick}
-                    className={classes.item}
-                    key={index}
-                  >
-                    <NavLink
-                      to={`/${menuItem.target}`}
-                      className={({ isActive }) =>
-                        isActive ? 'active' : 'inactive'
-                      }
-                    >
-                      {menuItem.text}
-                    </NavLink>
-                  </li>
-                ))}
-            </ul>
-          )}
-        </div> */}
         <Navigation />
 
-        {/* {languages && (
-          <div className={classes.language}>
-            <Select
-              options={languages}
-              className={classes.select}
-              onChange={({ target: { value } }) => onLanguageChange(value)}
-              value={localStorage.getItem('lang') ?? 'en'}
-            />
-          </div>
-        )} */}
         <Lang />
 
-        <button onClick={toggleTheme} className={classes.theme}>
+        {/* <button onClick={toggleTheme} className={classes.theme}>
           {
             theme === 'dark'
               ? <IconSun />
               : <IconMoon />
           }
-        </button>
+        </button> */}
+        <Theme />
 
         <button
           onClick={handleBurgerClick}
