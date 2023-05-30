@@ -7,7 +7,7 @@ import { useTheme } from 'shared/model/hooks';
 import { IconLogoHeader, IconSun, IconMoon } from 'shared/icons';
 import { Select } from 'shared/ui';
 import { useDispatch } from 'react-redux';
-import { Navigation, Lang, Theme } from 'features';
+import { Navigation, Lang, Theme, Burger } from 'features';
 
 
 /** 
@@ -66,18 +66,18 @@ export const Header = () => {
   //     : dispatch(setTheme('dark'));
   // };
 
-  const classNameBurger = classNames(
-    classes.burger,
-    {
-      [classes.active]: isMenuActive,
-    }
-  );
+  // const classNameBurger = classNames(
+  //   classes.burger,
+  //   {
+  //     [classes.active]: isMenuActive,
+  //   }
+  // );
 
-  const handleBurgerClick = () => {
-    isMenuActive
-      ? setIsMenuActive(false)
-      : setIsMenuActive(true);
-  };
+  // const handleBurgerClick = () => {
+  //   isMenuActive
+  //     ? setIsMenuActive(false)
+  //     : setIsMenuActive(true);
+  // };
 
   const classNameHeader = classNames(
     classes.header,
@@ -97,22 +97,16 @@ export const Header = () => {
 
         <Lang />
 
-        {/* <button onClick={toggleTheme} className={classes.theme}>
-          {
-            theme === 'dark'
-              ? <IconSun />
-              : <IconMoon />
-          }
-        </button> */}
         <Theme />
 
-        <button
+        {/* <button
           onClick={handleBurgerClick}
           className={classNameBurger}
           type="button"
         >
           <span></span>
-        </button>
+        </button> */}
+        <Burger />
       </div>
     </header>
   );
