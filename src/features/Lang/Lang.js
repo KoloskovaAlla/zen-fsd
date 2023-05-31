@@ -15,10 +15,6 @@ export const Lang = () => {
   // @ts-ignore
   const onLangChange = (value) => dispatch(setLang(value));
 
-  useEffect(() => {
-    console.log(languages)
-  }, [languages])
-
   return (
     <>
       {languages.length > 0 && (
