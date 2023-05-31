@@ -4,8 +4,8 @@ import { classNames } from 'shared/lib';
 import classes from './Burger.module.scss';
 
 export const Burger = () => {
-  const {   
-    isNavActive, 
+  const {
+    isNavActive,
     setIsNavActive,
   } = useNav();
 
@@ -16,19 +16,11 @@ export const Burger = () => {
 
   const dispatch = useDispatch();
 
-  const handleBurgerClick = () => {
-    isNavActive
-      // @ts-ignore
-      ? dispatch(setIsNavActive(false))    
-      // @ts-ignore  
-      : dispatch(setIsNavActive(true));
-  };
-  
   return (
     <button
-      onClick={handleBurgerClick}
+      // @ts-ignore
+      onClick={() => { dispatch(setIsNavActive(!isNavActive)) }}
       className={classNameBurger}
-      type="button"
     >
       <span />
     </button>
