@@ -1,15 +1,11 @@
-import classes from './SectionBase.module.scss';
-import { IconApple, IconGoogle } from 'shared/icons';
 import { Preview } from 'features';
+import { IconApple, IconGoogle } from 'shared/icons';
 import { classNames } from 'shared/lib';
+import classes from './SectionBase.module.scss';
 
 export const SectionBase = ({ data, type, reverse }) => {
   const classNameBody = classNames(
-    classes.body,
-    {
-      [classes.reverse]: reverse,
-    },
-    []
+    classes.body, { [classes.reverse]: reverse, }, []
   );
 
   const { title } = data;
