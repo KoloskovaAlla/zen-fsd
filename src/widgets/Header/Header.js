@@ -1,89 +1,29 @@
-import { useNav, useLang } from 'shared/model/hooks';
-import { useEffect, useState } from 'react';
-import { NavLink, Link } from 'react-router-dom';
-import classes from './Header.module.scss';
-import { classNames } from 'shared/lib';
-import { useTheme } from 'shared/model/hooks';
-import { IconLogoHeader, IconSun, IconMoon } from 'shared/icons';
-import { Select } from 'shared/ui';
-import { useDispatch } from 'react-redux';
 import { Navigation, Lang, Theme, Burger } from 'features';
-
-
-/** 
- * @typedef {import('./types').HeaderProps} Props
- */
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { classNames } from 'shared/lib';
+import { useNav, useLang, useTheme  } from 'shared/model/hooks';
+import { IconLogoHeader } from 'shared/icons';
+import classes from './Header.module.scss';
 
 export const Header = () => {
-  const { theme, setTheme } = useTheme();
-  const [isMenuActive, setIsMenuActive] = useState(false);
-
-  const {
-    getNav,
-    navItems,
-  } = useNav();
-
-  const {
-    getLang,
-    languages,
-    setLang,
-  } = useLang();
+  const { theme } = useTheme(); 
+  const { getNav } = useNav();
+  const { getLang } = useLang();
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    // @ts-ignore
+  useEffect(() => {    
     dispatch(getNav());
   }, [dispatch, getNav]);
 
-  useEffect(() => {
-    // @ts-ignore
+  useEffect(() => {  
     dispatch(getLang());
   }, [dispatch, getLang]);
 
-
-  const handleItemClick = () => {
-    isMenuActive
-      ? setIsMenuActive(false)
-      : setIsMenuActive(true);
-  };
-
-  // @ts-ignore
-  const onLanguageChange = (value) => dispatch(setLang(value));
-
-  const classNameMenu = classNames(
-    classes.menu,
-    {
-      [classes.active]: isMenuActive,
-      [classes.dark]: theme === 'dark',
-    },
-    []
-  );
-
-  // const toggleTheme = () => {
-  //   theme === 'dark'
-  //     ? dispatch(setTheme('light'))
-  //     : dispatch(setTheme('dark'));
-  // };
-
-  // const classNameBurger = classNames(
-  //   classes.burger,
-  //   {
-  //     [classes.active]: isMenuActive,
-  //   }
-  // );
-
-  // const handleBurgerClick = () => {
-  //   isMenuActive
-  //     ? setIsMenuActive(false)
-  //     : setIsMenuActive(true);
-  // };
-
   const classNameHeader = classNames(
-    classes.header,
-    {
-      [classes.dark]: theme === 'dark',
-    }
+    classes.header, { [classes.dark]: theme === 'dark'}
   );
 
   return (
@@ -92,23 +32,11 @@ export const Header = () => {
         <Link to='/' className={classes.logo}>
           <IconLogoHeader />
         </Link>
-
         <Navigation />
-
         <Lang />
-
         <Theme />
-
-        {/* <button
-          onClick={handleBurgerClick}
-          className={classNameBurger}
-          type="button"
-        >
-          <span></span>
-        </button> */}
         <Burger />
       </div>
     </header>
   );
 };
-
