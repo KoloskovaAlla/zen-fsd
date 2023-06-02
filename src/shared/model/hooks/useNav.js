@@ -7,7 +7,7 @@ import { setIsNavActive } from '../reducers/navSlice';
 const callback = (store) => store.navReducer;
 
 /** 
- * @typedef {import('./types').NavState} State 
+ * @typedef {import('../schema/types').NavState} State 
  * @type {() => State}
 */
 
