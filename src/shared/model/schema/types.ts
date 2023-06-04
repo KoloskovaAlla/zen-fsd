@@ -25,3 +25,7 @@ export interface LangState {
   setLang: object,
   lang: string
 }
+
+export interface AppState {
+  langReducer: LangState
+}
