@@ -1,6 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { API_BASE_URL } from 'shared/constants/api';
 
+/** @type {any} */
+
 const getLang = createAsyncThunk(
   /** 
     * @typedef {import('../schema/types').LangState} State 
@@ -9,10 +11,9 @@ const getLang = createAsyncThunk(
 
   'languages/getData',
   async (_, thunkApi) => {
-    const state = thunkApi.getState()
-    // @ts-ignore
-    const lang = state.langReducer.lang;
-
+    /**  @type {*} */   
+    const state = thunkApi.getState()  
+    const { lang } = state.langReducer;
     const url = `${API_BASE_URL}/${lang}/header/languages/.json`;
 
     try {
