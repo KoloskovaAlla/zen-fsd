@@ -4,15 +4,10 @@ import { API_BASE_URL } from 'shared/constants/api';
 /** @type {any} */
 
 const getLang = createAsyncThunk(
-  /** 
-    * @typedef {import('../schema/types').LangState} State 
-    * @type {object}
-  */
-
   'languages/getData',
   async (_, thunkApi) => {
-    /**  @type {*} */   
-    const state = thunkApi.getState()  
+    /**  @type {*} */
+    const state = thunkApi.getState()
     const { lang } = state.langReducer;
     const url = `${API_BASE_URL}/${lang}/header/languages/.json`;
 
