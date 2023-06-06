@@ -9,11 +9,12 @@ export const Footer = () => {
   const { lang } = useLang();
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
+  console.log(API_BASE_URL)
 
   useEffect(() => {
     (async () => {
       try {
-        const url = `${API_BASE_URL}/${lang}/footer.json`;
+        const url = `${API_BASE_URL}/${lang}/lists.json`;
         const response = await fetch(url);
 
         if (!response.ok) throw new Error('Data not received');
@@ -33,8 +34,8 @@ export const Footer = () => {
       <div className={classes.wrapper}>
         {data && (
           <ul className={classes.columns}>
-            {data?.columns.length > 0 && (
-              data.columns.map((column, index) =>
+            {data.length > 0 && (
+              data.map((column, index) =>
                 <Column
                   key={index}
                   details={{ title: column.title, links: column.links }}
@@ -43,7 +44,7 @@ export const Footer = () => {
           </ul>
         )}
 
-        <div className={classes.info}>
+        {/* <div className={classes.info}>
           <div className={classes.logo}>
             <IconLogoFooter />
           </div>
@@ -64,7 +65,7 @@ export const Footer = () => {
               alt={data?.infoData?.developer?.content?.image?.alternate}
             />
           </a>
-        </div>
+        </div> */}
       </div>
     </footer>
   );
