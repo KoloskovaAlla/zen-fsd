@@ -7,3 +7,4 @@ export { useCurrentPage } from './useCurrentPage';
 export { usePosts } from './usePosts';
 export { useClients } from './useClients';
 export { useNav } from './useNav';
+export { useLists } from './useLists';

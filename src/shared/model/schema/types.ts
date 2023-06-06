@@ -25,3 +25,14 @@ export interface LangState {
   setLang: object,
   lang: string
 }
+export interface List { 
+  links: Array<Object>;
+  name: string;
+  title: object;
+}
+export interface ListsState { 
+  getLists: Function,
+  isLoading: boolean,
+  lists: List[],
+  errorMessage: string,
+}
