@@ -26,16 +26,21 @@ const getLists = createAsyncThunk(
   }
 );
 
+
 const initialState = {
   isLoading: false,
+  /** 
+    * @typedef {import('../schema/types').List} List         
+    * @type { List[] }
+  */
   lists: [],
-  errorMessage: '',  
+  errorMessage: '',
 };
 
 const listsSlice = createSlice({
   name: 'lists',
   initialState,
-  reducers: {},  
+  reducers: {},
   extraReducers: {
     [`${getLists.pending}`]: (state) => {
       state.isLoading = true;
