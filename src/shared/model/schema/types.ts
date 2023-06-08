@@ -55,7 +55,7 @@ export interface List {
 };
 
 export interface ListsState {
-
+  getLists?: Function;
   isLoading: boolean;
   lists: List[];
   errorMessage: string;

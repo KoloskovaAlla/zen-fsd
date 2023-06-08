@@ -5,13 +5,14 @@ import { useLang } from 'shared/model/hooks';
 import { useLists } from 'shared/model/hooks';
 import { Column } from './ui';
 import { IconLogoFooter } from 'shared/icons';
-import {useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 export const Footer = () => {
   const { getLists, lists } = useLists();
   const dispatch = useDispatch();
 
-  useEffect(() => {    
+  useEffect(() => {
+    // @ts-ignore  
     dispatch(getLists());
   }, [dispatch, getLists]);
 
