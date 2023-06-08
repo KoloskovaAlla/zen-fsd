@@ -60,3 +60,20 @@ export interface ListsState {
   lists: List[];
   errorMessage: string;
 };
+
+export interface Developer {
+  content: Content;
+  url: string;
+};
+
+export interface Info {
+  developer: Developer;
+  texts: string[];
+};
+
+export interface InfoState {
+  getInfo?: Function;
+  isLoading: boolean;
+  info: null | Info;
+  errorMessage: string;
+};
