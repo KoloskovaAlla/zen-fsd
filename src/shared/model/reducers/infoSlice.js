@@ -37,7 +37,7 @@ const initialState = {
   errorMessage: '',
 };
 
-const listsSlice = createSlice({
+const infoSlice = createSlice({
   name: 'info',
   initialState,
   reducers: {},
@@ -61,4 +61,4 @@ const listsSlice = createSlice({
 });
 
 export { getInfo };
-export const { reducer: listsReducer } = listsSlice;
+export const { reducer: infoReducer } = infoSlice;
