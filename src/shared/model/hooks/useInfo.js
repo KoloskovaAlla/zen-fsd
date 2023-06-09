@@ -5,7 +5,7 @@ import { getInfo } from '../reducers/infoSlice';
 const callback = (store) => store.infoReducer;
 
 /** 
- * @typedef {import('../schema/hookTypes').InfoState} State 
+ * @typedef {import('./types').InfoState} State 
  * @type {() => State}
 */
 

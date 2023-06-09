@@ -5,7 +5,7 @@ import { getLists } from '../reducers/listsSlice';
 const callback = (store) => store.listsReducer;
 
 /** 
- * @typedef {import('../schema/hookTypes').ListsState} State 
+ * @typedef {import('./types').ListsState} State 
  * @type {() => State}
 */
 
