@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { useEffect} from 'react';
+import { useEffect } from 'react';
 import { useLists, useInfo } from 'shared/model/hooks';
 import { Column } from './ui';
 import { IconLogoFooter } from 'shared/icons';
@@ -10,11 +10,11 @@ export const Footer = () => {
   const { getInfo, info } = useInfo();
   const dispatch = useDispatch();
 
-  useEffect(() => {   
+  useEffect(() => {
     dispatch(getLists());
   }, [dispatch, getLists]);
 
-  useEffect(() => {  
+  useEffect(() => {
     dispatch(getInfo());
   }, [dispatch, getInfo]);
 
@@ -39,7 +39,7 @@ export const Footer = () => {
               <IconLogoFooter />
             </div>
 
-            {info?.texts?.length > 0 && (
+            {info.texts?.length > 0 && (
               info.texts.map((text, index) =>
                 <p
                   className={classes.copy}
@@ -49,10 +49,10 @@ export const Footer = () => {
                 </p>
               )
             )}
-            <a className={classes.developer} href={info?.developer?.url}>
+            <a className={classes.developer} href={info.developer?.url}>
               <img
-                src={info?.developer?.content?.image?.source}
-                alt={info?.developer?.content?.image?.alternate}
+                src={info.developer?.content?.image?.source}
+                alt={info.developer?.content?.image?.alternate}
               />
             </a>
           </div>

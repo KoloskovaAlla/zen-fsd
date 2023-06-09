@@ -5,21 +5,21 @@ import { getInfo } from '../reducers/infoSlice';
 const callback = (store) => store.infoReducer;
 
 /** 
- * @typedef {import('../schema/types').InfoState} State 
+ * @typedef {import('../schema/hookTypes').InfoState} State 
  * @type {() => State}
 */
 
-export const useInfo= () => {
+export const useInfo = () => {
   const {
     isLoading,
     info,
-    errorMessage,   
-  } = useSelector(callback); 
+    errorMessage,
+  } = useSelector(callback);
 
   return {
     getInfo,
     isLoading,
     info,
-    errorMessage,    
+    errorMessage,
   };
 };
