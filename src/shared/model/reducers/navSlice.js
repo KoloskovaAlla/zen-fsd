@@ -4,8 +4,9 @@ import { API_BASE_URL } from 'shared/constants/api';
 const getNav = createAsyncThunk(
   'navigation/getData',
   async (_, thunkApi) => {
-    // @ts-ignore    
-    const { lang } = thunkApi.getState().langReducer;
+    /**  @type {*} */   
+    const state = thunkApi.getState();
+    const { lang } = state.langReduce;
     const url = `${API_BASE_URL}/${lang}/header/menuItems/.json`;
 
     try {
