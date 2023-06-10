@@ -27,7 +27,7 @@ const getInfo = createAsyncThunk(
 );
 
 /** 
-  * @typedef {import('../schema/types').InfoState} State         
+  * @typedef {import('./types').InfoState} State         
   * @type {State}
 */
 

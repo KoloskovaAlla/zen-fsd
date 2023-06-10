@@ -27,7 +27,7 @@ const getLists = createAsyncThunk(
 );
 
 /** 
-  * @typedef {import('../schema/types').ListsState} State         
+  * @typedef {import('./types').ListsState} State         
   * @type {State}
 */
 
