@@ -4,11 +4,11 @@ export interface NavItem {
 };
 
 export interface NavState {
-  getNav: Function;
+  getNav?: Function;
   isLoading: boolean;
-  navItems: NavItem[];
+  navItems: NavItem[] | null;
   errorMessage: string;
-  setIsNavActive: object;
+  setIsNavActive?: object;
   isNavActive: boolean;
 };
 
