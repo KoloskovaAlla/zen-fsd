@@ -24,6 +24,11 @@ const getNav = createAsyncThunk(
   }
 );
 
+/** 
+  * @typedef {import('./types').NavState} State         
+  * @type {State}
+*/
+
 const initialState = {
   isLoading: false,
   navItems: null,
