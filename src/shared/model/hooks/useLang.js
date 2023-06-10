@@ -7,7 +7,7 @@ import { setLang } from '../reducers/langSlice';
 const callback = (store) => store.langReducer;
 
 /** 
- * @typedef {import('../schema/types').LangState} State 
+ * @typedef {import('./types').LangState} State 
  * @type {() => State}
 */
 

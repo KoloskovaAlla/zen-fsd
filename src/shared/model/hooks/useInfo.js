@@ -1,25 +1,25 @@
 import { useSelector } from 'react-redux';
-import { getLists } from '../reducers/listsSlice';
+import { getInfo } from '../reducers/infoSlice';
 
 /** @type {(store: object) => object} */
-const callback = (store) => store.listsReducer;
+const callback = (store) => store.infoReducer;
 
 /** 
- * @typedef {import('./types').ListsState} State 
+ * @typedef {import('./types').InfoState} State 
  * @type {() => State}
 */
 
-export const useLists = () => {
+export const useInfo = () => {
   const {
     isLoading,
-    lists,
+    info,
     errorMessage,
   } = useSelector(callback);
 
   return {
-    getLists,
+    getInfo,
     isLoading,
-    lists,
+    info,
     errorMessage,
   };
 };

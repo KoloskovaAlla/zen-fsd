@@ -12,6 +12,7 @@ import {
   dataReducer,
   navReducer,  
   listsReducer,
+  infoReducer,
 } from 'shared/model/reducers';
 
 const rootReducer = combineReducers({
@@ -27,6 +28,7 @@ const rootReducer = combineReducers({
   dataReducer,
   navReducer, 
   listsReducer,
+  infoReducer,
 });
 
 export const store = configureStore({
