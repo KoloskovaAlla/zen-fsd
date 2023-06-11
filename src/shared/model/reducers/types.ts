@@ -18,11 +18,11 @@ export interface Language {
 };
 
 export interface LangState {
-  getLang: Function;
+  getLang?: Function;
   isLoading: boolean;
   languages: Language[];
   errorMessage: string;
-  setLang: object;
+  setLang?: object;
   lang: string;
 };
 

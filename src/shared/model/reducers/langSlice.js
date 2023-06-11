@@ -26,6 +26,11 @@ const getLang = createAsyncThunk(
   }
 );
 
+/** 
+  * @typedef {import('./types').LangState} State         
+  * @type {State}
+*/
+
 const initialState = {
   isLoading: false,
   languages: [],
