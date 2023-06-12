@@ -77,3 +77,16 @@ export interface InfoState {
   info: null | Info;
   errorMessage: string;
 };
+
+export interface HomePage {
+  download: Download;
+  warranty: Warranty;
+  care: Care;
+  cashback: Cashback;
+};
+
+export interface HomePageState {
+  isLoading: boolean,
+  homePageData: null | HomePage,
+  errorMessage: string,
+};

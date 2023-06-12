@@ -4,8 +4,10 @@ import { API_BASE_URL } from 'shared/constants/api';
 const fetchHomePageData = createAsyncThunk(
   'homePage/fetchData', 
   async (_, thunkApi) => {
-    const { lang } = thunkApi.getState().langReducer;
-    const url = `${API_BASE_URL}/${lang}/.json`;
+    /**  @type {*} */
+    const state = thunkApi.getState()
+    const { lang } = state.langReducer; 
+    const url = `${API_BASE_URL}/${lang}/pages/homepage/.json`;
 
     try {
       const response = await fetch(url);
@@ -19,6 +21,11 @@ const fetchHomePageData = createAsyncThunk(
     }
   }
 );
+
+/** 
+  * @typedef {import('./types').HomePageState} State         
+  * @type {State}
+*/
 
 const initialState = {
   isLoading: false,
