@@ -1,25 +1,25 @@
 import { useSelector } from 'react-redux';
-import { getLists } from '../reducers/listsSlice';
+import { getColumns } from '../reducers/columnsSlice';
 
 /** @type {(store: object) => object} */
 const callback = (store) => store.listsReducer;
 
 /** 
- * @typedef {import('./types').ListsState} State 
+ * @typedef {import('./types').ColumnsState} State 
  * @type {() => State}
 */
 
-export const useLists = () => {
+export const useColumns = () => {
   const {
     isLoading,
-    lists,
+    columns,
     errorMessage,
   } = useSelector(callback);
 
   return {
-    getLists,
+    getColumns,
     isLoading,
-    lists,
+    columns,
     errorMessage,
   };
 };

@@ -1,18 +1,18 @@
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { useLists, useInfo } from 'shared/model/hooks';
+import { useColumns, useInfo } from 'shared/model/hooks';
 import { Column } from './ui';
 import { IconLogoFooter } from 'shared/icons';
 import classes from './Footer.module.scss';
 
 export const Footer = () => {
-  const { getLists, lists } = useLists();
+  const { getColumns, columns } = useColumns();
   const { getInfo, info } = useInfo();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getLists());
-  }, [dispatch, getLists]);
+    dispatch(getColumns());
+  }, [dispatch, getColumns]);
 
   useEffect(() => {
     dispatch(getInfo());
@@ -21,10 +21,10 @@ export const Footer = () => {
   return (
     <footer className={classes.footer}>
       <div className={classes.wrapper}>
-        {lists && (
+        {columns && (
           <ul className={classes.columns}>
-            {lists.length > 0 && (
-              lists.map((column, index) =>
+            {columns.length > 0 && (
+              columns.map((column, index) =>
                 <Column
                   key={index}
                   details={{ title: column.title, links: column.links }}
