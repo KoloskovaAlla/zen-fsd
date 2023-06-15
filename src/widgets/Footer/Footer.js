@@ -12,23 +12,22 @@ export const Footer = () => {
 
   useEffect(() => {
     dispatch(getColumns());
-  }, [dispatch, getColumns]);
-
-  useEffect(() => {
     dispatch(getInfo());
-  }, [dispatch, getInfo]);
+  }, [dispatch, getColumns, dispatch(getInfo())]);
+
+
+
 
   return (
     <footer className={classes.footer}>
       <div className={classes.wrapper}>
-        {columns && (
+        {columns.length > 0 && (
           <ul className={classes.columns}>
-            {columns.length > 0 && (
-              columns.map((column, index) =>
-                <Column
-                  key={index}
-                  details={{ title: column.title, links: column.links }}
-                />)
+            {columns.map(({ title, links }, index) =>
+              <Column
+                key={index}
+                details={{ title: title, links: links }}
+              />
             )}
           </ul>
         )}
