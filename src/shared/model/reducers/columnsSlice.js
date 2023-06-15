@@ -3,13 +3,13 @@ import { API_BASE_URL } from 'shared/constants/api';
 
 /** @type {any} */
 
-const getLists = createAsyncThunk(
+const getColumns = createAsyncThunk(
   'lists/getData',
   async (_, thunkApi) => {
     /**  @type {*} */
     const state = thunkApi.getState();
     const { lang } = state.langReducer;
-    const url = `${API_BASE_URL}/${lang}/lists/.json`;
+    const url = `${API_BASE_URL}/${lang}/columns/.json`;
 
     try {
       const response = await fetch(url);
@@ -27,38 +27,38 @@ const getLists = createAsyncThunk(
 );
 
 /** 
-  * @typedef {import('./types').ListsState} State         
+  * @typedef {import('./types').ColumnsState} State         
   * @type {State}
 */
 
 const initialState = {
   isLoading: false,
-  lists: [],
+  columns: [],
   errorMessage: '',
 };
 
-const listsSlice = createSlice({
-  name: 'lists',
+const columnsSlice = createSlice({
+  name: 'columns',
   initialState,
   reducers: {},
   extraReducers: {
-    [`${getLists.pending}`]: (state) => {
+    [`${getColumns.pending}`]: (state) => {
       state.isLoading = true;
-      state.lists = [];
+      state.columns = [];
       state.errorMessage = '';
     },
-    [`${getLists.fulfilled}`]: (state, { payload }) => {
+    [`${getColumns.fulfilled}`]: (state, { payload }) => {
       state.isLoading = false;
-      state.lists = payload;
+      state.columns = payload;
       state.errorMessage = '';
     },
-    [`${getLists.rejected}`]: (state, { payload }) => {
+    [`${getColumns.rejected}`]: (state, { payload }) => {
       state.isLoading = false;
-      state.lists = [];
+      state.columns = [];
       state.errorMessage = payload;
     },
   }
 });
 
-export { getLists };
-export const { reducer: listsReducer } = listsSlice;
+export { getColumns };
+export const { reducer: columnsReducer } = columnsSlice;

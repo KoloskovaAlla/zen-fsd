@@ -48,16 +48,16 @@ export interface Title {
   priority: number;
 };
 
-export interface List {
+export interface Column {
   links: Link[];
   name: string;
   title: Title;
 };
 
-export interface ListsState {
-  getLists: Function;
+export interface ColumnsState {
+  getColumns: Function;
   isLoading: boolean;
-  lists: List[];
+  columns: Column[];
   errorMessage: string;
 };
 
@@ -74,6 +74,6 @@ export interface Info {
 export interface InfoState {
   getInfo: Function;
   isLoading: boolean;
-  info: null | Info;
+  info: Info;
   errorMessage: string;
 };
