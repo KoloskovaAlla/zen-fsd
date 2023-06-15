@@ -74,6 +74,6 @@ export interface Info {
 export interface InfoState {
   getInfo: Function;
   isLoading: boolean;
-  info: null | Info;
+  info: Info;
   errorMessage: string;
 };

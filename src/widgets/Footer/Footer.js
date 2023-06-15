@@ -15,9 +15,6 @@ export const Footer = () => {
     dispatch(getInfo());
   }, [dispatch, getColumns, dispatch(getInfo())]);
 
-
-
-
   return (
     <footer className={classes.footer}>
       <div className={classes.wrapper}>
@@ -32,13 +29,13 @@ export const Footer = () => {
           </ul>
         )}
 
-        {info && (
+        {Object.values(info).length > 0 && (
           <div className={classes.info}>
             <div className={classes.logo}>
               <IconLogoFooter />
             </div>
 
-            {info.texts?.length > 0 && (
+            {info?.texts.length > 0 && (
               info.texts.map((text, index) =>
                 <p
                   className={classes.copy}
@@ -50,8 +47,8 @@ export const Footer = () => {
             )}
             <a className={classes.developer} href={info.developer?.url}>
               <img
-                src={info.developer?.content?.image?.source}
-                alt={info.developer?.content?.image?.alternate}
+                src={info?.developer?.content?.image?.source}
+                alt={info?.developer?.content?.image?.alternate}
               />
             </a>
           </div>
