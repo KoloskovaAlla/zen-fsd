@@ -77,3 +77,49 @@ export interface InfoState {
   info: null | Info;
   errorMessage: string;
 };
+
+export interface Link {
+  name: string;
+  url: string;
+};
+
+export interface Download {
+  image: Image;
+  links: Link[];
+  texts: string[];
+  title: Title;
+};
+
+export interface Warranty {
+  image: Image;
+  name: string;
+  texts: string[];
+  title: Title;
+};
+
+export interface Care {
+  image: Image;
+  name: string;
+  texts: string[];
+  title: Title;
+};
+
+export interface Cashback {
+  buttonText: string;
+  name: string;
+  texts: string[];
+  title: Title;
+};
+
+export interface HomePage {
+  download: Download;
+  warranty: Warranty;
+  care: Care;
+  cashback: Cashback;
+};
+
+export interface HomePageState {
+  isLoading: boolean,
+  homePageData: null | HomePage,
+  errorMessage: string,
+};

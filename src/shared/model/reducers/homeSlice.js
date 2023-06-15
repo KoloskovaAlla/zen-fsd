@@ -2,10 +2,12 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { API_BASE_URL } from 'shared/constants/api';
 
 const fetchHomePageData = createAsyncThunk(
-  'homePage/fetchData', 
+  'homePage/fetchData',
   async (_, thunkApi) => {
-    const { lang } = thunkApi.getState().langReducer;
-    const url = `${API_BASE_URL}/${lang}/.json`;
+    /**  @type {*} */
+    const state = thunkApi.getState()
+    const { lang } = state.langReducer;
+    const url = `${API_BASE_URL}/${lang}/pages/homepage/.json`;
 
     try {
       const response = await fetch(url);
@@ -15,30 +17,40 @@ const fetchHomePageData = createAsyncThunk(
     }
     catch (error) {
       console.error(error);
-      return thunkApi.rejectWithValue(error.message);
+      /** @type {*} */
+      const { message } = error;
+      return thunkApi.rejectWithValue(message);
     }
   }
 );
 
+/** 
+  * @typedef {import('./types').HomePageState} State         
+  * @type {State}
+*/
+
 const initialState = {
   isLoading: false,
   homePageData: null,
-  errorMessage: null,
+  errorMessage: '',
 };
 
 const homePageSlice = createSlice({
   name: 'homePage',
   initialState,
+  reducers: {},
   extraReducers: {
-    [fetchHomePageData.pending]: (state) => {
+    [`${fetchHomePageData.pending}`]: (state) => {
       state.isLoading = true;
+      state.homePageData = null;
+      state.errorMessage = '';
     },
-    [fetchHomePageData.fulfilled]: (state, { payload }) => {
+    [`${fetchHomePageData.fulfilled}`]: (state, { payload }) => {
       state.isLoading = false;
       state.homePageData = payload;
-      state.errorMessage = null;
+      state.errorMessage = '';
     },
-    [fetchHomePageData.rejected]: (state, { payload }) => {
+    [`${fetchHomePageData.rejected}`]: (state, { payload }) => {
       state.isLoading = false;
       state.homePageData = null;
       state.errorMessage = payload;
@@ -47,4 +59,4 @@ const homePageSlice = createSlice({
 });
 
 export { fetchHomePageData };
-export const { reducer: homePageReducer} =  homePageSlice;
+export const { reducer: homePageReducer } = homePageSlice;
