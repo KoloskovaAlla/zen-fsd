@@ -6,7 +6,7 @@ import { API_BASE_URL } from 'shared/constants/api';
 const getInfo = createAsyncThunk(
   'info/getData',
   async (_, thunkApi) => {
-    /**  @type {*} */
+    /**  @type {*} */  
     const state = thunkApi.getState()
     const { lang } = state.langReducer;
     const url = `${API_BASE_URL}/${lang}/info/.json`;
@@ -14,8 +14,8 @@ const getInfo = createAsyncThunk(
     try {
       const response = await fetch(url);
       const data = await response.json();
-      if (!data) throw new Error('Failed to fetch');
-      return thunkApi.fulfillWithValue(data);
+      if (Object.values(data).length > 0) return thunkApi.fulfillWithValue(data);
+      else throw new Error('Data is empty'); 
     }
     catch (error) {
       console.error(error);
@@ -26,10 +26,10 @@ const getInfo = createAsyncThunk(
   }
 );
 
-/** 
-  * @typedef {import('./types').InfoState} State         
-  * @type {State}
-*/
+/**
+ * @typedef {import('./types').InfoState} State 
+ * @type {State} 
+ */
 
 const initialState = {
   isLoading: false,
@@ -62,3 +62,6 @@ const infoSlice = createSlice({
 
 export { getInfo };
 export const { reducer: infoReducer } = infoSlice;
+
+  //  if (!data) throw new Error('Failed to fetch');
+  //     return thunkApi.fulfillWithValue(data);
