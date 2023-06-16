@@ -34,8 +34,8 @@ export const Footer = () => {
             <IconLogoFooter />
           </div>
 
-          {info.texts && (
-            info.texts.map((text, index) =>
+          {info?.texts && (
+            info?.texts.map((text, index) =>
               <p
                 className={classes.copy}
                 key={index}
