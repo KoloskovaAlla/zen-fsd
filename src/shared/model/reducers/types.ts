@@ -83,32 +83,25 @@ export interface Link {
   url: string;
 };
 
-export interface Download {
-  image: Image;
-  links: Link[];
-  texts: string[];
-  title: Title;
-};
-
-export interface Warranty {
-  image: Image;
+export interface SectionBase {
   name: string;
-  texts: string[];
   title: Title;
-};
-
-export interface Care {
+  texts: string[];
+  links?: Link[];
   image: Image;
-  name: string;
-  texts: string[];
-  title: Title;
-};
+}
+
+export interface Download extends SectionBase{};
+
+export interface Warranty extends SectionBase{};
+
+export interface Care extends SectionBase{};
 
 export interface Cashback {
-  buttonText: string;
   name: string;
-  texts: string[];
   title: Title;
+  texts: string[];
+  buttonText: string;
 };
 
 export interface HomePage {

@@ -27,7 +27,7 @@ const fetchHomePageData = createAsyncThunk(
 /** 
   * @typedef {import('./types').HomePageState} State         
   * @type {State}
-*/
+  */
 
 const initialState = {
   isLoading: false,
