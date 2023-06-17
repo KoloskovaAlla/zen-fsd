@@ -29,30 +29,28 @@ export const Footer = () => {
           </ul>
         )}
 
-        {Object.values(info).length > 0 && (
-          <div className={classes.info}>
-            <div className={classes.logo}>
-              <IconLogoFooter />
-            </div>
-
-            {info?.texts.length > 0 && (
-              info.texts.map((text, index) =>
-                <p
-                  className={classes.copy}
-                  key={index}
-                >
-                  {text}
-                </p>
-              )
-            )}
-            <a className={classes.developer} href={info.developer?.url}>
-              <img
-                src={info?.developer?.content?.image?.source}
-                alt={info?.developer?.content?.image?.alternate}
-              />
-            </a>
+        {<div className={classes.info}>
+          <div className={classes.logo}>
+            <IconLogoFooter />
           </div>
-        )}
+
+          {info?.texts.length > 0 && (
+            info.texts.map((text, index) =>
+              <p
+                className={classes.copy}
+                key={index}
+              >
+                {text}
+              </p>
+            )
+          )}
+          <a className={classes.developer} href={info.developer?.url}>
+            <img
+              src={info.developer?.content?.image?.source}
+              alt={info.developer?.content?.image?.alternate}
+            />
+          </a>
+        </div>}
       </div>
     </footer>
   );
