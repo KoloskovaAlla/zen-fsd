@@ -20,5 +20,5 @@ export interface Developer {
 };
 
 export interface DeveloperProps {
- developer: Developer;
+  developer: Developer;
 };
