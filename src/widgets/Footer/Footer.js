@@ -13,7 +13,7 @@ export const Footer = () => {
   useEffect(() => {
     dispatch(getColumns());
     dispatch(getInfo());
-  }, [dispatch, getColumns, dispatch(getInfo())]);
+  }, [dispatch, getColumns, getInfo]);
 
   return (
     <footer className={classes.footer}>
