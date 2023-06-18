@@ -23,7 +23,7 @@ export const Footer = () => {
             {columns.map(({ title, links }, index) =>
               <Column
                 key={index}
-                details={{ title: title, links: links }}
+                column={{ title: title, links: links }}
               />
             )}
           </ul>
