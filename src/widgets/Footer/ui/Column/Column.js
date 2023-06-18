@@ -1,4 +1,3 @@
-import { classNames } from 'shared/lib';
 import { Link } from '../Link';
 import classes from './Column.module.scss';
 
@@ -6,10 +5,8 @@ export const Column = ({ details }) => {
   const { title, links } = details; 
 
   return (
-    <li className={classNames.column}>
-      {title && <h3 className={classes.title}>{title.content}</h3>}
-
-      console.log(links)
+    <li>
+      {title && <h3 className={classes.title}>{title.content}</h3>}     
 
       {links?.length > 0 && (
         <ul className={classes.list}>
