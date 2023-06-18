@@ -45,7 +45,7 @@ export const Footer = () => {
             )
           )}
 
-          <Developer developer={info.developer} />
+          {info && <Developer developer={info?.developer} />}
         </div>}
       </div>
     </footer>

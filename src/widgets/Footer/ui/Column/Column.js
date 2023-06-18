@@ -3,8 +3,7 @@ import { Link } from '../Link';
 import classes from './Column.module.scss';
 
 export const Column = ({ details }) => {
-  const { title, links } = details;
-  links.map((link) => { console.log(link.content) });
+  const { title, links } = details; 
 
   return (
     <li className={classNames.column}>
