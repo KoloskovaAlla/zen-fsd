@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { useColumns, useInfo } from 'shared/model/hooks';
-import { Column } from './ui';
+import { Column, Developer } from './ui';
 import { IconLogoFooter } from 'shared/icons';
 import classes from './Footer.module.scss';
 
@@ -44,12 +44,8 @@ export const Footer = () => {
               </p>
             )
           )}
-          <a className={classes.developer} href={info.developer?.url}>
-            <img
-              src={info.developer?.content?.image?.source}
-              alt={info.developer?.content?.image?.alternate}
-            />
-          </a>
+
+          {info && <Developer developer={info?.developer} />}
         </div>}
       </div>
     </footer>

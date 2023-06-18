@@ -11,7 +11,7 @@ import {
   clientsReducer,
   dataReducer,
   navReducer,  
-  listsReducer,
+  columnsReducer,
   infoReducer,
 } from 'shared/model/reducers';
 
@@ -27,7 +27,7 @@ const rootReducer = combineReducers({
   postsReducer,
   dataReducer,
   navReducer, 
-  listsReducer,
+  columnsReducer,
   infoReducer,
 });
 
