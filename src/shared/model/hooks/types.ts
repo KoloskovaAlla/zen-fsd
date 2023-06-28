@@ -77,3 +77,21 @@ export interface InfoState {
   info: Info;
   errorMessage: string;
 };
+
+export interface Client {
+  alternate: string;
+  source: string;
+};
+
+export interface Clients {
+  darkThemeClients: Client[];
+  lighThemeClinets: Client[];
+  name: string;
+};
+
+export interface ClientsState {
+  fetchClientsData: Function;
+  isLoading: boolean;
+  clientsData: Clients;
+  errorMessage: string;
+};
