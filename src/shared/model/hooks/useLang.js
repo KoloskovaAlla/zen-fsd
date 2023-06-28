@@ -5,10 +5,10 @@ import { getLang, setLang } from '../reducers/langSlice';
 /** @type {(store: object) => object} */
 const callback = (store) => store.langReducer;
 
-/** 
+/**
  * @typedef {import('./types').LangState} State 
  * @type {() => State}
-*/
+ */
 
 export const useLang = () => {
   const {
