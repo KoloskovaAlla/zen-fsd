@@ -1,33 +1,45 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { API_BASE_URL } from 'shared/constants/api';
 
+/** @type {any} */
+
 const fetchClientsData = createAsyncThunk(
   'clients/fetchData',
   async (_, thunkApi) => {
-    const { lang } = thunkApi.getState().langReducer;
+    /**  @type {*} */
+    const state = thunkApi.getState()
+    const { lang } = state.langReducer;
     const url = `${API_BASE_URL}/${lang}/clients/.json`;
     try {
       const response = await fetch(url);
-      const clientsData = await response.json();
-      if (!clientsData) throw new Error('Failed to fetch');
-      return thunkApi.fulfillWithValue(clientsData);
+      const data = await response.json();
+       if (!Object.values(data).length) throw new Error('Data is empty');
+      return thunkApi.fulfillWithValue(data);
     }
     catch (error) {
       console.error(error);
-      return thunkApi.rejectWithValue(error.message);
+      /** @type {*} */
+      const { message } = error;
+      return thunkApi.rejectWithValue(message);
     }
   }
 );
 
+/**
+ * @typedef {import('./types').ClientsState} State 
+ * @type {State} 
+ */
+
 const initialState = {
   isLoading: false,
   clientsData: null,
-  errorMessage: null,
-}
+  errorMessage: '',
+};
 
 const clientsSlice = createSlice({
   name: 'clients',
   initialState,
+  reducers: {},
   extraReducers: {
     [fetchClientsData.pending]: (state) => {
       state.isLoading = true;
@@ -35,11 +47,11 @@ const clientsSlice = createSlice({
     [fetchClientsData.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
       state.clientsData = payload;
-      state.errorMessage = null;
+      state.errorMessage = '';
     },
     [fetchClientsData.rejected]: (state, { payload }) => {
       state.isLoading = false;
-      state.homePageData = null;
+      state.clientsData = null;
       state.errorMessage = payload;
     }
   }
