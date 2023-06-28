@@ -1,16 +1,19 @@
 import { useSelector } from 'react-redux';
 import { fetchHomePageData } from '../reducers/homeSlice';
 
-/**  
- * @returns {object}
+/** @type {(store: object) => object} */
+const callback = (store) => store.homePageReducer;
+/**
+ * 
+ *  
  */
-
 export const useHomePage = () => {
+
   const {
     isLoading,
     homePageData,
     errorMessage
-  } = useSelector((state) => state.homePageReducer);
+  } = useSelector(callback);
 
   return {
     fetchHomePageData,
