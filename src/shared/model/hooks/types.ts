@@ -95,3 +95,43 @@ export interface ClientsState {
   clientsData: Clients;
   errorMessage: string;
 };
+
+export interface Link {
+  name: string;
+  url: string;
+};
+
+export interface SectionBase {
+  name: string;
+  title: Title;
+  texts: string[];
+  links?: Link[];
+  image: Image;
+}
+
+export interface Download extends SectionBase { };
+
+export interface Warranty extends SectionBase { };
+
+export interface Care extends SectionBase { };
+
+export interface Cashback {
+  name: string;
+  title: Title;
+  texts: string[];
+  buttonText: string;
+};
+
+export interface HomePage {
+  download: Download;
+  warranty: Warranty;
+  care: Care;
+  cashback: Cashback;
+};
+
+export interface HomePageState {
+  fetchHomePageData: Function;
+  isLoading: boolean,
+  homePageData: null | HomePage,
+  errorMessage: string,
+};
