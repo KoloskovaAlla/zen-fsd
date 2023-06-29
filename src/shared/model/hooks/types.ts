@@ -136,6 +136,18 @@ export interface HomePageState {
   errorMessage: string,
 };
 
-export interface PostsState {
+export interface postsData {
+  buttonText: string;
+  title: Title;
+  care: Care;
+  cashback: Cashback;
+  clients: Clients;
+  warranty: Warranty;
+};
 
+export interface PostsState {
+  fetchPostsData: Function,
+  isLoading: boolean,
+  postsData: null | postsData,
+  errorMessage: string,
 };
