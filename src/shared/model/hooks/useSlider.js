@@ -2,15 +2,20 @@ import { useEffect } from 'react';
 import { sliderActions } from '../reducers/sliderSlice';
 import { useSelector } from 'react-redux';
 
-/**  
- * @returns {object}
+/**
+ * @type {(store: object) => object} 
  */
+const callback = (store) => store.sliderReducer; 
 
+/**
+ * @typedef {import('./types').SliderState} State
+ * @type {() => {State}} 
+ */
 export const useSlider = () => {
   const {
     slides,
     sliderDescription,
-  } = useSelector((state) => state.sliderReducer);
+  } = useSelector(callback);
 
   useEffect(() => {
     localStorage.setItem('slides', JSON.stringify(slides));
@@ -18,6 +23,7 @@ export const useSlider = () => {
   }, [slides, sliderDescription]);
 
   return {
-    sliderActions
+    slides, 
+    sliderDescription,
   };
 };
