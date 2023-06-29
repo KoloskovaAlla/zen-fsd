@@ -135,3 +135,7 @@ export interface HomePageState {
   homePageData: null | HomePage,
   errorMessage: string,
 };
+
+export interface PostsState {
+
+};
