@@ -165,3 +165,15 @@ export interface PreviewState {
   previewDetails: null | PreviewDetails,
   setPreviewDetails: Function;
 };
+
+export interface Slide {
+  alternate: string;
+  id: number;
+  source: string;
+};
+
+export interface SliderState {
+  slides: Slide[];
+  setSlides: object;
+  sliderDescription: null | string;
+};
