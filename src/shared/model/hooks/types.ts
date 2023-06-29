@@ -96,6 +96,11 @@ export interface ClientsState {
   errorMessage: string;
 };
 
+export interface Link {
+  name: string;
+  url: string;
+};
+
 export interface SectionBase {
   name: string;
   title: Title;
@@ -104,11 +109,11 @@ export interface SectionBase {
   image: Image;
 }
 
-export interface Download extends SectionBase{};
+export interface Download extends SectionBase { };
 
-export interface Warranty extends SectionBase{};
+export interface Warranty extends SectionBase { };
 
-export interface Care extends SectionBase{};
+export interface Care extends SectionBase { };
 
 export interface Cashback {
   name: string;
@@ -117,7 +122,7 @@ export interface Cashback {
   buttonText: string;
 };
 
-export interface HomePageData {
+export interface HomePage {
   download: Download;
   warranty: Warranty;
   care: Care;
@@ -127,6 +132,36 @@ export interface HomePageData {
 export interface HomePageState {
   fetchHomePageData: Function;
   isLoading: boolean,
-  homePageData: null | HomePageData,
+  homePageData: null | HomePage,
   errorMessage: string,
+};
+
+export interface postsData {
+  buttonText: string;
+  title: Title;
+  care: Care;
+  cashback: Cashback;
+  clients: Clients;
+  warranty: Warranty;
+};
+
+export interface PostsState {
+  fetchPostsData: Function,
+  isLoading: boolean,
+  postsData: null | postsData,
+  errorMessage: string,
+};
+
+export interface PreviewDetails {
+  x: string,
+  y: string,
+  width: string,
+  height: string,
+  description: string,
+  id: number,
+};
+
+export interface PreviewState {
+  previewDetails: null | PreviewDetails,
+  setPreviewDetails: Function;
 };
