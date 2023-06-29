@@ -7,7 +7,7 @@ const callback = (store) => store.infoReducer;
 /** 
  * @typedef {import('./types').InfoState} State 
  * @type {() => State}
-*/
+ */
 
 export const useInfo = () => {
   const {
