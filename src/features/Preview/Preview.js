@@ -10,8 +10,7 @@ import { useSlider, usePreview } from 'shared/model/hooks';
 
 export const Preview = ({ imageDetails }) => {
   const dispatch = useDispatch();
-  const { sliderActions } = useSlider();
-  const { setSlides } = sliderActions;
+  const { setSlides } = useSlider();
   const { setPreviewDetails } = usePreview();
 
   useEffect(() => {

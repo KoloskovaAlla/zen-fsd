@@ -19,5 +19,5 @@ export const sliderSlice = createSlice({
 });
 
 export const { reducer: sliderReducer } = sliderSlice;
-export const sliderActions = sliderSlice.actions;
+export const setSlides = sliderSlice.actions;
 
