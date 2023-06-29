@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
  * @typedef {import('./types').PreviewState} State
  * @type {(store: object) => object}
  */
-const callback = (store) => { store.previewReducer }
+const callback = (store) => store.previewReducer 
 
 /**  
  * @type {() => State}
