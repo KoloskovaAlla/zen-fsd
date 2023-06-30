@@ -117,3 +117,20 @@ export interface HomePageState {
   homePageData: null | HomePage,
   errorMessage: string,
 };
+
+export interface Client {
+  alternate: string;
+  source: string;
+};
+
+export interface Clients {
+  darkThemeClients: Client[];
+  lighThemeClinets: Client[];
+};
+
+export interface ClientsState {
+  fetchClientsData?: Function;
+  isLoading: boolean;
+  clientsData: null | Clients;
+  errorMessage: string;
+};
