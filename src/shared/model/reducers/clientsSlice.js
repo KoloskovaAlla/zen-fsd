@@ -13,7 +13,7 @@ const fetchClientsData = createAsyncThunk(
     try {
       const response = await fetch(url);
       const data = await response.json();
-       if (!Object.values(data).length) throw new Error('Data is empty');
+      if (!Object.values(data).length) throw new Error('Data is empty');
       return thunkApi.fulfillWithValue(data);
     }
     catch (error) {
@@ -43,6 +43,8 @@ const clientsSlice = createSlice({
   extraReducers: {
     [fetchClientsData.pending]: (state) => {
       state.isLoading = true;
+      state.clientsData = null;
+      state.errorMessage = '';
     },
     [fetchClientsData.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
