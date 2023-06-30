@@ -177,3 +177,9 @@ export interface SliderState {
   setSlides: object;
   sliderDescription: null | string;
 };
+
+export interface ThemeState {
+  theme: string;
+  setTheme: object;
+  toggleTheme: Function;
+};
