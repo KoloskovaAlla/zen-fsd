@@ -77,3 +77,109 @@ export interface InfoState {
   info: Info;
   errorMessage: string;
 };
+
+export interface Client {
+  alternate: string;
+  source: string;
+};
+
+export interface Clients {
+  darkThemeClients: Client[];
+  lighThemeClinets: Client[];
+  name: string;
+};
+
+export interface ClientsState {
+  fetchClientsData: Function;
+  isLoading: boolean;
+  clientsData: Clients;
+  errorMessage: string;
+};
+
+export interface Link {
+  name: string;
+  url: string;
+};
+
+export interface SectionBase {
+  name: string;
+  title: Title;
+  texts: string[];
+  links?: Link[];
+  image: Image;
+}
+
+export interface Download extends SectionBase { };
+
+export interface Warranty extends SectionBase { };
+
+export interface Care extends SectionBase { };
+
+export interface Cashback {
+  name: string;
+  title: Title;
+  texts: string[];
+  buttonText: string;
+};
+
+export interface HomePage {
+  download: Download;
+  warranty: Warranty;
+  care: Care;
+  cashback: Cashback;
+};
+
+export interface HomePageState {
+  fetchHomePageData: Function;
+  isLoading: boolean,
+  homePageData: null | HomePage,
+  errorMessage: string,
+};
+
+export interface postsData {
+  buttonText: string;
+  title: Title;
+  care: Care;
+  cashback: Cashback;
+  clients: Clients;
+  warranty: Warranty;
+};
+
+export interface PostsState {
+  fetchPostsData: Function,
+  isLoading: boolean,
+  postsData: null | postsData,
+  errorMessage: string,
+};
+
+export interface PreviewDetails {
+  x: string,
+  y: string,
+  width: string,
+  height: string,
+  description: string,
+  id: number,
+};
+
+export interface PreviewState {
+  previewDetails: null | PreviewDetails,
+  setPreviewDetails: Function;
+};
+
+export interface Slide {
+  alternate: string;
+  id: number;
+  source: string;
+};
+
+export interface SliderState {
+  slides: Slide[];
+  setSlides: object;
+  sliderDescription: null | string;
+};
+
+export interface ThemeState {
+  theme: string;
+  setTheme: object;
+  toggleTheme: Function;
+};

@@ -3,12 +3,17 @@ import { useEffect } from 'react';
 import { setTheme } from '../reducers/themeSlice';
 import { useSelector } from 'react-redux';
 
-/**  
- * @returns {object}
+/** 
+ * @type {(store: object) => object}
+ */
+const callback = (store) => store.themeReducer
+
+/**
+ * @typedef {import('./types').ThemeState} State
+ * @type {() => State} 
  */
 
 export const useTheme = () => {
-  const callback = (store) => store.themeReducer
   const { theme } = useSelector(callback);
 
   useEffect(() => {

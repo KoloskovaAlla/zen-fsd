@@ -91,11 +91,11 @@ export interface SectionBase {
   image: Image;
 }
 
-export interface Download extends SectionBase{};
+export interface Download extends SectionBase { };
 
-export interface Warranty extends SectionBase{};
+export interface Warranty extends SectionBase { };
 
-export interface Care extends SectionBase{};
+export interface Care extends SectionBase { };
 
 export interface Cashback {
   name: string;
@@ -112,6 +112,7 @@ export interface HomePage {
 };
 
 export interface HomePageState {
+  fetchHomePageData?: Function;
   isLoading: boolean,
   homePageData: null | HomePage,
   errorMessage: string,

@@ -1,8 +1,12 @@
 import { useSelector } from 'react-redux';
 import { fetchClientsData } from '../reducers/clientsSlice';
 
-/**  
- * @returns {object}
+/** @type {(store: object) => object} */
+const callback = (store) => store.clientsReducer;
+
+/**
+ * @typedef {import('./types').ClientsState} State 
+ * @type {() => State}
  */
 
 export const useClients = () => {
@@ -10,7 +14,7 @@ export const useClients = () => {
     isLoading,
     clientsData,
     errorMessage
-  } = useSelector((state) => state.clientsReducer);
+  } = useSelector(callback);
 
   return {
     fetchClientsData,
