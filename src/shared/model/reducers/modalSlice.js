@@ -1,7 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+/**
+ * @typedef {import('./types').ModalState} State
+ * @type {State}
+ */
 const initialState = {
-  isModalActive: false
+  isModalActive: false,
 };
 
 export const modalSlice = createSlice({

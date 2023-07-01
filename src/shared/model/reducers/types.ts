@@ -150,3 +150,24 @@ export interface PostsState {
   postsData: null | PostsData,
   errorMessage: string,
 };
+
+export interface ModalState {
+  isModalActive: boolean;
+};
+
+
+export interface PostsData {
+  buttonText: string;
+  title: Title;
+  care: Care;
+  cashback: Cashback;
+  clients: Clients;
+  warranty: Warranty;
+};
+
+export interface PostsState {
+  etchPostsData?: Function;
+  isLoading: boolean,
+  postsData: null | PostsData,
+  errorMessage: string,
+};
