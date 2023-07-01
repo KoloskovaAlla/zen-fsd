@@ -4,7 +4,9 @@ import { API_BASE_URL } from 'shared/constants/api';
 const fetchPostsData = createAsyncThunk(
   'posts/fetchData', 
   async (_, thunkApi) => {
-    const { lang } = thunkApi.getState().langReducer;
+    /**  @type {*} */
+    const state = thunkApi.getState();
+    const { lang } = state.langReducer;
     const url = `${API_BASE_URL}/${lang}/posts/.json`;
 
     try {
@@ -15,30 +17,40 @@ const fetchPostsData = createAsyncThunk(
     }
     catch (error) {
       console.error(error);
-      return thunkApi.rejectWithValue(error.message);
+       /** @type {*} */
+      const { message } = error;
+      return thunkApi.rejectWithValue(message);
     }
   }
 );
 
+/**
+ * @typedef {import('./types').PostsState} State
+ * @type {State} 
+ */
+
 const initialState = {
   isLoading: false,
   postsData: null,
-  errorMessage: null,
+  errorMessage: '',
 };
 
 const postsSlice = createSlice({
   name: 'posts',
   initialState,
+  reducers: {},
   extraReducers: {
-    [fetchPostsData.pending]: (state) => {
+    [`${fetchPostsData.pending}`]: (state) => {
       state.isLoading = true;
+      state.postsData = null;
+      state.errorMessage = '';
     },
-    [fetchPostsData.fulfilled]: (state, { payload }) => {
+    [`${fetchPostsData.fulfilled}`]: (state, { payload }) => {
       state.isLoading = false;
       state.postsData = payload;
-      state.errorMessage = null;
+      state.errorMessage = '';
     },
-    [fetchPostsData.rejected]: (state, { payload }) => {
+    [`${fetchPostsData.rejected}`]: (state, { payload }) => {
       state.isLoading = false;
       state.postsData = null;
       state.errorMessage = payload;
