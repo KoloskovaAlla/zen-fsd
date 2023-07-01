@@ -171,3 +171,16 @@ export interface PostsState {
   postsData: null | PostsData,
   errorMessage: string,
 };
+
+export interface PreviewDetails {
+  x: string,
+  y: string,
+  width: string,
+  height: string,
+  description: string,
+  id: number,
+};
+
+export interface PreviewState {
+  previewDetails: null | PreviewDetails,
+};

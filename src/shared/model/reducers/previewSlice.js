@@ -1,5 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+/**
+ * @typedef {import('./types').PreviewState} State
+ * @type {State}
+ */
 const initialState = {
   previewDetails: null,
 };
