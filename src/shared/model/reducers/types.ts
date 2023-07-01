@@ -150,3 +150,7 @@ export interface PostsState {
   postsData: null | PostsData,
   errorMessage: string,
 };
+
+export interface ModalState {
+  isModalActive: boolean;
+};
