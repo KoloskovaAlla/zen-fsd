@@ -172,6 +172,18 @@ export interface PostsState {
   errorMessage: string,
 };
 
+export interface PreviewDetails {
+  x: string,
+  y: string,
+  width: string,
+  height: string,
+  description: string,
+  id: number,
+};
+
+export interface PreviewState {
+  previewDetails: null | PreviewDetails,
+};
 export interface Slide {
   alternate: string;
   id: number;
