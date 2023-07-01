@@ -171,3 +171,14 @@ export interface PostsState {
   postsData: null | PostsData,
   errorMessage: string,
 };
+
+export interface Slide {
+  alternate: string;
+  id: number;
+  source: string;
+};
+
+export interface SliderState {
+  slides: Slide[];
+  sliderDescription: null | string;
+};
