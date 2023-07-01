@@ -134,3 +134,7 @@ export interface ClientsState {
   clientsData: null | Clients;
   errorMessage: string;
 };
+
+export interface ModalState {
+  isModalActive: boolean;
+};
