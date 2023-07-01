@@ -1,5 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+/**
+ * @typedef {import('./types').SliderState} State
+ * @type {State}
+ */
 const initialState = {
   slides: [],
   sliderDescription: null

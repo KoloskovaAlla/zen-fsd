@@ -184,3 +184,13 @@ export interface PreviewDetails {
 export interface PreviewState {
   previewDetails: null | PreviewDetails,
 };
+export interface Slide {
+  alternate: string;
+  id: number;
+  source: string;
+};
+
+export interface SliderState {
+  slides: Slide[];
+  sliderDescription: null | string;
+};
