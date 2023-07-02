@@ -85,7 +85,7 @@ export interface Client {
 
 export interface Clients {
   darkThemeClients: Client[];
-  lighThemeClinets: Client[];
+  lightThemeClients: Client[];
   name: string;
 };
 

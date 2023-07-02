@@ -1,20 +1,18 @@
 import classes from './Clients.module.scss';
-import { useTheme, useLang, useClients } from 'shared/model/hooks'
+import { useTheme, useLang, useClients, useCurrentPage } from 'shared/model/hooks'
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 export const Clients = () => {  
   const { theme } = useTheme();
   const { lang } = useLang();
-  const [hiddenClients, setHiddenClients] = useState(false);
-  const { currentPage } = useSelector((store) => store.currentPageReducer);
+  const [hiddenClients, setHiddenClients] = useState(false);  
+  const { currentPage } = useCurrentPage();
   const dispatch = useDispatch();
 
   const {
-    fetchClientsData,
-    isLoading,
-    clientsData,
-    errorMessage,
+    fetchClientsData,  
+    clientsData,  
   } = useClients();  
 
   useEffect(() => {

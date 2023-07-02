@@ -125,7 +125,7 @@ export interface Client {
 
 export interface Clients {
   darkThemeClients: Client[];
-  lighThemeClinets: Client[];
+  lightThemeClients: Client[];
 };
 
 export interface ClientsState {
