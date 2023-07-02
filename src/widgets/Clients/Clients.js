@@ -7,7 +7,7 @@ export const Clients = () => {
   const { theme } = useTheme();
   const { lang } = useLang();
   const [hiddenClients, setHiddenClients] = useState(false);
-  const { currentPage } = useSelector((state) => state.pageReducer);
+  const { currentPage } = useSelector((store) => store.currentPageReducer);
   const dispatch = useDispatch();
 
   const {

@@ -198,3 +198,7 @@ export interface SliderState {
 export interface ThemeState {
   theme: string;
 };
+
+export interface CurrentPageState {
+   currentPage: string;
+};

@@ -4,8 +4,7 @@ import {
   themeReducer,
   modalReducer,
   previewReducer,
-  sliderReducer,
-  pageReducer,
+  sliderReducer, 
   homePageReducer,
   postsReducer,
   clientsReducer,
@@ -13,6 +12,7 @@ import {
   navReducer,  
   columnsReducer,
   infoReducer,
+  currentPageReducer,
 } from 'shared/model/reducers';
 
 const rootReducer = combineReducers({
@@ -20,8 +20,7 @@ const rootReducer = combineReducers({
   themeReducer,
   modalReducer,
   previewReducer,
-  sliderReducer,
-  pageReducer,
+  sliderReducer, 
   homePageReducer,
   clientsReducer,
   postsReducer,
@@ -29,6 +28,7 @@ const rootReducer = combineReducers({
   navReducer, 
   columnsReducer,
   infoReducer,
+  currentPageReducer,
 });
 
 export const store = configureStore({
