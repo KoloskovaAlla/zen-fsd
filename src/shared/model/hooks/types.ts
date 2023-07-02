@@ -183,3 +183,8 @@ export interface ThemeState {
   setTheme: object;
   toggleTheme: Function;
 };
+
+export interface CurrentPageState {
+  currentPage: string;
+  setCurrentPage: object;
+};
