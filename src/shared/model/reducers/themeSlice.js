@@ -1,5 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+/**
+ * @typedef {import('./types').ThemeState} State
+ * @type {State}
+ */
+
 const initialState = {
   theme: localStorage.getItem('theme') ?? 'light'
 };

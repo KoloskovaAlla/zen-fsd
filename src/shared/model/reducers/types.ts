@@ -194,3 +194,7 @@ export interface SliderState {
   slides: Slide[];
   sliderDescription: null | string;
 };
+
+export interface ThemeState {
+  theme: string;
+};
