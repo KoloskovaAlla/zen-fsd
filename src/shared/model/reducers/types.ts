@@ -193,6 +193,7 @@ export interface Slide {
 export interface SliderState {
   slides: Slide[];
   sliderDescription: null | string;
+  setSlides?: Function;
 };
 
 export interface ThemeState {

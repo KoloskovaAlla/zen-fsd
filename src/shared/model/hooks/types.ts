@@ -174,7 +174,7 @@ export interface Slide {
 
 export interface SliderState {
   slides: Slide[];
-  setSlides: object;
+  setSlides: any;
   sliderDescription: null | string;
 };
 
