@@ -62,6 +62,3 @@ const infoSlice = createSlice({
 
 export { getInfo };
 export const { reducer: infoReducer } = infoSlice;
-
-  //  if (!data) throw new Error('Failed to fetch');
-  //     return thunkApi.fulfillWithValue(data);
