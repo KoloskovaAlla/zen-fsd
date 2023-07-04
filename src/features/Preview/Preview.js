@@ -11,6 +11,8 @@ export const Preview = ({ imageDetails }) => {
   const { setSlides } = useSlider();
   const { setPreviewDetails } = usePreview();
 
+  console.log(imageDetails);
+
   useEffect(() => {
     dispatch(setSlides(imageDetails));
   }, [imageDetails, setSlides, dispatch]);
