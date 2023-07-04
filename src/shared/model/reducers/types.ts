@@ -200,7 +200,7 @@ export interface Slide {
 export interface SliderState {
   slides: Slide[];
   sliderDescription: null | string;
-  setSlides?: Function;
+  setSlides?: any;
 };
 
 export interface ThemeState {
@@ -208,5 +208,5 @@ export interface ThemeState {
 };
 
 export interface CurrentPageState {
-   currentPage: string;
+  currentPage: string;
 };
