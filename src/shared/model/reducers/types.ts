@@ -151,8 +151,15 @@ export interface PostsState {
   errorMessage: string,
 };
 
+export interface ModalData {
+
+};
+
 export interface ModalState {
   isModalActive: boolean;
+  isLoading: boolean;
+  modalData: null | ModalData;
+  errorMessage: string;
 };
 
 
