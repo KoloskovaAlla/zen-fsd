@@ -12,7 +12,7 @@ const fetchHomePageData = createAsyncThunk(
     try {
       const response = await fetch(url);
       const pageData = await response.json();
-      if (!Object.values(pageData).length) throw new Error('Data is empty');
+      if (!pageData || !Object.values(pageData).length) throw new Error('Data is empty');
       return thunkApi.fulfillWithValue(pageData);
     }
     catch (error) {
