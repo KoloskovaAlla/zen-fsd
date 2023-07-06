@@ -188,3 +188,16 @@ export interface CurrentPageState {
   currentPage: string;
   setCurrentPage: object;
 };
+
+export interface ModalData {
+
+};
+
+export interface ModalState {
+  isModalActive: boolean;
+  setIsModalActive: any;
+  isLoading: boolean;
+  modalData: ModalData;
+  errorMessage: string;
+  getModal: Function;
+}
