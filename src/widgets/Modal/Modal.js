@@ -40,11 +40,11 @@ export const Modal = () => {
           <h2 className={classes.title}>{modalData?.title?.content}</h2>
         {/* )} */}
         {/* {!isDataSent && */}
-          <Form
-            // isDataSent={isDataSent}
+          {/* <Form */}
+            {/* // isDataSent={isDataSent} */}
             setIsDataSent={setIsDataSent}
-            // form={form}
-          />
+            {/* // form={form} */}
+          {/* /> */}
         {/* } */}
       </div>
     </div>
