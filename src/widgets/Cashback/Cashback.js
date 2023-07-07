@@ -1,8 +1,15 @@
+import { useModal } from 'shared/model/hooks';
+import { useDispatch } from 'react-redux';
 import classes from './Cashback.module.scss';
 
 export const Cashback = ({ data }) => {
   const { title } = data;
-  const handleOrderClick = () => { }
+  const dispatch = useDispatch();
+  const { setIsModalActive } = useModal();
+
+  const handleOrderClick = () => { 
+    dispatch(setIsModalActive(true));
+  }
 
   return (
     <section className={classes.section}>

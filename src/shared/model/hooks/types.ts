@@ -190,7 +190,7 @@ export interface CurrentPageState {
 };
 
 export interface ModalData {
-
+ title: Title;
 };
 
 export interface ModalState {
