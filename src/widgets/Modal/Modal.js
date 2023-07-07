@@ -8,6 +8,10 @@ import { classNames } from 'shared/lib/classNames';
 export const Modal = () => { 
   const { modalData, getModal, isModalActive, setIsModalActive } = useModal();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (modalData) console.log(modalData.title);
+  }, [modalData]);
  
   useEffect(() => {
     dispatch(getModal());
@@ -25,27 +29,25 @@ export const Modal = () => {
     event.stopPropagation()
   }
 
-  return (
+  if (modalData) return (
    <div onClick={handleModalClick} className={classNameModal}>
       <div onClick={handleBodyClick} className={classes.body}>
-        {isDataSent && <span>Данные отправлены успешно!</span>}
+        {/* {isDataSent && <span>Данные отправлены успешно!</span>} */}
 
-        {!isDataSent && <Close />}
+        {/* {!isDataSent && <Close />} */}
 
-        {title && !isDataSent && (
-          <Title
-            titleData={title}
-          />
-        )}
-
-        {!isDataSent &&
+        {/* {!isDataSent && ( */}
+          <h2 className={classes.title}>{modalData?.title?.content}</h2>
+        {/* )} */}
+        {/* {!isDataSent && */}
           <Form
-            isDataSent={isDataSent}
+            // isDataSent={isDataSent}
             setIsDataSent={setIsDataSent}
-            form={form}
+            // form={form}
           />
-        }
+        {/* } */}
       </div>
     </div>
+  // <div>Модалка</div>
   );
 };

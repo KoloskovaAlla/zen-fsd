@@ -16,8 +16,7 @@ export const Preview = ({ imageDetails }) => {
     dispatch(setSlides(imageDetails));
   }, [imageDetails, setSlides, dispatch]);
 
-  const handlePreviewClick = (event) => {
-     dispatch(setIsModalActive(true));
+  const handlePreviewClick = (event) => {     
     const details = event.currentTarget.getBoundingClientRect();
 
     const x = details.left;
