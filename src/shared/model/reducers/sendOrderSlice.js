@@ -54,4 +54,5 @@ const sendOrderSlice = createSlice({
   }
 });
 
+export { sendOrder };
 export const { reducer: sendOrderReducer } = sendOrderSlice;
