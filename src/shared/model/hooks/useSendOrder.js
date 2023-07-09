@@ -1,5 +1,4 @@
 import { useSelector } from 'react-redux';
-import { useEffect } from 'react';
 import { sendOrder } from '../reducers/sendOrderSlice';
 
 /** @type {(store: object) => object} */
