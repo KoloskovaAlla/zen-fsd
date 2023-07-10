@@ -7,17 +7,13 @@ import { classNames } from 'shared/lib/classNames';
 import {useSendOrder} from 'shared/model/hooks/useSendOrder';
 
 export const Order = () => { 
-  const { modalData:orderData, getModal, isModalActive, setIsModalActive } = useModal();
+  const { modalData:orderData, getModal:getOrder, isModalActive, setIsModalActive } = useModal();
   const { isOrderSended, sendOrder } = useSendOrder();
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (orderData) console.log(orderData.title);
-  }, [orderData]);
  
   useEffect(() => {
-    dispatch(getModal());
-  }, [dispatch, getModal]);
+    dispatch(getOrder());
+  }, [dispatch, getOrder]);
 
   const classNameModal = classNames(classes.modal, {
     [classes.active]: isModalActive,
@@ -45,7 +41,7 @@ export const Order = () => {
           <Form 
             isOrderSended={isOrderSended}
             sendOrder={sendOrder}
-            form={form} 
+            orderData={orderData}
           />
         } 
       </div>
