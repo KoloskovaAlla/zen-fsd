@@ -11,7 +11,7 @@ export const Form = () => {
         />
       )}
 
-      {inputTel && (
+      {/* {inputTel && (
         <FieldTel
           tel={tel}
           onTelChange={handleTelChange}
@@ -40,7 +40,7 @@ export const Form = () => {
       <Submit
         buttonText={buttonText}
         disabled={isSubmitDisabled}
-      />
+      /> */}
     </form>  
   );
 };
