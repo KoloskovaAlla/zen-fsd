@@ -1,1 +1,1 @@
-export { Modal } from './Modal';
+export { Order } from './Order';

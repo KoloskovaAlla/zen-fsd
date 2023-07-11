@@ -1,19 +1,19 @@
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { getModal, setIsModalActive } from '../reducers/modalSlice';
+import { getOrder, setIsModalActive } from '../reducers/orderSlice';
 
 /** @type {(store: object) => object} */
-const callback = (store) => store.modalReducer;
+const callback = (store) => store.orderReducer;
 
 /**
- * @typedef {import('./types').ModalState} State
+ * @typedef {import('./types').OrderState} State
  * @type {() => State}
  */
-export const useModal = () => {
+export const useOrder = () => {
   const {
     isModalActive,
     isLoading,
-    modalData,
+    orderData,
     errorMessage,
   } = useSelector(callback);
 
@@ -25,8 +25,8 @@ export const useModal = () => {
     isModalActive,
     setIsModalActive,
     isLoading,
-    modalData,
+    orderData,
     errorMessage,
-    getModal,   
+    getOrder,
   };
 };

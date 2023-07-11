@@ -2,8 +2,8 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { API_BASE_URL } from 'shared/constants/api';
 
 /** @type {any} */
-const getModal = createAsyncThunk(
-  'modal/getData',
+const getOrder = createAsyncThunk(
+  'order/getData',
   async (_, thunkApi) => {
     /**  @type {*} */
     const state = thunkApi.getState()
@@ -26,43 +26,43 @@ const getModal = createAsyncThunk(
 );
 
 /**
- * @typedef {import('./types').ModalState} State
+ * @typedef {import('./types').OrderState} State
  * @type {State}
  */
 const initialState = {
   isModalActive: false,
   isLoading: false,
-  modalData: null,
+  orderData: null,
   errorMessage: '',
 };
 
-export const modalSlice = createSlice({
-  name: 'modal',
+export const orderSlice = createSlice({
+  name: 'order',
   initialState,
   reducers: {
     setIsModalActive: (state, { payload }) => {
       state.isModalActive = payload;
     },
   },
-   extraReducers: {
-    [`${getModal.pending}`]: (state) => {
+  extraReducers: {
+    [`${getOrder.pending}`]: (state) => {
       state.isLoading = true;
-      state.modalData = {};
+      state.orderData = null;
       state.errorMessage = '';
     },
-    [`${getModal.fulfilled}`]: (state, { payload }) => {
+    [`${getOrder.fulfilled}`]: (state, { payload }) => {
       state.isLoading = false;
-      state.modalData = payload;
+      state.orderData = payload;
       state.errorMessage = '';
     },
-    [`${getModal.rejected}`]: (state, { payload }) => {
+    [`${getOrder.rejected}`]: (state, { payload }) => {
       state.isLoading = false;
-      state.modalData = {};
+      state.orderData = {};
       state.errorMessage = payload;
     },
   }
 });
 
-export { getModal}
-export const { reducer: modalReducer } = modalSlice;
-export const { setIsModalActive } = modalSlice.actions;
+export { getOrder }
+export const { reducer: orderReducer } = orderSlice;
+export const { setIsModalActive } = orderSlice.actions;

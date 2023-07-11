@@ -2,7 +2,7 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import {
   langReducer,
   themeReducer,
-  modalReducer,
+  orderReducer,
   previewReducer,
   sliderReducer,
   homePageReducer,
@@ -12,12 +12,13 @@ import {
   columnsReducer,
   infoReducer,
   currentPageReducer,
+  sendOrderReducer,
 } from 'shared/model/reducers';
 
 const rootReducer = combineReducers({
   langReducer,
   themeReducer,
-  modalReducer,
+  orderReducer,
   previewReducer,
   sliderReducer,
   homePageReducer,
@@ -27,6 +28,7 @@ const rootReducer = combineReducers({
   columnsReducer,
   infoReducer,
   currentPageReducer,
+  sendOrderReducer,
 });
 
 export const store = configureStore({

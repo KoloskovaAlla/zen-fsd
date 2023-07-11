@@ -189,15 +189,40 @@ export interface CurrentPageState {
   setCurrentPage: object;
 };
 
-export interface ModalData {
- title: Title;
+export interface InputName {
+
 };
 
-export interface ModalState {
+export interface InputTel {
+
+};
+
+export interface InputEmail {
+
+};
+
+export interface Connect {
+  
+};
+
+export interface Connection {
+  
+};
+
+export interface OrderData {
+ title: Title;
+ inputName: InputName;
+ inputTel: InputTel;
+ inputEmail: InputEmail;
+ connect: Connect;
+ connection: Connection;
+};
+
+export interface OrderState {
   isModalActive: boolean;
   setIsModalActive: any;
   isLoading: boolean;
-  modalData: ModalData;
+  orderData: OrderData;
   errorMessage: string;
-  getModal: Function;
+  getOrder: Function;
 }

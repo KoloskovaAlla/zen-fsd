@@ -9,4 +9,4 @@ export { useNav } from './useNav';
 export { useColumns } from './useColumns';
 export { useInfo } from './useInfo';
 export { useCurrentPage } from './useCurrentPage';
-export { useModal } from './useModal';
+export { useOrder } from './useOrder';

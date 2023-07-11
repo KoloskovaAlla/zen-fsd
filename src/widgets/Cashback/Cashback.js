@@ -1,13 +1,13 @@
-import { useModal } from 'shared/model/hooks';
+import { useOrder } from 'shared/model/hooks';
 import { useDispatch } from 'react-redux';
 import classes from './Cashback.module.scss';
 
 export const Cashback = ({ data }) => {
   const { title } = data;
   const dispatch = useDispatch();
-  const { setIsModalActive } = useModal();
+  const { setIsModalActive } = useOrder();
 
-  const handleOrderClick = () => { 
+  const handleOrderClick = () => {
     dispatch(setIsModalActive(true));
   }
 
