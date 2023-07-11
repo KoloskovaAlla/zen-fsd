@@ -155,10 +155,10 @@ export interface ModalData {
 
 };
 
-export interface ModalState {
+export interface OrderState {
   isModalActive: boolean;
   isLoading: boolean;
-  modalData: null | ModalData;
+  orderData: null | ModalData;
   errorMessage: string;
 };
 

@@ -1,6 +1,7 @@
 import './styles/index.scss';
 import { Router } from 'pages';
-import { Header, Footer, Clients, Posts, Modal } from 'widgets';
+import { Header, Footer, Clients, Posts } from 'widgets';
+import { Order } from 'features';
 import { useSelector } from 'react-redux';
 import { useModal } from 'shared/model/hooks';
 
@@ -18,7 +19,7 @@ export const App = () => {
       <Posts />
       <Clients />
       <Footer />
-      {isModalActive &&  <Modal />}     
+      {isModalActive &&  <Order />}     
     </div>
   );
 };

@@ -5,11 +5,16 @@ import { useModal} from 'shared/model/hooks';
 import {useDispatch} from 'react-redux';
 import { classNames } from 'shared/lib/classNames';
 import {useSendOrder} from 'shared/model/hooks/useSendOrder';
+import { FieldName, FieldTel, FieldEmail } from 'shared/ui';
 
 export const Order = () => { 
-  const { modalData:orderData, getModal:getOrder, isModalActive, setIsModalActive } = useModal();
+  const { orderData, getOrder, isModalActive, setIsModalActive } = useModal();
   const { isOrderSended, sendOrder } = useSendOrder();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (orderData) console.log(orderData);
+  }, [orderData]);
  
   useEffect(() => {
     dispatch(getOrder());
@@ -27,23 +32,69 @@ export const Order = () => {
     event.stopPropagation()
   }
 
+  const handleFormInput = () => {};
+
+  const handleFormSubmit = () => {};
+
   if (orderData) return (
    <div onClick={handleModalClick} className={classNameModal}>
-      <div onClick={handleBodyClick} className={classes.body}>
-        {isOrderSended && <span>Данные отправлены успешно!</span>}
-
-        {!isOrderSended && <Close />}
+    <div onClick={handleBodyClick} className={classes.body}>
+      {isOrderSended && <span>Данные отправлены успешно!</span>}
+        {/* {!isOrderSended && <Close />} */}
 
         {!isOrderSended && (
           <h2 className={classes.title}>{orderData?.title?.content}</h2>
         )} 
-        {!isOrderSended &&
-          <Form 
-            isOrderSended={isOrderSended}
-            sendOrder={sendOrder}
-            orderData={orderData}
-          />
-        } 
+
+        {!isOrderSended && (
+          <form 
+            onInput={handleFormInput} 
+            onSubmit={handleFormSubmit} 
+            className={classes.form}
+          >
+            {/* {orderData?.inputName && (
+              <FieldName
+                name={name}
+                setName={setName}
+                onNameChange={handleNameChange}
+                isValidName={isValidName}
+                placeholder='Name'
+              />
+            )} */}
+
+            {/* {inputTel && (
+              <FieldTel
+                tel={tel}
+                onTelChange={handleTelChange}
+                isValidTel={isValidTel}
+                placeholder='Telphone number'
+              />
+            )} */}
+
+            {/* {inputEmail && (
+              <FieldEmail
+                email={email}
+                onEmailChange={handleEmailChange}
+                isValidEmail={isValidEmail}
+                placeholder='Email'
+              />
+            )} */}
+
+            {/* <Connection
+              connect={connect}
+              onConnectChange={handleConnectChange}
+              isValidConnection={isValidConnect}
+              connection={connection}
+            /> */}
+
+            {/* <Policy inputPolicy={inputPolicy} isChecked={isChecked} setIsChecked={setIsChecked} /> */}
+
+            {/* <Submit
+              buttonText={buttonText}
+              disabled={isSubmitDisabled}
+            /> */}
+          </form>
+        )} 
       </div>
     </div>  
   );

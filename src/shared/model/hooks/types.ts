@@ -189,15 +189,15 @@ export interface CurrentPageState {
   setCurrentPage: object;
 };
 
-export interface ModalData {
+export interface OrderData {
  title: Title;
 };
 
-export interface ModalState {
+export interface OrderState {
   isModalActive: boolean;
   setIsModalActive: any;
   isLoading: boolean;
-  modalData: ModalData;
+  orderData: OrderData;
   errorMessage: string;
-  getModal: Function;
+  getOrder: Function;
 }
