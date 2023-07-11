@@ -189,8 +189,33 @@ export interface CurrentPageState {
   setCurrentPage: object;
 };
 
+export interface InputName {
+
+};
+
+export interface InputTel {
+
+};
+
+export interface InputEmail {
+
+};
+
+export interface Connect {
+  
+};
+
+export interface Connection {
+  
+};
+
 export interface OrderData {
  title: Title;
+ inputName: InputName;
+ inputTel: InputTel;
+ inputEmail: InputEmail;
+ connect: Connect;
+ connection: Connection;
 };
 
 export interface OrderState {
