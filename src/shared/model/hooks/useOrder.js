@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { getOrder, setIsModalActive } from '../reducers/orderSlice';
 
 /** @type {(store: object) => object} */
-const callback = (store) => store.modalReducer;
+const callback = (store) => store.orderReducer;
 
 /**
  * @typedef {import('./types').OrderState} State
@@ -27,6 +27,6 @@ export const useOrder = () => {
     isLoading,
     orderData,
     errorMessage,
-    getOrder,   
+    getOrder,
   };
 };

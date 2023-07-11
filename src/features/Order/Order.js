@@ -1,21 +1,21 @@
-import {useEffect} from 'react';
+import { useEffect } from 'react';
 import classes from './Order.module.scss';
 import { IconClose } from 'shared/icons';
-import { useModal} from 'shared/model/hooks';
-import {useDispatch} from 'react-redux';
+import { useOrder } from 'shared/model/hooks';
+import { useDispatch } from 'react-redux';
 import { classNames } from 'shared/lib/classNames';
-import {useSendOrder} from 'shared/model/hooks/useSendOrder';
+import { useSendOrder } from 'shared/model/hooks/useSendOrder';
 import { FieldName, FieldTel, FieldEmail } from 'shared/ui';
 
-export const Order = () => { 
-  const { orderData, getOrder, isModalActive, setIsModalActive } = useModal();
+export const Order = () => {
+  const { orderData, getOrder, isModalActive, setIsModalActive } = useOrder();
   const { isOrderSended, sendOrder } = useSendOrder();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (orderData) console.log(orderData);
+    if (orderData) console.log(orderData.inputName);
   }, [orderData]);
- 
+
   useEffect(() => {
     dispatch(getOrder());
   }, [dispatch, getOrder]);
@@ -32,24 +32,24 @@ export const Order = () => {
     event.stopPropagation()
   }
 
-  const handleFormInput = () => {};
+  const handleFormInput = () => { };
 
-  const handleFormSubmit = () => {};
+  const handleFormSubmit = () => { };
 
   if (orderData) return (
-   <div onClick={handleModalClick} className={classNameModal}>
-    <div onClick={handleBodyClick} className={classes.body}>
-      {isOrderSended && <span>Данные отправлены успешно!</span>}
+    <div onClick={handleModalClick} className={classNameModal}>
+      <div onClick={handleBodyClick} className={classes.body}>
+        {isOrderSended && <span>Данные отправлены успешно!</span>}
         {/* {!isOrderSended && <Close />} */}
 
         {!isOrderSended && (
           <h2 className={classes.title}>{orderData?.title?.content}</h2>
-        )} 
+        )}
 
         {!isOrderSended && (
-          <form 
-            onInput={handleFormInput} 
-            onSubmit={handleFormSubmit} 
+          <form
+            onInput={handleFormInput}
+            onSubmit={handleFormSubmit}
             className={classes.form}
           >
             {/* {orderData?.inputName && (
@@ -94,8 +94,8 @@ export const Order = () => {
               disabled={isSubmitDisabled}
             /> */}
           </form>
-        )} 
+        )}
       </div>
-    </div>  
+    </div>
   );
 };

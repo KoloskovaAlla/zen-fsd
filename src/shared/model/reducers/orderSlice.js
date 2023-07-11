@@ -44,10 +44,10 @@ export const orderSlice = createSlice({
       state.isModalActive = payload;
     },
   },
-   extraReducers: {
+  extraReducers: {
     [`${getOrder.pending}`]: (state) => {
       state.isLoading = true;
-      state.orderData = {};
+      state.orderData = null;
       state.errorMessage = '';
     },
     [`${getOrder.fulfilled}`]: (state, { payload }) => {
