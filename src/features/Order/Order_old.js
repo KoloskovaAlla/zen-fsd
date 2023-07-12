@@ -79,9 +79,12 @@ export const Order = () => {
     {[classes.succes]: isValidName},
     []
   );
+  // return (
+  //   <div>Модалка</div>
+  // )
  
-  if (!orderData) return null;
-  return (
+   
+  if (orderData) return (
     <div onClick={handleModalClick} className={classNameModal}>
       <div onClick={handleBodyClick} className={classes.body}>
         {isOrderSended && <span>Данные отправлены успешно!</span>}
@@ -97,7 +100,7 @@ export const Order = () => {
             onSubmit={handleFormSubmit}
             className={classes.form}
           >
-            {orderData?.inputName && (
+            {/* {orderData?.inputName && (
               <label className={className}>
                 <input
                   type='text'
@@ -107,43 +110,43 @@ export const Order = () => {
                 />
                 {!isValidName && name && <span>Некорректное имя</span>}
               </label>
-            )}
+            )} */}
 
-          {orderData?.inputName && (
+          {/* {orderData?.inputName && (
             <Field 
               inputDetails={orderData.inputName}
               parentClassName={classes.name} 
               value={name}
               setValue={setName}
             />
-          )}
+          )} */}
 
-          {orderData?.inputTel && (
+          {/* {orderData?.inputTel && (
             <Field 
               inputDetails={orderData.inputTel}
               parentClassName={classes.tel} 
               value={tel}
               setValue={setTel}
             />
-          )}
+          )} */}
 
-          {orderData?.inputEmail && (
+          {/* {orderData?.inputEmail && (
             <Field 
               inputDetails={orderData.inputEmail}
               parentClassName={classes.email} 
               value={email}
               setValue={setEmail}
             />
-          )}     
+          )}      */}
 
-          {orderData?.inputEmail && (
+          {/* {orderData?.inputEmail && (
               <FieldEmail
                 email={email}
                 onEmailChange={handleEmailChange}
                 isValidEmail={isValidEmail}
                 placeholder='Email'
               />
-          )}
+          )} */}
 
           {/* <Connection
               connect={connect}
