@@ -196,11 +196,15 @@ export interface InputName {
 };
 
 export interface InputTel {
-
+  type: string;
+  placeholder: string;
+  isValidTel: boolean;
 };
 
 export interface InputEmail {
-
+  type: string;
+  placeholder: string;
+  isValidEmail: boolean;
 };
 
 export interface Connect {

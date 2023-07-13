@@ -105,8 +105,8 @@ export const Order = () => {
                 label=''
                 value={name}
                 isValid={isValidName}
-                // invalidMessage='Incorrect name'
-                invalidMessage={orderData.inputName.invalidMessage}
+                invalidMessage='Incorrect name'
+                // invalidMessage={orderData.inputName.invalidMessage}
                 onChange={onNameChange}              
               />
             )}
@@ -119,8 +119,8 @@ export const Order = () => {
                 label=''
                 value={tel}
                 isValid={isValidTel}
-                // invalidMessage='Incorrect number'
-                invalidMessage={orderData.inputTel.invalidMessage}
+                invalidMessage='Incorrect number'
+                // invalidMessage={orderData.inputTel.invalidMessage}
                 onChange={onTelChange}              
               />
             )}
