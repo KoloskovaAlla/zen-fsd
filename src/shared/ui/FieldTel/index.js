@@ -1,1 +1,0 @@
-export { FieldTel } from './FieldTel';

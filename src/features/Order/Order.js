@@ -5,7 +5,6 @@ import { useOrder } from 'shared/model/hooks';
 import { useDispatch } from 'react-redux';
 import { classNames } from 'shared/lib/classNames';
 import { useSendOrder } from 'shared/model/hooks/useSendOrder';
-import { FieldName, FieldTel, FieldEmail, Connection } from 'shared/ui';
 import { Field } from 'entites';
 import { useState } from 'react';
 import { validateName, validateTel, validateEmail, validateConnect } from 'shared/lib';
@@ -99,42 +98,42 @@ export const Order = () => {
 
             {orderData?.inputName && (
               <Field 
-                parentClassName={name} 
+                className={name} 
                 type={orderData.inputName.type}
                 placeholder={orderData.inputName.placeholder}
                 label=''
                 value={name}
                 isValid={isValidName}
-                // invalidMessage='Incorrect name'
-                invalidMessage={orderData.inputName.invalidMessage}
+                invalidMessage='Incorrect name'
+                // invalidMessage={orderData.inputName.invalidMessage}
                 onChange={onNameChange}              
               />
             )}
 
             {orderData?.inputTel && (
               <Field 
-                parentClassName={tel} 
+                className={tel} 
                 type={orderData.inputTel.type}
                 placeholder={orderData.inputTel.placeholder}
                 label=''
                 value={tel}
                 isValid={isValidTel}
-                // invalidMessage='Incorrect number'
-                invalidMessage={orderData.inputTel.invalidMessage}
+                invalidMessage='Incorrect number'
+                // invalidMessage={orderData.inputTel.invalidMessage}
                 onChange={onTelChange}              
               />
             )}
           
             {orderData?.inputEmail && (
               <Field 
-                parentClassName={email} 
+                className={email} 
                 type={orderData.inputEmail.type}
                 placeholder={orderData.inputEmail.placeholder}
                 label=''
                 value={email}
                 isValid={isValidEmail}
-                // invalidMessage='Incorrect name'
-                invalidMessage={orderData.inputEmail.invalidMessage}
+                invalidMessage='Incorrect name'
+                // invalidMessage={orderData.inputEmail.invalidMessage}
                 onChange={onEmailChange}              
               />
             )}
