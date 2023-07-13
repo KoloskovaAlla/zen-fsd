@@ -1,4 +1,4 @@
-
+@import 'shared/constants/styles/breakpoints';
 
 .modal {
   // display: flex;
@@ -116,5 +116,26 @@
       z-index: -1;
       //background: #ee82ee;  
     }
+  }
+}
+
+.body {
+  position: absolute;
+  bottom: -100%;
+  // bottom: 80%;
+  left: 50%;
+  overflow: hidden;
+  padding: 30px 20px;
+  background: var(--bg-color);
+  border: var(--color-border);
+  border-radius: 10px;
+  transform: translate(-50%, 50%);
+  transition: all .5s;
+  width: 90%;
+  z-index: 1;
+
+  @media (min-width: $breakpoint_md) {
+    padding: 30px 25px;
+    width: 400px;
   }
 }

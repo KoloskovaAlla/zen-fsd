@@ -1,28 +1,17 @@
-export const Field = ({inputDetails, parentClassName, value, setValue}) => {
+export const Field = ({parentClassName, type, placeholder, label, value, isValid, invalidMessage, onChange}) => {
   const className = parentClassName
     ? `${parentClassName}__field`
-    : 'field'
-
-  const {type, placeholder} = inputDetails
-
-  const handleNameChange = (event) => {
-    setValue(event.target.value) 
-    
-    switch (type) {
-      default:
-        // handleTextChange()
-        break
-      case 'tel':
-        // handleTelChange()
-        break
-      case 'email':
-        // handleEmailChange()
-    }
-  }
+    : 'field'  
+  
+  const handleChange = (event) => {
+    const value = event.target.value;
+    onChange(value);
+  };
 
   return (
     <label className={className}>
-      <input onChange={handleNameChange} type={type} placeholder={placeholder} />
+      <input value={value} onChange={handleChange} type={type} placeholder={placeholder} />
+      {!isValid && <span>{invalidMessage}</span>}
     </label>
   )
 };
