@@ -190,7 +190,9 @@ export interface CurrentPageState {
 };
 
 export interface InputName {
-
+  type: string;
+  placeholder: string;
+  isValidName: boolean;
 };
 
 export interface InputTel {
