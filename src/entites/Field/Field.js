@@ -1,7 +1,5 @@
-export const Field = ({parentClassName, type, placeholder, label, value, isValid, invalidMessage, onChange}) => {
-  const className = parentClassName
-    ? `${parentClassName}__field`
-    : 'field'  
+export const Field = ({className, type, placeholder, label, value, isValid, invalidMessage, onChange}) => {
+ 
   
   const handleChange = (event) => {
     const value = event.target.value;
