@@ -193,18 +193,21 @@ export interface InputName {
   type: string;
   placeholder: string;
   isValidName: boolean;
+  invalidMessage: string;
 };
 
 export interface InputTel {
   type: string;
   placeholder: string;
   isValidTel: boolean;
+  invalidMessage: string;
 };
 
 export interface InputEmail {
   type: string;
   placeholder: string;
   isValidEmail: boolean;
+  invalidMessage: string;
 };
 
 export interface Connect {

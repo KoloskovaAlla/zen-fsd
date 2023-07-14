@@ -98,42 +98,42 @@ export const Order = () => {
 
             {orderData?.inputName && (
               <Field 
-                className={name} 
+                className={classes.name}
                 type={orderData.inputName.type}
                 placeholder={orderData.inputName.placeholder}
                 label=''
                 value={name}
                 isValid={isValidName}
-                invalidMessage='Incorrect name'
-                // invalidMessage={orderData.inputName.invalidMessage}
+                // invalidMessage='Incorrect name'
+                invalidMessage={orderData.inputName.invalidMessage}
                 onChange={onNameChange}              
               />
             )}
 
             {orderData?.inputTel && (
               <Field 
-                className={tel} 
+                className={classes.tel} 
                 type={orderData.inputTel.type}
                 placeholder={orderData.inputTel.placeholder}
                 label=''
                 value={tel}
                 isValid={isValidTel}
-                invalidMessage='Incorrect number'
-                // invalidMessage={orderData.inputTel.invalidMessage}
+                // invalidMessage='Incorrect number'
+                invalidMessage={orderData.inputTel.invalidMessage}
                 onChange={onTelChange}              
               />
             )}
           
             {orderData?.inputEmail && (
               <Field 
-                className={email} 
+                className={classes.email} 
                 type={orderData.inputEmail.type}
                 placeholder={orderData.inputEmail.placeholder}
                 label=''
                 value={email}
                 isValid={isValidEmail}
-                invalidMessage='Incorrect name'
-                // invalidMessage={orderData.inputEmail.invalidMessage}
+                // invalidMessage='Incorrect name'
+                invalidMessage={orderData.inputEmail.invalidMessage}
                 onChange={onEmailChange}              
               />
             )}
