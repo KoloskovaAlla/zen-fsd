@@ -24,9 +24,9 @@ export const Order = () => {
   const [connect, setConnect] = useState('')
   const [isValidConnect, setIsValidConnect] = useState(true)
 
-  useEffect(() => {
-    if (orderData) console.log(orderData.inputName);
-  }, [orderData]);
+  // useEffect(() => {
+  //   if (orderData) console.log(orderData.connection);
+  // }, [orderData]);
 
   useEffect(() => {
     dispatch(getOrder());
@@ -141,6 +141,19 @@ export const Order = () => {
               isValidConnect={isValidConnect}
               connection={orderData?.connection}
           /> */}
+
+            {orderData?.inputEmail && (
+              <Field 
+                className={classes.email} 
+                type={orderData.inputEmail.type}
+                placeholder={orderData.inputEmail.placeholder}
+                label=''
+                value={email}
+                isValid={isValidEmail}               
+                invalidMessage={orderData.inputEmail.invalidMessage}
+                onChange={onEmailChange}              
+              />
+            )}  
 
             {/* <Policy inputPolicy={inputPolicy} isChecked={isChecked} setIsChecked={setIsChecked} /> */}
 
