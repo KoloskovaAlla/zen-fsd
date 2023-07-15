@@ -5,7 +5,7 @@ import { useOrder } from 'shared/model/hooks';
 import { useDispatch } from 'react-redux';
 import { classNames } from 'shared/lib/classNames';
 import { useSendOrder } from 'shared/model/hooks/useSendOrder';
-import { Field } from 'entites';
+import { Field } from '../../entities';
 import { useState } from 'react';
 import { validateName, validateTel, validateEmail, validateConnect } from 'shared/lib';
 
