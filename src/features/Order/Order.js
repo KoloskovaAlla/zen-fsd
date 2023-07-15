@@ -103,8 +103,7 @@ export const Order = () => {
                 placeholder={orderData.inputName.placeholder}
                 label=''
                 value={name}
-                isValid={isValidName}
-                // invalidMessage='Incorrect name'
+                isValid={isValidName}                
                 invalidMessage={orderData.inputName.invalidMessage}
                 onChange={onNameChange}              
               />
@@ -117,8 +116,7 @@ export const Order = () => {
                 placeholder={orderData.inputTel.placeholder}
                 label=''
                 value={tel}
-                isValid={isValidTel}
-                // invalidMessage='Incorrect number'
+                isValid={isValidTel}                
                 invalidMessage={orderData.inputTel.invalidMessage}
                 onChange={onTelChange}              
               />
@@ -131,16 +129,11 @@ export const Order = () => {
                 placeholder={orderData.inputEmail.placeholder}
                 label=''
                 value={email}
-                isValid={isValidEmail}
-                // invalidMessage='Incorrect name'
+                isValid={isValidEmail}               
                 invalidMessage={orderData.inputEmail.invalidMessage}
                 onChange={onEmailChange}              
               />
-            )}
-
-        
-
-   
+            )}    
 
           {/* <Connection
               connect={connect}
