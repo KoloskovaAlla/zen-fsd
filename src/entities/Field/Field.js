@@ -1,6 +1,17 @@
 import { useEffect } from 'react';
+import { Select, InputText } from 'shared/ui';
 
-export const Field = ({className, type, placeholder, label, value, isValid, invalidMessage, onChange}) => {  
+export const Field = ({
+  className, 
+  type, 
+  placeholder, 
+  label, 
+  value, 
+  isValid, 
+  invalidMessage, 
+  onChange,
+  options
+}) => {  
   const handleChange = (event) => {
     const value = event.target.value;
     onChange(value);
@@ -10,26 +21,28 @@ export const Field = ({className, type, placeholder, label, value, isValid, inva
     case 'text':
       return (
       <label className={className}>
-        <input value={value} onChange={handleChange} type={type} placeholder={placeholder} />
+        <InputText
+          value={value} 
+          onChange={onChange} 
+          type={type} 
+          placeholder={placeholder}  
+        />
+     
         {!isValid && <span>{invalidMessage}</span>}
       </label>
       );    
-    // case 'select': 
-    //   return (
-    //     <select
-    //       value={value}
-    //       onChange={handleChange} 
-    //     >
-    //       <option value=''></option>
-    //       {options.length > 0 && (options.map((option, index) =>
-    //         <option value={option.value} key={index}>
-    //           {option.content}
-    //         </option>
-    //       ))}
-    //     </select>
-    //   );
+    case 'select': 
+      return (
+        <Select 
+          options={options} 
+          className={className} 
+          onChange={onChange} 
+          value={value} />
+      )     
     default:
-      return ''   
+      return (
+        <div></div>
+      )  
   }
 
   // return (

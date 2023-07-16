@@ -21,8 +21,8 @@ export const Order = () => {
   const [isValidTel, setIsValidTel] = useState(true);
   const [email, setEmail] = useState('');
   const [isValidEmail, setIsValidEmail] = useState(true);
-  const [connect, setConnect] = useState('')
-  const [isValidConnect, setIsValidConnect] = useState(true)
+  const [connection, setConnection] = useState('')
+  const [isValidConnection, setIsValidConnection] = useState(true)
 
   // useEffect(() => {
   //   if (orderData) console.log(orderData.connection);
@@ -66,10 +66,10 @@ export const Order = () => {
     setIsValidEmail(validateEmail(value));
   };
 
-  const handleConnectChange = ({ target }) => {
+  const onConnectionChange = ({ target }) => {
     const value = target.value
-    setConnect(value)
-    setIsValidConnect(validateConnect(value))
+    setConnection(value)
+    setIsValidConnection(validateConnect(value))
   }
 
   const className = classNames(
@@ -105,7 +105,8 @@ export const Order = () => {
                 value={name}
                 isValid={isValidName}                
                 invalidMessage={orderData.inputName.invalidMessage}
-                onChange={onNameChange}              
+                onChange={onNameChange}  
+                options=''            
               />
             )}
 
@@ -118,7 +119,8 @@ export const Order = () => {
                 value={tel}
                 isValid={isValidTel}                
                 invalidMessage={orderData.inputTel.invalidMessage}
-                onChange={onTelChange}              
+                onChange={onTelChange} 
+                options=''             
               />
             )}
           
@@ -131,18 +133,27 @@ export const Order = () => {
                 value={email}
                 isValid={isValidEmail}               
                 invalidMessage={orderData.inputEmail.invalidMessage}
-                onChange={onEmailChange}              
+                onChange={onEmailChange}  
+                options=''             
               />
             )}    
+          
+          {orderData?.connection?.options && (
+            <Field
+              className={classes.connection} 
+              type={orderData.connection.type}
+              placeholder={orderData.connection}
+              label=''
+              value={connection}
+              isValid={isValidConnection}               
+              invalidMessage={orderData.connection.invalidMessage}
+              onChange={onConnectionChange} 
+              options={orderData.connection.options}
+            />          
+          )}
 
-          {/* <Connection
-              connect={connect}
-              onConnectChange={handleConnectChange}
-              isValidConnect={isValidConnect}
-              connection={orderData?.connection}
-          /> */}
 
-            {orderData?.inputEmail && (
+            {/* {orderData?.inputEmail && (
               <Field 
                 className={classes.email} 
                 type={orderData.inputEmail.type}
@@ -153,7 +164,7 @@ export const Order = () => {
                 invalidMessage={orderData.inputEmail.invalidMessage}
                 onChange={onEmailChange}              
               />
-            )}  
+            )}   */}
 
             {/* <Policy inputPolicy={inputPolicy} isChecked={isChecked} setIsChecked={setIsChecked} /> */}
 

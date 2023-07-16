@@ -194,6 +194,7 @@ export interface InputName {
   placeholder: string;
   isValidName: boolean;
   invalidMessage: string;
+  options: null;
 };
 
 export interface InputTel {
@@ -201,6 +202,7 @@ export interface InputTel {
   placeholder: string;
   isValidTel: boolean;
   invalidMessage: string;
+  options: null;
 };
 
 export interface InputEmail {
@@ -208,14 +210,23 @@ export interface InputEmail {
   placeholder: string;
   isValidEmail: boolean;
   invalidMessage: string;
+  options: null;
 };
 
 export interface Connect {
-  
+ 
 };
 
+export interface Option {
+  option: string;
+}
+
 export interface Connection {
-  
+  type: string;
+  placeholder: string;
+  isValidConnection: boolean;
+  invalidMessage: string;
+  options: string[];
 };
 
 export interface OrderData {
