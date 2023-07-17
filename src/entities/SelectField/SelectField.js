@@ -1,5 +1,4 @@
 import { IconArrow } from 'shared/icons';
-import { useEffect } from 'react';
 
 export const SelectField = ({
   className,
@@ -10,9 +9,6 @@ export const SelectField = ({
   invalidMessage,
   onFieldChange
 }) => {
-  useEffect(() => {
-    console.log(options);
-  }, [options]);
   const handleChange = (event) => {
     const value = event.target.value;
     onFieldChange(value);

@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Select, InputText } from 'shared/ui';
 
-export const Field = ({
+export const TextField = ({
   className,
   type,
   placeholder,

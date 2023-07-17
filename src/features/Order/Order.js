@@ -5,7 +5,7 @@ import { useOrder } from 'shared/model/hooks';
 import { useDispatch } from 'react-redux';
 import { classNames } from 'shared/lib/classNames';
 import { useSendOrder } from 'shared/model/hooks/useSendOrder';
-import { Field, SelectField } from '../../entities';
+import { TextField, SelectField } from '../../entities';
 import { useState } from 'react';
 import { validateName, validateTel, validateEmail, validateConnect } from 'shared/lib';
 
@@ -24,9 +24,9 @@ export const Order = () => {
   const [connection, setConnection] = useState('')
   const [isValidConnection, setIsValidConnection] = useState(true)
 
-  // useEffect(() => {
-  //   if (orderData) console.log(orderData.connection);
-  // }, [orderData]);
+  useEffect(() => {
+    if (orderData) console.log(orderData.inputName.type);
+  }, [orderData]);
 
   useEffect(() => {
     dispatch(getOrder());
@@ -96,8 +96,8 @@ export const Order = () => {
             className={classes.form}
           >
 
-            {/* {orderData?.inputName && (
-              <Field
+            {orderData?.inputName && (
+              <TextField
                 className={classes.name}
                 type={orderData.inputName.type}
                 placeholder={orderData.inputName.placeholder}
@@ -110,7 +110,7 @@ export const Order = () => {
             )}
 
             {orderData?.inputTel && (
-              <Field
+              <TextField
                 className={classes.tel}
                 type={orderData.inputTel.type}
                 placeholder={orderData.inputTel.placeholder}
@@ -123,7 +123,7 @@ export const Order = () => {
             )}
 
             {orderData?.inputEmail && (
-              <Field
+              <TextField
                 className={classes.email}
                 type={orderData.inputEmail.type}
                 placeholder={orderData.inputEmail.placeholder}
@@ -133,7 +133,7 @@ export const Order = () => {
                 invalidMessage={orderData.inputEmail.invalidMessage}
                 onChange={onEmailChange}
               />
-            )} */}
+            )} 
 
             {orderData?.connection?.options && (
               <SelectField
