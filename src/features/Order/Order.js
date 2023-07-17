@@ -96,7 +96,7 @@ export const Order = () => {
             className={classes.form}
           >
 
-            {orderData?.inputName && (
+            {/* {orderData?.inputName && (
               <Field
                 className={classes.name}
                 type={orderData.inputName.type}
@@ -133,11 +133,12 @@ export const Order = () => {
                 invalidMessage={orderData.inputEmail.invalidMessage}
                 onChange={onEmailChange}
               />
-            )}
+            )} */}
 
             {orderData?.connection?.options && (
               <SelectField
                 className={classes.connection}
+                value={connection}
                 label=''
                 options={orderData.connection.options}
                 isValid={isValidConnection}

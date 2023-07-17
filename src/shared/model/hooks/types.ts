@@ -214,7 +214,7 @@ export interface InputEmail {
 };
 
 export interface Connect {
- 
+
 };
 
 export interface Option {
@@ -222,20 +222,22 @@ export interface Option {
 }
 
 export interface Connection {
-  type: string;
-  placeholder: string;
-  isValidConnection: boolean;
-  invalidMessage: string;
+  className: string
+  label: string
   options: string[];
+  isValid: boolean
+  invalidMessage: string
+  value: string
+  onFieldChange: any
 };
 
 export interface OrderData {
- title: Title;
- inputName: InputName;
- inputTel: InputTel;
- inputEmail: InputEmail;
- connect: Connect;
- connection: Connection;
+  title: Title;
+  inputName: InputName;
+  inputTel: InputTel;
+  inputEmail: InputEmail;
+  connect: Connect;
+  connection: Connection;
 };
 
 export interface OrderState {
