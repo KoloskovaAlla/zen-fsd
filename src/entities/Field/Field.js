@@ -2,16 +2,15 @@ import { useEffect } from 'react';
 import { Select, InputText } from 'shared/ui';
 
 export const Field = ({
-  className, 
-  type, 
-  placeholder, 
-  label, 
-  value, 
-  isValid, 
-  invalidMessage, 
+  className,
+  type,
+  placeholder,
+  label,
+  value,
+  isValid,
+  invalidMessage,
   onChange,
-  options
-}) => {  
+}) => {
   const handleChange = (event) => {
     const value = event.target.value;
     onChange(value);
@@ -20,29 +19,21 @@ export const Field = ({
   switch (type) {
     case 'text':
       return (
-      <label className={className}>
-        <InputText
-          value={value} 
-          onChange={onChange} 
-          type={type} 
-          placeholder={placeholder}  
-        />
-     
-        {!isValid && <span>{invalidMessage}</span>}
-      </label>
-      );    
-    case 'select': 
-      return (
-        <Select 
-          options={options} 
-          className={className} 
-          onChange={onChange} 
-          value={value} />
-      )     
+        <label className={className}>
+          <InputText
+            value={value}
+            onChange={onChange}
+            type={type}
+            placeholder={placeholder}
+          />
+
+          {!isValid && <span>{invalidMessage}</span>}
+        </label>
+      );
     default:
       return (
         <div></div>
-      )  
+      )
   }
 
   // return (

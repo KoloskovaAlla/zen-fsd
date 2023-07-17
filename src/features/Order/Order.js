@@ -5,7 +5,7 @@ import { useOrder } from 'shared/model/hooks';
 import { useDispatch } from 'react-redux';
 import { classNames } from 'shared/lib/classNames';
 import { useSendOrder } from 'shared/model/hooks/useSendOrder';
-import { Field } from '../../entities';
+import { Field, SelectField } from '../../entities';
 import { useState } from 'react';
 import { validateName, validateTel, validateEmail, validateConnect } from 'shared/lib';
 
@@ -48,7 +48,7 @@ export const Order = () => {
 
   const handleFormSubmit = () => { };
 
-  const onNameChange = ({ target }) => {    
+  const onNameChange = ({ target }) => {
     const value = target.value;
     setName(value);
     setIsValidName(validateName(value));
@@ -74,10 +74,10 @@ export const Order = () => {
 
   const className = classNames(
     classes.name,
-    {[classes.succes]: isValidName},
+    { [classes.succes]: isValidName },
     []
   );
- 
+
   if (!orderData) return null;
   return (
     <div onClick={handleModalClick} className={classNameModal}>
@@ -94,63 +94,57 @@ export const Order = () => {
             onInput={handleFormInput}
             onSubmit={handleFormSubmit}
             className={classes.form}
-          >     
+          >
 
             {orderData?.inputName && (
-              <Field 
+              <Field
                 className={classes.name}
                 type={orderData.inputName.type}
                 placeholder={orderData.inputName.placeholder}
                 label=''
                 value={name}
-                isValid={isValidName}                
+                isValid={isValidName}
                 invalidMessage={orderData.inputName.invalidMessage}
-                onChange={onNameChange}  
-                options=''            
+                onChange={onNameChange}
               />
             )}
 
             {orderData?.inputTel && (
-              <Field 
-                className={classes.tel} 
+              <Field
+                className={classes.tel}
                 type={orderData.inputTel.type}
                 placeholder={orderData.inputTel.placeholder}
                 label=''
                 value={tel}
-                isValid={isValidTel}                
+                isValid={isValidTel}
                 invalidMessage={orderData.inputTel.invalidMessage}
-                onChange={onTelChange} 
-                options=''             
+                onChange={onTelChange}
               />
             )}
-          
+
             {orderData?.inputEmail && (
-              <Field 
-                className={classes.email} 
+              <Field
+                className={classes.email}
                 type={orderData.inputEmail.type}
                 placeholder={orderData.inputEmail.placeholder}
                 label=''
                 value={email}
-                isValid={isValidEmail}               
+                isValid={isValidEmail}
                 invalidMessage={orderData.inputEmail.invalidMessage}
-                onChange={onEmailChange}  
-                options=''             
+                onChange={onEmailChange}
               />
-            )}    
-          
-          {orderData?.connection?.options && (
-            <Field
-              className={classes.connection} 
-              type={orderData.connection.type}
-              placeholder={orderData.connection}
-              label=''
-              value={connection}
-              isValid={isValidConnection}               
-              invalidMessage={orderData.connection.invalidMessage}
-              onChange={onConnectionChange} 
-              options={orderData.connection.options}
-            />          
-          )}
+            )}
+
+            {orderData?.connection?.options && (
+              <SelectField
+                className={classes.connection}
+                label=''
+                options={orderData.connection.options}
+                isValid={isValidConnection}
+                invalidMessage={orderData.connection.invalidMessage}
+                onFieldChange={onConnectionChange}
+              />
+            )}
 
 
             {/* {orderData?.inputEmail && (
