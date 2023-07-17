@@ -5,7 +5,7 @@ import { useOrder } from 'shared/model/hooks';
 import { useDispatch } from 'react-redux';
 import { classNames } from 'shared/lib/classNames';
 import { useSendOrder } from 'shared/model/hooks/useSendOrder';
-import { Field, SelectField } from '../../entities';
+import { Field, SelectField } from 'entities';
 import { useState } from 'react';
 import { validateName, validateTel, validateEmail, validateConnect } from 'shared/lib';
 
@@ -24,9 +24,9 @@ export const Order = () => {
   const [connection, setConnection] = useState('')
   const [isValidConnection, setIsValidConnection] = useState(true)
 
-  // useEffect(() => {
-  //   if (orderData) console.log(orderData.connection);
-  // }, [orderData]);
+  useEffect(() => {
+    if (orderData) console.log(orderData.inputName.type);
+  }, [orderData]);
 
   useEffect(() => {
     dispatch(getOrder());
@@ -96,7 +96,7 @@ export const Order = () => {
             className={classes.form}
           >
 
-            {/* {orderData?.inputName && (
+            {orderData?.inputName && (
               <Field
                 className={classes.name}
                 type={orderData.inputName.type}
@@ -109,7 +109,7 @@ export const Order = () => {
               />
             )}
 
-            {orderData?.inputTel && (
+            {/* {orderData?.inputTel && (
               <Field
                 className={classes.tel}
                 type={orderData.inputTel.type}
