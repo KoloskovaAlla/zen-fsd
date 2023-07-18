@@ -27,8 +27,6 @@ export const SelectField = ({
           </option>
         ))}
       </select>
-
-      <IconArrow />
     </label>
   );
 };
