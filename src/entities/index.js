@@ -1,2 +1,2 @@
-export { Field } from './Field';
 export { SelectField } from './SelectField';
+export { Field } from './Field';

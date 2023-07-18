@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
+import { useState } from 'react';
 import classes from './Order.module.scss';
 import { IconClose } from 'shared/icons';
 import { useOrder } from 'shared/model/hooks';
 import { useDispatch } from 'react-redux';
 import { classNames } from 'shared/lib/classNames';
 import { useSendOrder } from 'shared/model/hooks/useSendOrder';
-import { Field, SelectField } from '../../entities';
-import { useState } from 'react';
+import { Field, SelectField } from 'entities';
 import { validateName, validateTel, validateEmail, validateConnect } from 'shared/lib';
 
 
