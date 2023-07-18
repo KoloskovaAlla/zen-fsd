@@ -7,7 +7,6 @@ import { useDispatch } from 'react-redux';
 import { classNames } from 'shared/lib/classNames';
 import { useSendOrder } from 'shared/model/hooks/useSendOrder';
 import { TextField, SelectField } from '../../entities';
-import { useState } from 'react';
 import { validateName, validateTel, validateEmail, validateConnect } from 'shared/lib';
 
 
@@ -134,7 +133,7 @@ export const Order = () => {
                 invalidMessage={orderData.inputEmail.invalidMessage}
                 onChange={onEmailChange}
               />
-            )} */}
+            )}
 
             {orderData?.connection?.options && (
               <SelectField
