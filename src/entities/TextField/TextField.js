@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Select, InputText } from 'shared/ui';
+import { InputText } from 'shared/ui';
 
 export const TextField = ({
   className,
@@ -9,37 +9,18 @@ export const TextField = ({
   value,
   isValid,
   invalidMessage,
-  onChange,
+  onFieldChange,
 }) => {
-  const handleChange = (event) => {
-    const value = event.target.value;
-    onChange(value);
-  };
+  return (
+    <label className={className}>
+      <InputText
+        value={value}
+        onChange={onFieldChange}
+        type={type}
+        placeholder={placeholder}
+      />
 
-  switch (type) {
-    case 'text':
-      return (
-        <label className={className}>
-          <InputText
-            value={value}
-            onChange={onChange}
-            type={type}
-            placeholder={placeholder}
-          />
-
-          {!isValid && <span>{invalidMessage}</span>}
-        </label>
-      );
-    default:
-      return (
-        <div></div>
-      )
-  }
-
-  // return (
-  //   <label className={className}>
-  //     <input value={value} onChange={handleChange} type={type} placeholder={placeholder} />
-  //     {!isValid && <span>{invalidMessage}</span>}
-  //   </label>
-  // )
+      {!isValid && <span>{invalidMessage}</span>}
+    </label>
+  );
 };
