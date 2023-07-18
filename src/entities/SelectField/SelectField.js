@@ -14,12 +14,13 @@ export const SelectField = ({
     onFieldChange(value);
   };
   return (
-
     <label className={className}>
+      <span>CONNECTION</span>
       <select
         value={value}
         onChange={onFieldChange}
       >
+        <option></option>
         {Object.values(options).map((option) => (
           <option value={option.value} key={option.value}>
             {option?.content && option.content}
