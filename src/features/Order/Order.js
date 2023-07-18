@@ -139,27 +139,13 @@ export const Order = () => {
               <SelectField
                 className={classes.connection}
                 value={connection}
-                label=''
+                label={orderData.connection.label}
                 options={orderData.connection.options}
                 isValid={isValidConnection}
                 invalidMessage={orderData.connection.invalidMessage}
                 onFieldChange={onConnectionChange}
               />
             )}
-
-
-            {/* {orderData?.inputEmail && (
-              <Field 
-                className={classes.email} 
-                type={orderData.inputEmail.type}
-                placeholder={orderData.inputEmail.placeholder}
-                label=''
-                value={email}
-                isValid={isValidEmail}               
-                invalidMessage={orderData.inputEmail.invalidMessage}
-                onChange={onEmailChange}              
-              />
-            )}   */}
 
             {/* <Policy inputPolicy={inputPolicy} isChecked={isChecked} setIsChecked={setIsChecked} /> */}
 

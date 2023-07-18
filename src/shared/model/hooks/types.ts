@@ -199,6 +199,7 @@ export interface InputName {
 
 export interface InputTel {
   type: string;
+  label: string;
   placeholder: string;
   isValidTel: boolean;
   invalidMessage: string;
@@ -229,6 +230,7 @@ export interface Connection {
   invalidMessage: string
   value: string
   onFieldChange: any
+  connection: string;
 };
 
 export interface OrderData {

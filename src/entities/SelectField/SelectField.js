@@ -1,5 +1,3 @@
-import { IconArrow } from 'shared/icons';
-
 export const SelectField = ({
   className,
   value,
@@ -15,7 +13,7 @@ export const SelectField = ({
   };
   return (
     <label className={className}>
-      <span>CONNECTION</span>
+      {value === '' && <span>{label}</span>}
       <select
         value={value}
         onChange={onFieldChange}
