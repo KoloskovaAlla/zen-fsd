@@ -1,5 +1,3 @@
-import { IconArrow } from 'shared/icons';
-
 export const SelectField = ({
   className,
   value,
@@ -14,20 +12,19 @@ export const SelectField = ({
     onFieldChange(value);
   };
   return (
-
     <label className={className}>
+      {<span>{label}</span>}
       <select
         value={value}
         onChange={onFieldChange}
       >
+        <option></option>
         {Object.values(options).map((option) => (
           <option value={option.value} key={option.value}>
             {option?.content && option.content}
           </option>
         ))}
       </select>
-
-      <IconArrow />
     </label>
   );
 };

@@ -105,7 +105,7 @@ export const Order = () => {
                 value={name}
                 isValid={isValidName}
                 invalidMessage={orderData.inputName.invalidMessage}
-                onChange={onNameChange}
+                onFieldChange={onNameChange}
               />
             )}
 
@@ -118,7 +118,7 @@ export const Order = () => {
                 value={tel}
                 isValid={isValidTel}
                 invalidMessage={orderData.inputTel.invalidMessage}
-                onChange={onTelChange}
+                onFieldChange={onTelChange}
               />
             )}
 
@@ -131,7 +131,7 @@ export const Order = () => {
                 value={email}
                 isValid={isValidEmail}
                 invalidMessage={orderData.inputEmail.invalidMessage}
-                onChange={onEmailChange}
+                onFieldChange={onEmailChange}
               />
             )}
 
@@ -139,27 +139,13 @@ export const Order = () => {
               <SelectField
                 className={classes.connection}
                 value={connection}
-                label=''
+                label={orderData.connection.label}
                 options={orderData.connection.options}
                 isValid={isValidConnection}
                 invalidMessage={orderData.connection.invalidMessage}
                 onFieldChange={onConnectionChange}
               />
             )}
-
-
-            {/* {orderData?.inputEmail && (
-              <Field 
-                className={classes.email} 
-                type={orderData.inputEmail.type}
-                placeholder={orderData.inputEmail.placeholder}
-                label=''
-                value={email}
-                isValid={isValidEmail}               
-                invalidMessage={orderData.inputEmail.invalidMessage}
-                onChange={onEmailChange}              
-              />
-            )}   */}
 
             {/* <Policy inputPolicy={inputPolicy} isChecked={isChecked} setIsChecked={setIsChecked} /> */}
 
