@@ -13,7 +13,7 @@ export const SelectField = ({
   };
   return (
     <label className={className}>
-      {value === '' && <span>{label}</span>}
+      {<span>{label}</span>}
       <select
         value={value}
         onChange={onFieldChange}
