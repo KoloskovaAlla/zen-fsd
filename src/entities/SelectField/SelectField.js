@@ -1,3 +1,5 @@
+import classes from './SelectField.module.scss';
+
 export const SelectField = ({
   className,
   value,
@@ -7,24 +9,31 @@ export const SelectField = ({
   invalidMessage,
   onFieldChange
 }) => {
-  const handleChange = (event) => {
-    const value = event.target.value;
-    onFieldChange(value);
-  };
   return (
     <label className={className}>
-      {<span>{label}</span>}
+      {!value && (
+        <span className={classes.label}>
+          {label}
+        </span>
+      )}
       <select
         value={value}
         onChange={onFieldChange}
       >
         <option></option>
-        {Object.values(options).map((option) => (
-          <option value={option.value} key={option.value}>
-            {option?.content && option.content}
-          </option>
+        {options.length > 0 && options.map(({ value, content }) => (
+          content && (
+            <option value={value} key={value}>
+              {content}
+            </option>
+          )
         ))}
       </select>
+      {!isValid && (
+        <span className={classes.invalidMessage}>
+          {invalidMessage}
+        </span>
+      )}
     </label>
   );
 };

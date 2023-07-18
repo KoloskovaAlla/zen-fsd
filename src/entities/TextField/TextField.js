@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { InputText } from 'shared/ui';
 
 export const TextField = ({
