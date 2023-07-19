@@ -1,27 +1,24 @@
-import { IconArrow } from 'shared/icons';
-
 /**
  * @typedef {import('./types').SelectProps} Props
  * @typedef {import('react').ReactElement} Element
-*/
+ */
 
-/** @type {({ options, className, onChange, value }: Props) => Element} */
+/** @type {({ options, onFieldChange, value }: Props) => Element} */
 
-export const Select = ({ options, className, onChange, value }) => {
+export const Select = ({ options, onFieldChange, value }) => {
   return (
-    <label className={className}>
-      <select
-        value={value}
-        onChange={onChange}
-      >
-        {Object.values(options).map((option) => (
-          <option value={option.value} key={option.value}>
-            {option?.text && option.text}
+    <select
+      value={value}
+      onChange={onFieldChange}
+    >
+      <option></option>
+      {options.length > 0 && options.map(({ value, content }) => (
+        content && (
+          <option value={value} key={value}>
+            {content}
           </option>
+        )
         ))}
-      </select>
-
-      <IconArrow />
-    </label>
+    </select>
   );
 };
