@@ -246,10 +246,10 @@
     }
 
     span {
-      position: absolute;
-      font-size: 16px;
-      left: 5px;
-      color: #aaaaaa;
+      // position: absolute;
+      // font-size: 16px;
+      // left: 5px;
+      // color: #aaaaaa;
     }
 
     select {
@@ -290,7 +290,6 @@
       height: 9px;
       right: 0px;
       bottom: 13px;
-      z-index: -1;
-      //background: #ee82ee;  
+      z-index: -1;    
     }
   }
