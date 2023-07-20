@@ -1,3 +1,4 @@
+import { Select } from 'shared/ui';
 import classes from './SelectField.module.scss';
 
 export const SelectField = ({
@@ -9,6 +10,7 @@ export const SelectField = ({
   invalidMessage,
   onFieldChange
 }) => {
+  console.log(options)
   return (
     <label className={className}>
       {!value && (
@@ -16,19 +18,11 @@ export const SelectField = ({
           {label}
         </span>
       )}
-      <select
-        value={value}
+      <Select
+        options={options}
         onChange={onFieldChange}
-      >
-        <option></option>
-        {options.length > 0 && options.map(({ value, content }) => (
-          content && (
-            <option value={value} key={value}>
-              {content}
-            </option>
-          )
-        ))}
-      </select>
+        value={value}
+      />
       {!isValid && (
         <span className={classes.invalidMessage}>
           {invalidMessage}
