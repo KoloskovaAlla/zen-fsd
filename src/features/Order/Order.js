@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
+import { useState } from 'react';
 import classes from './Order.module.scss';
 import { IconClose } from 'shared/icons';
 import { useOrder } from 'shared/model/hooks';
 import { useDispatch } from 'react-redux';
 import { classNames } from 'shared/lib/classNames';
 import { useSendOrder } from 'shared/model/hooks/useSendOrder';
-import { Field } from 'entites';
-import { useState } from 'react';
+import { TextField, SelectField } from '../../entities';
 import { validateName, validateTel, validateEmail, validateConnect } from 'shared/lib';
 
 
@@ -21,11 +21,11 @@ export const Order = () => {
   const [isValidTel, setIsValidTel] = useState(true);
   const [email, setEmail] = useState('');
   const [isValidEmail, setIsValidEmail] = useState(true);
-  const [connect, setConnect] = useState('')
-  const [isValidConnect, setIsValidConnect] = useState(true)
+  const [connection, setConnection] = useState('')
+  const [isValidConnection, setIsValidConnection] = useState(true)
 
   useEffect(() => {
-    if (orderData) console.log(orderData.inputName);
+    if (orderData) console.log(orderData.inputName.type);
   }, [orderData]);
 
   useEffect(() => {
@@ -48,7 +48,7 @@ export const Order = () => {
 
   const handleFormSubmit = () => { };
 
-  const onNameChange = ({ target }) => {    
+  const onNameChange = ({ target }) => {
     const value = target.value;
     setName(value);
     setIsValidName(validateName(value));
@@ -66,18 +66,18 @@ export const Order = () => {
     setIsValidEmail(validateEmail(value));
   };
 
-  const handleConnectChange = ({ target }) => {
+  const onConnectionChange = ({ target }) => {
     const value = target.value
-    setConnect(value)
-    setIsValidConnect(validateConnect(value))
+    setConnection(value)
+    setIsValidConnection(validateConnect(value))
   }
 
   const className = classNames(
     classes.name,
-    {[classes.succes]: isValidName},
+    { [classes.succes]: isValidName },
     []
   );
- 
+
   if (!orderData) return null;
   return (
     <div onClick={handleModalClick} className={classNameModal}>
@@ -94,53 +94,58 @@ export const Order = () => {
             onInput={handleFormInput}
             onSubmit={handleFormSubmit}
             className={classes.form}
-          >     
+          >
 
             {orderData?.inputName && (
-              <Field 
+              <TextField
                 className={classes.name}
                 type={orderData.inputName.type}
                 placeholder={orderData.inputName.placeholder}
                 label=''
                 value={name}
-                isValid={isValidName}                
+                isValid={isValidName}
                 invalidMessage={orderData.inputName.invalidMessage}
-                onChange={onNameChange}              
+                onFieldChange={onNameChange}
               />
             )}
 
             {orderData?.inputTel && (
-              <Field 
-                className={classes.tel} 
+              <TextField
+                className={classes.tel}
                 type={orderData.inputTel.type}
                 placeholder={orderData.inputTel.placeholder}
                 label=''
                 value={tel}
-                isValid={isValidTel}                
+                isValid={isValidTel}
                 invalidMessage={orderData.inputTel.invalidMessage}
-                onChange={onTelChange}              
+                onFieldChange={onTelChange}
               />
             )}
-          
+
             {orderData?.inputEmail && (
-              <Field 
-                className={classes.email} 
+              <TextField
+                className={classes.email}
                 type={orderData.inputEmail.type}
                 placeholder={orderData.inputEmail.placeholder}
                 label=''
                 value={email}
-                isValid={isValidEmail}               
+                isValid={isValidEmail}
                 invalidMessage={orderData.inputEmail.invalidMessage}
-                onChange={onEmailChange}              
+                onFieldChange={onEmailChange}
               />
-            )}    
+            )}
 
-          {/* <Connection
-              connect={connect}
-              onConnectChange={handleConnectChange}
-              isValidConnect={isValidConnect}
-              connection={orderData?.connection}
-          /> */}
+            {orderData?.connection?.options && (
+              <SelectField
+                className={classes.connection}
+                value={connection}
+                label={orderData.connection.label}
+                options={orderData.connection.options}
+                isValid={isValidConnection}
+                invalidMessage={orderData.connection.invalidMessage}
+                onFieldChange={onConnectionChange}
+              />
+            )}
 
             {/* <Policy inputPolicy={inputPolicy} isChecked={isChecked} setIsChecked={setIsChecked} /> */}
 

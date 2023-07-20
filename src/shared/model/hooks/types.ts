@@ -194,13 +194,16 @@ export interface InputName {
   placeholder: string;
   isValidName: boolean;
   invalidMessage: string;
+  options: null;
 };
 
 export interface InputTel {
   type: string;
+  label: string;
   placeholder: string;
   isValidTel: boolean;
   invalidMessage: string;
+  options: null;
 };
 
 export interface InputEmail {
@@ -208,23 +211,35 @@ export interface InputEmail {
   placeholder: string;
   isValidEmail: boolean;
   invalidMessage: string;
+  options: null;
 };
 
 export interface Connect {
-  
+
 };
 
+export interface Option {
+  option: string;
+}
+
 export interface Connection {
-  
+  className: string
+  label: string
+  options: string[];
+  isValid: boolean
+  invalidMessage: string
+  value: string
+  onFieldChange: any
+  connection: string;
 };
 
 export interface OrderData {
- title: Title;
- inputName: InputName;
- inputTel: InputTel;
- inputEmail: InputEmail;
- connect: Connect;
- connection: Connection;
+  title: Title;
+  inputName: InputName;
+  inputTel: InputTel;
+  inputEmail: InputEmail;
+  connect: Connect;
+  connection: Connection;
 };
 
 export interface OrderState {
