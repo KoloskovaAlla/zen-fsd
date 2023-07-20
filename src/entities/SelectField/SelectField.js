@@ -10,6 +10,7 @@ export const SelectField = ({
   invalidMessage,
   onFieldChange
 }) => {
+  console.log(options)
   return (
     <label className={className}>
       {!value && (
@@ -17,11 +18,11 @@ export const SelectField = ({
           {label}
         </span>
       )}
-     <Select 
+      <Select
         options={options}
-        onFieldChange={onFieldChange}
+        onChange={onFieldChange}
         value={value}
-     />
+      />
       {!isValid && (
         <span className={classes.invalidMessage}>
           {invalidMessage}

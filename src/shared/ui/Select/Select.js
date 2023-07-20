@@ -3,13 +3,14 @@
  * @typedef {import('react').ReactElement} Element
  */
 
-/** @type {({ options, onFieldChange, value }: Props) => Element} */
+/** @type {({ options, onChange, value }: Props) => Element} */
 
-export const Select = ({ options, onFieldChange, value }) => {
+export const Select = ({ options, onChange, value }) => {
+  console.log(options)
   return (
     <select
       value={value}
-      onChange={onFieldChange}
+      onChange={onChange}
     >
       <option></option>
       {options.length > 0 && options.map(({ value, content }) => (
@@ -18,7 +19,7 @@ export const Select = ({ options, onFieldChange, value }) => {
             {content}
           </option>
         )
-        ))}
+      ))}
     </select>
   );
 };
