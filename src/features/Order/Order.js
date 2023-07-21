@@ -1,19 +1,24 @@
 import { useEffect } from 'react';
 import { useState } from 'react';
 import classes from './Order.module.scss';
-import { IconClose } from 'shared/icons';
+
 import { useOrder } from 'shared/model/hooks';
 import { useDispatch } from 'react-redux';
 import { classNames } from 'shared/lib/classNames';
 import { useSendOrder } from 'shared/model/hooks/useSendOrder';
 import { TextField, SelectField } from '../../entities';
 import { validateName, validateTel, validateEmail, validateConnect } from 'shared/lib';
+import { Checkbox } from 'shared/ui';
 
 
 export const Order = () => {
   const { orderData, getOrder, isModalActive, setIsModalActive } = useOrder();
   const { isOrderSended, sendOrder } = useSendOrder();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (orderData) console.log(orderData.inputPolicy)
+  }, [orderData])
 
   const [name, setName] = useState('');
   const [isValidName, setIsValidName] = useState(true);
@@ -23,10 +28,6 @@ export const Order = () => {
   const [isValidEmail, setIsValidEmail] = useState(true);
   const [connection, setConnection] = useState('')
   const [isValidConnection, setIsValidConnection] = useState(true)
-
-  useEffect(() => {
-    if (orderData) console.log(orderData.inputName.type);
-  }, [orderData]);
 
   useEffect(() => {
     dispatch(getOrder());
@@ -147,7 +148,16 @@ export const Order = () => {
               />
             )}
 
-            {/* <Policy inputPolicy={inputPolicy} isChecked={isChecked} setIsChecked={setIsChecked} /> */}
+            {/* <Policy inputPolicy={inputPolicy} isChecked={isChecked} setIsChecked={setIsChecked} 
+            /> */}
+
+            <label className={classes.policy}>
+              <Checkbox />
+
+              <a href={orderData.inputPolicy.url}>
+                {orderData.inputPolicy.content}
+              </a>
+            </label>
 
             {/* <Submit
               buttonText={buttonText}
