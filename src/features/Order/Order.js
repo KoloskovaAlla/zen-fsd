@@ -1,13 +1,14 @@
 import { useEffect } from 'react';
 import { useState } from 'react';
 import classes from './Order.module.scss';
-import { IconClose } from 'shared/icons';
+
 import { useOrder } from 'shared/model/hooks';
 import { useDispatch } from 'react-redux';
 import { classNames } from 'shared/lib/classNames';
 import { useSendOrder } from 'shared/model/hooks/useSendOrder';
 import { TextField, SelectField } from '../../entities';
 import { validateName, validateTel, validateEmail, validateConnect } from 'shared/lib';
+import { Checkbox } from 'shared/ui';
 
 
 export const Order = () => {
@@ -15,18 +16,19 @@ export const Order = () => {
   const { isOrderSended, sendOrder } = useSendOrder();
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    if (orderData) console.log(orderData.inputPolicy)
+  }, [orderData])
+
   const [name, setName] = useState('');
   const [isValidName, setIsValidName] = useState(true);
   const [tel, setTel] = useState('');
   const [isValidTel, setIsValidTel] = useState(true);
   const [email, setEmail] = useState('');
   const [isValidEmail, setIsValidEmail] = useState(true);
+  const [isChecked, setIsChecked] = useState(false);
   const [connection, setConnection] = useState('')
   const [isValidConnection, setIsValidConnection] = useState(true)
-
-  useEffect(() => {
-    if (orderData) console.log(orderData.inputName.type);
-  }, [orderData]);
 
   useEffect(() => {
     dispatch(getOrder());
@@ -83,11 +85,20 @@ export const Order = () => {
     <div onClick={handleModalClick} className={classNameModal}>
       <div onClick={handleBodyClick} className={classes.body}>
         {isOrderSended && <span>Данные отправлены успешно!</span>}
-        {/* {!isOrderSended && <Close />} */}
+
+        {/* {!isOrderSended && <Close />}
+
+        {!isOrderSended && (
+          <button onClick={handleCloseClick} className={classes.close}>
+            <CloseIcon />
+          </button>
+        )} */}
 
         {!isOrderSended && (
           <h2 className={classes.title}>{orderData?.title?.content}</h2>
         )}
+
+
 
         {!isOrderSended && (
           <form
@@ -147,7 +158,19 @@ export const Order = () => {
               />
             )}
 
-            {/* <Policy inputPolicy={inputPolicy} isChecked={isChecked} setIsChecked={setIsChecked} /> */}
+            {/* <Policy inputPolicy={inputPolicy} isChecked={isChecked} setIsChecked={setIsChecked} 
+            /> */}
+
+            <label className={classes.policy}>
+              <Checkbox
+                isChecked={isChecked}
+                setIsChecked={setIsChecked}
+              />
+
+              <a href={orderData.inputPolicy.url}>
+                {orderData.inputPolicy.content}
+              </a>
+            </label>
 
             {/* <Submit
               buttonText={buttonText}

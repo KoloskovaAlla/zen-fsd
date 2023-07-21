@@ -6,7 +6,6 @@
 /** @type {({ options, onChange, value }: Props) => Element} */
 
 export const Select = ({ options, onChange, value }) => {
-  console.log(options)
   return (
     <select
       value={value}
