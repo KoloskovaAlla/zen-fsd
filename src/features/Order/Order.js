@@ -84,11 +84,20 @@ export const Order = () => {
     <div onClick={handleModalClick} className={classNameModal}>
       <div onClick={handleBodyClick} className={classes.body}>
         {isOrderSended && <span>Данные отправлены успешно!</span>}
-        {/* {!isOrderSended && <Close />} */}
+
+        {!isOrderSended && <Close />}
+
+        {!isOrderSended && (
+          <button onClick={handleCloseClick} className={classes.close}>
+            <CloseIcon />
+          </button>
+        )}
 
         {!isOrderSended && (
           <h2 className={classes.title}>{orderData?.title?.content}</h2>
         )}
+
+
 
         {!isOrderSended && (
           <form
