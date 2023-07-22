@@ -26,6 +26,7 @@ export const Order = () => {
   const [isValidTel, setIsValidTel] = useState(true);
   const [email, setEmail] = useState('');
   const [isValidEmail, setIsValidEmail] = useState(true);
+  const [isChecked, setIsChecked] = useState(false);
   const [connection, setConnection] = useState('')
   const [isValidConnection, setIsValidConnection] = useState(true)
 
@@ -161,7 +162,10 @@ export const Order = () => {
             /> */}
 
             <label className={classes.policy}>
-              <Checkbox />
+              <Checkbox
+                isChecked={isChecked}
+                setIsChecked={setIsChecked}
+              />
 
               <a href={orderData.inputPolicy.url}>
                 {orderData.inputPolicy.content}
