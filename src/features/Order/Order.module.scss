@@ -1,4 +1,5 @@
 @import 'shared/constants/styles/breakpoints';
+
 .title {
   font-size: 18px;
   font-weight: 700;
@@ -124,13 +125,13 @@
 }
 
 .form {
-    position: relative;
-    margin-top: 30px;
+  position: relative;
+  margin-top: 30px;
 }
 
 .body {
   position: absolute;
-  bottom: -100%; 
+  bottom: -100%;
   left: 50%;
   overflow: hidden;
   padding: 30px 20px;
@@ -147,10 +148,10 @@
     width: 400px;
   }
 
- 
+
 }
 
- .name {
+.name {
   display: block;
   margin-top: 15px;
   height: 30px;
@@ -180,9 +181,9 @@
       color: #aaaaaa;
     }
   }
-  }
+}
 
-  .tel {
+.tel {
   display: block;
   margin-top: 15px;
   height: 30px;
@@ -204,9 +205,9 @@
       color: #aaaaaa;
     }
   }
-  }
+}
 
-  .email {
+.email {
   display: block;
   margin-top: 15px;
   height: 30px;
@@ -228,49 +229,49 @@
       color: #aaaaaa;
     }
   }
-  }
+}
 
-    .connection {
-    position: relative;
-    display: block;
-    margin-top: 15px;
-    height: 30px;
-    border-bottom: 1px solid var(--color-border);
+.connection {
+  position: relative;
+  display: block;
+  margin-top: 15px;
+  height: 30px;
+  border-bottom: 1px solid var(--color-border);
 
-    &.valid {
-      border-bottom: 1px solid green;
-
-      span {
-        display: none;
-      }
-    }
+  &.valid {
+    border-bottom: 1px solid green;
 
     span {
-      // position: absolute;
-      // font-size: 16px;
-      // left: 5px;
-      // color: #aaaaaa;
+      display: none;
     }
+  }
 
-    select {
-      position: relative;
+  span {
+    // position: absolute;
+    // font-size: 16px;
+    // left: 5px;
+    // color: #aaaaaa;
+  }
+
+  select {
+    position: relative;
+    font-size: 16px;
+    padding-left: 5px;
+    width: 100%;
+    background: transparent;
+    outline: none;
+
+
+    option {
       font-size: 16px;
-      padding-left: 5px;
-      width: 100%;
-      background: transparent;
-      outline: none;
-
-
-      option {
-        font-size: 16px;
-        color: #aaaaaa;
-      }
+      color: #aaaaaa;
     }
+  }
 
-    &:after {
-      content: '';
-      position: absolute;
-      background-image: url('data:image/svg+xml,\
+  &:after {
+    content: '';
+    position: absolute;
+    background-image: url('data:image/svg+xml,\
         <svg \
           width="10" \
           height="9" \
@@ -284,12 +285,23 @@
           /> \
         </svg> \
       ');
-      background-repeat: no-repeat;
-      display: block;
-      width: 10px;
-      height: 9px;
-      right: 0px;
-      bottom: 13px;
-      z-index: -1;    
-    }
+    background-repeat: no-repeat;
+    display: block;
+    width: 10px;
+    height: 9px;
+    right: 0px;
+    bottom: 13px;
+    z-index: -1;
   }
+}
+
+.policy {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+
+  & a {
+    margin-left: 5px;
+    text-decoration: underline;
+  }
+}

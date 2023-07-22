@@ -10,7 +10,6 @@ export const SelectField = ({
   invalidMessage,
   onFieldChange
 }) => {
-  console.log(options)
   return (
     <label className={className}>
       {!value && (

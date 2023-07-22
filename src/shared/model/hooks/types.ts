@@ -233,6 +233,12 @@ export interface Connection {
   connection: string;
 };
 
+export interface InputPolicy {
+  content: string,
+  type: string,
+  url: string,
+};
+
 export interface OrderData {
   title: Title;
   inputName: InputName;
@@ -240,6 +246,7 @@ export interface OrderData {
   inputEmail: InputEmail;
   connect: Connect;
   connection: Connection;
+  inputPolicy: InputPolicy;
 };
 
 export interface OrderState {
