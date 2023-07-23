@@ -13,14 +13,14 @@ const icons = {
 
 /** @type {(props: Props) => Element} */
 export const Button = ({ 
+  content,
   label, 
   onClickButton, 
   className, 
   iconName, 
-  buttonText, 
   disabled 
 }) => {
-  switch (label) {
+  switch (content) {
     case 'icon':
       return (
         <button 
@@ -38,7 +38,7 @@ export const Button = ({
           disabled={disabled} 
           type="submit" 
         >
-          {buttonText}
+          {label}
         </button>   
       )
     default: 

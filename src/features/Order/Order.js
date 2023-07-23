@@ -96,7 +96,7 @@ export const Order = () => {
             onClickButton={onClickButtonClose} 
             className={classes.close}
             iconName={'close'}    
-            label={'icon'}         
+            content={'icon'}         
           />)
         }
 
@@ -177,8 +177,8 @@ export const Order = () => {
             <Button 
               onClickButton={onClickButtonSubmit} 
               className={classes.submit} 
-              buttonText='submit'               
-              label={'text'}    
+              label='submit'               
+              content={'text'}    
               disabled={isSubmitDisabled}   
             />
 
