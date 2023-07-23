@@ -95,7 +95,8 @@ export const Order = () => {
           <Button 
             onClickButton={onClickButtonClose} 
             className={classes.close}
-            iconName={'close'}             
+            iconName={'close'}    
+            label={'icon'}         
           />)
         }
 
@@ -161,26 +162,27 @@ export const Order = () => {
                 invalidMessage={orderData.connection.invalidMessage}
                 onFieldChange={onConnectionChange}
               />
-            )}
-
-            {/* <Policy inputPolicy={inputPolicy} isChecked={isChecked} setIsChecked={setIsChecked} 
-            /> */}
+            )}          
 
             <label className={classes.policy}>
               <Checkbox
                 isChecked={isChecked}
                 setIsChecked={setIsChecked}
               />
-
               <a href={orderData.inputPolicy.url}>
                 {orderData.inputPolicy.content}
               </a>
             </label>
 
-            {/* <Submit
-              buttonText={buttonText}
-              disabled={isSubmitDisabled}
-            /> */}
+            <Button 
+              onClickButton={onClickButtonSubmit} 
+              className={classes.submit} 
+              buttonText='submit'               
+              label={'text'}    
+              disabled={isSubmitDisabled}   
+            />
+
+         
           </form>
         )}
       </div>

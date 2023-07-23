@@ -12,11 +12,47 @@ const icons = {
  */
 
 /** @type {(props: Props) => Element} */
-export const Button = ({ onClickButton, className, iconName }) => {
+export const Button = ({ 
+  label, 
+  onClickButton, 
+  className, 
+  iconName, 
+  buttonText, 
+  disabled 
+}) => {
+  switch (label) {
+    case 'icon':
+      return (
+        <button 
+          onClick={onClickButton} 
+          className={className}      
+        >          
+          {icons[iconName]}
+        </button>
+      )    
+    case 'text':
+      return (
+        <button 
+          onClick={onClickButton} 
+          className={className}
+          disabled={disabled} 
+          type="submit" 
+        >
+          {buttonText}
+        </button>   
+      )
+    default: 
+      return <button></button>
+  }
+    
+
+
+
+
   return (
     <button 
       onClick={onClickButton} 
-      className={className}   
+      className={className}      
     >          
       {icons[iconName]}
     </button>
