@@ -9,6 +9,7 @@ import { useSendOrder } from 'shared/model/hooks/useSendOrder';
 import { TextField, SelectField } from '../../entities';
 import { validateName, validateTel, validateEmail, validateConnect } from 'shared/lib';
 import { Checkbox } from 'shared/ui';
+import { Button } from 'shared/ui';
 
 
 export const Order = () => {
@@ -72,7 +73,11 @@ export const Order = () => {
     const value = target.value
     setConnection(value)
     setIsValidConnection(validateConnect(value))
-  }
+  };
+
+  const onClickButtonClose = () => {
+
+  };
 
   const className = classNames(
     classes.name,
@@ -86,13 +91,13 @@ export const Order = () => {
       <div onClick={handleBodyClick} className={classes.body}>
         {isOrderSended && <span>Данные отправлены успешно!</span>}
 
-        {/* {!isOrderSended && <Close />}
-
         {!isOrderSended && (
-          <button onClick={handleCloseClick} className={classes.close}>
-            <CloseIcon />
-          </button>
-        )} */}
+          <Button 
+            onClickButton={onClickButtonClose} 
+            className={classes.close}
+            iconName={'close'}             
+          />)
+        }
 
         {!isOrderSended && (
           <h2 className={classes.title}>{orderData?.title?.content}</h2>

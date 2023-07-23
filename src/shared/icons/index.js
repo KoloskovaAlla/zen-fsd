@@ -1,3 +1,4 @@
+//@ts-nocheck
 export { ReactComponent as IconSun } from './svg/sun.svg';
 export { ReactComponent as IconMoon } from './svg/moon.svg';
 export { ReactComponent as IconLogoHeader } from './svg/logoHeader.svg';
