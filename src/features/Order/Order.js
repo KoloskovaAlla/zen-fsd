@@ -199,8 +199,7 @@ export const Order = () => {
               </a>
             </label>
 
-            <Button
-              // onClickButton={onClickButtonSubmit}
+            <Button              
               className={classes.submit}
               label='submit'
               content={'text'}
