@@ -11,6 +11,8 @@ import { validateName, validateTel, validateEmail, validateConnect } from 'share
 import { Checkbox } from 'shared/ui';
 import { Button } from 'shared/ui';
 
+const date = new Date().toLocaleString();
+
 export const Order = () => {
   const { orderData, getOrder, isModalActive, setIsModalActive } = useOrder();
   const { isOrderSended, sendOrder } = useSendOrder();
@@ -30,8 +32,6 @@ export const Order = () => {
   const [connection, setConnection] = useState('');
   const [isValidConnection, setIsValidConnection] = useState(true);
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
-
-
 
   useEffect(() => {
     dispatch(getOrder());
@@ -94,12 +94,11 @@ export const Order = () => {
   const handleFormSubmit = (event) => {
     event.preventDefault();
     const order = {
-      // date,
+      date,
       name: name,
       tel: tel,
       email: email,
       connection: connection,
-      // policy: form.checkbox.checked
     };
     dispatch(sendOrder(order));
   };
