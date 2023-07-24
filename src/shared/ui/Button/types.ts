@@ -1,6 +1,6 @@
 export interface ButtonProps {
-  onClickButton: any;
-  className: string; 
+  onClickButton?: any;
+  className: string;
   iconName?: string;
   label?: string;
   content: string;

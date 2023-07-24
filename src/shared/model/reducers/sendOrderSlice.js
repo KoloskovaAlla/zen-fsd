@@ -1,9 +1,10 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { API_BASE_URL } from 'shared/constants/api';
 
+/** @type {any} */
 const sendOrder = createAsyncThunk(
   'order/sendData',
-  async (order, thunkApi) => {     
+  async (order, thunkApi) => {
     const url = `${API_BASE_URL}/orders/.json`;
     try {
       const response = await fetch(url, {
@@ -14,14 +15,14 @@ const sendOrder = createAsyncThunk(
         body: JSON.stringify(order)
       });
       if (!response.ok) throw new Error('Failed to fetch');
-      return thunkApi.fulfillWithValue(response.ok); 
-    } 
-    catch (error) {     
+      return thunkApi.fulfillWithValue(response.ok);
+    }
+    catch (error) {
       console.error(error);
       /** @type {*} */
       const { message } = error;
       return thunkApi.rejectWithValue(message);
-    }  
+    }
   }
 );
 
@@ -38,7 +39,7 @@ const sendOrderSlice = createSlice({
   extraReducers: {
     [`${sendOrder.pending}`]: (state) => {
       state.isSending = true;
-      state.isOrderSended = false;      
+      state.isOrderSended = false;
       state.errorMessage = '';
     },
     [`${sendOrder.fulfilled}`]: (state) => {
@@ -46,7 +47,7 @@ const sendOrderSlice = createSlice({
       state.isOrderSended = true;
       state.errorMessage = '';
     },
-    [`${sendOrder.rejected}`]: (state,  { payload }) => {
+    [`${sendOrder.rejected}`]: (state, { payload }) => {
       state.isSending = false;
       state.isOrderSended = false;
       state.errorMessage = payload;
