@@ -77,8 +77,12 @@ export const Order = () => {
 
   };
 
-  const handleFormInput = () => {
-    name &&
+  useEffect(() => {
+    checkFormValidity();
+  }, [name, isValidName, tel, isValidTel, email, isValidEmail, connection, isValidConnection, isChecked]);
+
+  const checkFormValidity = () => {
+    const isFormValid = name &&
       isValidName &&
       tel &&
       isValidTel &&
@@ -86,10 +90,11 @@ export const Order = () => {
       isValidEmail &&
       connection &&
       isValidConnection &&
-      isChecked
-      ? setIsSubmitDisabled(false)
-      : setIsSubmitDisabled(true)
+      isChecked;
+
+    setIsSubmitDisabled(!isFormValid);
   };
+
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
@@ -133,7 +138,6 @@ export const Order = () => {
 
         {!isOrderSended && (
           <form
-            onInput={handleFormInput}
             onSubmit={handleFormSubmit}
             className={classes.form}
           >
@@ -199,7 +203,7 @@ export const Order = () => {
               </a>
             </label>
 
-            <Button              
+            <Button
               className={classes.submit}
               label='submit'
               content={'text'}
