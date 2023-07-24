@@ -207,8 +207,6 @@ export const Order = () => {
               content={'text'}
               disabled={isSubmitDisabled}
             />
-
-
           </form>
         )}
       </div>
