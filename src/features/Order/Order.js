@@ -11,6 +11,7 @@ import { validateName, validateTel, validateEmail, validateConnect } from 'share
 import { Checkbox } from 'shared/ui';
 import { Button } from 'shared/ui';
 
+const date = new Date().toLocaleString();
 
 export const Order = () => {
   const { orderData, getOrder, isModalActive, setIsModalActive } = useOrder();
@@ -28,8 +29,9 @@ export const Order = () => {
   const [email, setEmail] = useState('');
   const [isValidEmail, setIsValidEmail] = useState(true);
   const [isChecked, setIsChecked] = useState(false);
-  const [connection, setConnection] = useState('')
-  const [isValidConnection, setIsValidConnection] = useState(true)
+  const [connection, setConnection] = useState('');
+  const [isValidConnection, setIsValidConnection] = useState(true);
+  const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
 
   useEffect(() => {
     dispatch(getOrder());
@@ -46,10 +48,6 @@ export const Order = () => {
   const handleBodyClick = (event) => {
     event.stopPropagation()
   }
-
-  const handleFormInput = () => { };
-
-  const handleFormSubmit = () => { };
 
   const onNameChange = ({ target }) => {
     const value = target.value;
@@ -79,6 +77,33 @@ export const Order = () => {
 
   };
 
+  const handleFormInput = () => {
+    name &&
+      isValidName &&
+      tel &&
+      isValidTel &&
+      email &&
+      isValidEmail &&
+      connection &&
+      isValidConnection &&
+      isChecked
+      ? setIsSubmitDisabled(false)
+      : setIsSubmitDisabled(true)
+  };
+
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+    const order = {
+      date,
+      name: name,
+      tel: tel,
+      email: email,
+      connection: connection,
+    };
+    dispatch(sendOrder(order));
+  };
+
+
   const className = classNames(
     classes.name,
     { [classes.succes]: isValidName },
@@ -92,11 +117,11 @@ export const Order = () => {
         {isOrderSended && <span>Данные отправлены успешно!</span>}
 
         {!isOrderSended && (
-          <Button 
-            onClickButton={onClickButtonClose} 
+          <Button
+            onClickButton={onClickButtonClose}
             className={classes.close}
-            iconName={'close'}    
-            content={'icon'}         
+            iconName={'close'}
+            content={'icon'}
           />)
         }
 
@@ -162,7 +187,7 @@ export const Order = () => {
                 invalidMessage={orderData.connection.invalidMessage}
                 onFieldChange={onConnectionChange}
               />
-            )}          
+            )}
 
             <label className={classes.policy}>
               <Checkbox
@@ -174,15 +199,13 @@ export const Order = () => {
               </a>
             </label>
 
-            <Button 
-              onClickButton={onClickButtonSubmit} 
-              className={classes.submit} 
-              label='submit'               
-              content={'text'}    
-              disabled={isSubmitDisabled}   
+            <Button
+              // onClickButton={onClickButtonSubmit}
+              className={classes.submit}
+              label='submit'
+              content={'text'}
+              disabled={isSubmitDisabled}
             />
-
-         
           </form>
         )}
       </div>
