@@ -27,15 +27,52 @@ const sendOrder = createAsyncThunk(
 );
 
 const initialState = {
+  name: '',
+  isValidName: true,
+  tel: '',
+  isValidTel: true,
+  email: '',
+  isValidEmail: true,
+  connection: '',
+  isValidConnection: true,
+  isChecked: false,
   isSending: false,
   errorMessage: '',
-  isOrderSended: false,
+  isOrderSended: true,
 };
 
 const sendOrderSlice = createSlice({
   name: 'sendingData',
   initialState,
-  reducers: {},
+  reducers: {
+    setName: (state, { payload }) => {
+      state.name = payload;
+    },
+    setIsValidName: (state, { payload }) => {
+      state.isValidName = payload;
+    },
+    setTel: (state, { payload }) => {
+      state.tel = payload;
+    },
+    setIsValidTel: (state, { payload }) => {
+      state.isValidTel = payload;
+    },
+    setEmail: (state, { payload }) => {
+      state.email = payload;
+    },
+    setIsValidEmail: (state, { payload }) => {
+      state.isValidEmail = payload;
+    },
+    setConnection: (state, { payload }) => {
+      state.connection = payload;
+    },
+    setIsValidConnection: (state, { payload }) => {
+      state.isValidConnection = payload;
+    },
+    setIsChecked: (state, { payload }) => {
+      state.isChecked = payload;
+    },
+  },
   extraReducers: {
     [`${sendOrder.pending}`]: (state) => {
       state.isSending = true;
