@@ -98,3 +98,4 @@ const sendOrderSlice = createSlice({
 
 export { sendOrder };
 export const { reducer: sendOrderReducer } = sendOrderSlice;
+export const { setIsSubmitDisabled, setName, setIsValidName, setTel, setIsValidTel, } = sendOrderSlice.actions;

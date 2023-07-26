@@ -1,11 +1,13 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { sendOrder } from '../reducers/sendOrderSlice';
+import { sendOrder, setIsSubmitDisabled } from '../reducers/sendOrderSlice';
 
 /** @type {(store: object) => object} */
 const callback = (store) => store.sendOrderReducer;
 
 export const useSendOrder = () => {
+  const dispatch = useDispatch();
+
   const {
     isSending,
     errorMessage,
@@ -20,7 +22,6 @@ export const useSendOrder = () => {
     isValidConnection,
     isChecked,
     isSubmitDisabled,
-    setIsSubmitDisabled
   } = useSelector(callback);
 
   useEffect(() => {
@@ -38,7 +39,7 @@ export const useSendOrder = () => {
       isValidConnection &&
       isChecked;
 
-    setIsSubmitDisabled(!isFormValid);
+    dispatch(setIsSubmitDisabled(!isFormValid));
   };
 
   return {

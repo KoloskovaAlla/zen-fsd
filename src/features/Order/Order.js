@@ -15,23 +15,14 @@ const date = new Date().toLocaleString();
 
 export const Order = () => {
   const { orderData, getOrder, isModalActive, setIsModalActive } = useOrder();
-  const { isOrderSended, sendOrder } = useSendOrder();
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (orderData) console.log(orderData.inputPolicy)
   }, [orderData])
 
-  const [name, setName] = useState('');
-  const [isValidName, setIsValidName] = useState(true);
-  const [tel, setTel] = useState('');
-  const [isValidTel, setIsValidTel] = useState(true);
-  const [email, setEmail] = useState('');
-  const [isValidEmail, setIsValidEmail] = useState(true);
-  const [isChecked, setIsChecked] = useState(false);
-  const [connection, setConnection] = useState('');
-  const [isValidConnection, setIsValidConnection] = useState(true);
-  const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
+  const { isSending, errorMessage, isOrderSended, sendOrder, name, isValidName, tel, isValidTel, email, isValidEmail, connection, isValidConnection, isChecked, isSubmitDisabled, setIsSubmitDisabled } = useSendOrder();
 
   useEffect(() => {
     dispatch(getOrder());
@@ -77,23 +68,7 @@ export const Order = () => {
 
   };
 
-  useEffect(() => {
-    checkFormValidity();
-  }, [name, isValidName, tel, isValidTel, email, isValidEmail, connection, isValidConnection, isChecked]);
 
-  const checkFormValidity = () => {
-    const isFormValid = name &&
-      isValidName &&
-      tel &&
-      isValidTel &&
-      email &&
-      isValidEmail &&
-      connection &&
-      isValidConnection &&
-      isChecked;
-
-    setIsSubmitDisabled(!isFormValid);
-  };
 
 
   const handleFormSubmit = (event) => {
