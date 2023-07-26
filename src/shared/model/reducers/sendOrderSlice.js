@@ -36,6 +36,7 @@ const initialState = {
   connection: '',
   isValidConnection: true,
   isChecked: false,
+  isSubmitDisabled: true,
   isSending: false,
   errorMessage: '',
   isOrderSended: true,
@@ -71,6 +72,9 @@ const sendOrderSlice = createSlice({
     },
     setIsChecked: (state, { payload }) => {
       state.isChecked = payload;
+    },
+    setIsSubmitDisabled: (state, { payload }) => {
+      state.isSubmitDisabled = payload;
     },
   },
   extraReducers: {
