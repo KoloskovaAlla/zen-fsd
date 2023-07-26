@@ -1,6 +1,18 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { sendOrder, setIsSubmitDisabled } from '../reducers/sendOrderSlice';
+import { 
+  setName, 
+  setIsValidName, 
+  setTel, 
+  setIsValidTel, 
+  setEmail, 
+  setIsValidEmail, 
+  setConnection,
+  setIsValidConnection,
+  setIsChecked,
+  setIsSubmitDisabled,
+  sendOrder
+ } from '../reducers/sendOrderSlice';
 
 /** @type {(store: object) => object} */
 const callback = (store) => store.sendOrderReducer;
@@ -25,7 +37,7 @@ export const useSendOrder = () => {
   } = useSelector(callback);
 
   useEffect(() => {
-    checkFormValidity();
+    checkFormValidity();    
   }, [name, isValidName, tel, isValidTel, email, isValidEmail, connection, isValidConnection, isChecked]);
 
   const checkFormValidity = () => {
@@ -56,7 +68,16 @@ export const useSendOrder = () => {
     connection,
     isValidConnection,
     isChecked,
-    isSubmitDisabled,
-    setIsSubmitDisabled,
+    isSubmitDisabled,   
+    setName, 
+    setIsValidName, 
+    setTel, 
+    setIsValidTel, 
+    setEmail, 
+    setIsValidEmail, 
+    setConnection,
+    setIsValidConnection,
+    setIsChecked,
+    setIsSubmitDisabled
   };
 };

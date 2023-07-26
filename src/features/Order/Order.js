@@ -18,11 +18,32 @@ export const Order = () => {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (orderData) console.log(orderData.inputPolicy)
-  }, [orderData])
-
-  const { isSending, errorMessage, isOrderSended, sendOrder, name, isValidName, tel, isValidTel, email, isValidEmail, connection, isValidConnection, isChecked, isSubmitDisabled, setIsSubmitDisabled } = useSendOrder();
+  const { 
+    isSending,
+    errorMessage,
+    isOrderSended,
+    sendOrder,
+    name,
+    isValidName,
+    tel,
+    isValidTel,
+    email,
+    isValidEmail,
+    connection,
+    isValidConnection,
+    isChecked,
+    isSubmitDisabled,   
+    setName, 
+    setIsValidName, 
+    setTel, 
+    setIsValidTel, 
+    setEmail, 
+    setIsValidEmail, 
+    setConnection,
+    setIsValidConnection,
+    setIsChecked,
+    setIsSubmitDisabled,
+   } = useSendOrder();
 
   useEffect(() => {
     dispatch(getOrder());
@@ -41,35 +62,32 @@ export const Order = () => {
   }
 
   const onNameChange = ({ target }) => {
-    const value = target.value;
-    setName(value);
-    setIsValidName(validateName(value));
+    const value = target.value;    
+    dispatch(setName(value));
+    dispatch(setIsValidName(validateName(value)));
   };
 
   const onTelChange = ({ target }) => {
     const value = target.value;
-    setTel(value);
-    setIsValidTel(validateTel(value));
+    dispatch(setTel(value));
+    dispatch(setIsValidTel(validateTel(value)));
   };
 
   const onEmailChange = ({ target }) => {
     const value = target.value;
-    setEmail(value);
-    setIsValidEmail(validateEmail(value));
+    dispatch(setEmail(value));
+    dispatch(setIsValidEmail(validateEmail(value)));
   };
 
   const onConnectionChange = ({ target }) => {
     const value = target.value
-    setConnection(value)
-    setIsValidConnection(validateConnect(value))
+    dispatch(setConnection(value));
+    dispatch(setIsValidConnection(validateConnect(value)));
   };
 
   const onClickButtonClose = () => {
 
   };
-
-
-
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
@@ -82,7 +100,6 @@ export const Order = () => {
     };
     dispatch(sendOrder(order));
   };
-
 
   const className = classNames(
     classes.name,

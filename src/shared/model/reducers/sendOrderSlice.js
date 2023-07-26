@@ -39,7 +39,7 @@ const initialState = {
   isSubmitDisabled: true,
   isSending: false,
   errorMessage: '',
-  isOrderSended: true,
+  isOrderSended: false,
 };
 
 const sendOrderSlice = createSlice({
@@ -98,4 +98,15 @@ const sendOrderSlice = createSlice({
 
 export { sendOrder };
 export const { reducer: sendOrderReducer } = sendOrderSlice;
-export const { setIsSubmitDisabled, setName, setIsValidName, setTel, setIsValidTel, } = sendOrderSlice.actions;
+export const {  
+  setName, 
+  setIsValidName, 
+  setTel, 
+  setIsValidTel, 
+  setEmail, 
+  setIsValidEmail, 
+  setConnection,
+  setIsValidConnection,
+  setIsChecked,
+  setIsSubmitDisabled
+} = sendOrderSlice.actions;
