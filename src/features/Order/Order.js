@@ -18,7 +18,7 @@ export const Order = () => {
 
   const dispatch = useDispatch();
 
-  const { 
+  const {
     isSending,
     errorMessage,
     isOrderSended,
@@ -32,18 +32,17 @@ export const Order = () => {
     connection,
     isValidConnection,
     isChecked,
-    isSubmitDisabled,   
-    setName, 
-    setIsValidName, 
-    setTel, 
-    setIsValidTel, 
-    setEmail, 
-    setIsValidEmail, 
+    isSubmitDisabled,
+    setName,
+    setIsValidName,
+    setTel,
+    setIsValidTel,
+    setEmail,
+    setIsValidEmail,
     setConnection,
     setIsValidConnection,
     setIsChecked,
-    setIsSubmitDisabled,
-   } = useSendOrder();
+  } = useSendOrder();
 
   useEffect(() => {
     dispatch(getOrder());
@@ -62,7 +61,7 @@ export const Order = () => {
   }
 
   const onNameChange = ({ target }) => {
-    const value = target.value;    
+    const value = target.value;
     dispatch(setName(value));
     dispatch(setIsValidName(validateName(value)));
   };
