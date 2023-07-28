@@ -15,23 +15,34 @@ const date = new Date().toLocaleString();
 
 export const Order = () => {
   const { orderData, getOrder, isModalActive, setIsModalActive } = useOrder();
-  const { isOrderSended, sendOrder } = useSendOrder();
+
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (orderData) console.log(orderData.inputPolicy)
-  }, [orderData])
-
-  const [name, setName] = useState('');
-  const [isValidName, setIsValidName] = useState(true);
-  const [tel, setTel] = useState('');
-  const [isValidTel, setIsValidTel] = useState(true);
-  const [email, setEmail] = useState('');
-  const [isValidEmail, setIsValidEmail] = useState(true);
-  const [isChecked, setIsChecked] = useState(false);
-  const [connection, setConnection] = useState('');
-  const [isValidConnection, setIsValidConnection] = useState(true);
-  const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
+  const {
+    isSending,
+    errorMessage,
+    isOrderSended,
+    sendOrder,
+    name,
+    isValidName,
+    tel,
+    isValidTel,
+    email,
+    isValidEmail,
+    connection,
+    isValidConnection,
+    isChecked,
+    isSubmitDisabled,
+    setName,
+    setIsValidName,
+    setTel,
+    setIsValidTel,
+    setEmail,
+    setIsValidEmail,
+    setConnection,
+    setIsValidConnection,
+    setIsChecked,
+  } = useSendOrder();
 
   useEffect(() => {
     dispatch(getOrder());
@@ -51,44 +62,30 @@ export const Order = () => {
 
   const onNameChange = ({ target }) => {
     const value = target.value;
-    setName(value);
-    setIsValidName(validateName(value));
+    dispatch(setName(value));
+    dispatch(setIsValidName(validateName(value)));
   };
 
   const onTelChange = ({ target }) => {
     const value = target.value;
-    setTel(value);
-    setIsValidTel(validateTel(value));
+    dispatch(setTel(value));
+    dispatch(setIsValidTel(validateTel(value)));
   };
 
   const onEmailChange = ({ target }) => {
     const value = target.value;
-    setEmail(value);
-    setIsValidEmail(validateEmail(value));
+    dispatch(setEmail(value));
+    dispatch(setIsValidEmail(validateEmail(value)));
   };
 
   const onConnectionChange = ({ target }) => {
     const value = target.value
-    setConnection(value)
-    setIsValidConnection(validateConnect(value))
+    dispatch(setConnection(value));
+    dispatch(setIsValidConnection(validateConnect(value)));
   };
 
   const onClickButtonClose = () => {
 
-  };
-
-  const handleFormInput = () => {
-    name &&
-      isValidName &&
-      tel &&
-      isValidTel &&
-      email &&
-      isValidEmail &&
-      connection &&
-      isValidConnection &&
-      isChecked
-      ? setIsSubmitDisabled(false)
-      : setIsSubmitDisabled(true)
   };
 
   const handleFormSubmit = (event) => {
@@ -102,7 +99,6 @@ export const Order = () => {
     };
     dispatch(sendOrder(order));
   };
-
 
   const className = classNames(
     classes.name,
@@ -133,7 +129,6 @@ export const Order = () => {
 
         {!isOrderSended && (
           <form
-            onInput={handleFormInput}
             onSubmit={handleFormSubmit}
             className={classes.form}
           >
@@ -200,7 +195,6 @@ export const Order = () => {
             </label>
 
             <Button
-              // onClickButton={onClickButtonSubmit}
               className={classes.submit}
               label='submit'
               content={'text'}
