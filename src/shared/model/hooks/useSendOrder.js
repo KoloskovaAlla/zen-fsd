@@ -1,18 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { 
-  setName, 
-  setIsValidName, 
-  setTel, 
-  setIsValidTel, 
-  setEmail, 
-  setIsValidEmail, 
-  setConnection,
-  setIsValidConnection,
-  setIsChecked,
-  setIsSubmitDisabled,
-  sendOrder
- } from '../reducers/sendOrderSlice';
+import * as sendOrderActions from '../reducers/sendOrderSlice';
 
 /** @type {(store: object) => object} */
 const callback = (store) => store.sendOrderReducer;
@@ -20,64 +8,26 @@ const callback = (store) => store.sendOrderReducer;
 export const useSendOrder = () => {
   const dispatch = useDispatch();
 
-  const {
-    isSending,
-    errorMessage,
-    isOrderSended,
-    name,
-    isValidName,
-    tel,
-    isValidTel,
-    email,
-    isValidEmail,
-    connection,
-    isValidConnection,
-    isChecked,
-    isSubmitDisabled,
-  } = useSelector(callback);
+  const orderState = useSelector(callback);
 
   useEffect(() => {
-    checkFormValidity();    
-  }, [name, isValidName, tel, isValidTel, email, isValidEmail, connection, isValidConnection, isChecked]);
+    checkFormValidity();
+  }, Object.values(orderState));
 
   const checkFormValidity = () => {
-    const isFormValid = name &&
-      isValidName &&
-      tel &&
-      isValidTel &&
-      email &&
-      isValidEmail &&
-      connection &&
-      isValidConnection &&
-      isChecked;
+    const isFormValid = orderState.name &&
+      orderState.isValidName &&
+      orderState.tel &&
+      orderState.isValidTel &&
+      orderState.email &&
+      orderState.isValidEmail &&
+      orderState.connection &&
+      orderState.isValidConnection &&
+      orderState.isChecked;
 
-    dispatch(setIsSubmitDisabled(!isFormValid));
+    dispatch(sendOrderActions.setIsSubmitDisabled(!isFormValid));
   };
 
-  return {
-    isSending,
-    errorMessage,
-    isOrderSended,
-    sendOrder,
-    name,
-    isValidName,
-    tel,
-    isValidTel,
-    email,
-    isValidEmail,
-    connection,
-    isValidConnection,
-    isChecked,
-    isSubmitDisabled,   
-    setName, 
-    setIsValidName, 
-    setTel, 
-    setIsValidTel, 
-    setEmail, 
-    setIsValidEmail, 
-    setConnection,
-    setIsValidConnection,
-    setIsChecked,
-    setIsSubmitDisabled
-  };
+  return orderState;
+  return sendOrderActions;
 };
