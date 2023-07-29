@@ -4,7 +4,7 @@ import { orderActions } from '../reducers/sendOrderSlice';
 import { sendOrder } from '../reducers/sendOrderSlice';
  
 /** @type {(store: object) => object} */ 
-const callback = (store) => store.sendOrderReducer;
+const getOrderState = (store) => store.sendOrderReducer;
 
 /**  
  * @typedef {import('./types').Order} Order
@@ -13,7 +13,7 @@ const callback = (store) => store.sendOrderReducer;
 
 export const useSendOrder = () => { 
   const dispatch = useDispatch();  
-  const orderState = useSelector(callback); 
+  const orderState = useSelector(getOrderState); 
    
   useEffect(() => { 
     const isFormValid = orderState.isValidName && 
