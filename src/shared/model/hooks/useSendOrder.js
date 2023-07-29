@@ -1,33 +1,29 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import * as sendOrderActions from '../reducers/sendOrderSlice';
-
-/** @type {(store: object) => object} */
+import { useEffect } from 'react'; 
+import { useDispatch, useSelector } from 'react-redux'; 
+import { orderActions } from '../reducers/sendOrderSlice'; 
+import { sendOrder } from '../reducers/sendOrderSlice';
+ 
+/** @type {(store: object) => object} */ 
 const callback = (store) => store.sendOrderReducer;
 
-export const useSendOrder = () => {
-  const dispatch = useDispatch();
+/**  
+ * @typedef {import('./types').Order} Order
+ * @type {() => Order}
+ */
 
-  const orderState = useSelector(callback);
+export const useSendOrder = () => { 
+  const dispatch = useDispatch();  
+  const orderState = useSelector(callback); 
+   
+  useEffect(() => { 
+    const isFormValid = orderState.isValidName && 
+      orderState.isValidTel && 
+      orderState.isValidEmail && 
+      orderState.isValidConnection && 
+      orderState.isChecked;  
+    dispatch(orderActions.setIsSubmitDisabled(!isFormValid)); 
+  }, [dispatch, orderState]); 
 
-  useEffect(() => {
-    checkFormValidity();
-  }, Object.values(orderState));
-
-  const checkFormValidity = () => {
-    const isFormValid = orderState.name &&
-      orderState.isValidName &&
-      orderState.tel &&
-      orderState.isValidTel &&
-      orderState.email &&
-      orderState.isValidEmail &&
-      orderState.connection &&
-      orderState.isValidConnection &&
-      orderState.isChecked;
-
-    dispatch(sendOrderActions.setIsSubmitDisabled(!isFormValid));
-  };
-
-  return orderState;
-  return sendOrderActions;
+  Object.assign(orderActions, { sendOrder }); 
+  return { orderState, orderActions }; 
 };
