@@ -5,10 +5,10 @@ import { getOrder, setIsModalActive } from '../reducers/orderSlice';
 /** @type {(store: object) => object} */
 const callback = (store) => store.orderReducer;
 
-/**
- * @typedef {import('./types').OrderState} State
- * @type {() => State}
- */
+// /**
+//  * @typedef {import('./types').OrderState} State
+//  * @type {() => State}
+//  */
 export const useOrder = () => {
   const {
     isModalActive,

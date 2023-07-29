@@ -20,12 +20,13 @@ export const Order = () => {
   const dispatch = useDispatch(); 
  
   const { orderState, orderActions } = useSendOrder(); 
+  // console.log(orderActions)
+  const { sendOrder } = orderActions; 
  
   const { 
     isSending, 
     errorMessage, 
     isOrderSended, 
-    sendOrder, 
     name, 
     isValidName, 
     tel, 
@@ -38,10 +39,6 @@ export const Order = () => {
     isSubmitDisabled, 
   } = orderState; 
  
-  useEffect(() => { 
-    // console.log(isSubmitDisabled); 
-  }, [isSubmitDisabled]) 
- 
   const { 
     setName, 
     setIsValidName, 
@@ -52,8 +49,7 @@ export const Order = () => {
     setConnection, 
     setIsValidConnection, 
     setIsChecked, 
-  } = orderActions; 
- 
+  } = orderActions;  
  
   useEffect(() => { 
     dispatch(getOrder()); 
@@ -111,12 +107,6 @@ export const Order = () => {
     dispatch(sendOrder(order)); 
   }; 
  
-  const className = classNames( 
-    classes.name, 
-    { [classes.succes]: isValidName }, 
-    [] 
-  ); 
- 
   if (!orderData) return null; 
   return ( 
     <div onClick={handleModalClick} className={classNameModal}> 
@@ -158,7 +148,7 @@ export const Order = () => {
             )} 
  
             {orderData?.inputTel && (
-<TextField 
+              <TextField 
                 className={classes.tel} 
                 type={orderData.inputTel.type} 
                 placeholder={orderData.inputTel.placeholder} 
