@@ -37,6 +37,7 @@ export const Order = () => {
     isValidConnection, 
     isChecked, 
     isSubmitDisabled, 
+    isDataSent,
   } = orderState; 
  
   const { 
@@ -49,6 +50,7 @@ export const Order = () => {
     setConnection, 
     setIsValidConnection, 
     setIsChecked, 
+    setIsDataSent,
   } = orderActions;  
  
   useEffect(() => { 
@@ -60,7 +62,7 @@ export const Order = () => {
   }); 
  
   const handleModalClick = () => { 
-    dispatch(setIsModalActive(false)) 
+    dispatch(setIsModalActive(false));
   } 
  
   const handleBodyClick = (event) => { 
@@ -92,7 +94,7 @@ export const Order = () => {
   }; 
  
   const onClickButtonClose = () => { 
- 
+    dispatch(setIsModalActive(false));
   }; 
  
   const handleFormSubmit = (event) => { 
@@ -104,16 +106,25 @@ export const Order = () => {
       email: email, 
       connection: connection, 
     }; 
-    dispatch(sendOrder(order)); 
+    dispatch(sendOrder(order));
+    dispatch(setIsDataSent(true));
+    setTimeout(() => {
+      dispatch(setIsModalActive(false))
+      setIsDataSent(false)
+    }, 3000)
   }; 
+
+  useEffect(() => {
+    console.log(isDataSent);
+  }, [isDataSent])
  
   if (!orderData) return null; 
   return ( 
     <div onClick={handleModalClick} className={classNameModal}> 
       <div onClick={handleBodyClick} className={classes.body}> 
-        {isOrderSended && <span>Данные отправлены успешно!</span>} 
+        {isDataSent && <span>Данные отправлены успешно!</span>} 
  
-        {!isOrderSended && ( 
+        {!isDataSent && ( 
           <Button 
             onClickButton={onClickButtonClose} 
             className={classes.close} 
@@ -122,13 +133,11 @@ export const Order = () => {
           />) 
         } 
  
-        {!isOrderSended && ( 
+        {!isDataSent && ( 
           <h2 className={classes.title}>{orderData?.title?.content}</h2> 
-        )} 
+        )}  
  
- 
- 
-        {!isOrderSended && ( 
+        {!isDataSent && ( 
           <form 
             onSubmit={handleFormSubmit} 
             className={classes.form} 
