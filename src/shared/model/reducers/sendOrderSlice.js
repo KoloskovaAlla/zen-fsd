@@ -40,6 +40,7 @@ const initialState = {
   isSending: false,
   errorMessage: '',
   isOrderSended: false,
+  isDataSent: false,
 };
 
 const sendOrderSlice = createSlice({
@@ -75,6 +76,9 @@ const sendOrderSlice = createSlice({
     },
     setIsSubmitDisabled: (state, { payload }) => {
       state.isSubmitDisabled = payload;
+    },
+    setIsDataSent: ( state, { payload }) => {
+      state.isDataSent = payload;
     },
   },
   extraReducers: {

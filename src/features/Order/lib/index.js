@@ -1,0 +1,1 @@
+export { onClickButtonClose } from './onClickButtonClose';

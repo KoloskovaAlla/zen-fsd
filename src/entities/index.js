@@ -1,2 +1,2 @@
-export { TextField } from './TextField';
 export { SelectField } from './SelectField';
+export { TextField } from './TextField';

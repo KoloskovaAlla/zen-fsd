@@ -263,6 +263,7 @@ export interface OrderState {
     isSending: boolean, 
     errorMessage: string, 
     isOrderSended: boolean, 
+    isDataSent: boolean,
 }
 export interface OrderActions {
     setName: Function;
@@ -274,7 +275,8 @@ export interface OrderActions {
     setConnection: Function; 
     setIsValidConnection: Function;
     setIsChecked: Function;
-    sendOrder?: any;
+    setIsDataSent: Function;
+    sendOrder?: any;    
 }
 
 export interface Order {

@@ -10,3 +10,4 @@ export { useColumns } from './useColumns';
 export { useInfo } from './useInfo';
 export { useCurrentPage } from './useCurrentPage';
 export { useOrder } from './useOrder';
+export { useSendOrder } from './useSendOrder';
