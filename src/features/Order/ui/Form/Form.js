@@ -1,4 +1,4 @@
-import { TextField, SelectField } from '../../../../entities'; 
+import { TextField, SelectField } from 'entitiess'; 
 import { Checkbox } from 'shared/ui'; 
 import { Button } from 'shared/ui'; 
 import classes from './Form.module.scss';

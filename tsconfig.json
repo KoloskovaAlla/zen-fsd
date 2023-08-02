@@ -2,9 +2,6 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "baseUrl": "src",
-    "paths": {
-      "entities/*": ["src/entities/*"]
-    },
     "noEmit": true,
     "checkJs": true,
     "target": "ES2022",
@@ -29,6 +26,6 @@
   },
   "include": [
     "src",
-    "config.d.ts",
+    "config.ts",
   ]
 }
