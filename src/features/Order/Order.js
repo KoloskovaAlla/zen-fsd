@@ -1,9 +1,8 @@
 import { useEffect } from 'react'; 
 import { useDispatch } from 'react-redux'; 
 import { useOrder } from 'shared/model/hooks'; 
-import { classNames } from 'shared/lib/classNames'; 
 import { useSendOrder } from 'shared/model/hooks'; 
-import { validateName, validateTel, validateEmail, validateConnect } from 'shared/lib'; 
+import { validateName, validateTel, validateEmail, validateConnect, classNames } from 'shared/lib'; 
 import { Button } from 'shared/ui'; 
 import { Form } from './ui'
 import classes from './Order.module.scss'; 
@@ -53,11 +52,15 @@ export const Order = () => {
  
   const handleModalClick = () => { 
     dispatch(setIsModalActive(false));
-  } 
- 
+  }; 
+
+  /**
+   * @typedef {import('react').SyntheticEvent} Event
+   * @type {( event: Event ) => void} 
+   */
   const handleBodyClick = (event) => { 
-    event.stopPropagation() 
-  } 
+    event.stopPropagation(); 
+  };
  
   const onNameChange = ({ target }) => { 
     const value = target.value; 
@@ -78,7 +81,7 @@ export const Order = () => {
   }; 
  
   const onConnectionChange = ({ target }) => { 
-    const value = target.value 
+    const value = target.value;
     dispatch(setConnection(value)); 
     dispatch(setIsValidConnection(validateConnect(value))); 
   }; 
@@ -97,12 +100,16 @@ export const Order = () => {
       connection: connection, 
     }; 
     dispatch(sendOrder(order));
-    dispatch(setIsDataSent(true));
-    setTimeout(() => {
-      dispatch(setIsModalActive(false))
-      setIsDataSent(false)
-    }, 3000)
+    dispatch(setIsDataSent(true)); 
   }; 
+  useEffect(() => {
+    if (isDataSent) {
+      setTimeout(() => {
+        dispatch(setIsModalActive(false));
+        setIsDataSent(false);
+      }, 3000);
+    };
+  }, [isDataSent, dispatch, setIsDataSent, setIsModalActive]);
  
   if (!orderData) return null; 
   return ( 
