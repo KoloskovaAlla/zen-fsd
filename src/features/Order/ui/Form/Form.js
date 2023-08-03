@@ -7,90 +7,70 @@ import classes from './Form.module.scss';
  * @typedef {import('react').ReactElement} Element
  * @type {(formProps: Props) => Element}
  */
-export const Form = (formProps) => {  
-  const {   
-    handleFormSubmit, 
-    orderData, 
-    name, 
-    isValidName, 
-    onNameChange, 
-    tel, 
-    isValidTel, 
-    onTelChange, 
-    email, 
-    isValidEmail,   
-    onEmailChange, 
-    connection,   
-    isValidConnection, 
-    onConnectionChange, 
-    isChecked, 
-    setIsChecked, 
-    isSubmitDisabled 
-  } = formProps;
-
+export const Form = (formProps) => {
   return (
     <form 
-      onSubmit={handleFormSubmit} 
+      onSubmit={formProps.handleFormSubmit} 
       className={classes.form} 
     >  
-      {orderData?.inputName && ( 
+      {formProps.orderData?.inputName && ( 
         <TextField 
           className={classes.name} 
-          type={orderData.inputName.type} 
-          placeholder={orderData.inputName.placeholder} 
+          type={formProps.orderData.inputName.type} 
+          placeholder={formProps.orderData.inputName.placeholder} 
           label='' 
-          value={name} 
-          isValid={isValidName} 
-          invalidMessage={orderData.inputName.invalidMessage} 
-          onFieldChange={onNameChange} 
+          value={formProps.name} 
+          isValid={formProps.isValidName} 
+          invalidMessage={formProps.orderData.inputName.invalidMessage} 
+          onFieldChange={formProps.onNameChange} 
         /> 
       )} 
   
-      {orderData?.inputTel && (
+      {formProps.orderData?.inputTel && (
         <TextField 
           className={classes.tel} 
-          type={orderData.inputTel.type} 
-          placeholder={orderData.inputTel.placeholder} 
+          type={formProps.orderData.inputTel.type} 
+          placeholder={formProps.orderData.inputTel.placeholder} 
           label='' 
-          value={tel} 
-          isValid={isValidTel} 
-          invalidMessage={orderData.inputTel.invalidMessage} 
-          onFieldChange={onTelChange} 
+          value={formProps.tel} 
+          isValid={formProps.isValidTel} 
+          invalidMessage={formProps.orderData.inputTel.invalidMessage} 
+          onFieldChange={formProps.onTelChange} 
         /> 
       )}      
   
-      {orderData?.inputEmail && ( 
+      {formProps.orderData?.inputEmail && ( 
         <TextField 
           className={classes.email} 
-          type={orderData.inputEmail.type} 
-          placeholder={orderData.inputEmail.placeholder} 
+          type={formProps.orderData.inputEmail.type} 
+          placeholder={formProps.orderData.inputEmail.placeholder} 
           label='' 
-          value={email} 
-          isValid={isValidEmail} 
-          invalidMessage={orderData.inputEmail.invalidMessage} 
-          onFieldChange={onEmailChange} 
+          value={formProps.email} 
+          isValid={formProps.isValidEmail} 
+          invalidMessage={formProps.orderData.inputEmail.invalidMessage} 
+          onFieldChange={formProps.onEmailChange} 
         /> 
       )} 
   
-      {orderData?.connection?.options && ( 
+      {formProps.orderData?.connection?.options && ( 
         <SelectField 
           className={classes.connection} 
-          value={connection} 
-          label={orderData.connection.label} 
-          options={orderData.connection.options} 
-          isValid={isValidConnection} 
-          invalidMessage={orderData.connection.invalidMessage} 
-          onFieldChange={onConnectionChange} 
+          value={formProps.connection} 
+          label={formProps.orderData.connection.label} 
+          options={formProps.orderData.connection.options} 
+          isValid={formProps.isValidConnection} 
+          invalidMessage={formProps.orderData.connection.invalidMessage} 
+          onFieldChange={formProps.onConnectionChange} 
         /> 
       )} 
   
       <label className={classes.policy}> 
         <Checkbox 
-          isChecked={isChecked} 
-          setIsChecked={setIsChecked} 
+          isChecked={formProps.isChecked} 
+          setIsChecked={formProps.setIsChecked} 
         /> 
-        <a href={orderData?.inputPolicy?.url}> 
-          {orderData?.inputPolicy?.content} 
+        <a href={formProps.orderData?.inputPolicy?.url}> 
+          {formProps.orderData?.inputPolicy?.content} 
         </a> 
       </label> 
   
@@ -98,7 +78,7 @@ export const Form = (formProps) => {
         className={classes.submit} 
         label='submit' 
         content={'text'} 
-        disabled={isSubmitDisabled} 
+        disabled={formProps.isSubmitDisabled} 
       /> 
     </form> 
   );
