@@ -5,7 +5,8 @@ import classes from './Form.module.scss';
 /** @type any */
 export const Form = ({ 
   handleFormSubmit, 
-  orderData, name, 
+  orderData, 
+  name, 
   isValidName, 
   onNameChange, 
   tel, 

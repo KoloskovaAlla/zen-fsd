@@ -110,6 +110,26 @@ export const Order = () => {
       }, 3000);
     };
   }, [isDataSent, dispatch, setIsDataSent, setIsModalActive]);
+
+  const formProps = {
+    handleFormSubmit,
+    orderData,
+    name,
+    isValidName,
+    onNameChange,
+    tel,
+    isValidTel,
+    onTelChange,
+    email,
+    isValidEmail,
+    onEmailChange,
+    connection,
+    isValidConnection,
+    onConnectionChange,
+    isChecked,
+    setIsChecked,
+    isSubmitDisabled,
+  };
  
   if (!orderData) return null; 
   return ( 
@@ -128,29 +148,9 @@ export const Order = () => {
  
         {!isDataSent && ( 
           <h2 className={classes.title}>{orderData?.title?.content}</h2> 
-        )}  
- 
-        {!isDataSent && (          
-          <Form 
-            handleFormSubmit={handleFormSubmit}
-            orderData={orderData} 
-            name={name} 
-            isValidName={isValidName} 
-            onNameChange={onNameChange} 
-            tel={tel}
-            isValidTel={isValidTel} 
-            onTelChange={onTelChange} 
-            email={email} 
-            isValidEmail={isValidEmail} 
-            onEmailChange={onEmailChange} 
-            connection={connection} 
-            isValidConnection={isValidConnection} 
-            onConnectionChange={onConnectionChange} 
-            isChecked={isChecked} 
-            setIsChecked={setIsChecked} 
-            isSubmitDisabled={isSubmitDisabled}
-          />
-        )} 
+        )}    
+
+      {!isDataSent && <Form {...formProps} />};
       </div> 
     </div> 
   ); 
