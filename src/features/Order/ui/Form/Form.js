@@ -8,49 +8,57 @@ import classes from './Form.module.scss';
  * @type {(formProps: Props) => Element}
  */
 export const Form = (formProps) => {
+  const { orderData } = formProps;
+  const nameOptions = {
+    value: formProps.name, 
+    isValidField: formProps.isValidName,
+    onFieldChanged: formProps.onNameChange,
+    invalidMessage: orderData.inputName.invalidMessage,
+    type: orderData.inputName.type,
+    placeholder: orderData.inputName.placeholder,    
+  };
+
+  const telOptions = {
+    value: formProps.tel, 
+    isValidField: formProps.isValidTel,
+    onFieldChanged: formProps.onTelChange,
+    invalidMessage: orderData.inputTel.invalidMessage,
+    type: orderData.inputTel.type,
+    placeholder: orderData.inputTel.placeholder,    
+  };
+  const emailOptions = {
+    value: formProps.email, 
+    isValidField: formProps.isValidEmail,
+    onFieldChanged: formProps.onEmailChange,
+    invalidMessage: orderData.inputEmail.invalidMessage,
+    type: orderData.inputEmail.type,
+    placeholder: orderData.inputEmail.placeholder,    
+  };
+
   return (
     <form 
       onSubmit={formProps.handleFormSubmit} 
       className={classes.form} 
     >  
-      {formProps.orderData?.inputName && ( 
+      {orderData?.inputName && ( 
         <TextField 
           className={classes.name} 
-          type={formProps.orderData.inputName.type} 
-          placeholder={formProps.orderData.inputName.placeholder} 
-          label='' 
-          value={formProps.name} 
-          isValid={formProps.isValidName} 
-          invalidMessage={formProps.orderData.inputName.invalidMessage} 
-          onFieldChange={formProps.onNameChange} 
+          options={nameOptions}         
         /> 
-      )} 
-  
-      {formProps.orderData?.inputTel && (
+      )}   
+      {orderData?.inputTel && ( 
         <TextField 
-          className={classes.tel} 
-          type={formProps.orderData.inputTel.type} 
-          placeholder={formProps.orderData.inputTel.placeholder} 
-          label='' 
-          value={formProps.tel} 
-          isValid={formProps.isValidTel} 
-          invalidMessage={formProps.orderData.inputTel.invalidMessage} 
-          onFieldChange={formProps.onTelChange} 
+          className={classes.name} 
+          options={telOptions}         
         /> 
-      )}      
-  
-      {formProps.orderData?.inputEmail && ( 
+      )}   
+      {orderData?.inputEmail && ( 
         <TextField 
-          className={classes.email} 
-          type={formProps.orderData.inputEmail.type} 
-          placeholder={formProps.orderData.inputEmail.placeholder} 
-          label='' 
-          value={formProps.email} 
-          isValid={formProps.isValidEmail} 
-          invalidMessage={formProps.orderData.inputEmail.invalidMessage} 
-          onFieldChange={formProps.onEmailChange} 
+          className={classes.name} 
+          options={emailOptions}         
         /> 
-      )} 
+      )}   
+      
   
       {formProps.orderData?.connection?.options && ( 
         <SelectField 

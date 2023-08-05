@@ -2,24 +2,20 @@ import { InputText } from 'shared/ui';
 
 export const TextField = ({
   className,
-  type,
-  placeholder,
-  label,
-  value,
-  isValid,
-  invalidMessage,
-  onFieldChange,
+  options
 }) => {
+const { value, isValidField, onFieldChange, invalidMessage, type, placeholder } = options;
+
   return (
     <label className={className}>
       <InputText
         value={value}
-        onChange={onFieldChange}
+        onFieldChange={onFieldChange}
         type={type}
         placeholder={placeholder}
       />
 
-      {!isValid && <span>{invalidMessage}</span>}
+      {!isValidField && <span>{invalidMessage}</span>}
     </label>
   );
 };
