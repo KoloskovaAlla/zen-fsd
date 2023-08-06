@@ -1,4 +1,4 @@
-export const InputText = ({ value, onFieldChange, type, placeholder }) => {
+export const InputText = ({ value, onFieldChange, type, placeholder }) => {  
   return (
     <input
       value={value}
@@ -6,5 +6,5 @@ export const InputText = ({ value, onFieldChange, type, placeholder }) => {
       type={type}
       placeholder={placeholder}
     />
-  )
+  );
 };

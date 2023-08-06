@@ -9,19 +9,19 @@ import classes from './Form.module.scss';
  */
 export const Form = (formProps) => {
   const { orderData } = formProps;
+
   const nameOptions = {
     value: formProps.name, 
     isValidField: formProps.isValidName,
-    onFieldChanged: formProps.onNameChange,
+    onFieldChange: formProps.onNameChange,
     invalidMessage: orderData.inputName.invalidMessage,
     type: orderData.inputName.type,
     placeholder: orderData.inputName.placeholder,    
   };
-
   const telOptions = {
     value: formProps.tel, 
     isValidField: formProps.isValidTel,
-    onFieldChanged: formProps.onTelChange,
+    onFieldChange: formProps.onTelChange,
     invalidMessage: orderData.inputTel.invalidMessage,
     type: orderData.inputTel.type,
     placeholder: orderData.inputTel.placeholder,    
@@ -29,7 +29,7 @@ export const Form = (formProps) => {
   const emailOptions = {
     value: formProps.email, 
     isValidField: formProps.isValidEmail,
-    onFieldChanged: formProps.onEmailChange,
+    onFieldChange: formProps.onEmailChange,
     invalidMessage: orderData.inputEmail.invalidMessage,
     type: orderData.inputEmail.type,
     placeholder: orderData.inputEmail.placeholder,    
@@ -48,17 +48,16 @@ export const Form = (formProps) => {
       )}   
       {orderData?.inputTel && ( 
         <TextField 
-          className={classes.name} 
+          className={classes.tel} 
           options={telOptions}         
         /> 
       )}   
       {orderData?.inputEmail && ( 
         <TextField 
-          className={classes.name} 
+          className={classes.email} 
           options={emailOptions}         
         /> 
-      )}   
-      
+      )}       
   
       {formProps.orderData?.connection?.options && ( 
         <SelectField 
