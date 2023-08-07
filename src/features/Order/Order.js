@@ -143,29 +143,54 @@ export const Order = () => {
   };
 
   const nameOptions = {
-    value: formProps.name,
-    isValidField: formProps.isValidName,
-    onFieldChange: formProps.onNameChange,
+    value: name,
+    isValidField: isValidName,
+    onFieldChange: onNameChange,
     invalidMessage: orderData?.inputName.invalidMessage,
     type: orderData?.inputName.type,
     placeholder: orderData?.inputName.placeholder,
   };
 
   const telOptions = {
-    value: formProps.tel,
-    isValidField: formProps.isValidTel,
-    onFieldChange: formProps.onTelChange,
+    value: tel,
+    isValidField: isValidTel,
+    onFieldChange: onTelChange,
     invalidMessage: orderData?.inputTel.invalidMessage,
     type: orderData?.inputTel.type,
     placeholder: orderData?.inputTel.placeholder,
   };
   const emailOptions = {
-    value: formProps.email,
-    isValidField: formProps.isValidEmail,
-    onFieldChange: formProps.onEmailChange,
+    value: email,
+    isValidField: isValidEmail,
+    onFieldChange: onEmailChange,
     invalidMessage: orderData?.inputEmail.invalidMessage,
     type: orderData?.inputEmail.type,
     placeholder: orderData?.inputEmail.placeholder,
+  };
+
+  const selectOptions = {  
+    connection,
+    isValidConnection,
+    onConnectionChange,   
+  };
+
+  const checkboxOptions = {   
+    isChecked,
+    setIsChecked,   
+  };
+
+  const submitOptions = {   
+    handleFormSubmit,
+    isSubmitDisabled,
+  };
+
+  const formOptions = {
+    nameOptions,
+    telOptions,
+    emailOptions,
+    selectOptions,
+    checkboxOptions,
+    submitOptions,  
   };
 
   if (!orderData) return null;
@@ -189,10 +214,7 @@ export const Order = () => {
 
         {!isDataSent && (
           <Form
-            nameOptions={nameOptions}
-            telOptions={telOptions}
-            emailOptions={emailOptions}
-            otherFormProps={otherFormProps}
+            formOptions={formOptions}
           />)};
       </div>
     </div>

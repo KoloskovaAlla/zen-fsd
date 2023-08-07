@@ -33,9 +33,26 @@ export interface EmailOptions {
   placeholder: string;
 };
 
-export interface FormProps {
-  otherFormProps: OtherFormProps;
-  nameOptions: NameOptions;
-  telOptions: TelOptions;
-  emailOptions: EmailOptions;
+export interface SelectOptions {
+
+};
+
+export interface CheckboxOptions {
+
+};
+
+export interface SubmitOptions {
+  handleFormSubmit: (event: React.FormEvent<HTMLFormElement>) => void; 
+  isSubmitDisabled: boolean; 
+};
+
+export interface FormProps {  
+ formOptions: {
+    nameOptions: NameOptions;
+    telOptions: TelOptions;
+    emailOptions: EmailOptions;
+    selectOptions: SelectOptions;
+    checkboxOptions: CheckboxOptions;
+    submitOptions: SubmitOptions;     
+  };
 };

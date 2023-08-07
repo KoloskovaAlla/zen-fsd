@@ -2,21 +2,26 @@ import { TextField, SelectField } from 'entity';
 import { Checkbox, Button } from 'shared/ui';
 import classes from './Form.module.scss';
 
-/**
- * @typedef {import('./types').FormProps} Props
- * @typedef {import('react').ReactElement} Element
- * @type {({ nameOptions, telOptions, emailOptions, otherFormProps }: Props) => Element}
+/** 
+ * @param {import('./types').FormProps} props
+ * @returns {React.ReactElement} 
  */
-export const Form = ({
-  nameOptions,
-  telOptions,
-  emailOptions,
-  otherFormProps,
-}) => {
+export const Form = ({ formOptions }) => {
+  const { 
+    nameOptions, 
+    telOptions, 
+    emailOptions,  
+    selectOptions,  
+    checkboxOptions, 
+    submitOptions,
+  } = formOptions;
+
+  const { handleFormSubmit, isSubmitDisabled } = submitOptions;
+  
   return (
     <form
       className={classes.form}
-      onSubmit={otherFormProps.handleFormSubmit}
+      onSubmit={handleFormSubmit}
     >
       {nameOptions && (
         <TextField
@@ -37,7 +42,7 @@ export const Form = ({
         />
       )}
 
-      {otherFormProps.orderData?.connection?.options && (
+      {/* {otherFormProps.orderData?.connection?.options && (
         <SelectField
           className={classes.connection}
           value={otherFormProps.connection}
@@ -47,9 +52,9 @@ export const Form = ({
           invalidMessage={otherFormProps.orderData.connection.invalidMessage}
           onFieldChange={otherFormProps.onConnectionChange}
         />
-      )}
+      )} */}
 
-      <label className={classes.policy}>
+      {/* <label className={classes.policy}>
         <Checkbox
           isChecked={otherFormProps.isChecked}
           setIsChecked={otherFormProps.setIsChecked}
@@ -57,13 +62,13 @@ export const Form = ({
         <a href={otherFormProps.orderData?.inputPolicy?.url}>
           {otherFormProps.orderData?.inputPolicy?.content}
         </a>
-      </label>
+      </label> */}
 
       <Button
         className={classes.submit}
         label='submit'
         content={'text'}
-        disabled={otherFormProps.isSubmitDisabled}
+        disabled={isSubmitDisabled}
       />
     </form>
   );
