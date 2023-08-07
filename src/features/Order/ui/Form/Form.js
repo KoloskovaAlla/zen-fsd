@@ -1,92 +1,68 @@
-import { TextField, SelectField } from 'entity'; 
-import { Checkbox,  Button } from 'shared/ui'; 
+import { TextField, SelectField } from 'entity';
+import { Checkbox, Button } from 'shared/ui';
 import classes from './Form.module.scss';
 
 /**
  * @typedef {import('./types').FormProps} Props
  * @typedef {import('react').ReactElement} Element
- * @type {(formProps: Props) => Element}
+ * @type {({ nameOptions, telOptions, emailOptions, otherFormProps }: Props) => Element}
  */
-export const Form = (formProps) => {
-  const { orderData } = formProps;
+export const Form = ({ nameOptions, telOptions, emailOptions, otherFormProps }) => {
+  const { orderData } = otherFormProps;
 
-  const nameOptions = {
-    value: formProps.name, 
-    isValidField: formProps.isValidName,
-    onFieldChange: formProps.onNameChange,
-    invalidMessage: orderData.inputName.invalidMessage,
-    type: orderData.inputName.type,
-    placeholder: orderData.inputName.placeholder,    
-  };
-  const telOptions = {
-    value: formProps.tel, 
-    isValidField: formProps.isValidTel,
-    onFieldChange: formProps.onTelChange,
-    invalidMessage: orderData.inputTel.invalidMessage,
-    type: orderData.inputTel.type,
-    placeholder: orderData.inputTel.placeholder,    
-  };
-  const emailOptions = {
-    value: formProps.email, 
-    isValidField: formProps.isValidEmail,
-    onFieldChange: formProps.onEmailChange,
-    invalidMessage: orderData.inputEmail.invalidMessage,
-    type: orderData.inputEmail.type,
-    placeholder: orderData.inputEmail.placeholder,    
-  };
 
   return (
-    <form 
-      onSubmit={formProps.handleFormSubmit} 
-      className={classes.form} 
-    >  
-      {orderData?.inputName && ( 
-        <TextField 
-          className={classes.name} 
-          options={nameOptions}         
-        /> 
-      )}   
-      {orderData?.inputTel && ( 
-        <TextField 
-          className={classes.tel} 
-          options={telOptions}         
-        /> 
-      )}   
-      {orderData?.inputEmail && ( 
-        <TextField 
-          className={classes.email} 
-          options={emailOptions}         
-        /> 
-      )}       
-  
-      {formProps.orderData?.connection?.options && ( 
-        <SelectField 
-          className={classes.connection} 
-          value={formProps.connection} 
-          label={formProps.orderData.connection.label} 
-          options={formProps.orderData.connection.options} 
-          isValid={formProps.isValidConnection} 
-          invalidMessage={formProps.orderData.connection.invalidMessage} 
-          onFieldChange={formProps.onConnectionChange} 
-        /> 
-      )} 
-  
-      <label className={classes.policy}> 
-        <Checkbox 
-          isChecked={formProps.isChecked} 
-          setIsChecked={formProps.setIsChecked} 
-        /> 
-        <a href={formProps.orderData?.inputPolicy?.url}> 
-          {formProps.orderData?.inputPolicy?.content} 
-        </a> 
-      </label> 
-  
-      <Button 
-        className={classes.submit} 
-        label='submit' 
-        content={'text'} 
-        disabled={formProps.isSubmitDisabled} 
-      /> 
-    </form> 
+    <form
+      onSubmit={otherFormProps.handleFormSubmit}
+      className={classes.form}
+    >
+      {orderData?.inputName && (
+        <TextField
+          className={classes.name}
+          options={nameOptions}
+        />
+      )}
+      {orderData?.inputTel && (
+        <TextField
+          className={classes.tel}
+          options={telOptions}
+        />
+      )}
+      {orderData?.inputEmail && (
+        <TextField
+          className={classes.email}
+          options={emailOptions}
+        />
+      )}
+
+      {otherFormProps.orderData?.connection?.options && (
+        <SelectField
+          className={classes.connection}
+          value={otherFormProps.connection}
+          label={otherFormProps.orderData.connection.label}
+          options={otherFormProps.orderData.connection.options}
+          isValid={otherFormProps.isValidConnection}
+          invalidMessage={otherFormProps.orderData.connection.invalidMessage}
+          onFieldChange={otherFormProps.onConnectionChange}
+        />
+      )}
+
+      <label className={classes.policy}>
+        <Checkbox
+          isChecked={otherFormProps.isChecked}
+          setIsChecked={otherFormProps.setIsChecked}
+        />
+        <a href={otherFormProps.orderData?.inputPolicy?.url}>
+          {otherFormProps.orderData?.inputPolicy?.content}
+        </a>
+      </label>
+
+      <Button
+        className={classes.submit}
+        label='submit'
+        content={'text'}
+        disabled={otherFormProps.isSubmitDisabled}
+      />
+    </form>
   );
 };
