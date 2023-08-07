@@ -1,9 +1,8 @@
 export interface Options {
-  value: string; 
+  value: string;
   isValidField: boolean;
   onFieldChange: Function;
   invalidMessage: string;
-  type: string;
   placeholder: string;
 };
 

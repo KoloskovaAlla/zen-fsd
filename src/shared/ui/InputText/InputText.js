@@ -1,9 +1,9 @@
-export const InputText = ({ value, onFieldChange, type, placeholder }) => {  
+export const InputText = ({ value, onFieldChange, placeholder }) => {
   return (
     <input
       value={value}
       onChange={onFieldChange}
-      type={type}
+      type='text'
       placeholder={placeholder}
     />
   );
