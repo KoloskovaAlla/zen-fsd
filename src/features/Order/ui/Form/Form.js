@@ -7,28 +7,30 @@ import classes from './Form.module.scss';
  * @typedef {import('react').ReactElement} Element
  * @type {({ nameOptions, telOptions, emailOptions, otherFormProps }: Props) => Element}
  */
-export const Form = ({ nameOptions, telOptions, emailOptions, otherFormProps }) => {
-  const { orderData } = otherFormProps;
-
-
+export const Form = ({
+  nameOptions,
+  telOptions,
+  emailOptions,
+  otherFormProps,
+}) => {
   return (
     <form
-      onSubmit={otherFormProps.handleFormSubmit}
       className={classes.form}
+      onSubmit={otherFormProps.handleFormSubmit}
     >
-      {orderData?.inputName && (
+      {nameOptions && (
         <TextField
           className={classes.name}
           options={nameOptions}
         />
       )}
-      {orderData?.inputTel && (
+      {telOptions && (
         <TextField
           className={classes.tel}
           options={telOptions}
         />
       )}
-      {orderData?.inputEmail && (
+      {emailOptions && (
         <TextField
           className={classes.email}
           options={emailOptions}

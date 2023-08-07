@@ -106,7 +106,7 @@ export const Order = () => {
     if (isDataSent) {
       setTimeout(() => {
         dispatch(setIsModalActive(false));
-        setIsDataSent(false);
+        dispatch(setIsDataSent(false));
       }, 3000);
     };
   }, [isDataSent, dispatch, setIsDataSent, setIsModalActive]);
@@ -131,29 +131,41 @@ export const Order = () => {
     isSubmitDisabled,
   };
 
+  const otherFormProps = {
+    handleFormSubmit,
+    orderData,
+    connection,
+    isValidConnection,
+    onConnectionChange,
+    isChecked,
+    setIsChecked,
+    isSubmitDisabled,
+  };
+
   const nameOptions = {
     value: formProps.name,
     isValidField: formProps.isValidName,
     onFieldChange: formProps.onNameChange,
-    invalidMessage: orderData.inputName.invalidMessage,
-    type: orderData.inputName.type,
-    placeholder: orderData.inputName.placeholder,
+    invalidMessage: orderData?.inputName.invalidMessage,
+    type: orderData?.inputName.type,
+    placeholder: orderData?.inputName.placeholder,
   };
+
   const telOptions = {
     value: formProps.tel,
     isValidField: formProps.isValidTel,
     onFieldChange: formProps.onTelChange,
-    invalidMessage: orderData.inputTel.invalidMessage,
-    type: orderData.inputTel.type,
-    placeholder: orderData.inputTel.placeholder,
+    invalidMessage: orderData?.inputTel.invalidMessage,
+    type: orderData?.inputTel.type,
+    placeholder: orderData?.inputTel.placeholder,
   };
   const emailOptions = {
     value: formProps.email,
     isValidField: formProps.isValidEmail,
     onFieldChange: formProps.onEmailChange,
-    invalidMessage: orderData.inputEmail.invalidMessage,
-    type: orderData.inputEmail.type,
-    placeholder: orderData.inputEmail.placeholder,
+    invalidMessage: orderData?.inputEmail.invalidMessage,
+    type: orderData?.inputEmail.type,
+    placeholder: orderData?.inputEmail.placeholder,
   };
 
   if (!orderData) return null;
@@ -180,7 +192,7 @@ export const Order = () => {
             nameOptions={nameOptions}
             telOptions={telOptions}
             emailOptions={emailOptions}
-            otherFormProps={formProps}
+            otherFormProps={otherFormProps}
           />)};
       </div>
     </div>

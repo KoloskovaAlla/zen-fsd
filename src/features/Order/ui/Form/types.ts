@@ -1,15 +1,6 @@
 export interface OtherFormProps {
   handleFormSubmit: any;
   orderData: any;
-  name: any;
-  isValidName: any;
-  onNameChange: any;
-  tel: any;
-  isValidTel: any;
-  onTelChange: any;
-  email: any;
-  isValidEmail: any;
-  onEmailChange: any;
   connection: any;
   isValidConnection: any;
   onConnectionChange: any;
@@ -23,7 +14,6 @@ export interface NameOptions {
   isValidField: boolean;
   onFieldChange: Function;
   invalidMessage: string;
-  type: string;
   placeholder: string;
 };
 
@@ -32,7 +22,6 @@ export interface TelOptions {
   isValidField: boolean;
   onFieldChange: Function;
   invalidMessage: string;
-  type: string;
   placeholder: string;
 };
 
@@ -41,7 +30,6 @@ export interface EmailOptions {
   isValidField: boolean;
   onFieldChange: Function;
   invalidMessage: string;
-  type: string;
   placeholder: string;
 };
 
