@@ -1,23 +1,41 @@
-import { TextField, SelectField } from 'entity';
-import { Checkbox, Button } from 'shared/ui';
 import classes from './Form.module.scss';
 
-/** 
- * @param {import('./types').FormProps} props
- * @returns {React.ReactElement} 
+import {
+  TextField,
+  SelectField,
+} from 'entity';
+
+import {
+  Checkbox,
+  Button,
+} from 'shared/ui';
+
+/**
+ * @typedef {import('./types').FormProps} FormProps
+ * @typedef {import('react').ReactElement} Element
  */
+
+/** 
+ * @function Form
+ * @param {FormProps} props
+ * @returns {Element}
+ */
+
 export const Form = ({ formOptions }) => {
-  const { 
-    nameOptions, 
-    telOptions, 
-    emailOptions,  
-    selectOptions,  
-    checkboxOptions, 
+  const {
+    nameOptions,
+    telOptions,
+    emailOptions,
+    selectOptions,
+    checkboxOptions,
     submitOptions,
   } = formOptions;
 
-  const { handleFormSubmit, isSubmitDisabled } = submitOptions;
-  
+  const {
+    handleFormSubmit,
+    isSubmitDisabled,
+  } = submitOptions;
+
   return (
     <form
       className={classes.form}
