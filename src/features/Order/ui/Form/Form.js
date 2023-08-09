@@ -60,15 +60,10 @@ export const Form = ({ formOptions }) => {
         />
       )}
 
-      {/* {otherFormProps.orderData?.connection?.options && (
+      {/* {selectOptions && (
         <SelectField
           className={classes.connection}
-          value={otherFormProps.connection}
-          label={otherFormProps.orderData.connection.label}
-          options={otherFormProps.orderData.connection.options}
-          isValid={otherFormProps.isValidConnection}
-          invalidMessage={otherFormProps.orderData.connection.invalidMessage}
-          onFieldChange={otherFormProps.onConnectionChange}
+          options={selectOptions}
         />
       )} */}
 

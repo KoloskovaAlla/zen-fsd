@@ -34,7 +34,9 @@ export interface EmailOptions {
 };
 
 export interface SelectOptions {
-
+  value: string;
+  isValidField: boolean;
+  onFieldChange: Function;
 };
 
 export interface CheckboxOptions {

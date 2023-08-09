@@ -3,16 +3,12 @@ import classes from './SelectField.module.scss';
 
 export const SelectField = ({
   className,
-  value,
-  label,
   options,
-  isValid,
-  invalidMessage,
-  onFieldChange
 }) => {
+  
   return (
     <label className={className}>
-      {!value && (
+      {/* {!value && (
         <span className={classes.label}>
           {label}
         </span>
@@ -26,7 +22,7 @@ export const SelectField = ({
         <span className={classes.invalidMessage}>
           {invalidMessage}
         </span>
-      )}
+      )} */}
     </label>
   );
 };

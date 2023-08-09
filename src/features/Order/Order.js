@@ -168,10 +168,13 @@ export const Order = () => {
     placeholder: orderData?.inputEmail.placeholder,
   };
 
-  const selectOptions = {  
-    connection,
-    isValidConnection,
-    onConnectionChange,   
+  console.log(orderData)
+
+  const selectOptions = { 
+    value: connection,
+    isValidField: isValidConnection,
+    onFieldChange: onConnectionChange,
+    invalidMessage: orderData?.connection?.invalidMessage,       
   };
 
   const checkboxOptions = {   
