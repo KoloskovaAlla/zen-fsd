@@ -170,7 +170,7 @@ export const Order = () => {
 
   console.log(orderData)
 
-  const selectOptions = { 
+  const connectOptions = { 
     value: connection,
     isValidField: isValidConnection,
     onFieldChange: onConnectionChange,
@@ -192,7 +192,7 @@ export const Order = () => {
     nameOptions,
     telOptions,
     emailOptions,
-    selectOptions,
+    connectOptions,
     checkboxOptions,
     submitOptions,  
   };
