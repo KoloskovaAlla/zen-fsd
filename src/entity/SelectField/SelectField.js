@@ -3,7 +3,7 @@ import { Select } from 'shared/ui';
 
 export const SelectField = ({
   className,
-  connectOptions,
+  options,
 }) => {
 
   const {
@@ -11,7 +11,7 @@ export const SelectField = ({
     isValidField,
     errorMessage,
     options
-  } = connectOptions;
+  } = options;
 
   return (
     <label className={className}>
