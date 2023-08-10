@@ -1,11 +1,18 @@
-import { Select } from 'shared/ui';
 import classes from './SelectField.module.scss';
+import { Select } from 'shared/ui';
 
 export const SelectField = ({
   className,
-  options,
+  connectOptions,
 }) => {
-  
+
+  const {
+    value,
+    isValidField,
+    errorMessage,
+    options
+  } = connectOptions;
+
   return (
     <label className={className}>
       {/* {!value && (
