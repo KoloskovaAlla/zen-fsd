@@ -60,12 +60,12 @@ export const Form = ({ formOptions }) => {
         />
       )}
 
-      {/* {selectOptions && (
+      {selectOptions && (
         <SelectField
           className={classes.connection}
           options={selectOptions}
         />
-      )} */}
+      )}
 
       {/* <label className={classes.policy}>
         <Checkbox
