@@ -40,17 +40,17 @@ export interface CheckboxOptions {
 };
 
 export interface SubmitOptions {
-  handleFormSubmit: (event: React.FormEvent<HTMLFormElement>) => void; 
-  isSubmitDisabled: boolean; 
+  handleFormSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
+  isSubmitDisabled: boolean;
 };
 
-export interface FormProps {  
- formOptions: {
+export interface FormProps {
+  formOptions: {
     nameOptions: NameOptions;
     telOptions: TelOptions;
     emailOptions: EmailOptions;
     connectOptions: ConnectOptions;
     checkboxOptions: CheckboxOptions;
-    submitOptions: SubmitOptions;     
+    submitOptions: SubmitOptions;
   };
 };
