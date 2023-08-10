@@ -173,8 +173,10 @@ export const Order = () => {
     isValidField: isValidConnection,
     onFieldChange: onConnectionChange,
     errorMessage: orderData?.connection?.invalidMessage,
-    options: orderData?.options,
+    options: orderData?.connection?.options,
   };
+
+  if (orderData) console.log(orderData?.connection?.options)
 
   const checkboxOptions = {
     isChecked,

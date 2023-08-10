@@ -1,14 +1,3 @@
-export interface OtherFormProps {
-  handleFormSubmit: any;
-  orderData: any;
-  connection: any;
-  isValidConnection: any;
-  onConnectionChange: any;
-  isChecked: any;
-  setIsChecked: any;
-  isSubmitDisabled: any;
-};
-
 export interface NameOptions {
   value: string;
   isValidField: boolean;
@@ -33,10 +22,17 @@ export interface EmailOptions {
   placeholder: string;
 };
 
+export interface Option {
+  content: string;
+  value: string;
+};
+
 export interface ConnectOptions {
   value: string;
   isValidField: boolean;
   onFieldChange: Function;
+  errorMessage: string;
+  options: Option[];
 };
 
 export interface CheckboxOptions {
