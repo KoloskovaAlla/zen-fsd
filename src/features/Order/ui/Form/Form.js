@@ -61,10 +61,9 @@ export const Form = ({ formOptions }) => {
       )}    
 
       {connectOptions && (
-
         <SelectField
           className={classes.connection}
-          connectOptions={connectOptions}
+          options={connectOptions}
         />
       )}
 

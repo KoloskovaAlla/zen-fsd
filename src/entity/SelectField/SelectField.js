@@ -3,16 +3,9 @@ import { Select } from 'shared/ui';
 
 export const SelectField = ({
   className,
-  connectOptions,
+  ...otherProps
 }) => {
-
-  const {
-    value,
-    isValidField,
-    errorMessage,
-    options
-  } = connectOptions;
-
+  const { options: { value, isValidField, onFieldChange, errorMessage, options } } = otherProps;
   return (
     <label className={className}>
       {/* {!value && (

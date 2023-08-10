@@ -174,9 +174,7 @@ export const Order = () => {
     onFieldChange: onConnectionChange,
     errorMessage: orderData?.connection?.invalidMessage,
     options: orderData?.connection?.options,
-  };
-
-  if (orderData) console.log(orderData?.connection?.options)
+  }; 
 
   const checkboxOptions = {
     isChecked,
