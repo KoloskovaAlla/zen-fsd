@@ -11,7 +11,6 @@ export const TextField = ({ className, options }) => {
     isValidField,
     onFieldChange,
     invalidMessage,
-
     placeholder
   } = options;
 

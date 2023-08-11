@@ -26,7 +26,7 @@ export const Form = ({ formOptions }) => {
     nameOptions,
     telOptions,
     emailOptions,
-    selectOptions,
+    connectOptions,
     checkboxOptions,
     submitOptions,
   } = formOptions;
@@ -60,17 +60,12 @@ export const Form = ({ formOptions }) => {
         />
       )}
 
-      {/* {otherFormProps.orderData?.connection?.options && (
+      {connectOptions && (
         <SelectField
           className={classes.connection}
-          value={otherFormProps.connection}
-          label={otherFormProps.orderData.connection.label}
-          options={otherFormProps.orderData.connection.options}
-          isValid={otherFormProps.isValidConnection}
-          invalidMessage={otherFormProps.orderData.connection.invalidMessage}
-          onFieldChange={otherFormProps.onConnectionChange}
+          options={connectOptions}
         />
-      )} */}
+      )}
 
       {/* <label className={classes.policy}>
         <Checkbox

@@ -1,14 +1,3 @@
-export interface OtherFormProps {
-  handleFormSubmit: any;
-  orderData: any;
-  connection: any;
-  isValidConnection: any;
-  onConnectionChange: any;
-  isChecked: any;
-  setIsChecked: any;
-  isSubmitDisabled: any;
-};
-
 export interface NameOptions {
   value: string;
   isValidField: boolean;
@@ -33,8 +22,16 @@ export interface EmailOptions {
   placeholder: string;
 };
 
-export interface SelectOptions {
-
+export interface Option {
+  content: string;
+  value: string;
+};
+export interface ConnectOptions {
+  value: string;
+  isValidField: boolean;
+  onFieldChange: Function;
+  errorMessage: string;
+  options: Option[];  
 };
 
 export interface CheckboxOptions {
@@ -42,17 +39,20 @@ export interface CheckboxOptions {
 };
 
 export interface SubmitOptions {
-  handleFormSubmit: (event: React.FormEvent<HTMLFormElement>) => void; 
-  isSubmitDisabled: boolean; 
+  handleFormSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
+  // handleFormSubmit: React.FormEventHandler<HTMLFormElement>;
+  // handleFormSubmit: (event: React.FormEvent<HTMLFormElement>) => any;
+  // handleFormSubmit: any;
+  isSubmitDisabled: boolean;
 };
 
-export interface FormProps {  
- formOptions: {
+export interface FormProps {
+  formOptions: {
     nameOptions: NameOptions;
     telOptions: TelOptions;
     emailOptions: EmailOptions;
-    selectOptions: SelectOptions;
+    connectOptions: ConnectOptions;
     checkboxOptions: CheckboxOptions;
-    submitOptions: SubmitOptions;     
+    submitOptions: SubmitOptions;
   };
 };

@@ -111,36 +111,36 @@ export const Order = () => {
     };
   }, [isDataSent, dispatch, setIsDataSent, setIsModalActive]);
 
-  const formProps = {
-    handleFormSubmit,
-    orderData,
-    name,
-    isValidName,
-    onNameChange,
-    tel,
-    isValidTel,
-    onTelChange,
-    email,
-    isValidEmail,
-    onEmailChange,
-    connection,
-    isValidConnection,
-    onConnectionChange,
-    isChecked,
-    setIsChecked,
-    isSubmitDisabled,
-  };
+  // const formProps = {
+  //   handleFormSubmit,
+  //   orderData,
+  //   name,
+  //   isValidName,
+  //   onNameChange,
+  //   tel,
+  //   isValidTel,
+  //   onTelChange,
+  //   email,
+  //   isValidEmail,
+  //   onEmailChange,
+  //   connection,
+  //   isValidConnection,
+  //   onConnectionChange,
+  //   isChecked,
+  //   setIsChecked,
+  //   isSubmitDisabled,
+  // };
 
-  const otherFormProps = {
-    handleFormSubmit,
-    orderData,
-    connection,
-    isValidConnection,
-    onConnectionChange,
-    isChecked,
-    setIsChecked,
-    isSubmitDisabled,
-  };
+  // const otherFormProps = {
+  //   handleFormSubmit,
+  //   orderData,
+  //   connection,
+  //   isValidConnection,
+  //   onConnectionChange,
+  //   isChecked,
+  //   setIsChecked,
+  //   isSubmitDisabled,
+  // };
 
   const nameOptions = {
     value: name,
@@ -168,18 +168,21 @@ export const Order = () => {
     placeholder: orderData?.inputEmail.placeholder,
   };
 
-  const selectOptions = {  
-    connection,
-    isValidConnection,
-    onConnectionChange,   
+  const connectOptions = {
+    value: connection,
+    isValidField: isValidConnection,
+    onFieldChange: onConnectionChange,
+    errorMessage: orderData?.connection?.invalidMessage,
+    options: orderData?.connection?.options,
+    label: orderData?.connection?.label,
   };
 
-  const checkboxOptions = {   
+  const checkboxOptions = {
     isChecked,
-    setIsChecked,   
+    setIsChecked,
   };
 
-  const submitOptions = {   
+  const submitOptions = {
     handleFormSubmit,
     isSubmitDisabled,
   };
@@ -188,9 +191,9 @@ export const Order = () => {
     nameOptions,
     telOptions,
     emailOptions,
-    selectOptions,
+    connectOptions,
     checkboxOptions,
-    submitOptions,  
+    submitOptions,
   };
 
   if (!orderData) return null;

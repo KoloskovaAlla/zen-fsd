@@ -1,15 +1,19 @@
-import { Select } from 'shared/ui';
 import classes from './SelectField.module.scss';
+import { Select } from 'shared/ui';
 
 export const SelectField = ({
   className,
-  value,
-  label,
-  options,
-  isValid,
-  invalidMessage,
-  onFieldChange
+  ...otherProps
 }) => {
+  const {
+    value,
+    isValidField,
+    onFieldChange,
+    errorMessage,
+    label,
+    options,
+  } = otherProps.options;
+
   return (
     <label className={className}>
       {!value && (
@@ -19,12 +23,12 @@ export const SelectField = ({
       )}
       <Select
         options={options}
-        onChange={onFieldChange}
         value={value}
+        onChange={onFieldChange}
       />
-      {!isValid && (
-        <span className={classes.invalidMessage}>
-          {invalidMessage}
+      {!isValidField && (
+        <span className={classes.errorMessage}>
+          {errorMessage}
         </span>
       )}
     </label>
