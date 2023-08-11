@@ -1,3 +1,4 @@
+import { FormEvent } from 'react';
 export interface NameOptions {
   value: string;
   isValidField: boolean;
@@ -39,10 +40,7 @@ export interface CheckboxOptions {
 };
 
 export interface SubmitOptions {
-  handleFormSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
-  // handleFormSubmit: React.FormEventHandler<HTMLFormElement>;
-  // handleFormSubmit: (event: React.FormEvent<HTMLFormElement>) => any;
-  // handleFormSubmit: any;
+  handleFormSubmit: (event: FormEvent) => any;
   isSubmitDisabled: boolean;
 };
 
