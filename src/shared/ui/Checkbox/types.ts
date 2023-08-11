@@ -1,4 +1,6 @@
 export interface CheckboxProps {
-  setIsChecked: Function;
-  isChecked: boolean;
+  options: {
+    isChecked: boolean;
+    setIsChecked: Function; 
+  };
 };

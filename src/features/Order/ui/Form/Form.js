@@ -67,15 +67,14 @@ export const Form = ({ formOptions }) => {
         />
       )}
 
-      {/* <label className={classes.policy}>
+      <label className={classes.policy}>
         <Checkbox
-          isChecked={otherFormProps.isChecked}
-          setIsChecked={otherFormProps.setIsChecked}
+          options={checkboxOptions}
         />
-        <a href={otherFormProps.orderData?.inputPolicy?.url}>
-          {otherFormProps.orderData?.inputPolicy?.content}
+        <a href={checkboxOptions?.url}>
+          {checkboxOptions?.content}
         </a>
-      </label> */}
+      </label>
 
       <Button
         className={classes.submit}

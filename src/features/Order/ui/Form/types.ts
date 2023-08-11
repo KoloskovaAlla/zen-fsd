@@ -36,7 +36,10 @@ export interface ConnectOptions {
 };
 
 export interface CheckboxOptions {
-
+  isChecked: boolean;
+  setIsChecked: Function;
+  url: string;
+  content: string;
 };
 
 export interface SubmitOptions {
