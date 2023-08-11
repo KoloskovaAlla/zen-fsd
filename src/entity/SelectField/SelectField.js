@@ -10,20 +10,21 @@ export const SelectField = ({
     isValidField,
     onFieldChange,
     errorMessage,
-    options
+    label,
+    options,
   } = otherProps.options;
 
   return (
     <label className={className}>
       {!value && (
         <span className={classes.label}>
-          {isValidField}
+          {label}
         </span>
       )}
       <Select
         options={options}
-        onChange={onFieldChange}
         value={value}
+        onChange={onFieldChange}
       />
       {!isValidField && (
         <span className={classes.errorMessage}>
