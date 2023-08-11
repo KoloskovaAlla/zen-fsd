@@ -5,12 +5,19 @@ export const SelectField = ({
   className,
   ...otherProps
 }) => {
-  const { options: { value, isValidField, onFieldChange, errorMessage, options } } = otherProps;
+  const {
+    value,
+    isValidField,
+    onFieldChange,
+    errorMessage,
+    options
+  } = otherProps.options;
+
   return (
     <label className={className}>
-      {/* {!value && (
+      {!value && (
         <span className={classes.label}>
-          {label}
+          {isValidField}
         </span>
       )}
       <Select
@@ -18,11 +25,11 @@ export const SelectField = ({
         onChange={onFieldChange}
         value={value}
       />
-      {!isValid && (
-        <span className={classes.invalidMessage}>
-          {invalidMessage}
+      {!isValidField && (
+        <span className={classes.errorMessage}>
+          {errorMessage}
         </span>
-      )} */}
+      )}
     </label>
   );
 };
