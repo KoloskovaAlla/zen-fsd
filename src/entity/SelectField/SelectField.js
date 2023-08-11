@@ -5,31 +5,32 @@ export const SelectField = ({
   className,
   ...otherProps
 }) => {
-  const { options: { 
-    value, 
+  const {
+    value,
     isValidField,
-    onFieldChange, 
-    errorMessage, 
-    options 
-  } } = otherProps;
-  
+    onFieldChange,
+    errorMessage,
+    label,
+    options,
+  } = otherProps.options;
+
   return (
     <label className={className}>
-      {/* {!value && (
+      {!value && (
         <span className={classes.label}>
           {label}
         </span>
       )}
       <Select
         options={options}
-        onChange={onFieldChange}
         value={value}
+        onChange={onFieldChange}
       />
-      {!isValid && (
-        <span className={classes.invalidMessage}>
-          {invalidMessage}
+      {!isValidField && (
+        <span className={classes.errorMessage}>
+          {errorMessage}
         </span>
-      )} */}
+      )}
     </label>
   );
 };
