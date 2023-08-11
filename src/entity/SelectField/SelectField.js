@@ -5,7 +5,14 @@ export const SelectField = ({
   className,
   ...otherProps
 }) => {
-  const { options: { value, isValidField, onFieldChange, errorMessage, options } } = otherProps;
+  const { options: { 
+    value, 
+    isValidField,
+    onFieldChange, 
+    errorMessage, 
+    options 
+  } } = otherProps;
+  
   return (
     <label className={className}>
       {/* {!value && (
