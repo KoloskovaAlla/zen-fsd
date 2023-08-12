@@ -1,10 +1,16 @@
 import { InputText } from 'shared/ui';
 
 /**
- * @typedef {import('./types').TextFieldProps} Props
+ * @typedef {import('./types').TextFieldProps} TextFieldProps
  * @typedef {import('react').ReactElement} Element
- * @type {({ className, options}: Props) => Element}
  */
+
+/** 
+ * @function TextField
+ * @param {TextFieldProps} props
+ * @returns {Element}
+ */
+
 export const TextField = ({ className, options }) => {
   const {
     value,

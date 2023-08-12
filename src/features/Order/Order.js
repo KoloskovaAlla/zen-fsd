@@ -180,6 +180,8 @@ export const Order = () => {
   const checkboxOptions = {
     isChecked,
     setIsChecked,
+    url: orderData?.inputPolicy?.url,
+    content: orderData?.inputPolicy?.content,
   };
 
   const submitOptions = {

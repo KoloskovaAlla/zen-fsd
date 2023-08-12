@@ -1,24 +1,30 @@
+import { useDispatch } from 'react-redux';
+
 /**
- * @typedef {import('./types').CheckboxProps} Props
+ * @typedef {import('./types').CheckboxProps} CheckboxProps
  * @typedef {import('react').ReactElement} Element
  */
 
-import {useDispatch} from 'react-redux';
+/** 
+ * @function Checkbox
+ * @param {CheckboxProps} props
+ * @returns {Element}
+ */
 
-/** @type {({ isChecked, setIsChecked }: Props) => Element} */
-
-export const Checkbox = ({
-  isChecked,
-  setIsChecked
-}) => {
+export const Checkbox = ({ options }) => {
   const dispatch = useDispatch();
+
+  const { isChecked, setIsChecked } = options;
+
+  const handleCheckboxChange = () => { 
+    dispatch(setIsChecked(!isChecked)); 
+  };
+
   return (
     <input
-      type='checkbox'
+      type={'checkbox'}
       checked={isChecked}
-      onChange={() => {
-        dispatch(setIsChecked(!isChecked));
-      }}
+      onChange={handleCheckboxChange}
     />
-  )
+  );
 };

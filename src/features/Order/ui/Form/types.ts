@@ -33,10 +33,15 @@ export interface ConnectOptions {
   onFieldChange: Function;
   errorMessage: string;
   options: Option[];  
+  placeholder: string;
+  label: string;
 };
 
 export interface CheckboxOptions {
-
+  isChecked: boolean;
+  setIsChecked: Function;
+  url: string;
+  content: string;
 };
 
 export interface SubmitOptions {
