@@ -1,4 +1,5 @@
 import { InputText } from 'shared/ui';
+
 /**
  * @typedef {import('./types').TextFieldProps} TextFieldProps
  * @typedef {import('react').ReactElement} Element
@@ -9,6 +10,7 @@ import { InputText } from 'shared/ui';
  * @param {TextFieldProps} props
  * @returns {Element}
  */
+
 export const TextField = ({ className, options }) => {
   const {
     value,
