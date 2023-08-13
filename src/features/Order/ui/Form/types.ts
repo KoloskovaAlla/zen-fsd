@@ -33,7 +33,6 @@ export interface ConnectOptions {
   onFieldChange: Function;
   errorMessage: string;
   options: Option[];  
-  placeholder: string;
   label: string;
 };
 
