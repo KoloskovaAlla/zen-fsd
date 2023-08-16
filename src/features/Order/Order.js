@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import classes from './Order.module.scss';
 import { useOrder } from 'shared/model/hooks';
 import { useSendOrder } from 'shared/model/hooks';
 import { validateName, validateTel, validateEmail, validateConnect, classNames } from 'shared/lib';
 import { Button } from 'shared/ui';
 import { Form } from './ui'
-import classes from './Order.module.scss';
 
 const date = new Date().toLocaleString();
 
@@ -56,7 +56,8 @@ export const Order = () => {
 
   /**
    * @typedef {import('react').SyntheticEvent} Event
-   * @type {( event: Event ) => void} 
+   * @param {Event} event - Событие SyntheticEvent из React
+   * @returns {void}
    */
   const handleBodyClick = (event) => {
     event.stopPropagation();
@@ -102,6 +103,7 @@ export const Order = () => {
     dispatch(sendOrder(order));
     dispatch(setIsDataSent(true));
   };
+
   useEffect(() => {
     if (isDataSent) {
       setTimeout(() => {
@@ -110,37 +112,6 @@ export const Order = () => {
       }, 3000);
     };
   }, [isDataSent, dispatch, setIsDataSent, setIsModalActive]);
-
-  // const formProps = {
-  //   handleFormSubmit,
-  //   orderData,
-  //   name,
-  //   isValidName,
-  //   onNameChange,
-  //   tel,
-  //   isValidTel,
-  //   onTelChange,
-  //   email,
-  //   isValidEmail,
-  //   onEmailChange,
-  //   connection,
-  //   isValidConnection,
-  //   onConnectionChange,
-  //   isChecked,
-  //   setIsChecked,
-  //   isSubmitDisabled,
-  // };
-
-  // const otherFormProps = {
-  //   handleFormSubmit,
-  //   orderData,
-  //   connection,
-  //   isValidConnection,
-  //   onConnectionChange,
-  //   isChecked,
-  //   setIsChecked,
-  //   isSubmitDisabled,
-  // };
 
   const nameOptions = {
     value: name,
@@ -159,6 +130,7 @@ export const Order = () => {
     type: orderData?.inputTel.type,
     placeholder: orderData?.inputTel.placeholder,
   };
+  
   const emailOptions = {
     value: email,
     isValidField: isValidEmail,
