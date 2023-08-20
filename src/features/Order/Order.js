@@ -45,12 +45,16 @@ export const Order = () => {
   useEffect(() => {
     dispatch(getOrder());
   }, [dispatch, getOrder]);
-
+  // modalClassName
   const classNameModal = classNames(classes.modal, {
     [classes.active]: isModalActive,
   });
 
-  const handleModalClick = () => {
+  const handleButtonCloseClick = () => {
+    dispatch(setIsModalActive(false));
+  };
+
+  const handleCloseModalClick = () => {
     dispatch(setIsModalActive(false));
   };
 
@@ -87,9 +91,7 @@ export const Order = () => {
     dispatch(setIsValidConnection(validateConnect(value)));
   };
 
-  const onClickButtonClose = () => {
-    dispatch(setIsModalActive(false));
-  };
+
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
@@ -172,13 +174,13 @@ export const Order = () => {
 
   if (!orderData) return null;
   return (
-    <div onClick={handleModalClick} className={classNameModal}>
+    <div onClick={handleCloseModalClick} className={classNameModal}>
       <div onClick={handleBodyClick} className={classes.body}>
         {isDataSent && <span>Данные отправлены успешно!</span>}
 
         {isModalActive && (
           <Button
-            onClickButton={onClickButtonClose}
+            onClickButton={handleButtonCloseClick}
             className={classes.close}
             iconName={'close'}
             content={'icon'}
