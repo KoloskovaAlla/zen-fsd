@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import classes from './Order.module.scss';
+import { useDispatch } from 'react-redux';
 import { useOrder } from 'shared/model/hooks';
 import { useSendOrder } from 'shared/model/hooks';
 import { validateName, validateTel, validateEmail, validateConnect, classNames } from 'shared/lib';
@@ -50,19 +50,22 @@ export const Order = () => {
     [classes.active]: isModalActive,
   });
 
-  const handleButtonCloseClick = () => {
+  const handleModalCloseClick = () => {
     dispatch(setIsModalActive(false));
   };
 
-  const handleCloseModalClick = () => {
+  const handleModalOverlayClick = () => {
     dispatch(setIsModalActive(false));
   };
 
-  /**
-   * @typedef {import('react').SyntheticEvent} Event
-   * @param {Event} event - Событие SyntheticEvent из React
+  /** @typedef {import('react').SyntheticEvent} Event */
+
+  /** 
+   * @function handleBodyClick
+   * @param {Event} event 
    * @returns {void}
    */
+
   const handleBodyClick = (event) => {
     event.stopPropagation();
   };
@@ -91,8 +94,6 @@ export const Order = () => {
     dispatch(setIsValidConnection(validateConnect(value)));
   };
 
-
-
   const handleFormSubmit = (event) => {
     event.preventDefault();
     const order = {
@@ -107,8 +108,9 @@ export const Order = () => {
   };
 
   useEffect(() => {
+    if (!isDataSent) return;
     if (isDataSent) {
-      setTimeout(() => {
+      const timerId = setTimeout(() => {
         dispatch(setIsModalActive(false));
         dispatch(setIsDataSent(false));
       }, 3000);
@@ -132,7 +134,7 @@ export const Order = () => {
     type: orderData?.inputTel.type,
     placeholder: orderData?.inputTel.placeholder,
   };
-  
+
   const emailOptions = {
     value: email,
     isValidField: isValidEmail,
@@ -174,13 +176,13 @@ export const Order = () => {
 
   if (!orderData) return null;
   return (
-    <div onClick={handleCloseModalClick} className={classNameModal}>
+    <div onClick={handleModalOverlayClick} className={classNameModal}>
       <div onClick={handleBodyClick} className={classes.body}>
         {isDataSent && <span>Данные отправлены успешно!</span>}
 
         {isModalActive && (
           <Button
-            onClickButton={handleButtonCloseClick}
+            onClickButton={handleModalCloseClick}
             className={classes.close}
             iconName={'close'}
             content={'icon'}
