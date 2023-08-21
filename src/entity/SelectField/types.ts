@@ -8,9 +8,9 @@ export interface Options {
   isValidField: boolean;
   onFieldChange: Function;
   errorMessage: string;
-  placeholder: string;  
+  placeholder?: string;
   label: string;
-  options: Option[]; 
+  options: Option[];
 };
 
 export interface SelectFieldProps {
