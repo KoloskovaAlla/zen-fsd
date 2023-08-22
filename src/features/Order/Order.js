@@ -1,14 +1,15 @@
-import { useEffect } from 'react';
 import classes from './Order.module.scss';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useOrder } from 'shared/model/hooks';
 import { useSendOrder } from 'shared/model/hooks';
-import { 
-  validateName, 
-  validateTel, 
-  validateEmail, 
-  validateConnect, 
-  classNames } from 'shared/lib';
+import {
+  validateName,
+  validateTel,
+  validateEmail,
+  validateConnect,
+  classNames
+} from 'shared/lib';
 import { Button } from 'shared/ui';
 import { Form } from './ui'
 
@@ -16,21 +17,21 @@ const date = new Date().toLocaleString();
 
 export const Order = () => {
   const dispatch = useDispatch();
-  const { 
-    orderData, 
-    getOrder, 
-    isModalActive, 
-    setIsModalActive 
+  const {
+    orderData,
+    getOrder,
+    isModalActive,
+    setIsModalActive
   } = useOrder();
 
   const { orderState, orderActions } = useSendOrder();
-  const { sendOrder } = orderActions; 
+  const { sendOrder } = orderActions;
 
   useEffect(() => {
     dispatch(getOrder());
   }, [dispatch, getOrder]);
-  // modalClassName
-  const classNameModal = classNames(classes.modal, {
+
+  const modalClassName = classNames(classes.modal, {
     [classes.active]: isModalActive,
   });
 
@@ -54,22 +55,22 @@ export const Order = () => {
     event.stopPropagation();
   };
 
-  const onNameChange = ({ target: { value } }) => {    
+  const onNameChange = ({ target: { value } }) => {
     dispatch(orderActions.setName(value));
     dispatch(orderActions.setIsValidName(validateName(value)));
   };
 
-  const onTelChange = ({ target: { value } }) => { 
+  const onTelChange = ({ target: { value } }) => {
     dispatch(orderActions.setTel(value));
     dispatch(orderActions.setIsValidTel(validateTel(value)));
   };
 
-  const onEmailChange = ({ target: { value } }) => {   
+  const onEmailChange = ({ target: { value } }) => {
     dispatch(orderActions.setEmail(value));
     dispatch(orderActions.setIsValidEmail(validateEmail(value)));
   };
 
-  const onConnectionChange = ({ target: { value } }) => {   
+  const onConnectionChange = ({ target: { value } }) => {
     dispatch(orderActions.setConnection(value));
     dispatch(orderActions.setIsValidConnection(validateConnect(value)));
   };
@@ -89,14 +90,17 @@ export const Order = () => {
 
   useEffect(() => {
     if (!orderState.isDataSent) return;
-  
+
     const timerId = setTimeout(() => {
       dispatch(setIsModalActive(false));
       dispatch(orderActions.setIsDataSent(false));
     }, 2000);
 
-    return () => clearTimeout(timerId);    
-  }, [orderState.isDataSent, dispatch, orderActions.setIsDataSent, setIsModalActive]);
+    return () => clearTimeout(timerId);
+  }, [orderState.isDataSent,
+    dispatch,
+  orderActions.setIsDataSent,
+    setIsModalActive]);
 
   const nameOptions = {
     value: orderState.name,
@@ -157,7 +161,7 @@ export const Order = () => {
 
   if (!orderData) return null;
   return (
-    <div onClick={handleModalOverlayClick} className={classNameModal}>
+    <div onClick={handleModalOverlayClick} className={modalClassName}>
       <div onClick={handleBodyClick} className={classes.body}>
         {orderState.isDataSent && <span>Данные отправлены успешно!</span>}
 
