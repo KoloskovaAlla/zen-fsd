@@ -3,19 +3,20 @@ import { useDispatch } from 'react-redux';
 import { useNav } from 'shared/model/hooks';
 import { classNames } from 'shared/lib';
 
-/** @typedef {import('./types').NavState} NavState */
+/** 
+ * @typedef {import('./types').NavState} NavState 
+ * @typedef {import('react').ReactElement} Element
+*/
 
 /**
  * @function Burger 
- * @returns {JSX.Element} The rendered JSX element.
+ * @returns {Element}
  */
 
 export const Burger = () => {
   const dispatch = useDispatch();
 
-  /**
-   * @type {NavState}
-   */
+  /** @type {NavState} */
   const {    
     isNavActive, 
     setIsNavActive,
