@@ -10,7 +10,7 @@ export const Lang = () => {
     languages,
     setLang,
   } = useLang();
-
+  console.log(languages)
   const dispatch = useDispatch();
   // @ts-ignore
   const onLangChange = (value) => dispatch(setLang(value));
