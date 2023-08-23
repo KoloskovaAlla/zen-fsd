@@ -98,9 +98,9 @@ export const Order = () => {
 
     return () => clearTimeout(timerId);
   }, [orderState.isDataSent,
-    dispatch,
-  orderActions.setIsDataSent,
-    setIsModalActive]);
+      dispatch,
+      orderActions.setIsDataSent,
+      setIsModalActive]);
 
   const nameOptions = {
     value: orderState.name,
