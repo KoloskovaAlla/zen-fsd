@@ -22,7 +22,7 @@ export interface LangState {
   isLoading: boolean;
   languages: Language[];
   errorMessage: string;
-  setLang: object;
+  setLang: Function;
   lang: string;
 };
 
