@@ -8,7 +8,7 @@ export interface NavState {
   isLoading: boolean;
   navItems: NavItem[];
   errorMessage: string;
-  setIsNavActive: object;
+  setIsNavActive: Function;
   isNavActive: boolean;
 };
 
