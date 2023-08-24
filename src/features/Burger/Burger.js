@@ -13,12 +13,11 @@ import { classNames } from 'shared/lib';
 export const Burger = () => {
   const dispatch = useDispatch();
 
-  /**  @type {*} */
   const { isNavActive, setIsNavActive} = useNav();
 
-  const burgerClassName = classNames(classes.burger,
-    { [classes.active]: isNavActive }
-  );
+  const burgerClassNames = classNames(classes.burger, { 
+    [classes.active]: isNavActive,
+  });
 
   const handleBurgerClick = () => { 
     dispatch(setIsNavActive(!isNavActive)); 
@@ -26,8 +25,8 @@ export const Burger = () => {
 
   return (
     <button   
+      className={burgerClassNames}
       onClick={handleBurgerClick}
-      className={burgerClassName}
     >
       <span />
     </button>
