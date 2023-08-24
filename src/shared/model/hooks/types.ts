@@ -13,7 +13,7 @@ export interface NavState {
 };
 
 export interface Language {
-  text: string;
+  content: string;
   value: string;
 };
 
