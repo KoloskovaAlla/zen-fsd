@@ -3,10 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useNav } from 'shared/model/hooks';
 import { classNames } from 'shared/lib';
 
-/** 
- * @typedef {import('./types').NavState} NavState 
- * @typedef {import('react').ReactElement} Element
-*/
+/** @typedef {import('react').ReactElement} Element */
 
 /**
  * @function Burger 
@@ -16,20 +13,20 @@ import { classNames } from 'shared/lib';
 export const Burger = () => {
   const dispatch = useDispatch();
 
-  /** @type {NavState} */
-  const {    
-    isNavActive, 
-    setIsNavActive,
-  } = useNav();
+  /**  @type {*} */
+  const { isNavActive, setIsNavActive} = useNav();
 
-  const burgerClassName = classNames(
-    classes.burger,
+  const burgerClassName = classNames(classes.burger,
     { [classes.active]: isNavActive }
   );
 
+  const handleBurgerClick = () => { 
+    dispatch(setIsNavActive(!isNavActive)); 
+  };
+
   return (
     <button   
-      onClick={() => { dispatch(setIsNavActive(!isNavActive)) }}
+      onClick={handleBurgerClick}
       className={burgerClassName}
     >
       <span />
