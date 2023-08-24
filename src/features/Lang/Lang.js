@@ -13,20 +13,14 @@ import { Select } from 'shared/ui';
 export const Lang = () => {
   const dispatch = useDispatch();
 
-  const {
-    lang,
-    languages,
-    setLang,
-  } = useLang();
- 
-  /** @type {(value: string) => void} */
-  const onLangChange = (value) => dispatch(setLang(value));
-  const handleLangChange = ({ target: { value } }) => onLangChange(value);
+  const { lang, languages, setLang } = useLang(); 
+   
+  const handleLangChange = ({ target: { value } }) => dispatch(setLang(value));
 
   return (
     <>
       {languages.length > 0 && (
-        <div className={classes.language}>
+        <div className={classes.lang}>
           <Select
             className={classes.select}
             options={languages}
