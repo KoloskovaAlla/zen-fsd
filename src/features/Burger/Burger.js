@@ -1,26 +1,32 @@
+import classes from './Burger.module.scss';
 import { useDispatch } from 'react-redux';
 import { useNav } from 'shared/model/hooks';
 import { classNames } from 'shared/lib';
-import classes from './Burger.module.scss';
+
+/** @typedef {import('react').ReactElement} Element */
+
+/**
+ * @function Burger 
+ * @returns {Element}
+ */
 
 export const Burger = () => {
-  const {
-    isNavActive,
-    setIsNavActive,
-  } = useNav();
-
-  const classNameBurger = classNames(
-    classes.burger,
-    { [classes.active]: isNavActive }
-  );
-
   const dispatch = useDispatch();
 
+  const { isNavActive, setIsNavActive} = useNav();
+
+  const burgerClassNames = classNames(classes.burger, { 
+    [classes.active]: isNavActive,
+  });
+
+  const handleBurgerClick = () => { 
+    dispatch(setIsNavActive(!isNavActive)); 
+  };
+
   return (
-    <button
-      // @ts-ignore
-      onClick={() => { dispatch(setIsNavActive(!isNavActive)) }}
-      className={classNameBurger}
+    <button   
+      className={burgerClassNames}
+      onClick={handleBurgerClick}
     >
       <span />
     </button>
