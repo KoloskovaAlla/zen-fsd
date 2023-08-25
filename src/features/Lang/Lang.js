@@ -24,8 +24,8 @@ export const Lang = () => {
           <Select
             className={classes.select}
             options={langs}
-            onChange={handleLangChange}
             value={lang}
+            onChange={handleLangChange}
           />
         </div>
       )}
