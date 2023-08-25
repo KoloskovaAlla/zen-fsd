@@ -20,7 +20,7 @@ export interface Language {
 export interface LangState {
   getLang: Function;
   isLoading: boolean;
-  languages: Language[];
+  langs: Language[];
   errorMessage: string;
   setLang: Function;
   lang: string;

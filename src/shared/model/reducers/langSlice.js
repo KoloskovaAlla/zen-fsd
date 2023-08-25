@@ -33,7 +33,7 @@ const getLang = createAsyncThunk(
 
 const initialState = {
   isLoading: false,
-  languages: [],
+  langs: [],
   errorMessage: '',
   lang: localStorage.getItem('lang') ?? 'en',
 };
@@ -49,17 +49,17 @@ const langSlice = createSlice({
   extraReducers: {
     [`${getLang.pending}`]: (state) => {
       state.isLoading = true;
-      state.languages = [];
+      state.langs = [];
       state.errorMessage = '';
     },
     [`${getLang.fulfilled}`]: (state, { payload }) => {
       state.isLoading = false;
-      state.languages = payload;
+      state.langs = payload;
       state.errorMessage = '';
     },
     [`${getLang.rejected}`]: (state, { payload }) => {
       state.isLoading = false;
-      state.languages = [];
+      state.langs = [];
       state.errorMessage = payload;
     },
   }
