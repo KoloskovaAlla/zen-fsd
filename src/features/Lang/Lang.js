@@ -2,6 +2,7 @@ import classes from './Lang.module.scss';
 import { useDispatch } from 'react-redux';
 import { useLang } from 'shared/model/hooks';
 import { Select } from 'shared/ui';
+import { IconArrow } from 'shared/icons';
 
 /** @typedef {import('react').ReactElement} Element */
 
@@ -20,15 +21,17 @@ export const Lang = () => {
   return (
     <>
       {langs.length > 0 && (
-        <div className={classes.lang}>
+        <label className={classes.lang}>
           <Select
             className={classes.select}
             options={langs}
             value={lang}
             onChange={handleLangChange}
           />
-        </div>
+          <IconArrow />
+        </label>
       )}
+
     </>
   )
 };
