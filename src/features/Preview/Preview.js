@@ -2,9 +2,6 @@ import { useEffect } from 'react';
 import classes from './Preview.module.scss';
 import { useDispatch } from 'react-redux';
 import { useSlider, usePreview } from 'shared/model/hooks';
-import { sliderSlice } from 'shared/model/reducers/sliderSlice';
-
-
 
 export const Preview = ({ imageDetails }) => {
   const dispatch = useDispatch();
@@ -39,9 +36,9 @@ export const Preview = ({ imageDetails }) => {
 
   return (
     <button
-      onClick={handlePreviewClick}
       className={classes.preview}
       type='button'
+      onClick={handlePreviewClick}
     >
       <img
         src={imageDetails?.source}
