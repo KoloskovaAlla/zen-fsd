@@ -5,8 +5,18 @@ import { NavLink } from 'react-router-dom';
 import { useNav, useLang, useTheme } from 'shared/model/hooks';
 import { classNames } from 'shared/lib';
 
+/** @typedef {import('react').ReactElement} Element */
+
+/**
+ * @function Navigation 
+ * @returns {Element}
+ */
+
 export const Navigation = () => {
+  const dispatch = useDispatch();
+
   const { theme } = useTheme();
+  const { lang } = useLang();
 
   const {
     getNav,
@@ -15,22 +25,13 @@ export const Navigation = () => {
     setIsNavActive,
   } = useNav();
 
-  const {
-    lang,
-  } = useLang();
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    // @ts-ignore
+  useEffect(() => {    
     dispatch(getNav());
   }, [dispatch, getNav, lang]);
 
   const handleItemClick = () => {
-    isNavActive
-      // @ts-ignore
-      ? dispatch(setIsNavActive(false))
-      // @ts-ignore
+    isNavActive      
+      ? dispatch(setIsNavActive(false))      
       : dispatch(setIsNavActive(true));
   };  
 
@@ -41,8 +42,7 @@ export const Navigation = () => {
 
   return (
     <nav className={classes.navigation}>
-      {navItems && (
-        // @ts-ignore
+      {navItems && (        
         <ul className={menuClassNames} theme={theme}>
           {navItems.length > 0 &&
             navItems.map((menuItem, index) => (
