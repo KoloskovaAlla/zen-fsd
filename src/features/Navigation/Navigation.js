@@ -43,7 +43,7 @@ export const Navigation = () => {
   return (
     <nav className={classes.navigation}>
       {navItems && (        
-        <ul className={menuClassNames} theme={theme}>
+        <ul className={menuClassNames}>
           {navItems.length > 0 &&
             navItems.map((menuItem, index) => (
               <li
@@ -51,11 +51,9 @@ export const Navigation = () => {
                 key={index}
               >
                 <NavLink
-                  onClick={handleItemClick}
+                  className={({ isActive }) => isActive ? 'active' : 'inactive'}
                   to={`/${menuItem.target}`}
-                  className={({ isActive }) =>
-                    isActive ? 'active' : 'inactive'
-                  }
+                  onClick={handleItemClick}
                 >
                   {menuItem.text}
                 </NavLink>
