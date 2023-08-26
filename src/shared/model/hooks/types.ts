@@ -181,7 +181,7 @@ export interface SliderState {
 export interface ThemeState {
   theme: string;
   setTheme: object;
-  toggleTheme: Function;
+  toggleTheme: any;
 };
 
 export interface CurrentPageState {
