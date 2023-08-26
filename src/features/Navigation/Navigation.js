@@ -32,13 +32,9 @@ export const Navigation = () => {
       ? dispatch(setIsNavActive(false))
       // @ts-ignore
       : dispatch(setIsNavActive(true));
-  };
+  };  
 
-  const burgerClassNames = classNames(classes.burger, { 
-    [classes.active]: isNavActive,
-  });
-
-  const classNameMenu = classNames(classes.menu, {
+  const menuClassNames = classNames(classes.menu, {
     [classes.active]: isNavActive,
     [classes.dark]: theme === 'dark',
   });
@@ -47,7 +43,7 @@ export const Navigation = () => {
     <nav className={classes.navigation}>
       {navItems && (
         // @ts-ignore
-        <ul className={classNameMenu} theme={theme}>
+        <ul className={menuClassNames} theme={theme}>
           {navItems.length > 0 &&
             navItems.map((menuItem, index) => (
               <li
