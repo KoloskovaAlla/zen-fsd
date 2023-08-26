@@ -9,7 +9,6 @@ import { IconSun, IconMoon } from 'shared/icons';
  * @returns {Element}
  */
 
-
 export const Theme = () => {
   const { theme, toggleTheme } = useTheme();
 
