@@ -27,6 +27,7 @@ export const Lang = () => {
             options={langs}
             value={lang}
             onChange={handleLangChange}
+            emptyOption={false}
           />
           <IconArrow />
         </label>
