@@ -1,9 +1,9 @@
+import classes from './Navigation.module.scss';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { useEffect } from 'react';
-import { classNames } from 'shared/lib';
 import { useNav, useLang, useTheme } from 'shared/model/hooks';
-import classes from './Navigation.module.scss';
+import { classNames } from 'shared/lib';
 
 export const Navigation = () => {
   const { theme } = useTheme();
@@ -26,8 +26,6 @@ export const Navigation = () => {
     dispatch(getNav());
   }, [dispatch, getNav, lang]);
 
-
-
   const handleItemClick = () => {
     isNavActive
       // @ts-ignore
@@ -36,14 +34,14 @@ export const Navigation = () => {
       : dispatch(setIsNavActive(true));
   };
 
-  const classNameMenu = classNames(
-    classes.menu,
-    {
-      [classes.active]: isNavActive,
-      [classes.dark]: theme === 'dark',
-    },
-    []
-  );
+  const burgerClassNames = classNames(classes.burger, { 
+    [classes.active]: isNavActive,
+  });
+
+  const classNameMenu = classNames(classes.menu, {
+    [classes.active]: isNavActive,
+    [classes.dark]: theme === 'dark',
+  });
 
   return (
     <nav className={classes.navigation}>
