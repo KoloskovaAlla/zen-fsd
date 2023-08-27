@@ -13,7 +13,7 @@ const callback = (store) => store.langReducer;
 export const useLang = () => {
   const {
     isLoading,
-    languages,
+    langs,
     errorMessage,
     lang,
   } = useSelector(callback);
@@ -25,7 +25,7 @@ export const useLang = () => {
   return {
     getLang,
     isLoading,
-    languages,
+    langs,
     errorMessage,
     setLang,
     lang,
