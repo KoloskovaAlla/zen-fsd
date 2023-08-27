@@ -40,9 +40,7 @@ export const Navigation = () => {
     [classes.dark]: theme === 'dark',
   });
 
-
   const getLinkClassName = ({ isActive }) => isActive ? 'active' : 'inactive';
-
 
   return (
     <nav className={classes.navigation}>
@@ -66,5 +64,5 @@ export const Navigation = () => {
         </ul>
       )}
     </nav>
-  )
+  );
 };
