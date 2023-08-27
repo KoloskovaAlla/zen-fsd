@@ -41,7 +41,8 @@ export const Navigation = () => {
   });
 
 
-  const getLinkClassName = ({ isActive }) => isActive ? 'active' : 'inactive'
+  const getLinkClassName = ({ isActive }) => isActive ? 'active' : 'inactive';
+
 
   return (
     <nav className={classes.navigation}>

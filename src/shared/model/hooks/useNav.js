@@ -1,7 +1,5 @@
 import { useSelector } from 'react-redux';
-import { getNav } from '../reducers/navSlice';
-import { setIsNavActive } from '../reducers/navSlice';
-
+import { getNav, setIsNavActive } from '../reducers/navSlice';
 
 /** @type {(store: object) => object} */
 const callback = (store) => store.navReducer;
@@ -17,7 +15,7 @@ export const useNav = () => {
     navItems,
     errorMessage,
     isNavActive
-  } = useSelector(callback);
+  } = useSelector(callback);        
 
   return {
     getNav,
