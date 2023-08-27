@@ -13,16 +13,16 @@ export interface NavState {
 };
 
 export interface Language {
-  text: string;
+  content: string;
   value: string;
 };
 
 export interface LangState {
   getLang: Function;
   isLoading: boolean;
-  languages: Language[];
+  langs: Language[];
   errorMessage: string;
-  setLang: object;
+  setLang: Function;
   lang: string;
 };
 

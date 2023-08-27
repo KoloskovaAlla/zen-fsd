@@ -9,4 +9,5 @@ export interface SelectProps {
   className?: string;
   onChange: any;
   disabled?: boolean;
+  emptyOption: boolean;
 };

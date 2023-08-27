@@ -5,13 +5,13 @@
 
 /** @type {({ options, onChange, value }: Props) => Element} */
 
-export const Select = ({ options, onChange, value }) => {
+export const Select = ({ options, onChange, value, emptyOption }) => {
   return (
     <select
       value={value}
       onChange={onChange}
     >
-      <option></option>
+      {emptyOption && <option></option>}
       {options.length > 0 && options.map(({ value, content }) => (
         content && (
           <option value={value} key={value}>

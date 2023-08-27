@@ -36,6 +36,7 @@ export const SelectField = ({
         options={options}
         value={value}
         onChange={onFieldChange}
+        emptyOption
       />
       {!isValidField && (
         <span className={classes.errorMessage}>
