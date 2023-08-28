@@ -29,7 +29,7 @@ export const Navigation = () => {
     dispatch(getNav());
   }, [dispatch, getNav, lang]);
 
-  const handlLinkClick = () => {
+  const handleLinkClick = () => {
     isNavActive      
       ? dispatch(setIsNavActive(false))      
       : dispatch(setIsNavActive(true));
@@ -40,7 +40,7 @@ export const Navigation = () => {
     [classes.dark]: theme === 'dark',
   });
 
-  const getLinkClassName = ({ isActive }) => isActive ? 'active' : 'inactive';
+  const getLinkClassName = ({ isActive }) => isActive && 'active';
 
   return (
     <nav className={classes.navigation}>
@@ -55,7 +55,7 @@ export const Navigation = () => {
                 <NavLink
                   className={getLinkClassName}
                   to={`/${menuItem.target}`}
-                  onClick={handlLinkClick}
+                  onClick={handleLinkClick}
                 >
                   {menuItem.text}
                 </NavLink>
