@@ -14,8 +14,8 @@ export const Theme = () => {
 
   return (
     <button
-      onClick={toggleTheme}
       className={classes.theme}
+      onClick={toggleTheme}
     >
       {
         theme === 'dark'
