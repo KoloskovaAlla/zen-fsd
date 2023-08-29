@@ -6,9 +6,9 @@ const getNav = createAsyncThunk(
   async (_, thunkApi) => {
     /**  @type {*} */   
     const state = thunkApi.getState();
-    const { lang } = state.langReduce;
+    const { lang } = state.langReducer;
     const url = `${API_BASE_URL}/${lang}/header/menuItems/.json`;
-
+    console.log(url)
     try {
       const response = await fetch(url);
       const data = await response.json();

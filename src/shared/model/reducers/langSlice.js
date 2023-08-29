@@ -10,7 +10,7 @@ const getLang = createAsyncThunk(
     const state = thunkApi.getState()
     const { lang } = state.langReducer;
     const url = `${API_BASE_URL}/${lang}/header/languages/.json`;
-
+    
     try {
       const response = await fetch(url);
       const data = await response.json();
