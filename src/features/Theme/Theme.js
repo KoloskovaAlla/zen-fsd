@@ -11,7 +11,8 @@ import { IconSun, IconMoon } from 'shared/icons';
 
 export const Theme = () => {
   const { theme, toggleTheme } = useTheme();
-  const handleThemeClick = toggleTheme;
+  const handleThemeClick = () => toggleTheme();
+
 
   const IconTheme = theme === 'dark'
     ? <IconSun />
