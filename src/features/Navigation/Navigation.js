@@ -25,26 +25,26 @@ export const Navigation = () => {
     setIsNavActive,
   } = useNav();
 
-  useEffect(() => {    
+  useEffect(() => {
     dispatch(getNav());
   }, [dispatch, getNav, lang]);
 
   const handleLinkClick = () => {
-    isNavActive      
-      ? dispatch(setIsNavActive(false))      
+    isNavActive
+      ? dispatch(setIsNavActive(false))
       : dispatch(setIsNavActive(true));
-  };  
+  };
 
   const menuClassNames = classNames(classes.menu, {
     [classes.active]: isNavActive,
     [classes.dark]: theme === 'dark',
   });
 
-  const getLinkClassName = ({ isActive }) => isActive && 'active';
+  const getLinkClassName = ({ isActive }) => isActive ? 'active' : '';
 
   return (
     <nav className={classes.navigation}>
-      {navItems && (        
+      {navItems && (
         <ul className={menuClassNames}>
           {navItems.length > 0 &&
             navItems.map((menuItem, index) => (

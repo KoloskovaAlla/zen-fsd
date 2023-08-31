@@ -4,11 +4,11 @@ import { API_BASE_URL } from 'shared/constants/api';
 const getNav = createAsyncThunk(
   'navigation/getData',
   async (_, thunkApi) => {
-    /**  @type {*} */   
+    /**  @type {*} */
     const state = thunkApi.getState();
     const { lang } = state.langReducer;
     const url = `${API_BASE_URL}/${lang}/header/menuItems/.json`;
-    console.log(url)
+
     try {
       const response = await fetch(url);
       const data = await response.json();

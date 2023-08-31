@@ -60,5 +60,5 @@ const cashbackSlice = createSlice({
   }
 });
 
-export { getInfo };
-export const { reducer: infoReducer } = infoSlice;
+export { getCashback };
+export const { reducer: infoReducer } = cashbackSlice;

@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useOrder } from 'shared/model/hooks';
 
 export const Cashback = ({ data }) => {
+  console.log(data)
   const { title } = data;
   const dispatch = useDispatch();
   const { setIsModalActive } = useOrder();

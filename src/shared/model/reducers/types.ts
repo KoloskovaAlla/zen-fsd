@@ -210,3 +210,9 @@ export interface ThemeState {
 export interface CurrentPageState {
   currentPage: string;
 };
+
+export interface CashbackState {
+  isLoading: boolean;
+  cashback: null | Cashback;
+  errorMessage: string;
+};
