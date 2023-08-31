@@ -1,6 +1,6 @@
-import { useOrder } from 'shared/model/hooks';
-import { useDispatch } from 'react-redux';
 import classes from './Cashback.module.scss';
+import { useDispatch } from 'react-redux';
+import { useOrder } from 'shared/model/hooks';
 
 export const Cashback = ({ data }) => {
   const { title } = data;
