@@ -11,3 +11,4 @@ export { columnsReducer } from './columnsSlice';
 export { infoReducer } from './infoSlice';
 export { currentPageReducer } from './currentPageSlice';
 export { sendOrderReducer } from './sendOrderSlice';
+export { cashbackReducer } from './cashbackSlice';
