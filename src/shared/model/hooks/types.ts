@@ -250,33 +250,33 @@ export interface OrderData {
 };
 
 export interface OrderState {
-    name: string, 
-    isValidName: boolean, 
-    tel: string, 
-    isValidTel: boolean, 
-    email: string, 
-    isValidEmail: boolean, 
-    connection: string, 
-    isValidConnection: boolean, 
-    isChecked: boolean, 
-    isSubmitDisabled: boolean,
-    isSending: boolean, 
-    errorMessage: string, 
-    isOrderSended: boolean, 
-    isDataSent: boolean,
+  name: string,
+  isValidName: boolean,
+  tel: string,
+  isValidTel: boolean,
+  email: string,
+  isValidEmail: boolean,
+  connection: string,
+  isValidConnection: boolean,
+  isChecked: boolean,
+  isSubmitDisabled: boolean,
+  isSending: boolean,
+  errorMessage: string,
+  isOrderSended: boolean,
+  isDataSent: boolean,
 }
 export interface OrderActions {
-    setName: Function;
-    setIsValidName: Function; 
-    setTel: Function;
-    setIsValidTel: Function;
-    setEmail: Function; 
-    setIsValidEmail: Function; 
-    setConnection: Function; 
-    setIsValidConnection: Function;
-    setIsChecked: Function;
-    setIsDataSent: Function;
-    sendOrder?: any;    
+  setName: Function;
+  setIsValidName: Function;
+  setTel: Function;
+  setIsValidTel: Function;
+  setEmail: Function;
+  setIsValidEmail: Function;
+  setConnection: Function;
+  setIsValidConnection: Function;
+  setIsChecked: Function;
+  setIsDataSent: Function;
+  sendOrder?: any;
 }
 
 export interface Order {
@@ -286,7 +286,13 @@ export interface Order {
   // orderData: OrderData;
   // errorMessage: string;
   // getOrder: Function;   
-   orderState: OrderState;
+  orderState: OrderState;
   orderActions: OrderActions;
   sendOrder?: Function
-}
+};
+export interface CashbackState {
+  getCashback: Function;
+  isLoading: boolean;
+  cashback: null | Cashback;
+  errorMessage: string;
+};
