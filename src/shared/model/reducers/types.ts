@@ -216,3 +216,14 @@ export interface CashbackState {
   cashback: null | Cashback;
   cashbackErrorMessage: string;
 };
+
+export interface CashbackState {
+  isCashbackLoading: boolean;
+  cashback: null | Cashback;
+  cashbackErrorMessage: string;
+};
+
+export interface CashbackData {
+  getCashback: Function;
+  cashbackState: CashbackState;
+};

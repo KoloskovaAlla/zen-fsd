@@ -290,14 +290,9 @@ export interface Order {
   orderActions: OrderActions;
   sendOrder?: Function
 };
-
 export interface CashbackState {
+  getCashback: Function;
   isCashbackLoading: boolean;
   cashback: null | Cashback;
   cashbackErrorMessage: string;
-};
-
-export interface CashbackData {
-  getCashback: Function;
-  cashbackState: CashbackState;
 };

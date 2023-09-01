@@ -4,32 +4,38 @@ import { useDispatch } from 'react-redux';
 import { useOrder } from 'shared/model/hooks';
 import { useCashback } from 'shared/model/hooks';
 
+/** @typedef {import('react').ReactElement} Element */
+
+/** 
+ * @function Cashback 
+ * @returns {Element}
+ */
+
 export const Cashback = () => {
   const dispatch = useDispatch();
   const {
     getCashback,
-    cashbackState,
+    ...cashbackState
   } = useCashback();
+  const { cashback } = cashbackState;  
 
-  const { isCashbackLoading, cashback, cashbackErrorMessage } = cashbackState;
+  const { setIsModalActive } = useOrder();
 
   useEffect(() => {
     dispatch(getCashback());
-  }, [dispatch, getCashback]);
+  }, [dispatch, getCashback]);  
 
-  console.log(cashback)
-
-  const { setIsModalActive } = useOrder();
 
   const handleOrderClick = () => {
     dispatch(setIsModalActive(true));
   }
 
-  if (!cashback) return null;
+  // if (!cashback) return null;
   return (
     <section className={classes.section}>
       <div className={classes.wrapper}>
-        <div className={classes.body}>
+        {cashback && (
+          <div className={classes.body}>
           <h2 className={classes.title}>{cashback.title.content}</h2>
 
           {cashback.texts?.length > 0 &&
@@ -40,7 +46,8 @@ export const Cashback = () => {
               >
                 {text}
               </p>
-            ))}
+            ))
+          }
           <button
             onClick={handleOrderClick}
             className={classes.button}
@@ -50,6 +57,7 @@ export const Cashback = () => {
           </button>
 
         </div>
+        )}
       </div>
     </section>
   );
