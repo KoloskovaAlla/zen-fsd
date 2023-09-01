@@ -212,7 +212,7 @@ export interface CurrentPageState {
 };
 
 export interface CashbackState {
-  isLoading: boolean;
+  isCashbackLoading: boolean;
   cashback: null | Cashback;
-  errorMessage: string;
+  cashbackErrorMessage: string;
 };

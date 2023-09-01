@@ -32,9 +32,9 @@ const getCashback = createAsyncThunk(
  */
 
 const initialState = {
-  isLoading: false,
+  isCashbackLoading: false,
   cashback: null,
-  errorMessage: '',
+  cashbackErrorMessage: '',
 };
 
 const cashbackSlice = createSlice({
@@ -43,19 +43,19 @@ const cashbackSlice = createSlice({
   reducers: {},
   extraReducers: {
     [`${getCashback.pending}`]: (state) => {
-      state.isLoading = true;
+      state.isCashbackLoading = true;
       state.cashback = null;
-      state.errorMessage = '';
+      state.cashbackErrorMessage = '';
     },
     [`${getCashback.fulfilled}`]: (state, { payload }) => {
-      state.isLoading = false;
+      state.isCashbackLoading = false;
       state.cashback = payload;
-      state.errorMessage = '';
+      state.cashbackErrorMessage = '';
     },
     [`${getCashback.rejected}`]: (state, { payload }) => {
-      state.isLoading = false;
+      state.isCashbackLoading = false;
       state.cashback = null;
-      state.errorMessage = payload;
+      state.cashbackErrorMessage = payload;
     },
   }
 });
