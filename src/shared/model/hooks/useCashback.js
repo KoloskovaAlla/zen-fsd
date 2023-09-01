@@ -5,7 +5,7 @@ import { getCashback } from '../reducers/cashbackSlice';
 const getState = (store) => store.cashbackReducer;
 
 /** 
- * @typedef {import('./types').CashbackState} State 
+ * @typedef {import('./types').CashbackData} State 
  * @type {() => State}
  */
 

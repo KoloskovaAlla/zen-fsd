@@ -8,10 +8,10 @@ export const Cashback = () => {
   const dispatch = useDispatch();
   const {
     getCashback,
-    isLoading,
-    cashback,
-    errorMessage,
+    cashbackState,
   } = useCashback();
+
+  const { isCashbackLoading, cashback, cashbackErrorMessage } = cashbackState;
 
   useEffect(() => {
     dispatch(getCashback());
