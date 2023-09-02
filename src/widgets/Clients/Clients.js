@@ -1,7 +1,7 @@
 import classes from './Clients.module.scss';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useTheme, useClients, useCurrentPage } from 'shared/model/hooks';
+import { useClients, useCurrentPage } from 'shared/model/hooks';
 
 /** 
  * @function Clients
@@ -12,14 +12,13 @@ export const Clients = () => {
   const dispatch = useDispatch();
 
   const [hiddenClients, setHiddenClients] = useState(false);  
-
-  const { theme } = useTheme();
+ 
   const { currentPage } = useCurrentPage();
   const { fetchClientsData, clientsData, } = useClients();  
 
   useEffect(() => {
     dispatch(fetchClientsData());
-  }, [theme, dispatch, fetchClientsData]);
+  }, [dispatch, fetchClientsData]);
 
   useEffect(() => {
     setHiddenClients(currentPage === 'clientsPage');

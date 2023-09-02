@@ -92,7 +92,7 @@ export interface Clients {
 export interface ClientsState {
   fetchClientsData: Function;
   isLoading: boolean;
-  clientsData: Clients;
+  clientsData: Client[];
   errorMessage: string;
 };
 
