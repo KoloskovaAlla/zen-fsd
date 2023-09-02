@@ -1,23 +1,25 @@
 import classes from './Clients.module.scss';
-import { useTheme, useLang, useClients, useCurrentPage } from 'shared/model/hooks'
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { useTheme, useClients, useCurrentPage } from 'shared/model/hooks';
+
+/** 
+ * @function Clients
+ * @returns {JSX.Element}
+ */
 
 export const Clients = () => {  
-  const { theme } = useTheme();
-  const { lang } = useLang();
-  const [hiddenClients, setHiddenClients] = useState(false);  
-  const { currentPage } = useCurrentPage();
   const dispatch = useDispatch();
 
-  const {
-    fetchClientsData,  
-    clientsData,  
-  } = useClients();  
+  const [hiddenClients, setHiddenClients] = useState(false);  
+
+  const { theme } = useTheme();
+  const { currentPage } = useCurrentPage();
+  const { fetchClientsData, clientsData, } = useClients();  
 
   useEffect(() => {
-    dispatch(fetchClientsData(lang));
-  }, [theme]);
+    dispatch(fetchClientsData());
+  }, [theme, dispatch, fetchClientsData]);
 
   useEffect(() => {
     setHiddenClients(currentPage === 'clientsPage');
@@ -30,23 +32,14 @@ export const Clients = () => {
           {!hiddenClients && (
             <div className={classes.wrapper}>
               <ul className={classes.list}>
-                {theme === 'light'
-                  ?  clientsData.lightThemeClients.map((client, index) => (
-                    <li key={index} className={classes.item}>
-                      <img
-                        src={client?.source}
-                        alt={client?.alternate}
-                      />
-                    </li>
-                  ))
-                  :  clientsData.darkThemeClients.map((client, index) => (
-                    <li key={index} className={classes.item}>
-                      <img
-                        src={client?.source}
-                        alt={client?.alternate}
-                      />
-                    </li>
-                  ))}
+                {clientsData.map((client, index) => (
+                  <li key={index} className={classes.item}>
+                    <img
+                      src={client?.source}
+                      alt={client?.alternate}
+                    />
+                  </li>
+                ))}
               </ul>
             </div>
           )}

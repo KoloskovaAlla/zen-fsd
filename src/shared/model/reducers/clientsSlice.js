@@ -9,7 +9,8 @@ const fetchClientsData = createAsyncThunk(
     /**  @type {*} */
     const state = thunkApi.getState()
     const { lang } = state.langReducer;
-    const url = `${API_BASE_URL}/${lang}/clients/.json`;
+    const { theme } = state.themeReducer;
+    const url = `${API_BASE_URL}/${lang}/clients/${theme}/.json`;
     try {
       const response = await fetch(url);
       const data = await response.json();
