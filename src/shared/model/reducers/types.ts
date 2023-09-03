@@ -122,16 +122,10 @@ export interface Client {
   alternate: string;
   source: string;
 };
-
-export interface Clients {
-  darkThemeClients: Client[];
-  lightThemeClients: Client[];
-};
-
 export interface ClientsState {
   fetchClientsData?: Function;
   isLoading: boolean;
-  clientsData: null | Clients;
+  clientsData: null | Client[];
   errorMessage: string;
 };
 
@@ -140,7 +134,7 @@ export interface PostsData {
   title: Title;
   care: Care;
   cashback: Cashback;
-  clients: Clients;
+  clients: Client[];
   warranty: Warranty;
 };
 
@@ -168,7 +162,7 @@ export interface PostsData {
   title: Title;
   care: Care;
   cashback: Cashback;
-  clients: Clients;
+  clients: Client[];
   warranty: Warranty;
 };
 
