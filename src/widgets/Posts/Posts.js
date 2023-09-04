@@ -1,29 +1,27 @@
 import classes from './Posts.module.scss';
 import { useEffect, useState } from 'react';
-import { useCurrentPage, useLang, usePosts } from 'shared/model/hooks';
-import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { useCurrentPage, useLang, usePosts } from 'shared/model/hooks';
 
 export const Posts = () => {
-  const { lang } = useLang();
   const [hiddenPosts, setHiddenPosts] = useState(false);
   const { currentPage } = useCurrentPage();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchPostsData(lang));
-  }, [lang]);
+    dispatch(fetchPostsData());
+  }, [dispatch]);
 
-  const {
-    fetchPostsData,
-    isLoading,
-    postsData,
-    errorMessage,
-  } = usePosts();
+  const { fetchPostsData, postsData, } = usePosts();
 
   useEffect(() => {
     setHiddenPosts(currentPage === 'postsPage');
   }, [currentPage]);
+
+  useEffect(() => {
+    if (postsData) console.log(postsData.warranty)
+  }, [postsData]);
 
   return (
     <div>
