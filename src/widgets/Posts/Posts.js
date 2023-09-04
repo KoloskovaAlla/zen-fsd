@@ -19,10 +19,6 @@ export const Posts = () => {
     setHiddenPosts(currentPage === 'postsPage');
   }, [currentPage]);
 
-  useEffect(() => {
-    if (postsData) console.log(postsData.warranty)
-  }, [postsData]);
-
   return (
     <div>
       {!hiddenPosts && postsData && (
@@ -86,6 +82,27 @@ export const Posts = () => {
                 </Link>
               </li>
             </ul>
+
+              <ul className={classes.list}>
+                {Object.keys(postsData).map((postKey) => {
+                  const post = postsData[postKey];
+                  console.log(post)
+                  return (
+                    <li key={postKey}>
+                      <Link className={classes.post} to={`/posts/${postKey}`}>
+                        <button className={classes.image}>
+                          <img src={post?.image?.source} alt='alternate img' />
+                        </button>
+                        <div className={classes.body}>
+                          <button className={classes.titlePost}>{post.title}</button>
+                          {/* <div className={classes?.article}>{post?.article.slice(0, 50)}...</div> */}
+                          <button className={classes.link}>Read more...</button>
+                        </div>
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
 
             <Link className={classes.post} to='/posts'>
               <button
