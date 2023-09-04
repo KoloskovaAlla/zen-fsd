@@ -19,6 +19,10 @@ export const Posts = () => {
     setHiddenPosts(currentPage === 'postsPage');
   }, [currentPage]);
 
+  useEffect(() => {
+    if (postsData) console.log(postsData.warranty)
+  }, [postsData]);
+
   return (
     <div>
       {!hiddenPosts && postsData && (
