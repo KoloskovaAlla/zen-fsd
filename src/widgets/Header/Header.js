@@ -1,30 +1,35 @@
-import { Navigation, Lang, Theme, Burger } from 'features';
-import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
-import { classNames } from 'shared/lib';
-import { useNav, useLang, useTheme  } from 'shared/model/hooks';
-import { IconLogoHeader } from 'shared/icons';
 import classes from './Header.module.scss';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { useNav, useLang, useTheme } from 'shared/model/hooks';
+import { Navigation, Lang, Theme, Burger } from 'features';
+import { classNames } from 'shared/lib';
+import { IconLogoHeader } from 'shared/icons';
+
+/** 
+ * @function Header 
+ * @returns {JSX.Element}
+ */
 
 export const Header = () => {
-  const { theme } = useTheme(); 
+  const { theme } = useTheme();
   const { getNav } = useNav();
   const { getLang } = useLang();
 
   const dispatch = useDispatch();
 
-  useEffect(() => {    
+  useEffect(() => {
     dispatch(getNav());
   }, [dispatch, getNav]);
 
-  useEffect(() => {  
+  useEffect(() => {
     dispatch(getLang());
   }, [dispatch, getLang]);
 
-  const classNameHeader = classNames(
-    classes.header, { [classes.dark]: theme === 'dark'}
-  );
+  const classNameHeader = classNames(classes.header, {
+    [classes.dark]: theme === 'dark',
+  });
 
   return (
     <header className={classNameHeader}>
