@@ -34,7 +34,7 @@ export const Footer = () => {
           </ul>
         )}
 
-        {<div className={classes.info}>
+        <div className={classes.info}>
           <div className={classes.logo}>
             <IconLogoFooter />
           </div>
@@ -51,7 +51,7 @@ export const Footer = () => {
           )}
 
           {info && <Developer developer={info?.developer} />}
-        </div>}
+        </div>
       </div>
     </footer>
   );
