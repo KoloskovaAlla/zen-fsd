@@ -35,7 +35,7 @@ export const Posts = () => {
                 <Link className={classes.post} to='/posts/warranty'>
                   <button className={classes.image}>
                     <img
-                      src={postsData?.warranty?.imageSource}
+                      src={postsData?.warranty?.image.source}
                       alt='alternate img'
                     ></img>
                   </button>
