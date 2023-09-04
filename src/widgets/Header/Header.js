@@ -27,12 +27,12 @@ export const Header = () => {
     dispatch(getLang());
   }, [dispatch, getLang]);
 
-  const classNameHeader = classNames(classes.header, {
+  const headerClassNames = classNames(classes.header, {
     [classes.dark]: theme === 'dark',
   });
 
   return (
-    <header className={classNameHeader}>
+    <header className={headerClassNames}>
       <div className={classes.wrapper}>
         <Link to='/' className={classes.logo}>
           <IconLogoHeader />
