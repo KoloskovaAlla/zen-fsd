@@ -1,14 +1,19 @@
-import { useDispatch } from 'react-redux';
+import classes from './Footer.module.scss';
 import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { useColumns, useInfo } from 'shared/model/hooks';
 import { Column, Developer } from './ui';
 import { IconLogoFooter } from 'shared/icons';
-import classes from './Footer.module.scss';
+
+/** 
+ * @function Footer
+ * @returns {JSX.Element}
+ */
 
 export const Footer = () => {
+  const dispatch = useDispatch();
   const { getColumns, columns } = useColumns();
   const { getInfo, info } = useInfo();
-  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getColumns());
@@ -29,7 +34,7 @@ export const Footer = () => {
           </ul>
         )}
 
-        {<div className={classes.info}>
+        <div className={classes.info}>
           <div className={classes.logo}>
             <IconLogoFooter />
           </div>
@@ -46,7 +51,7 @@ export const Footer = () => {
           )}
 
           {info && <Developer developer={info?.developer} />}
-        </div>}
+        </div>
       </div>
     </footer>
   );
