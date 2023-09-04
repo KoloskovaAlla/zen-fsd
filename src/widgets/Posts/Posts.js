@@ -53,7 +53,7 @@ export const Posts = () => {
               <li>
                 <Link className={classes.post} to='/posts/care'>
                   <button className={classes.image}>
-                    <img src={postsData?.care?.imageSource} alt='alternate img'></img>
+                    <img src={postsData?.care?.image.source} alt='alternate img'></img>
                   </button>
                   <div className={classes.body}>
                     <button className={classes.titlePost}>
@@ -70,7 +70,7 @@ export const Posts = () => {
                 <Link className={classes.post} to='/posts/cashback'>
                   <button className={classes.image}>
                     <img
-                      src={postsData?.cashback?.imageSource}
+                      src={postsData?.cashback?.image.source}
                       alt='alternate img'
                     ></img>
                   </button>

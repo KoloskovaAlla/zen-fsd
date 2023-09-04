@@ -136,13 +136,45 @@ export interface HomePageState {
   errorMessage: string,
 };
 
+export interface WarrantyPost {
+  name: string;
+  title: string;
+  links?: Link[];
+  image: Image;
+  article: string[];
+}
+
+export interface CarePost {
+  name: string;
+  title: string;
+  links?: Link[];
+  image: Image;
+  article: string[];
+}
+
+export interface ClientsPost {
+  name: string;
+  title: string;
+  links?: Link[];
+  image: Image;
+  article: string[];
+}
+
+export interface CashbackPost {
+  name: string;
+  title: string;
+  links?: Link[];
+  image: Image;
+  article: string[];
+}
+
 export interface postsData {
   buttonText: string;
   title: Title;
-  care: Care;
-  cashback: Cashback;
-  clients: Clients;
-  warranty: Warranty;
+  care: CarePost;
+  cashback: CashbackPost;
+  clients: ClientsPost;
+  warranty: WarrantyPost;
 };
 
 export interface PostsState {
