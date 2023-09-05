@@ -19,10 +19,6 @@ export const Posts = () => {
     setHiddenPosts(currentPage === 'postsPage');
   }, [currentPage]);
 
-  useEffect(() => {
-    if (postsData) console.log(postsData.warranty)
-  }, [postsData]);
-
   return (
     <div>
       {!hiddenPosts && postsData && (
@@ -99,7 +95,7 @@ export const Posts = () => {
                         </button>
                         <div className={classes.body}>
                           <button className={classes.titlePost}>{post.title}</button>
-                          {/* <div className={classes?.article}>{post?.article.slice(0, 50)}...</div> */}
+                          <div className={classes?.article}>{post?.article?.slice(0, 50)}...</div>
                           <button className={classes.link}>Read more...</button>
                         </div>
                       </Link>
