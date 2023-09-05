@@ -10,15 +10,15 @@ import { useCurrentPage, usePosts } from 'shared/model/hooks';
  */
 
 export const Posts = () => {
+  const dispatch = useDispatch();
   const [hiddenPosts, setHiddenPosts] = useState(false);
   const { currentPage } = useCurrentPage();
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchPostsData());
-  }, [dispatch]);
 
   const { fetchPostsData, postsData, } = usePosts();
+  useEffect(() => {
+    dispatch(fetchPostsData());
+  }, [dispatch, fetchPostsData]);
+
 
   useEffect(() => {
     setHiddenPosts(currentPage === 'postsPage');
@@ -33,8 +33,7 @@ export const Posts = () => {
 
             <ul className={classes.list}>
               {Object.keys(postsData).map((postKey) => {
-                const post = postsData[postKey];
-                console.log(post)
+                const post = postsData[postKey];        
                 return (
                   <li key={postKey}>
                     <Link className={classes.post} to={`/posts/${postKey}`}>
