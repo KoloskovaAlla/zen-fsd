@@ -2,7 +2,12 @@ import classes from './Posts.module.scss';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { useCurrentPage, useLang, usePosts } from 'shared/model/hooks';
+import { useCurrentPage, usePosts } from 'shared/model/hooks';
+
+/** 
+ * @function Posts
+ * @returns {JSX.Element}
+ */
 
 export const Posts = () => {
   const [hiddenPosts, setHiddenPosts] = useState(false);
@@ -38,7 +43,7 @@ export const Posts = () => {
                       </button>
                       <div className={classes.body}>
                         <button className={classes.titlePost}>{post.title}</button>
-                        <div className={classes?.article}>{post?.article?.slice(0, 50)}...</div>
+                        <div className={classes.article}>{post?.article?.slice(0, 50)}...</div>
                         <button className={classes.link}>Read more...</button>
                       </div>
                     </Link>
