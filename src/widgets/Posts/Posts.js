@@ -17,7 +17,6 @@ export const Posts = () => {
   const { fetchPostsData, postsData } = usePosts();
   const [hiddenPosts, setHiddenPosts] = useState(false);
 
-
   useEffect(() => {
     dispatch(fetchPostsData());
   }, [dispatch, fetchPostsData]);
