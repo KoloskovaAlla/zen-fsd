@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useCurrentPage, usePosts } from 'shared/model/hooks';
+import { PostLink } from './ui/PostLink';
 
 /** 
  * @function Posts
@@ -29,26 +30,18 @@ export const Posts = () => {
       {!hiddenPosts && postsData && (
         <section className={classes.posts}>
           <div className={classes.wrapper}>
-            {postsData.title && <h2 className={classes.title}>{postsData?.title.content}</h2>}
+            {postsData.title && (
+              <h2 className={classes.title}>
+                {postsData?.title.content}
+              </h2>
+            )}
 
             <ul className={classes.list}>
-              {Object.keys(postsData).map((postKey) => {
-                const post = postsData[postKey];        
-                return (
-                  <li key={postKey}>
-                    <Link className={classes.post} to={`/posts/${postKey}`}>
-                      <button className={classes.image}>
-                        <img src={post?.image?.source} alt='alternate img' />
-                      </button>
-                      <div className={classes.body}>
-                        <button className={classes.titlePost}>{post.title}</button>
-                        <div className={classes.article}>{post?.article?.slice(0, 50)}...</div>
-                        <button className={classes.link}>Read more...</button>
-                      </div>
-                    </Link>
-                  </li>
-                );
-              })}
+              {Object.keys(postsData).map((postKey) =>
+                <li key={postKey}>
+                  <PostLink postKey={postKey} post={postsData[postKey]} />
+                </li>
+              )}
             </ul>
 
             <Link className={classes.post} to='/posts'>
