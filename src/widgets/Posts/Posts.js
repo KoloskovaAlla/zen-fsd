@@ -1,8 +1,8 @@
 import classes from './Posts.module.scss';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { useCurrentPage, usePosts } from 'shared/model/hooks';
+import { Link, useLocation } from 'react-router-dom';
+import { usePosts } from 'shared/model/hooks';
 import { PostLink } from './ui/PostLink';
 
 /** 
@@ -12,18 +12,20 @@ import { PostLink } from './ui/PostLink';
 
 export const Posts = () => {
   const dispatch = useDispatch();
-  const [hiddenPosts, setHiddenPosts] = useState(false);
-  const { currentPage } = useCurrentPage();
+  const location = useLocation();
 
-  const { fetchPostsData, postsData, } = usePosts();
+  const { fetchPostsData, postsData } = usePosts();
+  const [hiddenPosts, setHiddenPosts] = useState(false);
+
+
   useEffect(() => {
     dispatch(fetchPostsData());
   }, [dispatch, fetchPostsData]);
 
-
   useEffect(() => {
-    setHiddenPosts(currentPage === 'postsPage');
-  }, [currentPage]);
+    const isCurrentPathName = location.pathname === '/posts'
+    setHiddenPosts(isCurrentPathName);
+  }, [location]);
 
   return (
     <div>
@@ -39,7 +41,10 @@ export const Posts = () => {
             <ul className={classes.list}>
               {Object.keys(postsData).map((postKey) =>
                 <li key={postKey}>
-                  <PostLink postKey={postKey} post={postsData[postKey]} />
+                  <PostLink
+                    postKey={postKey}
+                    post={postsData[postKey]}
+                  />
                 </li>
               )}
             </ul>
