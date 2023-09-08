@@ -1,12 +1,20 @@
+import classes from './SectionBase.module.scss';
 import { Preview } from 'features';
 import { IconApple, IconGoogle } from 'shared/icons';
 import { classNames } from 'shared/lib';
-import classes from './SectionBase.module.scss';
+
+/** @typedef {import('./types').SectionBaseProps} SectionBaseProps */
+
+/** 
+ * @function SectionBase
+ * @param {SectionBaseProps} props
+ * @returns {JSX.Element}
+ */
 
 export const SectionBase = ({ data, type, reverse }) => {
-  const classNameBody = classNames(
-    classes.body, { [classes.reverse]: reverse, }, []
-  );
+  const classNameBody = classNames(classes.body, {
+    [classes.reverse]: reverse,
+  });
 
   const { title } = data;
 
@@ -14,10 +22,18 @@ export const SectionBase = ({ data, type, reverse }) => {
     <section className={classes.section}>
       <div className={classes.wrapper}>
         <div className={classNameBody}>
-          {type === 'primary' && <h1 className={classes.title}>{title.content}</h1>}
-          {type === 'secondary' && <h2 className={classes.title}>{title.content}</h2>}
+          {type === 'primary' && (
+            <h1 className={classes.title}>
+              {title.content}
+            </h1>
+          )}
+          {type === 'secondary' && (
+            <h2 className={classes.title}>
+              {title.content}
+            </h2>
+          )}
 
-          {data.texts?.length > 0 &&
+          {data.texts?.length > 0 && (
             data.texts.map((text, index) => (
               <p
                 className={classes.copy}
@@ -25,10 +41,11 @@ export const SectionBase = ({ data, type, reverse }) => {
               >
                 {text}
               </p>
-            ))}
+            )))
+          }
 
           <ul className={classes.links}>
-            {data.links?.length > 0 &&
+            {data.links?.length > 0 && (
               data.links.map((link, index) => (
                 <li
                   className={classes.link}
@@ -41,7 +58,8 @@ export const SectionBase = ({ data, type, reverse }) => {
                     }
                   </a>
                 </li>
-              ))}
+              )))
+            }
           </ul>
         </div>
 
