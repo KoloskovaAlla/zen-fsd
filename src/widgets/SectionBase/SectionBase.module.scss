@@ -110,16 +110,6 @@
   }
 }
 
-.links {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-
-  @media (min-width: $breakpoint_md) {
-    flex-direction: row;
-  }
-}
-
 .image {
   margin-top: var(--image-margin-top);
   height: var(--image-height);

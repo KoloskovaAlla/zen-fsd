@@ -1,0 +1,12 @@
+@import 'shared/constants/styles/breakpoints';
+@import 'shared/constants/styles/varsForSections';
+
+.links {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: $breakpoint_md) {
+    flex-direction: row;
+  }
+}
