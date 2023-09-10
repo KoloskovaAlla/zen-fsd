@@ -1,6 +1,6 @@
 import classes from './SectionBase.module.scss';
 import { Preview } from 'features';
-import { IconApple, IconGoogle } from 'shared/icons';
+import { Links } from './ui';
 import { classNames } from 'shared/lib';
 
 /** @typedef {import('./types').SectionBaseProps} SectionBaseProps */
@@ -12,16 +12,16 @@ import { classNames } from 'shared/lib';
  */
 
 export const SectionBase = ({ data, type, reverse }) => {
-  const classNameBody = classNames(classes.body, {
+  const { title, texts, image } = data;
+
+  const bodyClassNames = classNames(classes.body, {
     [classes.reverse]: reverse,
-  });
-
-  const { title } = data;
-
+  });      
+  
   return (
     <section className={classes.section}>
       <div className={classes.wrapper}>
-        <div className={classNameBody}>
+        <div className={bodyClassNames}>
           {type === 'primary' && (
             <h1 className={classes.title}>
               {title.content}
@@ -33,8 +33,8 @@ export const SectionBase = ({ data, type, reverse }) => {
             </h2>
           )}
 
-          {data.texts?.length > 0 && (
-            data.texts.map((text, index) => (
+          {texts?.length > 0 && (
+            texts.map((text, index) => (
               <p
                 className={classes.copy}
                 key={index}
@@ -44,26 +44,10 @@ export const SectionBase = ({ data, type, reverse }) => {
             )))
           }
 
-          <ul className={classes.links}>
-            {data.links?.length > 0 && (
-              data.links.map((link, index) => (
-                <li
-                  className={classes.link}
-                  key={index}
-                >
-                  <a href={link.url && link.url}>
-                    {link.name === 'apple'
-                      ? <IconApple />
-                      : <IconGoogle />
-                    }
-                  </a>
-                </li>
-              )))
-            }
-          </ul>
+          {data?.links && <Links links={data.links}/>}          
         </div>
 
-        {data.image && <Preview imageDetails={data.image} />}
+        {image && <Preview imageDetails={image} />}
       </div>
     </section>
   );

@@ -13,7 +13,6 @@ export const Theme = () => {
   const { theme, toggleTheme } = useTheme();
   const handleThemeClick = () => toggleTheme();
 
-
   const IconTheme = theme === 'dark'
     ? <IconSun />
     : <IconMoon />
