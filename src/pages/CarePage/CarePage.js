@@ -1,37 +1,25 @@
 import classes from './CarePage.module.scss';
+import { useCarePage } from 'shared/model/hooks';
 import { useEffect, useState} from 'react';
-// import SectionBase from 'components/layout/SectionBase';
-// import LangContext from "contexts/LangContext";
-import { useSelector } from 'react-redux';
+import { SectionBase } from 'widgets';
 import { useDispatch } from 'react-redux';
-// import { setCurrentPage } from 'reducers/currentPageSlice';
+
 
 export const CarePage = () => {
-  const [data, setData] = useState(null);
-  // const { lang } = useSelector((state) => state.langReducer);
-  // const {currentPage} = useSelector((state) => state.currentPageReducer)
-  const dispatch = useDispatch()
+   const {
+    getCarePage,
+    ...carePageState
+  } = useCarePage();
 
-  // useEffect(() => {
-  //   fetch(
-  //     `https://zenproject-ce905-default-rtdb.firebaseio.com/${lang}/pages/care.json`
-  //   )
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       setData(data);
-  //     })
-  //     .catch();
-  // }, [lang]);
+  const { carePage } =  carePageState;  
 
-  useEffect(() => {
-    // dispatch(setCurrentPage('carePage'))
-  }, [])
+  const dispatch = useDispatch();
 
   return (
     <main>
-      {/* {data?.intro && <SectionBase className={classes.into} data={data.intro} />}
-      {data?.core && <SectionBase className={classes.core} data={data.core} reverse />}
-      {data?.final && <SectionBase className={classes.final} data={data.final} />} */}
+      {carePage?.intro && <SectionBase className={classes.into} data ={carePage.intro} />}
+      {carePage?.core && <SectionBase className={classes.core} data={carePage.core} reverse />}
+      {carePage?.final && <SectionBase className={classes.final} data={carePage.final} />}
     </main>
   );
 };
