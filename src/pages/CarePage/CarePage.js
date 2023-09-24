@@ -1,11 +1,10 @@
-import classes from './CarePage.module.scss';
-import { useCarePage } from 'shared/model/hooks';
-import { useEffect, useState} from 'react';
-import { SectionBase } from 'widgets';
+import {useEffect} from 'react';
 import { useDispatch } from 'react-redux';
-
+import { useCarePage } from 'shared/model/hooks';
+import { SectionBase } from 'widgets';
 
 export const CarePage = () => {
+  const dispatch = useDispatch();
    const {
     getCarePage,
     ...carePageState
@@ -13,13 +12,17 @@ export const CarePage = () => {
 
   const { carePage } =  carePageState;  
 
-  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getCarePage());
+  }, [dispatch, getCarePage]); 
 
-  return (
-    <main>
-      {carePage?.intro && <SectionBase className={classes.into} data ={carePage.intro} />}
-      {carePage?.core && <SectionBase className={classes.core} data={carePage.core} reverse />}
-      {carePage?.final && <SectionBase className={classes.final} data={carePage.final} />}
+  if (carePage) return (
+    <main>      
+      {carePage?.intro && <SectionBase data={carePage.intro} type='secondary' reverse={false}/>}
+      {carePage?.core && <SectionBase data={carePage.core} type='secondary' reverse />}
+      {carePage?.final && <SectionBase data={carePage.final} type='secondary' reverse={false}/>} 
     </main>
   );
 };
+
+export default CarePage;

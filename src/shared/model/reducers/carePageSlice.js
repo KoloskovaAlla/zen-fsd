@@ -3,13 +3,14 @@ import { API_BASE_URL } from 'shared/constants/api';
 
 /** @type {any} */
 
+console.log('test6')
 const getCarePage = createAsyncThunk(
-  'CarePage/getData',
-  async (_, thunkApi) => {
+  'сarePage/getData',
+  async (_, thunkApi) => {  
     /**  @type {*} */
     const state = thunkApi.getState()
     const { lang } = state.langReducer;
-    const url = `${API_BASE_URL}/${lang}/carepage/.json`;
+    const url = `${API_BASE_URL}/${lang}/pages/care/.json`;
 
     try {
       const response = await fetch(url);
@@ -25,11 +26,6 @@ const getCarePage = createAsyncThunk(
     }
   }
 );
-
-// /**
-//  * @typedef {import('./types').CarePageState} State 
-//  * @type {State} 
-//  */
 
 const initialState = {
   isCarePageLoading: false,
@@ -47,7 +43,7 @@ const carePageSlice = createSlice({
       state.carePage = null;
       state.carePageErrorMessage = '';
     },
-    [`${getCarePage.fulfilled}`]: (state, { payload }) => {
+    [`${getCarePage.fulfilled}`]: (state, { payload }) => {     
       state.isCarePageLoading = false;
       state.carePage = payload;
       state.carePageErrorMessage = '';
@@ -61,4 +57,5 @@ const carePageSlice = createSlice({
 });
 
 export { getCarePage };
+console.log('test61')
 export const { reducer: carePageReducer } = carePageSlice;
