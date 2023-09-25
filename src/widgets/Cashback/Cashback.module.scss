@@ -1,7 +1,7 @@
 @import 'shared/constants/styles/breakpoints';
 @import 'shared/constants/styles/varsForSections';
 
-.cashback{
+.section{
   padding: $section_padding;
 
   @media (min-width: $breakpoint_md) {
