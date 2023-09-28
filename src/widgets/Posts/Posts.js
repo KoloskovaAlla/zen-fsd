@@ -46,7 +46,7 @@ export const Posts = () => {
                 <li key={postKey}>
                   <PostLink
                     postKey={postKey}
-                    post={postsData[postKey]}
+                    post={postsData.items[postKey]}
                   />
                 </li>
               )}
