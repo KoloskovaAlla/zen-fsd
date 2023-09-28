@@ -2,11 +2,9 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { API_BASE_URL } from 'shared/constants/api';
 
 /** @type {any} */
-
-console.log('test6')
 const getCarePage = createAsyncThunk(
   'сarePage/getData',
-  async (_, thunkApi) => {  
+  async (_, thunkApi) => {
     /**  @type {*} */
     const state = thunkApi.getState()
     const { lang } = state.langReducer;
@@ -43,7 +41,7 @@ const carePageSlice = createSlice({
       state.carePage = null;
       state.carePageErrorMessage = '';
     },
-    [`${getCarePage.fulfilled}`]: (state, { payload }) => {     
+    [`${getCarePage.fulfilled}`]: (state, { payload }) => {
       state.isCarePageLoading = false;
       state.carePage = payload;
       state.carePageErrorMessage = '';
@@ -57,5 +55,4 @@ const carePageSlice = createSlice({
 });
 
 export { getCarePage };
-console.log('test61')
 export const { reducer: carePageReducer } = carePageSlice;
