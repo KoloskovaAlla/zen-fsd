@@ -13,3 +13,4 @@ export { currentPageReducer } from './currentPageSlice';
 export { sendOrderReducer } from './sendOrderSlice';
 export { cashbackReducer } from './cashbackSlice';
 export { carePageReducer } from './carePageSlice';
+export { cashbackPageReducer } from './cashbackPageSlice';
