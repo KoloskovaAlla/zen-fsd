@@ -168,13 +168,17 @@ export interface CashbackPost {
   article: string[];
 }
 
-export interface postsData {
-  buttonText: string;
-  title: Title;
+export interface Posts {
   care: CarePost;
   cashback: CashbackPost;
   clients: ClientsPost;
   warranty: WarrantyPost;
+}
+
+export interface postsData {
+  posts: Posts;
+  buttonText: string;
+  title: Title;
 };
 
 export interface PostsState {

@@ -42,11 +42,11 @@ export const Posts = () => {
             )}
 
             <ul className={classes.list}>
-              {Object.keys(postsData).map((postKey) =>
+              {Object.keys(postsData.posts).map((postKey) =>
                 <li key={postKey}>
                   <PostLink
                     postKey={postKey}
-                    post={postsData[postKey]}
+                    post={postsData.posts[postKey]}
                   />
                 </li>
               )}
@@ -55,7 +55,7 @@ export const Posts = () => {
             <Link className={classes.post} to='/posts'>
               <button
                 className={classes.button}
-                type='button'
+                type="button"
               >
                 {postsData?.buttonText}
               </button>
