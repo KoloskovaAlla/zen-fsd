@@ -2,12 +2,12 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { API_BASE_URL } from 'shared/constants/api';
 
 const fetchPostsData = createAsyncThunk(
-  'posts/fetchData', 
+  'posts/fetchData',
   async (_, thunkApi) => {
     /**  @type {*} */
     const state = thunkApi.getState();
     const { lang } = state.langReducer;
-    const url = `${API_BASE_URL}/${lang}/posts/.json`;
+    const url = `${API_BASE_URL}/${lang}/sectionPosts/.json`;
 
     try {
       const response = await fetch(url);
@@ -17,7 +17,7 @@ const fetchPostsData = createAsyncThunk(
     }
     catch (error) {
       console.error(error);
-       /** @type {*} */
+      /** @type {*} */
       const { message } = error;
       return thunkApi.rejectWithValue(message);
     }
@@ -59,4 +59,4 @@ const postsSlice = createSlice({
 });
 
 export { fetchPostsData };
-export const { reducer: postsReducer} =  postsSlice;
+export const { reducer: postsReducer } = postsSlice;

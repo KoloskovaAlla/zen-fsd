@@ -26,10 +26,6 @@ export const Posts = () => {
     setHiddenPosts(isCurrentPathName);
   }, [location]);
 
-  useEffect(() => {
-    if (postsData) console.log(postsData.items);
-  }, [postsData]);
-
   return (
     <div>
       {!hiddenPosts && postsData && (
