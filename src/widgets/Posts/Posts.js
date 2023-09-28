@@ -42,11 +42,11 @@ export const Posts = () => {
             )}
 
             <ul className={classes.list}>
-              {Object.keys(postsData.items).map((postKey) =>
+              {Object.keys(postsData.posts).map((postKey) =>
                 <li key={postKey}>
                   <PostLink
                     postKey={postKey}
-                    post={postsData.items[postKey]}
+                    post={postsData.posts[postKey]}
                   />
                 </li>
               )}
