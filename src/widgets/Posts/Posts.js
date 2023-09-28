@@ -51,7 +51,7 @@ export const Posts = () => {
             <Link className={classes.post} to='/posts'>
               <button
                 className={classes.button}
-                type='button'
+                type="button"
               >
                 {postsData?.buttonText}
               </button>
