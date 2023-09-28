@@ -26,6 +26,10 @@ export const Posts = () => {
     setHiddenPosts(isCurrentPathName);
   }, [location]);
 
+  useEffect(() => {
+    if (postsData) console.log(postsData.items);
+  }, [postsData]);
+
   return (
     <div>
       {!hiddenPosts && postsData && (
@@ -38,7 +42,7 @@ export const Posts = () => {
             )}
 
             <ul className={classes.list}>
-              {Object.keys(postsData).map((postKey) =>
+              {Object.keys(postsData.items).map((postKey) =>
                 <li key={postKey}>
                   <PostLink
                     postKey={postKey}
