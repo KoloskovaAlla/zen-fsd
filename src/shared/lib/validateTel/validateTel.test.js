@@ -30,9 +30,7 @@ describe('validateTel:', () => {
     expect(validity).toEqual(expectedValidity);
   });
   it('Unit test 2', () => {
-    const { tel, expectedValidity } = dataForTests.test2;
-    const validity = validateTel(tel);
-    expect(validity).toEqual(expectedValidity);
+    expect(validateTel('0123')).toEqual(false);
   });
   it('Unit test 3', () => {
     const { tel, expectedValidity } = dataForTests.test3;
