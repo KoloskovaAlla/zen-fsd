@@ -14,10 +14,10 @@ export interface Image {
 };
 
 export interface Data {
-  title: Title;
-  texts: string[];
-  links: Object;
-  image: Image;
+  title?: Title;
+  texts?: string[];
+  links?: Object;
+  image?: Image;
 };
 
 export interface SectionBaseProps {

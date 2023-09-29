@@ -102,11 +102,11 @@ export interface Link {
 };
 
 export interface SectionBase {
-  name: string;
+  name?: string;
   title: Title;
   texts: string[];
   links?: Link[];
-  image: Image;
+  image?: Image;
 }
 
 export interface Download extends SectionBase { };
@@ -333,11 +333,15 @@ export interface CashbackState {
   cashbackErrorMessage: string;
 };
 
-export interface Intro extends SectionBase { };
+export interface PageSection {
 
-export interface Core extends SectionBase { };
+};
 
-export interface Final extends SectionBase { };
+export interface Intro extends PageSection { };
+
+export interface Core extends PageSection { };
+
+export interface Final extends PageSection { };
 
 
 export interface CashbackPage {
@@ -350,4 +354,5 @@ export interface CashbackPageState {
   isCashbackPageLoading: boolean;
   cashbackPage: null | CashbackPage;
   cashbackPageErrorMessage: string;
+  getCashbackPage: Function;
 }
