@@ -28,6 +28,7 @@ export interface LangState {
 
 export interface Image {
   alternate: string;
+  id: number;
   source: string;
 };
 
@@ -337,17 +338,22 @@ export interface PageSection {
 
 };
 
-export interface Intro extends PageSection { };
+export interface Image {
+  alternate: string;
+  id: number;
+  source: string;
+}
 
-export interface Core extends PageSection { };
-
-export interface Final extends PageSection { };
-
+export interface sectionData {
+  title: Title;
+  texts: string[];
+  image: Image;
+}
 
 export interface CashbackPage {
-  intro: Intro;
-  core: Core;
-  final: Final;
+  intro: sectionData;
+  core: sectionData;
+  final: sectionData;
 }
 
 export interface CashbackPageState {

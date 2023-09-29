@@ -1,5 +1,6 @@
 export interface Title {
   content: string;
+  priority: number;
 };
 
 export interface Link {
@@ -14,10 +15,10 @@ export interface Image {
 };
 
 export interface Data {
-  title?: Title;
-  texts?: string[];
+  title: Title;
+  texts: string[];
   links?: Object;
-  image?: Image;
+  image: Image;
 };
 
 export interface SectionBaseProps {

@@ -30,21 +30,21 @@ const CashbackPage = () => {
     <main>
       {cashbackPage?.intro && (
         <SectionBase
-          data={cashbackPage.intro}
+          data={cashbackPage?.intro}
           type="primary"
           reverse={false}
         />
       )}
       {cashbackPage?.core && (
         <SectionBase
-          data={cashbackPage.core}
+          data={cashbackPage?.core}
           type="secondary"
           reverse
         />
       )}
       {cashbackPage?.final && (
         <SectionBase
-          data={cashbackPage.final}
+          data={cashbackPage?.final}
           type="secondary"
           reverse={false}
         />
