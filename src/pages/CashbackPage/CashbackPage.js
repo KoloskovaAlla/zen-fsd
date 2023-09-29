@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useCarePage } from 'shared/model/hooks';
+import { useCashbackPage } from 'shared/model/hooks';
 import { SectionBase } from 'widgets';
 
 /** 
@@ -13,7 +13,7 @@ const CashbackPage = () => {
   const {
     getCashbackPage,
     ...cashbackPageState
-  } = useCarePage();
+  } = useCashbackPage();
 
   const { cashbackPage } = cashbackPageState;
 
@@ -21,26 +21,30 @@ const CashbackPage = () => {
     dispatch(getCashbackPage());
   }, [dispatch, getCashbackPage]);
 
+  useEffect(() => {
+    if (cashbackPage) console.log(cashbackPage.intro);
+  }, [cashbackPage]);
+
   if (!cashbackPage) return null;
   return (
     <main>
       {cashbackPage?.intro && (
         <SectionBase
-          data={cashbackPage.intro}
+          data={cashbackPage?.intro}
           type="primary"
           reverse={false}
         />
       )}
       {cashbackPage?.core && (
         <SectionBase
-          data={cashbackPage.core}
+          data={cashbackPage?.core}
           type="secondary"
           reverse
         />
       )}
       {cashbackPage?.final && (
         <SectionBase
-          data={cashbackPage.final}
+          data={cashbackPage?.final}
           type="secondary"
           reverse={false}
         />

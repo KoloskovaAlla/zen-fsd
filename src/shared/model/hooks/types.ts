@@ -28,6 +28,7 @@ export interface LangState {
 
 export interface Image {
   alternate: string;
+  id: number;
   source: string;
 };
 
@@ -102,11 +103,11 @@ export interface Link {
 };
 
 export interface SectionBase {
-  name: string;
+  name?: string;
   title: Title;
   texts: string[];
   links?: Link[];
-  image: Image;
+  image?: Image;
 }
 
 export interface Download extends SectionBase { };
@@ -332,3 +333,32 @@ export interface CashbackState {
   cashback: null | Cashback;
   cashbackErrorMessage: string;
 };
+
+export interface PageSection {
+
+};
+
+export interface Image {
+  alternate: string;
+  id: number;
+  source: string;
+}
+
+export interface sectionData {
+  title: Title;
+  texts: string[];
+  image: Image;
+}
+
+export interface CashbackPage {
+  intro: sectionData;
+  core: sectionData;
+  final: sectionData;
+}
+
+export interface CashbackPageState {
+  isCashbackPageLoading: boolean;
+  cashbackPage: null | CashbackPage;
+  cashbackPageErrorMessage: string;
+  getCashbackPage: Function;
+}
