@@ -13,3 +13,4 @@ export { useOrder } from './useOrder';
 export { useSendOrder } from './useSendOrder';
 export { useCashback } from './useCashback';
 export { useCarePage } from './useCarePage';
+export { useCashbackPage } from './useCashbackPage';

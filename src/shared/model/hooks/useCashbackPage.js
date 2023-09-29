@@ -4,12 +4,12 @@ import { getCashbackPage } from '../reducers/cashbackPageSlice';
 /** @type {(store: object) => object} */
 const getState = (store) => store.cashbackPageReducer;
 
-// /** 
-//  * @typedef {import('./types').CashbackPageState} State 
-//  * @type {() => State}
-//  */
+/** 
+ * @typedef {import('./types').CashbackPageState} State 
+ * @type {() => State}
+ */
 
-export const useCarePage = () => {
+export const useCashbackPage = () => {
   const carePageState = useSelector(getState);
 
   return {

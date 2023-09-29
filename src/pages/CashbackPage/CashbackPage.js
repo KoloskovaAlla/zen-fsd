@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useCarePage } from 'shared/model/hooks';
+import { useCashbackPage } from 'shared/model/hooks';
 import { SectionBase } from 'widgets';
 
 /** 
@@ -13,7 +13,7 @@ const CashbackPage = () => {
   const {
     getCashbackPage,
     ...cashbackPageState
-  } = useCarePage();
+  } = useCashbackPage();
 
   const { cashbackPage } = cashbackPageState;
 

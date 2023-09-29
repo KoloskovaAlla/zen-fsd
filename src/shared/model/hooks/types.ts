@@ -332,3 +332,22 @@ export interface CashbackState {
   cashback: null | Cashback;
   cashbackErrorMessage: string;
 };
+
+export interface Intro extends SectionBase { };
+
+export interface Core extends SectionBase { };
+
+export interface Final extends SectionBase { };
+
+
+export interface CashbackPage {
+  intro: Intro;
+  core: Core;
+  final: Final;
+}
+
+export interface CashbackPageState {
+  isCashbackPageLoading: boolean;
+  cashbackPage: null | CashbackPage;
+  cashbackPageErrorMessage: string;
+}
