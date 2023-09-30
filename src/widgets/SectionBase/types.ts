@@ -24,5 +24,5 @@ export interface Data {
 export interface SectionBaseProps {
   data: Data;
   type: string;
-  reverse: boolean;
+  reverse?: boolean;
 };
