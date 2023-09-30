@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useCashbackPage } from 'shared/model/hooks';
+import { useCashbackPage, useLang } from 'shared/model/hooks';
 import { SectionBase } from 'widgets';
 
 /** 
@@ -17,9 +17,11 @@ const CashbackPage = () => {
 
   const { cashbackPage } = cashbackPageState;
 
+  const { lang } = useLang();
+
   useEffect(() => {
     dispatch(getCashbackPage());
-  }, [dispatch, getCashbackPage]);
+  }, [dispatch, getCashbackPage, lang]);
 
   useEffect(() => {
     if (cashbackPage) console.log(cashbackPage.intro);
