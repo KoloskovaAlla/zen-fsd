@@ -25,6 +25,11 @@ const getCashbackPage = createAsyncThunk(
   }
 );
 
+/**
+ * @typedef {import('./types').CashbackPageState} State 
+ * @type {State} 
+ */
+
 const initialState = {
   isCashbackPageLoading: false,
   cashbackPage: null,
