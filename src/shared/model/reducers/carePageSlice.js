@@ -25,6 +25,11 @@ const getCarePage = createAsyncThunk(
   }
 );
 
+/**
+ * @typedef {import('./types').CarePageState} State 
+ * @type {State} 
+ */
+
 const initialState = {
   isCarePageLoading: false,
   carePage: null,

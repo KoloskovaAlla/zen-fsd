@@ -240,3 +240,9 @@ export interface CashbackPageState {
   cashbackPage: null | CashbackPage;
   cashbackPageErrorMessage: string;
 }
+
+export interface CarePageState {
+  isCarePageLoading: boolean;
+  carePage: null | CashbackPage;
+  carePageErrorMessage: string;
+}
