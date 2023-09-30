@@ -1,6 +1,6 @@
 import {useEffect} from 'react';
 import { useDispatch } from 'react-redux';
-import { useCarePage } from 'shared/model/hooks';
+import { useCarePage, useLang } from 'shared/model/hooks';
 import { SectionBase } from 'widgets';
 
 /** 
@@ -15,11 +15,13 @@ const CarePage = () => {
     ...carePageState
   } = useCarePage();
 
-  const { carePage } =  carePageState;  
+  const { carePage } =  carePageState; 
+  
+  const { lang } = useLang();
 
   useEffect(() => {
     dispatch(getCarePage());
-  }, [dispatch, getCarePage]); 
+  }, [dispatch, getCarePage, lang]); 
 
   if (!carePage) return null;
   return (
