@@ -28,7 +28,7 @@ const HomePage = () => {
       {homePageData?.download && <SectionBase data={homePageData.download} type='primary' />}
       {homePageData?.warranty && <SectionBase data={homePageData.warranty} type='secondary' reverse />}
       {homePageData?.care && <SectionBase data={homePageData.care} type='secondary' />}
-      {homePageData?.cashback && <Cashback data={homePageData.cashback} />}
+      {homePageData?.cashback && <Cashback />}
     </div>
   );
 };
