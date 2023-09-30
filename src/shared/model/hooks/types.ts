@@ -362,3 +362,16 @@ export interface CashbackPageState {
   cashbackPageErrorMessage: string;
   getCashbackPage: Function;
 }
+
+export interface CarePage {
+  intro: sectionData;
+  core: sectionData;
+  final: sectionData;
+}
+
+export interface CarePageState {
+  isCarePageLoading: boolean;
+  carePage: null | CarePage;
+  carePageErrorMessage: string;
+  getCarePage: Function;
+}
