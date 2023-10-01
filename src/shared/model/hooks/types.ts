@@ -107,7 +107,7 @@ export interface SectionBase {
   title: Title;
   texts: string[];
   links?: Link[];
-  image?: Image;
+  image: Image;
 }
 
 export interface Download extends SectionBase { };
