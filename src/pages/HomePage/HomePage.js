@@ -1,27 +1,22 @@
 import { useEffect } from 'react';
 import { SectionBase, Cashback } from 'widgets';
 
-import { useLang, useTheme, useHomePage } from 'shared/model/hooks';
+import { useLang, useHomePage } from 'shared/model/hooks';
 import { useDispatch } from 'react-redux';
 
-
 const HomePage = () => {
-  const { lang } = useLang();
-  const { theme } = useTheme();
-
+  const dispatch = useDispatch();
+  
   const {
     fetchHomePageData,
     homePageData,
   } = useHomePage();
-  const dispatch = useDispatch();
-
+  
+  const { lang } = useLang();
+  
   useEffect(() => {
     dispatch(fetchHomePageData(lang));
-  }, [lang]);
-
-  useEffect(() => {
-    if (homePageData) console.log(homePageData.cashback);
-  }, [homePageData]);
+  }, [lang, fetchHomePageData, dispatch]);
 
   return (
     <div>
