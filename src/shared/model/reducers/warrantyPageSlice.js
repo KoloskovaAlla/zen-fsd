@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { API_BASE_URL } from 'shared/constants/api';
 
 /** @type {any} */
-const getwarrantyPage = createAsyncThunk(
+const getWarrantyPage = createAsyncThunk(
   'warrantyPage/getData',
   async (_, thunkApi) => {
     /**  @type {*} */
@@ -41,17 +41,17 @@ const warrantyPageSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
-    [`${getwarrantyPage.pending}`]: (state) => {
+    [`${getWarrantyPage.pending}`]: (state) => {
       state.isWarrantyPageLoading = true;
       state.warrantyPage = null;
       state.warrantyPageErrorMessage = '';
     },
-    [`${getwarrantyPage.fulfilled}`]: (state, { payload }) => {
+    [`${getWarrantyPage.fulfilled}`]: (state, { payload }) => {
       state.isWarrantyPageLoading = false;
       state.warrantyPage = payload;
       state.warrantyPageErrorMessage = '';
     },
-    [`${getwarrantyPage.rejected}`]: (state, { payload }) => {
+    [`${getWarrantyPage.rejected}`]: (state, { payload }) => {
       state.isWarrantyPageLoading = false;
       state.warrantyPage = null;
       state.warrantyPageErrorMessage = payload;
@@ -59,5 +59,5 @@ const warrantyPageSlice = createSlice({
   }
 });
 
-export { getwarrantyPage };
+export { getWarrantyPage };
 export const { reducer: warrantyPageReducer } = warrantyPageSlice;
