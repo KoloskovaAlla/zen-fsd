@@ -23,10 +23,6 @@ const CashbackPage = () => {
     dispatch(getCashbackPage());
   }, [dispatch, getCashbackPage, lang]);
 
-  useEffect(() => {
-    if (cashbackPage) console.log(cashbackPage.intro);
-  }, [cashbackPage]);
-
   if (!cashbackPage) return null;
   return (
     <main>

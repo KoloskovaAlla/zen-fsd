@@ -246,3 +246,15 @@ export interface CarePageState {
   carePage: null | CashbackPage;
   carePageErrorMessage: string;
 }
+
+export interface WarrantyPage {
+  intro: Intro;
+  core: Core;
+  final: Final;
+}
+
+export interface WarrantyPageState {
+  isWarrantyPageLoading: boolean;
+  warrantyPage: null | WarrantyPage;
+  warrantyPageErrorMessage: string;
+}

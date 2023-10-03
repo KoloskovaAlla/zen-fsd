@@ -375,3 +375,16 @@ export interface CarePageState {
   carePageErrorMessage: string;
   getCarePage: Function;
 }
+
+export interface WarrantyPage {
+  intro: sectionData;
+  core: sectionData;
+  final: sectionData;
+}
+
+export interface WarrantyPageState {
+  isWarrantyPageLoading: boolean;
+  warrantyPage: null | WarrantyPage;
+  warrantyPageErrorMessage: string;
+  getWarrantyPage: Function;
+}

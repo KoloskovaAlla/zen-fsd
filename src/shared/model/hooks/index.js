@@ -14,3 +14,4 @@ export { useSendOrder } from './useSendOrder';
 export { useCashback } from './useCashback';
 export { useCarePage } from './useCarePage';
 export { useCashbackPage } from './useCashbackPage';
+export { useWarrantyPage } from './useWarrantyPage';
