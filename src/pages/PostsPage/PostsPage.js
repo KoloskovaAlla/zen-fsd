@@ -19,7 +19,6 @@ const PostsPage = () => {
 
   const { lang } = useLang();
 
-
   useEffect(() => {
     dispatch(fetchPostsData());
   }, [dispatch, fetchPostsData, lang]);
