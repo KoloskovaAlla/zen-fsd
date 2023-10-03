@@ -14,14 +14,6 @@ const PostsPage = () => {
   const { fetchPostsData, postsData } = usePosts();
 
   useEffect(() => {
-    if (postsData) {
-      Object.keys(postsData.posts).map((post, index) => (
-        console.log(postsData.posts[post])
-      ))
-    }
-  }, [postsData])
-
-  useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
