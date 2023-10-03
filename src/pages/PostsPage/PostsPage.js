@@ -11,7 +11,15 @@ import { PostPreview } from './ui';
 
 const PostsPage = () => {
   const dispatch = useDispatch();
-  const { fetchPostsData, postsData: posts } = usePosts();
+  const { fetchPostsData, postsData } = usePosts();
+
+  useEffect(() => {
+    if (postsData) {
+      Object.keys(postsData.posts).map((post, index) => (
+        console.log(postsData.posts[post])
+      ))
+    }
+  }, [postsData])
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -24,19 +32,19 @@ const PostsPage = () => {
     dispatch(fetchPostsData());
   }, [dispatch, fetchPostsData, lang]);
 
-  if (!posts) return null;
+  if (!postsData) return null;
   return (
     <>
-      {posts?.length > 0 && (
+      {postsData?.posts && (
         <div className={classes.posts}>
           <div className={classes.wrapper}>
             <ul className={classes.list}>
-              {posts.map((post, index) => (
+              {Object.keys(postsData.posts).map((post, index) => (
                 <li
                   className={classes.listItem}
                   key={index}
                 >
-                  <PostPreview details={post} />
+                  <PostPreview details={postsData.posts[post]} />
                 </li>
               ))}
             </ul>
