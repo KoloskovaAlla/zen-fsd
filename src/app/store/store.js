@@ -16,6 +16,7 @@ import {
   cashbackReducer,
   carePageReducer,
   cashbackPageReducer,
+  warrantyPageReducer,
 } from 'shared/model/reducers';
 
 const rootReducer = combineReducers({
@@ -35,6 +36,7 @@ const rootReducer = combineReducers({
   cashbackReducer,
   carePageReducer,
   cashbackPageReducer,
+  warrantyPageReducer,
 });
 
 export const store = configureStore({
