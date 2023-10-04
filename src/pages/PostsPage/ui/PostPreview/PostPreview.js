@@ -3,10 +3,14 @@ import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 
 export const PostPreview = ({ details }) => {
-  const { image, title, key } = details;
+  const { image, title } = details;
+
+  useEffect(() => {
+    console.log(details)
+  }, [details])
 
   return (
-    <Link to={`/posts/${key}`}>
+    <Link to={`/posts/${`заглушка`}`}>
       <div className={classes.postPreview}>
         <div className={classes.header}>
 
