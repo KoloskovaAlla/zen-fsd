@@ -1,17 +1,21 @@
 import classes from './PostPreview.module.scss';
 import { Link } from 'react-router-dom';
-// import { Image } from './components/Image';
-import { Preview } from 'features';
+import { useEffect } from 'react';
 
 export const PostPreview = ({ details }) => {
-  const { media, title, key } = details;
+  const { image, title, key } = details;
 
   return (
     <Link to={`/posts/${key}`}>
       <div className={classes.postPreview}>
         <div className={classes.header}>
-          {/* <Image details={media} /> */}
-          {details?.image && <Preview imageDetails={details?.image} />}
+
+          <div className={classes.image}>
+            <img
+              src={image?.source}
+              alt={image?.alternate}
+            />
+          </div >
         </div>
         <h2 className={classes.title}>{title}</h2>
         <div className={classes.read}>
