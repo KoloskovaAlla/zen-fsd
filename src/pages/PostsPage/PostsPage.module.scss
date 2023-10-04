@@ -24,14 +24,15 @@
 
 .list {
   display: grid;
-  gap: 20px;
+  gap: 30px;
 
   @media (min-width: $breakpoint_md) {
     grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
   }
 
   @media (min-width: $breakpoint_lg) {
-    gap: 30px;
+    gap: 50px;
   }
 }
 
