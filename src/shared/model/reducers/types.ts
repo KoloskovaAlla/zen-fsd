@@ -258,3 +258,13 @@ export interface WarrantyPageState {
   warrantyPage: null | WarrantyPage;
   warrantyPageErrorMessage: string;
 }
+
+export interface Post {
+
+}
+
+export interface PostState {
+  isPostLoading: boolean;
+  post: null | Post;
+  postErrorMessage: string;
+}

@@ -8,6 +8,7 @@ const LazyCarePage = lazy(() => import('../CarePage'));
 const LazyCashbackPage = lazy(() => import('../CashbackPage'));
 const LazyClientsPage = lazy(() => import('../ClientsPage'));
 const LazyPostsPage = lazy(() => import('../PostsPage'));
+const LazyPostPage = lazy(() => import('../PostPage'));
 
 export const Router = () => {
   return (
@@ -20,6 +21,7 @@ export const Router = () => {
         <Route path="/cashback" element={<LazyCashbackPage />} />
         <Route path="/clients" element={<LazyClientsPage />} />
         <Route path="/posts" element={<LazyPostsPage />} />
+        <Route path='/posts/:key' element={<LazyPostPage />} />
       </Routes>
     </Suspense>
   );
