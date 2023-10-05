@@ -1,6 +1,11 @@
 import classes from './PostPreview.module.scss';
 import { Link } from 'react-router-dom';
 
+/** 
+ * @function PostsPreview
+ * @returns {JSX.Element | null}
+ */
+
 
 export const PostPreview = ({ details }) => {
   const { image, title, key } = details;
