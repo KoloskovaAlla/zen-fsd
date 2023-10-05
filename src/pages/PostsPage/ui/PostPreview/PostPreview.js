@@ -1,19 +1,14 @@
 import classes from './PostPreview.module.scss';
 import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
+
 
 export const PostPreview = ({ details }) => {
-  const { image, title } = details;
-
-  useEffect(() => {
-    console.log(details)
-  }, [details])
+  const { image, title, key } = details;
 
   return (
-    <Link to={`/posts/${`заглушка`}`}>
+    <Link to={`/posts/${key}`}>
       <div className={classes.postPreview}>
         <div className={classes.header}>
-
           <div className={classes.image}>
             <img
               src={image?.source}
