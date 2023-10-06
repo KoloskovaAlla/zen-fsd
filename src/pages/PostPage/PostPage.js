@@ -21,8 +21,7 @@ const PostPage = () => {
 
   useEffect(() => {
     dispatch(getPost(key));
-  }, [dispatch, getPost, lang, key]);
- 
+  }, [dispatch, getPost, lang, key]); 
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -33,7 +32,7 @@ const PostPage = () => {
       {post && (
         <div className={classes.postPage}>
           <div className={classes.header}>     
-            {post.media.type === 'image' && (
+            {post?.media?.type === 'image' && (
               <div className={classes.image}>
                 <img
                   src={post.media.src}
@@ -44,7 +43,10 @@ const PostPage = () => {
             {post?.media?.type === 'video' && (
               <div className={classes.video}>
                 <video controls>
-                  <source src={post.media.src} type="video/mp4"></source>
+                  <source 
+                    src={post.media.src} 
+                    type="video/mp4"
+                  />
                 </video>
               </div>
             )}
@@ -53,7 +55,12 @@ const PostPage = () => {
           <div className={classes.body}>  
             <h1 className={classes.title}>{post?.title}</h1>
             {post?.article?.length > 0 && post.article.map((text, index) => (
-              <p className={classes.copy} key={index}>{text}</p>
+              <p 
+                className={classes.copy} 
+                key={index}
+              >
+                {text}
+              </p>
             ))}
           </div>
         </div>
