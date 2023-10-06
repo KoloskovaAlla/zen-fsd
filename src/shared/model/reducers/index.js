@@ -15,3 +15,4 @@ export { cashbackReducer } from './cashbackSlice';
 export { carePageReducer } from './carePageSlice';
 export { cashbackPageReducer } from './cashbackPageSlice';
 export { warrantyPageReducer } from './warrantyPageSlice';
+export { postReducer } from './postSlice';

@@ -388,3 +388,22 @@ export interface WarrantyPageState {
   warrantyPageErrorMessage: string;
   getWarrantyPage: Function;
 }
+
+export interface Media {
+  type: string;
+  src: string;
+  alternate: string;
+};
+
+export interface Post {
+  title: string;
+  article: string[];
+  media: Media;
+};
+
+export interface PostState {
+  isPostLoading: boolean;
+  post: null | Post;
+  postErrorMessage: string;
+  getPost: Function;
+};

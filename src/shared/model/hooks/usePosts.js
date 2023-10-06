@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import { fetchPostsData } from '../reducers/postsSlice'
 
 /** @type {(store: object) => object} */
-const callback = (store) => store.postsReducer
+const getState = (store) => store.postsReducer
 
 /**  
  * @typedef {import('./types').PostsState} State
@@ -10,17 +10,11 @@ const callback = (store) => store.postsReducer
  */
 
 export const usePosts = () => {
-  const {
-    isLoading,
-    postsData,
-    errorMessage
-  } = useSelector(callback);
+  const postsState = useSelector(getState);
 
   return {
     fetchPostsData,
-    isLoading,
-    postsData,
-    errorMessage,
+    ...postsState,
   };
 };
 

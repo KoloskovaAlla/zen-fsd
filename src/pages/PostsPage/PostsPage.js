@@ -11,7 +11,12 @@ import { PostPreview } from './ui';
 
 const PostsPage = () => {
   const dispatch = useDispatch();
-  const { fetchPostsData, postsData } = usePosts();
+  const {
+    fetchPostsData,
+    ...postsState
+  } = usePosts();
+
+  const { postsData } = postsState;
 
   useEffect(() => {
     window.scrollTo(0, 0);
