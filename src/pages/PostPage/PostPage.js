@@ -4,6 +4,11 @@ import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { usePost, useLang } from 'shared/model/hooks';
 
+/** 
+ * @function PostPage
+ * @returns {JSX.Element | null}
+ */
+
 const PostPage = () => {
   const dispatch = useDispatch();
 
