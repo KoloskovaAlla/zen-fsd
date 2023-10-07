@@ -407,3 +407,7 @@ export interface PostState {
   postErrorMessage: string;
   getPost: Function;
 };
+
+export interface postsPageState {
+
+};
