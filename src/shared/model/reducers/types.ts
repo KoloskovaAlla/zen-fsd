@@ -268,3 +268,9 @@ export interface PostState {
   post: null | Post;
   postErrorMessage: string;
 }
+
+export interface PostsPageState {
+  isPostsPageLoading: boolean;
+  postsPage: null | Object;
+  postsPageErrorMessage: string;  
+};
