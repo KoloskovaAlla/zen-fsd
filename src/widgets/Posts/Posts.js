@@ -2,7 +2,7 @@ import classes from './Posts.module.scss';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
-import { usePosts } from 'shared/model/hooks';
+import { usePosts, useLang } from 'shared/model/hooks';
 import { PostLink } from './ui/PostLink';
 
 /** 
@@ -17,9 +17,11 @@ export const Posts = () => {
   const { fetchPostsData, postsData } = usePosts();
   const [hiddenPosts, setHiddenPosts] = useState(false);
 
+  const { lang } = useLang();
+
   useEffect(() => {
     dispatch(fetchPostsData());
-  }, [dispatch, fetchPostsData]);
+  }, [dispatch, fetchPostsData, lang]);
 
   useEffect(() => {
     const isCurrentPathName = location.pathname === '/posts'
