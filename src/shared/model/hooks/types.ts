@@ -397,7 +397,7 @@ export interface Media {
 
 export interface Post {
   title: string;
-  article: string[];
+  texts: string[];
   media: Media;
 };
 

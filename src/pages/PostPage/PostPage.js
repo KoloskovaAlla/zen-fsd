@@ -9,7 +9,7 @@ import { usePost, useLang } from 'shared/model/hooks';
  * @returns {JSX.Element | null}
  */
 
-const PostPage = () => {
+const PostPage = () => {  
   const dispatch = useDispatch();
 
   const params = useParams();
@@ -18,10 +18,10 @@ const PostPage = () => {
   const {
     getPost,
     ...postState
-  } = usePost();
-
+  } = usePost();  
+  
   const { post } = postState;
-
+  
   const { lang } = useLang();
 
   useEffect(() => {
@@ -59,14 +59,16 @@ const PostPage = () => {
 
           <div className={classes.body}>  
             <h1 className={classes.title}>{post?.title}</h1>
-            {post?.article?.length > 0 && post.article.map((text, index) => (
-              <p 
-                className={classes.copy} 
-                key={index}
-              >
-                {text}
-              </p>
-            ))}
+            {post?.texts?.length > 0 && (
+              post.texts.map((text, index) => (
+                <p 
+                  className={classes.copy} 
+                  key={index}
+                >
+                  {text}
+                </p>
+              ))
+            )}
           </div>
         </div>
       )}
