@@ -408,6 +408,11 @@ export interface PostState {
   getPost: Function;
 };
 
-export interface postsPageState {
+export interface PostsPageState {
+  posts: Posts[];
+};
 
+export interface postsPageState {
+  getPostsPage: Function;
+  postsPage: PostsPageState;
 };
