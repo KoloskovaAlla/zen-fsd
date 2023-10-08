@@ -11,22 +11,20 @@ import { usePost, useLang } from 'shared/model/hooks';
 
 const PostPage = () => {  
   const dispatch = useDispatch();
-
   const params = useParams();
   const { key } = params;
-
-  const {
-    getPost,
-    ...postState
-  } = usePost();  
-  
-  const { post } = postState;
-  
+  const postState = usePost();   
+   
+  // const { post } = postData;  
   const { lang } = useLang();
 
   useEffect(() => {
-    dispatch(getPost(key));
-  }, [dispatch, getPost, lang, key]); 
+    dispatch(postState.getPost(key));
+  }, [dispatch, postState, lang, key]); 
+
+  useEffect(() => {
+    console.log(postState)
+  }, [postState])
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -34,7 +32,7 @@ const PostPage = () => {
 
   return (
     <>
-      {post && (
+      {/* {post && (
         <div className={classes.postPage}>
           <div className={classes.header}>     
             {post?.media?.type === 'image' && (
@@ -71,7 +69,7 @@ const PostPage = () => {
             )}
           </div>
         </div>
-      )}
+      )} */}
     </>
   );
 };

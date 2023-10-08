@@ -11,10 +11,9 @@ const getState = (store) => store.postReducer
 
 export const usePost = () => {
   const postData = useSelector(getState);
-
   const postState = {
     getPost,
-    ...postData,
+    ...postData
   }
 
   return postState;
