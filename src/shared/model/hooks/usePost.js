@@ -10,10 +10,12 @@ const getState = (store) => store.postReducer
  */
 
 export const usePost = () => {
-  const postState = useSelector(getState);
+  const postData = useSelector(getState);
 
-  return {
+  const postState = {
     getPost,
-    ...postState,
-  };
+    ...postData,
+  }
+
+  return postState;
 };
