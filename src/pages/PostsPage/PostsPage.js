@@ -1,7 +1,7 @@
 import classes from './PostsPage.module.scss';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { usePosts, useLang } from 'shared/model/hooks';
+import { usePostsPage, useLang } from 'shared/model/hooks';
 import { PostPreview } from './ui';
 
 /** 
@@ -11,12 +11,17 @@ import { PostPreview } from './ui';
 
 const PostsPage = () => {
   const dispatch = useDispatch();
-  const {
-    fetchPostsData,
-    ...postsState
-  } = usePosts();
 
-  const { postsData } = postsState;
+  const {
+    getPostsPage,
+    ...postsPageState
+  } = usePostsPage();
+
+  const { postsPage } = postsPageState;
+
+  useEffect(() => {
+    console.log(postsPage)
+  }, [postsPage])
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -25,22 +30,22 @@ const PostsPage = () => {
   const { lang } = useLang();
 
   useEffect(() => {
-    dispatch(fetchPostsData());
-  }, [dispatch, fetchPostsData, lang]);
+    dispatch(getPostsPage());
+  }, [dispatch,getPostsPage, lang]);
 
-  if (!postsData) return null;
+  if (!postsPage) return null;
   return (
     <>
-      {postsData?.posts && (
+      {postsPage && (
         <div className={classes.posts}>
           <div className={classes.wrapper}>
             <ul className={classes.list}>
-              {Object.keys(postsData.posts).map((post, index) => (
+              {Object.keys(postsPage).map((post, index) => (
                 <li
                   className={classes.listItem}
                   key={index}
                 >
-                  <PostPreview details={postsData.posts[post]} />
+                  <PostPreview details={postsPage[post]} />
                 </li>
               ))}
             </ul>

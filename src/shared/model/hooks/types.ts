@@ -407,3 +407,12 @@ export interface PostState {
   postErrorMessage: string;
   getPost: Function;
 };
+
+export interface PostsPageState {
+  posts: Posts[];
+};
+
+export interface postsPageState {
+  getPostsPage: Function;
+  postsPage: PostsPageState;
+};
