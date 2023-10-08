@@ -20,7 +20,7 @@ const PostPage = () => {
 
   useEffect(() => {
     dispatch(postState.getPost(key));
-  }, [dispatch, postState, lang, key]); 
+  }, [dispatch, postState.getPost, lang, key]); 
 
   useEffect(() => {
     console.log(postState)
