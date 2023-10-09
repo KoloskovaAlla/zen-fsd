@@ -13,63 +13,54 @@ const PostPage = () => {
   const dispatch = useDispatch();
   const params = useParams();
   const { key } = params;
-  const postState = usePost();   
-   
-  // const { post } = postData;  
+  const postState = usePost();     
   const { lang } = useLang();
 
   useEffect(() => {
     dispatch(postState.getPost(key));
-  }, [dispatch, postState.getPost, lang, key]); 
-
-  useEffect(() => {
-    console.log(postState)
-  }, [postState])
+  }, [dispatch, postState.getPost, lang, key]);  
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  return (
+   return (
     <>
-      {/* {post && (
+      {postState.post && (
         <div className={classes.postPage}>
           <div className={classes.header}>     
-            {post?.media?.type === 'image' && (
+            {postState.post?.media?.type === 'image' && (
               <div className={classes.image}>
                 <img
-                  src={post.media.src}
-                  alt={post.media.alternate}
+                  src={postState.post.media.src}
+                  alt={postState.post.media.alternate}
                 />
               </div>
             )}
-            {post?.media?.type === 'video' && (
+            {postState.post?.media?.type === 'video' && (
               <div className={classes.video}>
                 <video controls>
                   <source 
-                    src={post.media.src} 
+                    src={postState.post.media.src} 
                     type="video/mp4"
                   />
                 </video>
               </div>
             )}
           </div>
-
           <div className={classes.body}>  
-            <h1 className={classes.title}>{post?.title}</h1>
-            {post?.texts?.length > 0 && (
-              post.texts.map((text, index) => (
-                <p 
-                  className={classes.copy} 
-                  key={index}
-                >
-                  {text}
-                </p>
-              ))
-            )}
+            <h1 className={classes.title}>{postState?.post?.title}</h1>            
+            {postState?.post?.texts.map((text, index) => (
+              <p 
+                className={classes.copy} 
+                key={index}
+              >
+                {text}
+              </p>
+            ))}            
           </div>
         </div>
-      )} */}
+      )}
     </>
   );
 };
