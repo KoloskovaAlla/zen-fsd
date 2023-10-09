@@ -18,10 +18,10 @@ const PostPage = () => {
 
   useEffect(() => {
     dispatch(postState.getPost(key));
-  }, [dispatch, postState.getPost, lang, key]);  
+  }, [lang, key]);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 0); 
   }, []);
 
    return (
