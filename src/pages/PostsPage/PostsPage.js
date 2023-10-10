@@ -11,23 +11,16 @@ import { PostPreview } from './ui';
 
 const PostsPage = () => {
   const dispatch = useDispatch();
-
   const {
     getPostsPage,
     ...postsPageState
   } = usePostsPage();
-
   const { postsPage } = postsPageState;
-
-  useEffect(() => {
-    console.log(postsPage)
-  }, [postsPage])
+  const { lang } = useLang();
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  const { lang } = useLang();
 
   useEffect(() => {
     dispatch(getPostsPage());
