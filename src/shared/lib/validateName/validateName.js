@@ -1,3 +1,3 @@
 export const validateName = (name) => {
-  return name ? true : false
-}
+  return name ? true : false;
+}; 
