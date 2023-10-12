@@ -2,7 +2,7 @@
  * 
  * @param {string} string
  * @param {number } maxLength 
- * @returns {string} Обрезанный текст с сохранением целостности слов
+ * @returns {string} Обрезанная строка с сохранением целостности слова
  */
 
 export const trimString = (string, maxLength) => {  
