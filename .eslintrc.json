@@ -18,7 +18,7 @@
     "react"
   ],
   "rules": {
-    "indent": ["error", "tab"],
+    "indent": ["error", 2],
     "quotes": ["error", "single"],
     "semi": ["error", "always"],
     "no-unused-vars": "error",
@@ -32,10 +32,10 @@
     ],
     "@typescript-eslint/consistent-type-imports": [
       "error",
-      {
-        "prefer": "type-imports"
-      }   
-    ],
+      // {
+      //   "prefer": "type-imports"
+      // }   
+    ],    
     "import/order": [
       "error",
       {        
