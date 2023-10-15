@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { usePostsPage, useLang } from 'shared/model/hooks';
 import { PostPreview } from './ui';
 
-/** 
+/**
  * @function PostsPage
  * @returns {JSX.Element | null}
  */
@@ -24,7 +24,7 @@ const PostsPage = () => {
 
   useEffect(() => {
     dispatch(getPostsPage());
-  }, [dispatch,getPostsPage, lang]);
+  }, [dispatch, getPostsPage, lang]);
 
   if (!postsPage) return null;
   return (

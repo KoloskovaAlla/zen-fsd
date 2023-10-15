@@ -6,7 +6,7 @@ const getCashbackPage = createAsyncThunk(
   'cashbackPage/getData',
   async (_, thunkApi) => {
     /**  @type {*} */
-    const state = thunkApi.getState()
+    const state = thunkApi.getState();
     const { lang } = state.langReducer;
     const url = `${API_BASE_URL}/${lang}/pages/cashback/.json`;
 
@@ -15,8 +15,7 @@ const getCashbackPage = createAsyncThunk(
       const data = await response.json();
       if (!Object.values(data).length) throw new Error('Data is empty');
       return thunkApi.fulfillWithValue(data);
-    }
-    catch (error) {
+    } catch (error) {
       console.error(error);
       /** @type {*} */
       const { message } = error;
@@ -26,8 +25,8 @@ const getCashbackPage = createAsyncThunk(
 );
 
 /**
- * @typedef {import('./types').CashbackPageState} State 
- * @type {State} 
+ * @typedef {import('./types').CashbackPageState} State
+ * @type {State}
  */
 
 const initialState = {

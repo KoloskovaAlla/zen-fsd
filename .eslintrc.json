@@ -47,7 +47,6 @@
     "block-spacing": ["error", "always"],
     "brace-style": ["error", "1tbs", { "allowSingleLine": true }],
     "camelcase": ["error"],
-    "comma-dangle": ["error", "always-multiline"],
     "comma-spacing": ["error", { "before": false, "after": true }],
     "comma-style": ["error", "last"],
     "eol-last": ["error"],

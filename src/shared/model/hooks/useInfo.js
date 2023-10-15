@@ -4,8 +4,8 @@ import { getInfo } from '../reducers/infoSlice';
 /** @type {(store: object) => object} */
 const callback = (store) => store.infoReducer;
 
-/** 
- * @typedef {import('./types').InfoState} State 
+/**
+ * @typedef {import('./types').InfoState} State
  * @type {() => State}
  */
 

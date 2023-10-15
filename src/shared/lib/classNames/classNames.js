@@ -1,6 +1,6 @@
 export const classNames = (
-  mainClassName, 
-  mods = {}, 
+  mainClassName,
+  mods = {},
   otherClassNames = []
 ) => {
   return [

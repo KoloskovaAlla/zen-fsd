@@ -7,8 +7,8 @@ import { Navigation, Lang, Theme, Burger } from 'features';
 import { classNames } from 'shared/lib';
 import { IconLogoHeader } from 'shared/icons';
 
-/** 
- * @function Header 
+/**
+ * @function Header
  * @returns {JSX.Element}
  */
 

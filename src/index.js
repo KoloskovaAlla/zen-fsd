@@ -4,13 +4,20 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from 'app';
 
-const $root = document.querySelector('#root');
-const root = createRoot($root);
+/** @typedef {import('react-dom/client').Root} Root */
 
-root.render(
+/** @type {Element | null} */
+const $root = document.querySelector('#root');
+
+/** @type {Root} */
+if ($root) {
+  const root = createRoot($root);
+
+  root.render(
     <Provider store={store}>
-        <BrowserRouter>
-            <App />
-        </BrowserRouter>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </Provider>
-);
+  );
+};

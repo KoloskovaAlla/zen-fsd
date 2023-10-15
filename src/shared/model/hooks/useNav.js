@@ -4,8 +4,8 @@ import { getNav, setIsNavActive } from '../reducers/navSlice';
 /** @type {(store: object) => object} */
 const callback = (store) => store.navReducer;
 
-/** 
- * @typedef {import('./types').NavState} State 
+/**
+ * @typedef {import('./types').NavState} State
  * @type {() => State}
 */
 
@@ -15,7 +15,7 @@ export const useNav = () => {
     navItems,
     errorMessage,
     isNavActive
-  } = useSelector(callback);        
+  } = useSelector(callback);
 
   return {
     getNav,

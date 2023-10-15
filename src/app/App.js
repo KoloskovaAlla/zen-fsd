@@ -20,7 +20,6 @@ export const App = () => {
       <Clients />
       <Footer />
       {isModalActive && <Order />}
-        
     </div>
   );
 };

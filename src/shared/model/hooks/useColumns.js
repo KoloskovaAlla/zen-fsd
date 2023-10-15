@@ -4,8 +4,8 @@ import { getColumns } from '../reducers/columnsSlice';
 /** @type {(store: object) => object} */
 const callback = (store) => store.columnsReducer;
 
-/** 
- * @typedef {import('./types').ColumnsState} State 
+/**
+ * @typedef {import('./types').ColumnsState} State
  * @type {() => State}
   */
 

@@ -5,7 +5,7 @@ import { InputText } from 'shared/ui';
  * @typedef {import('react').ReactElement} Element
  */
 
-/** 
+/**
  * @function TextField
  * @param {TextFieldProps} props
  * @returns {Element}

@@ -4,8 +4,8 @@ import { getCarePage } from '../reducers/carePageSlice';
 /** @type {(store: object) => object} */
 const getState = (store) => store.carePageReducer;
 
-/** 
- * @typedef {import('./types').CarePageState} State 
+/**
+ * @typedef {import('./types').CarePageState} State
  * @type {() => State}
  */
 

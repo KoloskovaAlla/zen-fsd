@@ -4,8 +4,8 @@ import { getPostsPage } from '../reducers/postsPageSlice';
 /** @type {(store: object) => object} */
 const getState = (store) => store.postsPageReducer;
 
-/** 
- * @typedef {import('./types').postsPageState} State 
+/**
+ * @typedef {import('./types').postsPageState} State
  * @type {() => State}
  */
 
