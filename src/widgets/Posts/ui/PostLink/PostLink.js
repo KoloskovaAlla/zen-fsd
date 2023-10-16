@@ -14,8 +14,8 @@ import { trimString } from 'shared/lib';
 
 export const PostLink = ({ postKey, post }) => {
   const fullPostText =  post.article.join(' ');
-  const previewPostText = trimString(fullPostText, 40);   
-  
+  const previewPostText = trimString(fullPostText, 40);
+
   return (
     <Link className={classes.post} to={`/posts/${postKey}`}>
       <button className={classes.image}>
