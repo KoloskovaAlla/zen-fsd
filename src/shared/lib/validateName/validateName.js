@@ -1,3 +1,1 @@
-export const validateName = (name) => {
-  return name ? true : false
-}
+export const validateName = (name) => !!name;

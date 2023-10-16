@@ -5,7 +5,7 @@ import { fetchClientsData } from '../reducers/clientsSlice';
 const callback = (store) => store.clientsReducer;
 
 /**
- * @typedef {import('./types').ClientsState} State 
+ * @typedef {import('./types').ClientsState} State
  * @type {() => State}
  */
 

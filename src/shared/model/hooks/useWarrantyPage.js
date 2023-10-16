@@ -4,8 +4,8 @@ import { getWarrantyPage } from '../reducers/warrantyPageSlice';
 /** @type {(store: object) => object} */
 const getState = (store) => store.warrantyPageReducer;
 
-/** 
- * @typedef {import('./types').WarrantyPageState} State 
+/**
+ * @typedef {import('./types').WarrantyPageState} State
  * @type {() => State}
  */
 

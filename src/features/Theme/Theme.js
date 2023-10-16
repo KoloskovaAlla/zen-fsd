@@ -5,7 +5,7 @@ import { IconSun, IconMoon } from 'shared/icons';
 /** @typedef {import('react').ReactElement} Element */
 
 /**
- * @function Theme 
+ * @function Theme
  * @returns {Element}
  */
 
@@ -15,7 +15,7 @@ export const Theme = () => {
 
   const IconTheme = theme === 'dark'
     ? <IconSun />
-    : <IconMoon />
+    : <IconMoon />;
 
   return (
     <button

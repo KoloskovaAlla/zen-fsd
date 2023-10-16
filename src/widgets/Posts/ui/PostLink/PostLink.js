@@ -3,11 +3,10 @@ import { Link } from 'react-router-dom';
 import { trimString } from 'shared/lib';
 
 /**
- 
  * @typedef {import('react').ReactElement} Element
  */
 
-/** 
+/**
  * @function Form
  * @param {any} props
  * @returns {Element}

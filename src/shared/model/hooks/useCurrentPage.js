@@ -5,7 +5,7 @@ import { setCurrentPage } from '../reducers/currentPageSlice';
 /** @type {(store: object) => object} */
 const callback = (store) => store.currentPageReducer;
 
-/**  
+/**
  * @typedef {import('./types').CurrentPageState} State
  * @type {() => State}
  */

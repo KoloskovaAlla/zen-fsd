@@ -5,7 +5,7 @@ const fetchHomePageData = createAsyncThunk(
   'homePage/fetchData',
   async (_, thunkApi) => {
     /**  @type {*} */
-    const state = thunkApi.getState()
+    const state = thunkApi.getState();
     const { lang } = state.langReducer;
     const url = `${API_BASE_URL}/${lang}/pages/homepage/.json`;
 
@@ -14,8 +14,7 @@ const fetchHomePageData = createAsyncThunk(
       const pageData = await response.json();
       if (!pageData || !Object.values(pageData).length) throw new Error('Data is empty');
       return thunkApi.fulfillWithValue(pageData);
-    }
-    catch (error) {
+    } catch (error) {
       console.error(error);
       /** @type {*} */
       const { message } = error;
@@ -24,8 +23,8 @@ const fetchHomePageData = createAsyncThunk(
   }
 );
 
-/** 
-  * @typedef {import('./types').HomePageState} State         
+/**
+  * @typedef {import('./types').HomePageState} State
   * @type {State}
   */
 

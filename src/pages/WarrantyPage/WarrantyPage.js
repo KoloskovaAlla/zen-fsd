@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useWarrantyPage, useLang } from 'shared/model/hooks';
 import { SectionBase } from 'widgets';
 
-/** 
+/**
  * @function WarrantyPage
  * @returns {JSX.Element | null}
  */

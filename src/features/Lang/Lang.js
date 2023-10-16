@@ -7,14 +7,14 @@ import { IconArrow } from 'shared/icons';
 /** @typedef {import('react').ReactElement} Element */
 
 /**
- * @function Lang 
+ * @function Lang
  * @returns {Element}
  */
 
 export const Lang = () => {
   const dispatch = useDispatch();
 
-  const { lang, langs, setLang } = useLang(); 
+  const { lang, langs, setLang } = useLang();
 
   const handleLangChange = ({ target: { value } }) => dispatch(setLang(value));
 
@@ -34,5 +34,5 @@ export const Lang = () => {
       )}
 
     </>
-  )
+  );
 };

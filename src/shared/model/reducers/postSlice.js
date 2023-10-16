@@ -7,17 +7,16 @@ const getPost = createAsyncThunk(
   'post/getData',
   async (key, thunkApi) => {
     /**  @type {*} */
-    const state = thunkApi.getState()
-    const { lang } = state.langReducer; 
-    const url = `${API_BASE_URL}/${lang}/pages/posts/${key}/.json`; 
+    const state = thunkApi.getState();
+    const { lang } = state.langReducer;
+    const url = `${API_BASE_URL}/${lang}/pages/posts/${key}/.json`;
 
     try {
       const response = await fetch(url);
       const data = await response.json();
       if (!Object.values(data).length) throw new Error('Data is empty');
       return thunkApi.fulfillWithValue(data);
-    }
-    catch (error) {
+    } catch (error) {
       console.error(error);
       /** @type {*} */
       const { message } = error;
@@ -27,8 +26,8 @@ const getPost = createAsyncThunk(
 );
 
 /**
- * @typedef {import('./types').PostState} State 
- * @type {State} 
+ * @typedef {import('./types').PostState} State
+ * @type {State}
  */
 
 const initialState = {

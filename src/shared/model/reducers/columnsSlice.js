@@ -9,15 +9,14 @@ const getColumns = createAsyncThunk(
     /**  @type {*} */
     const state = thunkApi.getState();
     const { lang } = state.langReducer;
-    const url = `${API_BASE_URL}/${lang}/columns/.json`;   
+    const url = `${API_BASE_URL}/${lang}/columns/.json`;
 
     try {
       const response = await fetch(url);
-      const data = await response.json();      
+      const data = await response.json();
       if (!data) throw new Error('Failed to fetch');
       return thunkApi.fulfillWithValue(data);
-    }
-    catch (error) {
+    } catch (error) {
       console.error(error);
       /** @type {*} */
       const { message } = error;
@@ -26,8 +25,8 @@ const getColumns = createAsyncThunk(
   }
 );
 
-/** 
-  * @typedef {import('./types').ColumnsState} State         
+/**
+  * @typedef {import('./types').ColumnsState} State
   * @type {State}
 */
 

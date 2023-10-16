@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useCashbackPage, useLang } from 'shared/model/hooks';
 import { SectionBase } from 'widgets';
 
-/** 
+/**
  * @function CashbackPage
  * @returns {JSX.Element | null}
  */

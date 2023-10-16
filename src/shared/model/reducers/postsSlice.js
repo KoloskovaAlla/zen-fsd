@@ -14,8 +14,7 @@ const fetchPostsData = createAsyncThunk(
       const postsData = await response.json();
       if (!postsData) throw new Error('Failed to fetch');
       return thunkApi.fulfillWithValue(postsData);
-    }
-    catch (error) {
+    } catch (error) {
       console.error(error);
       /** @type {*} */
       const { message } = error;
@@ -26,7 +25,7 @@ const fetchPostsData = createAsyncThunk(
 
 /**
  * @typedef {import('./types').PostsState} State
- * @type {State} 
+ * @type {State}
  */
 
 const initialState = {

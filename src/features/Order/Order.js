@@ -11,7 +11,7 @@ import {
   classNames
 } from 'shared/lib';
 import { Button } from 'shared/ui';
-import { Form } from './ui'
+import { Form } from './ui';
 
 const date = new Date().toLocaleString();
 
@@ -45,9 +45,9 @@ export const Order = () => {
 
   /** @typedef {import('react').SyntheticEvent} Event */
 
-  /** 
+  /**
    * @function handleBodyClick
-   * @param {Event} event 
+   * @param {Event} event
    * @returns {void}
    */
 
@@ -98,9 +98,9 @@ export const Order = () => {
 
     return () => clearTimeout(timerId);
   }, [orderState.isDataSent,
-      dispatch,
-      orderActions.setIsDataSent,
-      setIsModalActive]);
+    dispatch,
+    orderActions.setIsDataSent,
+    setIsModalActive]);
 
   const nameOptions = {
     value: orderState.name,

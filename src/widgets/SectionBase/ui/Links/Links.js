@@ -16,9 +16,9 @@ export const Links = ({ links }) => {
                 : <IconGoogle />
               }
             </a>
-              </li>
+          </li>
         ))
       )}
     </ul>
-  )
+  );
 };

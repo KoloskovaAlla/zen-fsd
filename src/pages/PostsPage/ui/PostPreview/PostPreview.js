@@ -1,7 +1,7 @@
 import classes from './PostPreview.module.scss';
 import { Link } from 'react-router-dom';
 
-/** 
+/**
  * @function PostsPreview
  * @returns {JSX.Element | null}
  */

@@ -6,7 +6,7 @@ import { Select } from 'shared/ui';
  * @typedef {import('react').ReactElement} Element
  */
 
-/** 
+/**
  * @function SelectField
  * @param {SelectFieldProps} props
  * @returns {Element}

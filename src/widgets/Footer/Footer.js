@@ -5,7 +5,7 @@ import { useColumns, useInfo } from 'shared/model/hooks';
 import { Column, Developer } from './ui';
 import { IconLogoFooter } from 'shared/icons';
 
-/** 
+/**
  * @function Footer
  * @returns {JSX.Element}
  */
@@ -28,7 +28,7 @@ export const Footer = () => {
             {columns.map(({ title, links }, index) =>
               <Column
                 key={index}
-                column={{ title: title, links: links }}
+                column={{ title, links }}
               />
             )}
           </ul>

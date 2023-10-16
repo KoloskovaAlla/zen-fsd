@@ -7,7 +7,7 @@ const getInfo = createAsyncThunk(
   'info/getData',
   async (_, thunkApi) => {
     /**  @type {*} */
-    const state = thunkApi.getState()
+    const state = thunkApi.getState();
     const { lang } = state.langReducer;
     const url = `${API_BASE_URL}/${lang}/info/.json`;
 
@@ -16,8 +16,7 @@ const getInfo = createAsyncThunk(
       const data = await response.json();
       if (!Object.values(data).length) throw new Error('Data is empty');
       return thunkApi.fulfillWithValue(data);
-    }
-    catch (error) {
+    } catch (error) {
       console.error(error);
       /** @type {*} */
       const { message } = error;
@@ -27,8 +26,8 @@ const getInfo = createAsyncThunk(
 );
 
 /**
- * @typedef {import('./types').InfoState} State 
- * @type {State} 
+ * @typedef {import('./types').InfoState} State
+ * @type {State}
  */
 
 const initialState = {
