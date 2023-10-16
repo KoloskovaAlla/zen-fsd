@@ -7,7 +7,7 @@ const fetchClientsData = createAsyncThunk(
   'clients/fetchData',
   async (_, thunkApi) => {
     /**  @type {*} */
-    const state = thunkApi.getState()
+    const state = thunkApi.getState();
     const { lang } = state.langReducer;
     const { theme } = state.themeReducer;
     const url = `${API_BASE_URL}/${lang}/clients/${theme}/.json`;
@@ -16,8 +16,7 @@ const fetchClientsData = createAsyncThunk(
       const data = await response.json();
       if (!Object.values(data).length) throw new Error('Data is empty');
       return thunkApi.fulfillWithValue(data);
-    }
-    catch (error) {
+    } catch (error) {
       console.error(error);
       /** @type {*} */
       const { message } = error;
@@ -27,8 +26,8 @@ const fetchClientsData = createAsyncThunk(
 );
 
 /**
- * @typedef {import('./types').ClientsState} State 
- * @type {State} 
+ * @typedef {import('./types').ClientsState} State
+ * @type {State}
  */
 
 const initialState = {
@@ -60,5 +59,5 @@ const clientsSlice = createSlice({
   }
 });
 
-export { fetchClientsData }
+export { fetchClientsData };
 export const { reducer: clientsReducer } = clientsSlice;

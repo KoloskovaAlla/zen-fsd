@@ -3,13 +3,13 @@ import { setSlides } from '../reducers/sliderSlice';
 import { useSelector } from 'react-redux';
 
 /**
- * @type {(store: object) => object} 
+ * @type {(store: object) => object}
  */
-const callback = (store) => store.sliderReducer; 
+const callback = (store) => store.sliderReducer;
 
 /**
  * @typedef {import('./types').SliderState} State
- * @type {() => State} 
+ * @type {() => State}
  */
 export const useSlider = () => {
   const {
@@ -23,7 +23,7 @@ export const useSlider = () => {
   }, [slides, sliderDescription]);
 
   return {
-    slides, 
+    slides,
     setSlides,
     sliderDescription,
   };

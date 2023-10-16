@@ -6,7 +6,7 @@ const getPostsPage = createAsyncThunk(
   'postsPage/getData',
   async (_, thunkApi) => {
     /**  @type {*} */
-    const state = thunkApi.getState()
+    const state = thunkApi.getState();
     const { lang } = state.langReducer;
     const url = `${API_BASE_URL}/${lang}/pages/posts/.json`;
 
@@ -15,8 +15,7 @@ const getPostsPage = createAsyncThunk(
       const data = await response.json();
       if (!Object.values(data).length) throw new Error('Data is empty');
       return thunkApi.fulfillWithValue(data);
-    }
-    catch (error) {
+    } catch (error) {
       console.error(error);
       /** @type {*} */
       const { message } = error;
@@ -26,8 +25,8 @@ const getPostsPage = createAsyncThunk(
 );
 
 /**
- * @typedef {import('./types').PostsPageState} State 
- * @type {State} 
+ * @typedef {import('./types').PostsPageState} State
+ * @type {State}
  */
 
 const initialState = {
@@ -60,4 +59,4 @@ const postsPageSlice = createSlice({
 });
 
 export { getPostsPage };
-export const { reducer:postsPageReducer } = postsPageSlice;
+export const { reducer: postsPageReducer } = postsPageSlice;

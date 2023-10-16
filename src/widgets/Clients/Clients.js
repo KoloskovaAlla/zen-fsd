@@ -3,18 +3,18 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useClients, useCurrentPage } from 'shared/model/hooks';
 
-/** 
+/**
  * @function Clients
  * @returns {JSX.Element}
  */
 
-export const Clients = () => {  
+export const Clients = () => {
   const dispatch = useDispatch();
 
-  const [hiddenClients, setHiddenClients] = useState(false);  
- 
+  const [hiddenClients, setHiddenClients] = useState(false);
+
   const { currentPage } = useCurrentPage();
-  const { fetchClientsData, clientsData, } = useClients();  
+  const { fetchClientsData, clientsData, } = useClients();
 
   useEffect(() => {
     dispatch(fetchClientsData());

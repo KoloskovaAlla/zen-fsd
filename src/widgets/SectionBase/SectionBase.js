@@ -5,7 +5,7 @@ import { classNames } from 'shared/lib';
 
 /** @typedef {import('./types').SectionBaseProps} SectionBaseProps */
 
-/** 
+/**
  * @function SectionBase
  * @param {SectionBaseProps} props
  * @returns {JSX.Element}
@@ -16,8 +16,8 @@ export const SectionBase = ({ data, type, reverse }) => {
 
   const bodyClassNames = classNames(classes.body, {
     [classes.reverse]: reverse,
-  });      
-  
+  });
+
   return (
     <section className={classes.section}>
       <div className={classes.wrapper}>
@@ -44,7 +44,7 @@ export const SectionBase = ({ data, type, reverse }) => {
             )))
           }
 
-          {data?.links && <Links links={data.links}/>}          
+          {data?.links && <Links links={data.links} />}
         </div>
 
         {image && <Preview imageDetails={image} />}

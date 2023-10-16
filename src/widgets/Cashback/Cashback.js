@@ -3,8 +3,8 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useOrder, useCashback } from 'shared/model/hooks';
 
-/** 
- * @function Cashback 
+/**
+ * @function Cashback
  * @returns {JSX.Element}
  */
 
@@ -14,22 +14,22 @@ export const Cashback = () => {
     getCashback,
     ...cashbackState
   } = useCashback();
-  const { cashback } = cashbackState;  
+  const { cashback } = cashbackState;
 
   const { setIsModalActive } = useOrder();
 
   useEffect(() => {
     dispatch(getCashback());
-  }, [dispatch, getCashback]); 
+  }, [dispatch, getCashback]);
 
-  /** 
-   * @function handleOrderClick   
+  /**
+   * @function handleOrderClick
    * @returns {void}
    */
 
   const handleOrderClick = () => {
     dispatch(setIsModalActive(true));
-  }
+  };
 
   return (
     <section className={classes.section}>

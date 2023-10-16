@@ -5,7 +5,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { usePosts, useLang } from 'shared/model/hooks';
 import { PostLink } from './ui/PostLink';
 
-/** 
+/**
  * @function Posts
  * @returns {JSX.Element}
  */
@@ -24,7 +24,7 @@ export const Posts = () => {
   }, [dispatch, fetchPostsData, lang]);
 
   useEffect(() => {
-    const isCurrentPathName = location.pathname === '/posts'
+    const isCurrentPathName = location.pathname === '/posts';
     setHiddenPosts(isCurrentPathName);
   }, [location]);
 

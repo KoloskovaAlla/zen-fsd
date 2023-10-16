@@ -8,7 +8,7 @@ import { classNames } from 'shared/lib';
 /** @typedef {import('react').ReactElement} Element */
 
 /**
- * @function Navigation 
+ * @function Navigation
  * @returns {Element}
  */
 

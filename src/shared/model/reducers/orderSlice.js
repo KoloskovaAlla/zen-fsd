@@ -6,7 +6,7 @@ const getOrder = createAsyncThunk(
   'order/getData',
   async (_, thunkApi) => {
     /**  @type {*} */
-    const state = thunkApi.getState()
+    const state = thunkApi.getState();
     const { lang } = state.langReducer;
     const url = `${API_BASE_URL}/${lang}/modal/.json`;
 
@@ -15,8 +15,7 @@ const getOrder = createAsyncThunk(
       const data = await response.json();
       if (!data) throw new Error('Failed to fetch');
       return thunkApi.fulfillWithValue(data);
-    }
-    catch (error) {
+    } catch (error) {
       console.error(error);
       /** @type {*} */
       const { message } = error;
@@ -63,6 +62,6 @@ export const orderSlice = createSlice({
   }
 });
 
-export { getOrder }
+export { getOrder };
 export const { reducer: orderReducer } = orderSlice;
 export const { setIsModalActive } = orderSlice.actions;

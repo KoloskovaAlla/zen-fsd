@@ -16,8 +16,7 @@ const sendOrder = createAsyncThunk(
       });
       if (!response.ok) throw new Error('Failed to fetch');
       return thunkApi.fulfillWithValue(response.ok);
-    }
-    catch (error) {
+    } catch (error) {
       console.error(error);
       /** @type {*} */
       const { message } = error;
@@ -77,7 +76,7 @@ const sendOrderSlice = createSlice({
     setIsSubmitDisabled: (state, { payload }) => {
       state.isSubmitDisabled = payload;
     },
-    setIsDataSent: ( state, { payload }) => {
+    setIsDataSent: (state, { payload }) => {
       state.isDataSent = payload;
     },
   },

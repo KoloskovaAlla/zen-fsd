@@ -15,7 +15,7 @@ import {
  * @typedef {import('react').ReactElement} Element
  */
 
-/** 
+/**
  * @function Form
  * @param {FormProps} props
  * @returns {Element}

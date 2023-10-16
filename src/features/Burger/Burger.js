@@ -6,29 +6,29 @@ import { classNames } from 'shared/lib';
 /** @typedef {import('react').ReactElement} Element */
 
 /**
- * @function Burger 
+ * @function Burger
  * @returns {Element}
  */
 
 export const Burger = () => {
   const dispatch = useDispatch();
 
-  const { isNavActive, setIsNavActive} = useNav();
+  const { isNavActive, setIsNavActive } = useNav();
 
-  const burgerClassNames = classNames(classes.burger, { 
+  const burgerClassNames = classNames(classes.burger, {
     [classes.active]: isNavActive,
   });
 
-  const handleBurgerClick = () => { 
-    dispatch(setIsNavActive(!isNavActive)); 
+  const handleBurgerClick = () => {
+    dispatch(setIsNavActive(!isNavActive));
   };
 
   return (
-    <button   
+    <button
       className={burgerClassNames}
       onClick={handleBurgerClick}
     >
       <span />
     </button>
-  )
+  );
 };
