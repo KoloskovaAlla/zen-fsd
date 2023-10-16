@@ -1,13 +1,13 @@
 /**
  * @param {string} string
- * @param {number } maxLength 
+ * @param {number } maxLength
  * @returns {string} Обрезанная строка с сохранением целостности слова
  */
 
-export const trimString = (string, maxLength) => {  
+export const trimString = (string, maxLength) => {
   if (string.length < maxLength) return string;
-  string = string.slice(0, maxLength+1);
-  let arr = string.split(' ');
+  string = string.slice(0, maxLength + 1);
+  const arr = string.split(' ');
   arr.length--;
   string = arr.join(' ');
   return string;
