@@ -2,11 +2,10 @@ import classes from './PostLink.module.scss';
 import { Link } from 'react-router-dom';
 
 /**
- 
  * @typedef {import('react').ReactElement} Element
  */
 
-/** 
+/**
  * @function Form
  * @param {any} props
  * @returns {Element}
@@ -24,5 +23,5 @@ export const PostLink = ({ postKey, post }) => {
         <button className={classes.link}>Read more...</button>
       </div>
     </Link>
-  )
+  );
 };

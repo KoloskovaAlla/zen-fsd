@@ -9,8 +9,8 @@ import { store } from 'app';
 /** @type {Element | null} */
 const $root = document.querySelector('#root');
 
-/** @type {Root} */
 if ($root) {
+  /** @type {Root} */
   const root = createRoot($root);
 
   root.render(

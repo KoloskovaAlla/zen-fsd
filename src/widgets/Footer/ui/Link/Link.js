@@ -10,20 +10,20 @@ export const Link = ({ link }) => {
             alt={content?.image?.alternate}
           />
         </a>
-      )
+      );
 
     case 'email':
       return (
         <a href={url}>
           {content?.email}
         </a>
-      )
+      );
 
     default:
       return (
         <a href={url}>
           {content?.text && content.text}
         </a>
-      )
+      );
   };
 };
