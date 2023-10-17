@@ -3,7 +3,7 @@ import { Router } from 'pages';
 import { Header, Footer, Clients, Posts } from 'widgets';
 import { Order } from 'features';
 import { useSelector } from 'react-redux';
-import { useOrder } from 'shared/model/hooks';
+import { useOrder } from 'shared/hooks';
 
 export const App = () => {
   /** @type {(store: object) => object} */

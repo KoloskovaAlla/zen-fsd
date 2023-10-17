@@ -19,7 +19,7 @@ import {
   warrantyPageReducer,
   postReducer,
   postsPageReducer,
-} from 'shared/model/reducers';
+} from 'shared/reducers';
 
 const rootReducer = combineReducers({
   langReducer,

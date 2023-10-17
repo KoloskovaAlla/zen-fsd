@@ -2,7 +2,7 @@ import classes from './PostPage.module.scss';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { usePost, useLang } from 'shared/model/hooks';
+import { usePost, useLang } from 'shared/hooks';
 
 /**
  * @function PostPage

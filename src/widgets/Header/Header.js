@@ -2,7 +2,7 @@ import classes from './Header.module.scss';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { useNav, useLang, useTheme } from 'shared/model/hooks';
+import { useNav, useLang, useTheme } from 'shared/hooks';
 import { Navigation, Lang, Theme, Burger } from 'features';
 import { classNames } from 'shared/lib';
 import { IconLogoHeader } from 'shared/icons';

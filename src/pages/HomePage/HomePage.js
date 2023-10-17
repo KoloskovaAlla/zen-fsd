@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useLang, useHomePage } from 'shared/model/hooks';
+import { useLang, useHomePage } from 'shared/hooks';
 import { SectionBase, Cashback } from 'widgets';
 
 const HomePage = () => {

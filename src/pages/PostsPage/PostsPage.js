@@ -1,7 +1,7 @@
 import classes from './PostsPage.module.scss';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { usePostsPage, useLang } from 'shared/model/hooks';
+import { usePostsPage, useLang } from 'shared/hooks';
 import { PostPreview } from './ui';
 
 /**

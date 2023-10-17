@@ -1,6 +1,6 @@
 import classes from './Lang.module.scss';
 import { useDispatch } from 'react-redux';
-import { useLang } from 'shared/model/hooks';
+import { useLang } from 'shared/hooks';
 import { Select } from 'shared/ui';
 import { IconArrow } from 'shared/icons';
 
