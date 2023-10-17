@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useCashbackPage, useLang } from 'shared/model/hooks';
+import { useCashbackPage, useLang } from 'shared/hooks';
 import { SectionBase } from 'widgets';
 
 /**

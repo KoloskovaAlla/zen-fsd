@@ -2,7 +2,7 @@ import classes from './Posts.module.scss';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
-import { usePosts, useLang } from 'shared/model/hooks';
+import { usePosts, useLang } from 'shared/hooks';
 import { PostLink } from './ui/PostLink';
 
 /**

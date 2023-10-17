@@ -1,7 +1,7 @@
 import classes from './Footer.module.scss';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useColumns, useInfo } from 'shared/model/hooks';
+import { useColumns, useInfo } from 'shared/hooks';
 import { Column, Developer } from './ui';
 import { IconLogoFooter } from 'shared/icons';
 

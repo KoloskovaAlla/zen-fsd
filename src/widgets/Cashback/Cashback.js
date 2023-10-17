@@ -1,7 +1,7 @@
 import classes from './Cashback.module.scss';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useOrder, useCashback } from 'shared/model/hooks';
+import { useOrder, useCashback } from 'shared/hooks';
 
 /**
  * @function Cashback

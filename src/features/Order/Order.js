@@ -1,8 +1,8 @@
 import classes from './Order.module.scss';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useOrder } from 'shared/model/hooks';
-import { useSendOrder } from 'shared/model/hooks';
+import { useOrder } from 'shared/hooks';
+import { useSendOrder } from 'shared/hooks';
 import {
   validateName,
   validateTel,
@@ -97,10 +97,8 @@ export const Order = () => {
     }, 2000);
 
     return () => clearTimeout(timerId);
-  }, [orderState.isDataSent,
-    dispatch,
-    orderActions.setIsDataSent,
-    setIsModalActive]);
+  }, [orderState.isDataSent, dispatch, orderActions.setIsDataSent, setIsModalActive]
+  );
 
   const nameOptions = {
     value: orderState.name,

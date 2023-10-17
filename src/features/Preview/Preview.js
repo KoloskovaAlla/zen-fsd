@@ -1,10 +1,8 @@
 import { useEffect } from 'react';
 import classes from './Preview.module.scss';
 import { useDispatch } from 'react-redux';
-import { useSlider, usePreview } from 'shared/model/hooks';
-import { sliderSlice } from 'shared/model/reducers/sliderSlice';
-
-
+import { useSlider, usePreview } from 'shared/hooks';
+import { sliderSlice } from 'shared/reducers/sliderSlice';
 
 export const Preview = ({ imageDetails }) => {
   const dispatch = useDispatch();

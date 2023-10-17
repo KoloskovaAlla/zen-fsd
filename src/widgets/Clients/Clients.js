@@ -1,7 +1,7 @@
 import classes from './Clients.module.scss';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useClients, useCurrentPage } from 'shared/model/hooks';
+import { useClients, useCurrentPage } from 'shared/hooks';
 
 /**
  * @function Clients

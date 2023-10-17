@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useWarrantyPage, useLang } from 'shared/model/hooks';
+import { useWarrantyPage, useLang } from 'shared/hooks';
 import { SectionBase } from 'widgets';
 
 /**

@@ -1,5 +1,5 @@
 import classes from './Theme.module.scss';
-import { useTheme } from 'shared/model/hooks';
+import { useTheme } from 'shared/hooks';
 import { IconSun, IconMoon } from 'shared/icons';
 
 /** @typedef {import('react').ReactElement} Element */
