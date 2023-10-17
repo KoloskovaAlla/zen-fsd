@@ -16,6 +16,9 @@ const PostPage = () => {
   const postState = usePost();
   const { lang } = useLang();
 
+  const isMediaTypeImage = postState.post?.media?.type === 'image';
+  const isMediaTypeVideo = postState.post?.media?.type === 'video';
+
   useEffect(() => {
     dispatch(postState.getPost(key));
   }, [lang, key]);
@@ -29,7 +32,7 @@ const PostPage = () => {
       {postState.post && (
         <div className={classes.postPage}>
           <div className={classes.header}>
-            {postState.post?.media?.type === 'image' && (
+            {isMediaTypeImage && (
               <div className={classes.image}>
                 <img
                   src={postState.post.media.src}
@@ -37,7 +40,7 @@ const PostPage = () => {
                 />
               </div>
             )}
-            {postState.post?.media?.type === 'video' && (
+            {isMediaTypeVideo && (
               <div className={classes.video}>
                 <video controls>
                   <source
