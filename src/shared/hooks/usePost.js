@@ -1,20 +1,28 @@
 import { useSelector } from 'react-redux';
 import { getPost } from '../reducers/postSlice';
 
-/** @type {(store: object) => object} */
+/**
+ * @typedef {import('./types').PostState} PostState
+ */
+
+/**
+ * @function getState
+ * @param {Object} store
+ * @returns {Object}
+ */
+
 const getState = (store) => store.postReducer;
 
 /**
- * @typedef {import('./types').PostState} State
- * @type {() => State}
+ * @function usePost
+ * @returns {PostState}
  */
 
 export const usePost = () => {
-  const postData = useSelector(getState);
-  const postState = {
-    getPost,
-    ...postData
-  };
+  const state = useSelector(getState);
 
-  return postState;
+  return {
+    ...state,
+    getPost,
+  };
 };

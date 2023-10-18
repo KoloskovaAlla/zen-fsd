@@ -416,3 +416,9 @@ export interface postsPageState {
   getPostsPage: Function;
   postsPage: PostsPageState;
 };
+
+export interface DownloadPageState {
+  isDownloadPageLoading: boolean;
+  downloadPage: null | Object;
+  downloadPageErrorMessage: string;
+};
