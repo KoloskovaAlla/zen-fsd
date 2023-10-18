@@ -20,6 +20,7 @@ import {
   postReducer,
   postsPageReducer,
   downloadPageReducer,
+  clientsPageReducer,
 } from 'shared/reducers';
 
 const rootReducer = combineReducers({
@@ -43,6 +44,7 @@ const rootReducer = combineReducers({
   postReducer,
   postsPageReducer,
   downloadPageReducer,
+  clientsPageReducer,
 });
 
 export const store = configureStore({

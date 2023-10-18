@@ -1,0 +1,145 @@
+@import 'shared/constants/styles/breakpoints';
+@import 'shared/constants/styles/varsForSections';
+
+.section {
+  padding: $section_padding;
+
+  @media (min-width: $breakpoint_md) {
+    padding: $section_padding_md;
+  }
+
+  @media (min-width: $breakpoint_lg) {
+    padding: $section_padding_lg;
+  }
+
+  @media (min-width: $breakpoint_xl) {
+    padding: $section_padding_xl;
+  }
+}
+
+.wrapper {
+  margin: 0 auto;
+  max-width: $container_max_width;
+  padding: 30px 0;
+
+  @media (min-width: $breakpoint_lg) {
+    max-width: $container_max_width_lg;
+  }
+
+  @media (min-width: $breakpoint_xl) {
+    max-width: $container_max_width_xl;
+  }
+}
+
+.body {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: $breakpoint_md) {
+    max-width: 460px;
+    align-items: center;
+    text-align: center;
+  }
+
+  @media (min-width: $breakpoint_lg) {
+    max-width: 500px;
+  }
+
+  @media (min-width: $breakpoint_xl) {
+    max-width: 580px;
+  }
+}
+
+.title {
+  font-size: $title_fz;
+  font-weight: 700;
+
+  @media (min-width: $breakpoint_md) {
+    font-size: $title_fz;
+  }
+
+  @media (min-width: $breakpoint_lg) {
+    font-size: $title_fz_lg;
+  }
+
+  @media (min-width: $breakpoint_xl) {
+    font-size: $title_fz-xl;
+  }
+}
+
+.copy {
+  margin-top: 10px;
+  font-size: $copy_font_size;
+
+  @media (min-width: $breakpoint_md) {
+    font-size: $copy_font_size_md;
+  }
+
+  @media (min-width: $breakpoint_lg) {
+    font-size: $copy_font_size_lg;
+  }
+
+  @media (min-width: $breakpoint_xl) {
+    font-size: $copy_font_size_xl;
+    margin-top: 20px;
+  }
+
+  &:first-of-type {
+    margin-top: 20px;
+
+    @media (min-width: $breakpoint_xl) {
+      margin-top: 30px;
+    }
+  }
+}
+
+.logos {
+  padding: 30px 15px;
+
+  @media (min-width: $breakpoint_md) {
+    padding: 30px 0;
+  }
+
+  @media (min-width: $breakpoint_lg) {
+    padding: 40px 0;
+  }
+
+  @media (min-width: $breakpoint_xl) {
+    padding: 50px 0;
+  }
+}
+
+.logosWrapper {
+  max-width: $container_max_width;
+  margin: 0 auto;
+
+  @media (min-width: $breakpoint_lg) {
+    max-width: $container_max_width_lg;
+  }
+
+  @media (min-width: $breakpoint_xl) {
+    max-width: $container_max_width_xl;
+  }
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+
+  @media (min-width: $breakpoint_md) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @media (min-width: $breakpoint_lg) {
+    gap: 40px;
+  }
+
+  @media (min-width: $breakpoint_xl) {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 30px
+  }
+}
