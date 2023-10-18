@@ -417,8 +417,15 @@ export interface postsPageState {
   postsPage: PostsPageState;
 };
 
+export interface DownloadPage {
+  intro: sectionData;
+  core: sectionData;
+  final: sectionData;
+};
+
 export interface DownloadPageState {
   isDownloadPageLoading: boolean;
-  downloadPage: null | Object;
+  downloadPage: null | DownloadPage;
   downloadPageErrorMessage: string;
+  getDownloadPage: Function;
 };

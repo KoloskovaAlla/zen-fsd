@@ -17,3 +17,4 @@ export { useCashbackPage } from './useCashbackPage';
 export { useWarrantyPage } from './useWarrantyPage';
 export { usePost } from './usePost';
 export { usePostsPage } from './usePostsPage';
+export { useDownloadPage } from './useDownloadPage';

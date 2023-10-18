@@ -19,6 +19,7 @@ import {
   warrantyPageReducer,
   postReducer,
   postsPageReducer,
+  downloadPageReducer,
 } from 'shared/reducers';
 
 const rootReducer = combineReducers({
@@ -41,6 +42,7 @@ const rootReducer = combineReducers({
   warrantyPageReducer,
   postReducer,
   postsPageReducer,
+  downloadPageReducer,
 });
 
 export const store = configureStore({
