@@ -272,5 +272,11 @@ export interface PostState {
 export interface PostsPageState {
   isPostsPageLoading: boolean;
   postsPage: null | Object;
-  postsPageErrorMessage: string;  
+  postsPageErrorMessage: string;
+};
+
+export interface DownloadPageState {
+  isDownloadPageLoading: boolean;
+  downloadPage: null | Object;
+  downloadPageErrorMessage: string;
 };
