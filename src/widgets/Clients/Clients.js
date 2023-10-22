@@ -1,6 +1,7 @@
 import classes from './Clients.module.scss';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { Link, useLocation } from 'react-router-dom';
 import { useClients, useCurrentPage } from 'shared/hooks';
 
 /**
@@ -10,10 +11,10 @@ import { useClients, useCurrentPage } from 'shared/hooks';
 
 export const Clients = () => {
   const dispatch = useDispatch();
+  const location = useLocation();
 
   const [hiddenClients, setHiddenClients] = useState(false);
 
-  const { currentPage } = useCurrentPage();
   const { fetchClientsData, clientsData, } = useClients();
 
   useEffect(() => {
@@ -21,17 +22,18 @@ export const Clients = () => {
   }, [dispatch, fetchClientsData]);
 
   useEffect(() => {
-    setHiddenClients(currentPage === 'clientsPage');
-  }, [currentPage]);
+    const isCurrentPathName = location.pathname === '/clients';
+    setHiddenClients(isCurrentPathName);
+  }, [location]);
 
   return (
     <div>
-      {clientsData && (
+      {clientsData?.logos && (
         <section className={classes.clients}>
           {!hiddenClients && (
             <div className={classes.wrapper}>
               <ul className={classes.list}>
-                {clientsData.map((client, index) => (
+                {clientsData?.logos.map((client, index) => (
                   <li key={index} className={classes.item}>
                     <img
                       src={client?.source}

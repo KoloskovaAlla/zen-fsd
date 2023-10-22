@@ -280,3 +280,9 @@ export interface DownloadPageState {
   downloadPage: null | Object;
   downloadPageErrorMessage: string;
 };
+
+export interface ClientsPageState {
+  isClientsPageLoading: boolean;
+  clientsPage: null | Object;
+  clientsPageErrorMessage: string;
+};

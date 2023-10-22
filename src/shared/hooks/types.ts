@@ -79,21 +79,21 @@ export interface InfoState {
   errorMessage: string;
 };
 
-export interface Client {
+export interface Logo {
   alternate: string;
   source: string;
 };
 
 export interface Clients {
-  darkThemeClients: Client[];
-  lightThemeClients: Client[];
-  name: string;
+  logos: Logo[];
+  title: Title;
+  texts: string[];
 };
 
 export interface ClientsState {
   fetchClientsData: Function;
   isLoading: boolean;
-  clientsData: Client[];
+  clientsData: Clients;
   errorMessage: string;
 };
 
