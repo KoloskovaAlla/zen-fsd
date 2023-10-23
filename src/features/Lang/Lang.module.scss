@@ -11,6 +11,7 @@
   margin-left: auto;
 
   @media (min-width: $breakpoint_lg) {
+    width: 60px;
     height: 40px;
     margin-left: 40px;
   }
