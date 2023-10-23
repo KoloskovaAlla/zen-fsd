@@ -30,18 +30,17 @@
   }
 }
 
-
-
 .logo {
-  display: block;
   position: relative;
   width: 80px;
   height: 30px;
   color: currentColor;
   z-index: 1;
 
+
   @media (min-width: $breakpoint_lg) {
     height: 40px;
+    width: 102px;
   }
 
   svg {
