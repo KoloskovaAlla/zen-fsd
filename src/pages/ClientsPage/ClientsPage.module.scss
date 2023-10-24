@@ -71,7 +71,7 @@
 }
 
 .copy {
-  margin-top: 10px;
+  margin-top: 10px;  
   font-size: $copy_font_size;
 
   @media (min-width: $breakpoint_md) {
@@ -97,7 +97,7 @@
 }
 
 .logos {
-  padding: 30px 15px;
+  padding: 30px 0px;
 
   @media (min-width: $breakpoint_md) {
     padding: 30px 0;
