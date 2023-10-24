@@ -50,7 +50,7 @@ export const Posts = () => {
               )}
             </ul>
 
-            <Link className={classes.post} to='/posts'>
+            <Link className={classes.linkToPostsPage} to='/posts'>
               <button
                 className={classes.button}
                 type="button"
