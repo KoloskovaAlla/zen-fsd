@@ -9,8 +9,6 @@ import { SectionBase } from 'widgets';
  */
 
 const CarePage = () => {
-  useDocumentTitle('ZEN | CarePage');
-
   const dispatch = useDispatch();
   const {
     getCarePage,
@@ -19,6 +17,11 @@ const CarePage = () => {
 
   const { carePage } = carePageState;
   const { lang } = useLang();
+  const title = lang === 'en'
+    ? 'ZEN | Care'
+    : 'ZEN | Помощь';
+
+  useDocumentTitle(title);
 
   useEffect(() => {
     dispatch(getCarePage());

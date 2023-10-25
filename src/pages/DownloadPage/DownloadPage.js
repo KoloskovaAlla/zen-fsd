@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useDownloadPage, useLang } from 'shared/hooks';
+import { useDownloadPage, useLang, useDocumentTitle } from 'shared/hooks';
 import { SectionBase } from 'widgets';
 
 /**
@@ -13,6 +13,7 @@ const DownloadPage = () => {
   const downloadPageState = useDownloadPage();
   const { lang } = useLang();
 
+  useDocumentTitle('ZEN | DownloadPage');
 
   useEffect(() => {
     dispatch(downloadPageState.getDownloadPage());

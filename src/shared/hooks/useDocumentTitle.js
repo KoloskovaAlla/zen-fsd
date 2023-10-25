@@ -6,7 +6,6 @@ import { useEffect } from 'react';
  * @returns {void}
  */
 
-
 export const useDocumentTitle = (title) => {
   useEffect(() => {
     document.title = title;
