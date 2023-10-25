@@ -12,8 +12,11 @@ const ClientsPage = () => {
   const dispatch = useDispatch();
   const clientsState = useClients();
   const { lang } = useLang();
+  const title = lang === 'en'
+    ? 'ZEN | Clients'
+    : 'ZEN | Наши клиенты';
 
-  useDocumentTitle('ZEN | ClientsPage');
+  useDocumentTitle(title);
 
   useEffect(() => {
     dispatch(clientsState.fetchClientsData());

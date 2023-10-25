@@ -12,8 +12,11 @@ const HomePage = () => {
   } = useHomePage();
 
   const { lang } = useLang();
+  const title = lang === 'en'
+    ? 'ZEN | Where finance meet ZEN'
+    : 'ZEN | Когда финансы постигают Дзен';
 
-  useDocumentTitle('ZEN | HomePage');
+  useDocumentTitle(title);
 
   useEffect(() => {
     dispatch(fetchHomePageData(lang));

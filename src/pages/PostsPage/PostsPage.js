@@ -1,7 +1,7 @@
 import classes from './PostsPage.module.scss';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { usePostsPage, useLang } from 'shared/hooks';
+import { usePostsPage, useLang, useDocumentTitle } from 'shared/hooks';
 import { PostPreview } from './ui';
 
 /**
@@ -17,6 +17,11 @@ const PostsPage = () => {
   } = usePostsPage();
   const { postsPage } = postsPageState;
   const { lang } = useLang();
+  const title = lang === 'en'
+    ? 'ZEN | Blog'
+    : 'ZEN | Блог';
+
+  useDocumentTitle(title);
 
   useEffect(() => {
     window.scrollTo(0, 0);

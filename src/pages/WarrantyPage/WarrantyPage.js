@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useWarrantyPage, useLang } from 'shared/hooks';
+import { useWarrantyPage, useLang, useDocumentTitle } from 'shared/hooks';
 import { SectionBase } from 'widgets';
 
 /**
@@ -18,6 +18,11 @@ const WarrantyPage = () => {
   const { warrantyPage } = warrantyPageState;
 
   const { lang } = useLang();
+  const title = lang === 'en'
+    ? 'ZEN | Warranty'
+    : 'ZEN | Гарантия';
+
+  useDocumentTitle(title);
 
   useEffect(() => {
     dispatch(getWarrantyPage());
