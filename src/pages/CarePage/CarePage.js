@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useCarePage, useLang } from 'shared/hooks';
+import { useCarePage, useLang, useDocumentTitle } from 'shared/hooks';
 import { SectionBase } from 'widgets';
 
 /**
@@ -9,6 +9,8 @@ import { SectionBase } from 'widgets';
  */
 
 const CarePage = () => {
+  useDocumentTitle('ZEN | CarePage');
+
   const dispatch = useDispatch();
   const {
     getCarePage,

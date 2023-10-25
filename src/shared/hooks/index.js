@@ -19,3 +19,4 @@ export { usePost } from './usePost';
 export { usePostsPage } from './usePostsPage';
 export { useDownloadPage } from './useDownloadPage';
 export { useClientsPage } from './useClientsPage';
+export { useDocumentTitle } from './useDocumentTitle';
