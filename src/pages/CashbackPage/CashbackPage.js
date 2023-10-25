@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useCashbackPage, useLang } from 'shared/hooks';
+import { useCashbackPage, useLang, useDocumentTitle } from 'shared/hooks';
 import { SectionBase } from 'widgets';
 
 /**
@@ -18,6 +18,8 @@ const CashbackPage = () => {
   const { cashbackPage } = cashbackPageState;
 
   const { lang } = useLang();
+
+  useDocumentTitle('ZEN | CashbackPage');
 
   useEffect(() => {
     dispatch(getCashbackPage());

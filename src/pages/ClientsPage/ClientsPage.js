@@ -1,7 +1,7 @@
 import classes from './ClientsPage.module.scss';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useLang, useClients } from 'shared/hooks';
+import { useLang, useClients, useDocumentTitle } from 'shared/hooks';
 
 /**
  * @function ClientsPage
@@ -12,6 +12,8 @@ const ClientsPage = () => {
   const dispatch = useDispatch();
   const clientsState = useClients();
   const { lang } = useLang();
+
+  useDocumentTitle('ZEN | ClientsPage');
 
   useEffect(() => {
     dispatch(clientsState.fetchClientsData());

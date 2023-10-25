@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useLang, useHomePage } from 'shared/hooks';
+import { useLang, useHomePage, useDocumentTitle } from 'shared/hooks';
 import { SectionBase, Cashback } from 'widgets';
 
 const HomePage = () => {
@@ -12,6 +12,8 @@ const HomePage = () => {
   } = useHomePage();
 
   const { lang } = useLang();
+
+  useDocumentTitle('ZEN | HomePage');
 
   useEffect(() => {
     dispatch(fetchHomePageData(lang));

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useCarePage, useLang } from 'shared/hooks';
+import { useCarePage, useLang, useDocumentTitle } from 'shared/hooks';
 import { SectionBase } from 'widgets';
 
 /**
@@ -17,6 +17,11 @@ const CarePage = () => {
 
   const { carePage } = carePageState;
   const { lang } = useLang();
+  const title = lang === 'en'
+    ? 'ZEN | Care'
+    : 'ZEN | Помощь';
+
+  useDocumentTitle(title);
 
   useEffect(() => {
     dispatch(getCarePage());
