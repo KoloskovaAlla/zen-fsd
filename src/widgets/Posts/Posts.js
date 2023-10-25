@@ -51,12 +51,9 @@ export const Posts = () => {
             </ul>
 
             <Link className={classes.linkToPostsPage} to='/posts'>
-              <button
-                className={classes.button}
-                type="button"
-              >
+              <div className={classes.button}>
                 {postsData?.buttonText}
-              </button>
+              </div>
             </Link>
           </div>
         </section>
