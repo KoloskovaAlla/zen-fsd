@@ -18,8 +18,11 @@ const CashbackPage = () => {
   const { cashbackPage } = cashbackPageState;
 
   const { lang } = useLang();
+  const title = lang === 'en'
+    ? 'ZEN | Cashback'
+    : 'ZEN | Кэшбэк';
 
-  useDocumentTitle('ZEN | CashbackPage');
+  useDocumentTitle(title);
 
   useEffect(() => {
     dispatch(getCashbackPage());

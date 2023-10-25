@@ -12,8 +12,11 @@ const DownloadPage = () => {
   const dispatch = useDispatch();
   const downloadPageState = useDownloadPage();
   const { lang } = useLang();
+  const title = lang === 'en'
+    ? 'ZEN | Download'
+    : 'ZEN | Скачать приложения';
 
-  useDocumentTitle('ZEN | DownloadPage');
+  useDocumentTitle(title);
 
   useEffect(() => {
     dispatch(downloadPageState.getDownloadPage());

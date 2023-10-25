@@ -2,7 +2,7 @@ import classes from './PostPage.module.scss';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { usePost, useLang } from 'shared/hooks';
+import { usePost, useLang, useDocumentTitle } from 'shared/hooks';
 
 /**
  * @function PostPage
@@ -15,6 +15,11 @@ const PostPage = () => {
   const { key } = params;
   const postState = usePost();
   const { lang } = useLang();
+  const title = lang === 'en'
+    ? 'ZEN | Post'
+    : 'ZEN | Пост';
+
+  useDocumentTitle(title);
 
   const isMediaTypeImage = postState.post?.media?.type === 'image';
   const isMediaTypeVideo = postState.post?.media?.type === 'video';
