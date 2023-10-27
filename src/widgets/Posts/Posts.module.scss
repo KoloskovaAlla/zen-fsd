@@ -2,7 +2,7 @@
 @import 'shared/constants/styles/varsForSections';
 
 .posts {
-  padding: 0 15px 30px 15px;
+  padding: 30px 15px;
 
   @media (min-width: $breakpoint_md) {
     padding: $section_padding_md;
@@ -146,7 +146,10 @@
 }
 
 .button {
-  margin: 5px auto 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px auto 0;
   min-height: 35px;
   width: 100%;
   overflow-x: hidden;
@@ -156,7 +159,7 @@
   font-size: 16px;
   color: inherit;
   text-align: center;
-  line-height: 100%;
+  position: relative;
 
   @media (min-width: $breakpoint_md) {
     width: 225px;
@@ -164,11 +167,17 @@
 
   @media (min-width: $breakpoint_lg) {
     width: 240px;
+    font-size: 20px;
   }
 
   @media (min-width: $breakpoint_xl) {
-    margin-top: 30px;
+    margin-top: 20px;
+    font-size: 24px;
     width: 280px;
-    min-height: 70px;
+    min-height: 50px;
+  }
+
+  span {
+    line-height: 10px;
   }
 }

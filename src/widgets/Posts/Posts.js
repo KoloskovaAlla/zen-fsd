@@ -50,10 +50,10 @@ export const Posts = () => {
               )}
             </ul>
 
-            <Link className={classes.linkToPostsPage} to='/posts'>
-              <div className={classes.button}>
+            <Link className={classes.button} to='/posts'>
+              <span>
                 {postsData?.buttonText}
-              </div>
+              </span>
             </Link>
           </div>
         </section>
