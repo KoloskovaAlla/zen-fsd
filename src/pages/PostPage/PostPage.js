@@ -17,7 +17,7 @@ const PostPage = () => {
   const { lang } = useLang();
   const title = postState?.post?.title
     ? `ZEN | ${postState.post.title}`
-    : 'ZEN'
+    : 'ZEN';
 
   useDocumentTitle(title);
 
