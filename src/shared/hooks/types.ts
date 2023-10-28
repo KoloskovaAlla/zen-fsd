@@ -430,14 +430,14 @@ export interface DownloadPageState {
   getDownloadPage: Function;
 };
 
-// export interface ClientsPage {
-//   title
-//   texts:
-//   logos:
-// };
+export interface ClientsPage {
+  title: string;
+  texts: string[];
+  logos: Logo[];
+};
 
-// export interface ClientsPageState {
-//   isClientsPageLoading: boolean;
-//   clientsPage: null | ClientsPage;
-//   clientsPageErrorMessage: string;
-// };
+export interface ClientsPageState {
+  isClientsPageLoading: boolean;
+  clientsPage: null | ClientsPage;
+  clientsPageErrorMessage: string;
+};
