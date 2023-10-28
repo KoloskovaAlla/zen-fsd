@@ -157,9 +157,12 @@ export const Order = () => {
     submitOptions,
   };
 
-  if (!orderData) return null;
+  if (!isModalActive || !orderData) return null;
   return (
-    <div onClick={handleModalOverlayClick} className={modalClassName}>
+    <div
+      onClick={handleModalOverlayClick}
+      className={modalClassName}
+    >
       <div onClick={handleBodyClick} className={classes.body}>
         {orderState.isDataSent && <span>Данные отправлены успешно!</span>}
 
@@ -171,7 +174,6 @@ export const Order = () => {
             content={'icon'}
           />)
         }
-
         {!orderState.isDataSent && (
           <h2 className={classes.title}>{orderData?.title?.content}</h2>
         )}

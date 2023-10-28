@@ -1,16 +1,16 @@
 import './styles/index.scss';
-import { Router } from 'pages';
-import { Header, Footer, Clients, Posts } from 'widgets';
+import { useTheme } from 'shared/hooks';
 import { Order } from 'features';
-import { useSelector } from 'react-redux';
-import { useOrder } from 'shared/hooks';
+import { Header, Footer, Clients, Posts } from 'widgets';
+import { Router } from 'pages';
+
+/**
+ * @function App
+ * @returns {JSX.Element}
+ */
 
 export const App = () => {
-  /** @type {(store: object) => object} */
-  const callback = (store) => store.themeReducer;
-  const { theme } = useSelector(callback);
-
-  const { isModalActive } = useOrder();
+  const { theme } = useTheme();
 
   return (
     <div className={`app ${theme}`}>
@@ -19,7 +19,7 @@ export const App = () => {
       <Posts />
       <Clients />
       <Footer />
-      {isModalActive && <Order />}
+      <Order />
     </div>
   );
 };
