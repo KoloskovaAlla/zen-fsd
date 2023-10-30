@@ -12,7 +12,7 @@ const getNav = createAsyncThunk(
     try {
       const response = await fetch(url);
       const data = await response.json();
-      if (!data) throw new Error('Failed to fetch');
+      if (!Object.values(data).length) throw new Error('Data is empty');
       return thunkApi.fulfillWithValue(data);
     } catch (error) {
       console.error(error);
