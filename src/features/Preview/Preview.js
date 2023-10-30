@@ -1,17 +1,13 @@
 import { useEffect } from 'react';
 import classes from './Preview.module.scss';
 import { useDispatch } from 'react-redux';
-import { useSlider, usePreview } from 'shared/hooks';
-import { sliderSlice } from 'shared/reducers/sliderSlice';
+import { usePreview } from 'shared/hooks';
+
 
 export const Preview = ({ imageDetails }) => {
   const dispatch = useDispatch();
-  const { setSlides } = useSlider();
-  const { setPreviewDetails } = usePreview();
 
-  useEffect(() => {
-    dispatch(setSlides(imageDetails));
-  }, [imageDetails, setSlides, dispatch]);
+  const { setPreviewDetails } = usePreview();
 
   const handlePreviewClick = (event) => {
     const details = event.currentTarget.getBoundingClientRect();
