@@ -1,8 +1,7 @@
 import classes from './Order.module.scss';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useOrder } from 'shared/hooks';
-import { useSendOrder } from 'shared/hooks';
+import { useOrder, useSendOrder } from 'shared/hooks';
 import {
   validateName,
   validateTel,
