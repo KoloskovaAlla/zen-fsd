@@ -12,7 +12,7 @@ const fetchPostsData = createAsyncThunk(
     try {
       const response = await fetch(url);
       const postsData = await response.json();
-      if (!postsData) throw new Error('Failed to fetch');
+      if (!Object.values(postsData).length) throw new Error('Data is empty');
       return thunkApi.fulfillWithValue(postsData);
     } catch (error) {
       console.error(error);
