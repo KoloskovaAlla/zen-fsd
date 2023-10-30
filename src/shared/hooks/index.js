@@ -8,7 +8,6 @@ export { useClients } from './useClients';
 export { useNav } from './useNav';
 export { useColumns } from './useColumns';
 export { useInfo } from './useInfo';
-export { useCurrentPage } from './useCurrentPage';
 export { useOrder } from './useOrder';
 export { useSendOrder } from './useSendOrder';
 export { useCashback } from './useCashback';

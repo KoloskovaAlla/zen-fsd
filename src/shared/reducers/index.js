@@ -9,7 +9,6 @@ export { postsReducer } from './postsSlice';
 export { navReducer } from './navSlice';
 export { columnsReducer } from './columnsSlice';
 export { infoReducer } from './infoSlice';
-export { currentPageReducer } from './currentPageSlice';
 export { sendOrderReducer } from './sendOrderSlice';
 export { cashbackReducer } from './cashbackSlice';
 export { carePageReducer } from './carePageSlice';
