@@ -1,6 +1,6 @@
 import classes from './PostLink.module.scss';
 import { Link } from 'react-router-dom';
-import { trimString } from 'shared/lib';
+import { trimString } from 'shared/utils';
 
 /**
  * @typedef {import('react').ReactElement} Element
@@ -13,7 +13,7 @@ import { trimString } from 'shared/lib';
  */
 
 export const PostLink = ({ postKey, post }) => {
-  const fullPostText =  post.article.join(' ');
+  const fullPostText = post.article.join(' ');
   const previewPostText = trimString(fullPostText, 40);
 
   return (

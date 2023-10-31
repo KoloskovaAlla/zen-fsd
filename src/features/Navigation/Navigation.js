@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { useNav, useLang, useTheme } from 'shared/hooks';
-import { classNames } from 'shared/lib';
+import { classNames } from 'shared/utils';
 
 /** @typedef {import('react').ReactElement} Element */
 

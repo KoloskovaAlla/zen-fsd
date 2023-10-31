@@ -9,7 +9,7 @@ import {
   validateEmail,
   validateConnect,
   classNames
-} from 'shared/lib';
+} from 'shared/utils';
 import { Button } from 'shared/ui';
 import { Form } from './ui';
 
