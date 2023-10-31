@@ -183,7 +183,7 @@ export interface postsData {
 };
 
 export interface PostsState {
-  fetchPostsData: Function,
+  getPosts: Function,
   isLoading: boolean,
   postsData: null | postsData,
   errorMessage: string,

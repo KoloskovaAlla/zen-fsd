@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { fetchPostsData } from '../reducers/postsSlice';
+import { getPosts } from '../reducers/postsSlice';
 
 /**
  * @typedef {import('./types').PostsState} PostsState
@@ -23,6 +23,6 @@ export const usePosts = () => {
 
   return {
     ...state,
-    fetchPostsData,
+    getPosts,
   };
 };

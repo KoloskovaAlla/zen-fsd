@@ -2,7 +2,9 @@ import classes from './SectionBase.module.scss';
 import { Links } from './ui';
 import { classNames } from 'shared/lib';
 
-/** @typedef {import('./types').SectionBaseProps} SectionBaseProps */
+/**
+ * @typedef {import('./types').SectionBaseProps} SectionBaseProps
+ */
 
 /**
  * @function SectionBase
@@ -32,16 +34,14 @@ export const SectionBase = ({ data, type, reverse }) => {
             </h2>
           )}
 
-          {texts?.length > 0 && (
-            texts.map((text, index) => (
-              <p
-                className={classes.copy}
-                key={index}
-              >
-                {text}
-              </p>
-            )))
-          }
+          {texts?.map((text, index) => (
+            <p
+              className={classes.copy}
+              key={index}
+            >
+              {text}
+            </p>
+          ))}
 
           {data?.links && <Links links={data.links} />}
         </div>
