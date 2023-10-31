@@ -1,10 +1,11 @@
 /**
  * @typedef {import('react').ReactElement} Element
+ * @typedef {import('./types').InputTextProps} InputTextProps
  */
 
 /**
  * @function InputText
- * @param {any} props
+ * @param {InputTextProps} props
  * @returns {Element}
  */
 
