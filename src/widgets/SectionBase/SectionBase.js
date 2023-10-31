@@ -1,5 +1,4 @@
 import classes from './SectionBase.module.scss';
-import { Preview } from 'features';
 import { Links } from './ui';
 import { classNames } from 'shared/lib';
 
@@ -47,7 +46,12 @@ export const SectionBase = ({ data, type, reverse }) => {
           {data?.links && <Links links={data.links} />}
         </div>
 
-        {image && <Preview imageDetails={image} />}
+        <div className={classes.image}>
+          <img
+            src={image?.source}
+            alt={image?.alternate}
+          />
+        </div>
       </div>
     </section>
   );
