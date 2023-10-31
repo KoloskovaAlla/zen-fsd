@@ -1,6 +1,6 @@
 import classes from './SectionBase.module.scss';
 import { Links } from './ui';
-import { classNames } from 'shared/lib';
+import { classNames } from 'shared/utils';
 
 /**
  * @typedef {import('./types').SectionBaseProps} SectionBaseProps

@@ -1,7 +1,7 @@
 import classes from './Burger.module.scss';
 import { useDispatch } from 'react-redux';
 import { useNav } from 'shared/hooks';
-import { classNames } from 'shared/lib';
+import { classNames } from 'shared/utils';
 
 /** @typedef {import('react').ReactElement} Element */
 

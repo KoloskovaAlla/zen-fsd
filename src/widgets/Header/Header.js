@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useNav, useLang, useTheme } from 'shared/hooks';
 import { Navigation, Lang, Theme, Burger } from 'features';
-import { classNames } from 'shared/lib';
+import { classNames } from 'shared/utils';
 import { IconLogoHeader } from 'shared/icons';
 
 /**
