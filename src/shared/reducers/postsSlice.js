@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { API_BASE_URL } from 'shared/constants/api';
 
-const fetchPostsData = createAsyncThunk(
+const getPosts = createAsyncThunk(
   'posts/fetchData',
   async (_, thunkApi) => {
     /**  @type {*} */
@@ -39,17 +39,17 @@ const postsSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
-    [`${fetchPostsData.pending}`]: (state) => {
+    [`${getPosts.pending}`]: (state) => {
       state.isLoading = true;
       state.postsData = null;
       state.errorMessage = '';
     },
-    [`${fetchPostsData.fulfilled}`]: (state, { payload }) => {
+    [`${getPosts.fulfilled}`]: (state, { payload }) => {
       state.isLoading = false;
       state.postsData = payload;
       state.errorMessage = '';
     },
-    [`${fetchPostsData.rejected}`]: (state, { payload }) => {
+    [`${getPosts.rejected}`]: (state, { payload }) => {
       state.isLoading = false;
       state.postsData = null;
       state.errorMessage = payload;
@@ -57,5 +57,5 @@ const postsSlice = createSlice({
   }
 });
 
-export { fetchPostsData };
+export { getPosts };
 export const { reducer: postsReducer } = postsSlice;

@@ -14,14 +14,14 @@ export const Posts = () => {
   const dispatch = useDispatch();
   const location = useLocation();
 
-  const { fetchPostsData, postsData } = usePosts();
+  const { getPosts, postsData } = usePosts();
   const [hiddenPosts, setHiddenPosts] = useState(false);
 
   const { lang } = useLang();
 
   useEffect(() => {
-    dispatch(fetchPostsData());
-  }, [dispatch, fetchPostsData, lang]);
+    dispatch(getPosts());
+  }, [dispatch, getPosts, lang]);
 
   useEffect(() => {
     const isCurrentPathName = location.pathname === '/posts';
