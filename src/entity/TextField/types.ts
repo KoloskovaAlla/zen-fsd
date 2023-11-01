@@ -1,7 +1,7 @@
 export interface Options {
   value: string;
   isValidField: boolean;
-  onFieldChange: Function;
+  onFieldChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   invalidMessage: string;
   placeholder: string;
 };

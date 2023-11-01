@@ -1,25 +1,24 @@
-/**
- * @typedef {import('react').ReactElement} Element
+/** 
  * @typedef {import('./types').InputTextProps} InputTextProps
  */
 
 /**
  * @function InputText
  * @param {InputTextProps} props
- * @returns {Element}
+ * @returns {JSX.Element}
  */
 
 export const InputText = ({
+  placeholder,
   value,
-  onFieldChange,
-  placeholder
+  onChange,
 }) => {
   return (
     <input
-      value={value}
-      onChange={onFieldChange}
-      type='text'
+      type="text"
       placeholder={placeholder}
+      value={value}
+      onChange={onChange}
     />
   );
 };
