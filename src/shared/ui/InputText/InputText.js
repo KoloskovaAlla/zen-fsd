@@ -1,4 +1,4 @@
-/** 
+/**
  * @typedef {import('./types').InputTextProps} InputTextProps
  */
 
