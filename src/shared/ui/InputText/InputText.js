@@ -9,9 +9,9 @@
  */
 
 export const InputText = (props) =>
-  <input
+  (<input
     type="text"
     placeholder={props.placeholder}
     value={props.value}
     onChange={props.onChange}
-  />;
+  />);
