@@ -1,10 +1,20 @@
-export const InputText = ({ value, onFieldChange, placeholder }) => {
+/**
+ * @typedef {import('./types').InputTextProps} InputTextProps
+ */
+
+/**
+ * @function InputText
+ * @param {InputTextProps} props
+ * @returns {JSX.Element}
+ */
+
+export const InputText = (props) => {
   return (
     <input
-      value={value}
-      onChange={onFieldChange}
-      type='text'
-      placeholder={placeholder}
+      type="text"
+      placeholder={props.placeholder}
+      value={props.value}
+      onChange={props.onChange}
     />
   );
 };

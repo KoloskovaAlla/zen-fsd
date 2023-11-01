@@ -25,7 +25,7 @@ export const TextField = ({ className, options }) => {
       <InputText
         placeholder={placeholder}
         value={value}
-        onFieldChange={onFieldChange}
+        onChange={onFieldChange}
       />
 
       {!isValidField && <span>{invalidMessage}</span>}
