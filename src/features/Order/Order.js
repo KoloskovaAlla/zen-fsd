@@ -181,7 +181,7 @@ export const Order = () => {
         {!orderState.isDataSent && (
           <Form
             formOptions={formOptions}
-          />)};
+          />)}
       </div>
     </div>
   );
