@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { API_BASE_URL } from 'shared/constants/api';
 
-const fetchHomePageData = createAsyncThunk(
-  'homePage/fetchData',
+const getHomePage = createAsyncThunk(
+  'homePage/getData',
   async (_, thunkApi) => {
     /**  @type {*} */
     const state = thunkApi.getState();
@@ -30,7 +30,7 @@ const fetchHomePageData = createAsyncThunk(
 
 const initialState = {
   isLoading: false,
-  homePageData: null,
+  homePage: null,
   errorMessage: '',
 };
 
@@ -39,23 +39,23 @@ const homePageSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
-    [`${fetchHomePageData.pending}`]: (state) => {
+    [`${getHomePage.pending}`]: (state) => {
       state.isLoading = true;
-      state.homePageData = null;
+      state.homePage = null;
       state.errorMessage = '';
     },
-    [`${fetchHomePageData.fulfilled}`]: (state, { payload }) => {
+    [`${getHomePage.fulfilled}`]: (state, { payload }) => {
       state.isLoading = false;
-      state.homePageData = payload;
+      state.homePage = payload;
       state.errorMessage = '';
     },
-    [`${fetchHomePageData.rejected}`]: (state, { payload }) => {
+    [`${getHomePage.rejected}`]: (state, { payload }) => {
       state.isLoading = false;
-      state.homePageData = null;
+      state.homePage = null;
       state.errorMessage = payload;
     },
   }
 });
 
-export { fetchHomePageData };
+export { getHomePage };
 export const { reducer: homePageReducer } = homePageSlice;

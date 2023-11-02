@@ -112,9 +112,9 @@ export interface HomePage {
 };
 
 export interface HomePageState {
-  fetchHomePageData?: Function;
+  getHomePage?: Function;
   isLoading: boolean,
-  homePageData: null | HomePage,
+  homePage: null | HomePage,
   errorMessage: string,
 };
 
