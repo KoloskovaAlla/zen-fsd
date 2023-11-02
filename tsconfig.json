@@ -15,6 +15,9 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": false,
     "experimentalDecorators": false,
+    "paths": {
+      "@entities/*": ["entities/*"]
+    },
     "strict": true,
     "alwaysStrict": true,
     "allowUnreachableCode": true,
