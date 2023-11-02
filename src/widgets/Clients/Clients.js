@@ -32,7 +32,7 @@ export const Clients = () => {
         <section className={classes.clients}>
           <div className={classes.wrapper}>
             <ul className={classes.list}>
-              {clientsData?.logos.map((client, index) => (
+              {clients?.logos.map((client, index) => (
                 <li key={index} className={classes.item}>
                   <img
                     src={client?.source}
