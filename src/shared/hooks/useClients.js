@@ -1,25 +1,29 @@
 import { useSelector } from 'react-redux';
-import { fetchClientsData } from '../reducers/clientsSlice';
-
-/** @type {(store: object) => object} */
-const callback = (store) => store.clientsReducer;
+import { getClients } from '../reducers/clientsSlice';
 
 /**
- * @typedef {import('./types').ClientsState} State
- * @type {() => State}
+ * @typedef {import('./types').ClientsState} ClientsState
+ */
+
+/**
+ * @function getState
+ * @param {Object} store
+ * @return {Object}
+ */
+
+const getState = (store) => { store.clientsReducer };
+
+/**
+ * @function useClients
+ * @return {ClientsState}
  */
 
 export const useClients = () => {
-  const {
-    isLoading,
-    clientsData,
-    errorMessage
-  } = useSelector(callback);
+  const state = useSelector(getState);
 
   return {
-    fetchClientsData,
-    isLoading,
-    clientsData,
-    errorMessage,
+    ...state,
+    getClients
   };
 };
+
