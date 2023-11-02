@@ -2,7 +2,7 @@ import { FormEvent } from 'react';
 export interface NameOptions {
   value: string;
   isValidField: boolean;
-  onFieldChange: Function;
+  onFieldChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   invalidMessage: string;
   placeholder: string;
 };
@@ -10,7 +10,7 @@ export interface NameOptions {
 export interface TelOptions {
   value: string;
   isValidField: boolean;
-  onFieldChange: Function;
+  onFieldChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   invalidMessage: string;
   placeholder: string;
 };
@@ -18,7 +18,7 @@ export interface TelOptions {
 export interface EmailOptions {
   value: string;
   isValidField: boolean;
-  onFieldChange: Function;
+  onFieldChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   invalidMessage: string;
   placeholder: string;
 };
@@ -32,7 +32,7 @@ export interface ConnectOptions {
   isValidField: boolean;
   onFieldChange: Function;
   errorMessage: string;
-  options: Option[];  
+  options: Option[];
   label: string;
 };
 
