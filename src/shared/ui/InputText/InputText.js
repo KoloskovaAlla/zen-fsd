@@ -8,10 +8,11 @@
  * @returns {JSX.Element}
  */
 
-export const InputText = (props) =>
-  (<input
+export const InputText = (props) => (
+  <input
     type="text"
     placeholder={props.placeholder}
     value={props.value}
     onChange={props.onChange}
-  />);
+  />
+);
