@@ -11,7 +11,7 @@ import { getClients } from '../reducers/clientsSlice';
  * @return {Object}
  */
 
-const getState = (store) => { store.clientsReducer };
+const getState = (store) => store.clientsReducer;
 
 /**
  * @function useClients
@@ -26,4 +26,3 @@ export const useClients = () => {
     getClients
   };
 };
-

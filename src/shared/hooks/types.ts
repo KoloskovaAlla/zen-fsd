@@ -91,9 +91,9 @@ export interface Clients {
 };
 
 export interface ClientsState {
-  fetchClientsData: Function;
+  getClients: Function;
   isLoading: boolean;
-  clientsData: Clients;
+  clients: Clients;
   errorMessage: string;
 };
 

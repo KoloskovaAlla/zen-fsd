@@ -2,7 +2,7 @@ import classes from './Clients.module.scss';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import { useClients, useCurrentPage } from 'shared/hooks';
+import { useClients } from 'shared/hooks';
 
 /**
  * @function Clients
@@ -15,11 +15,11 @@ export const Clients = () => {
 
   const [hiddenClients, setHiddenClients] = useState(false);
 
-  const { fetchClientsData, clientsData, } = useClients();
+  const { getClients, clients, } = useClients();
 
   useEffect(() => {
-    dispatch(fetchClientsData());
-  }, [dispatch, fetchClientsData]);
+    dispatch(getClients());
+  }, [dispatch, getClients]);
 
   useEffect(() => {
     const isCurrentPathName = location.pathname === '/clients';
@@ -28,7 +28,7 @@ export const Clients = () => {
 
   return (
     <div>
-      {!hiddenClients && clientsData?.logos && (
+      {!hiddenClients && clients?.logos && (
         <section className={classes.clients}>
           <div className={classes.wrapper}>
             <ul className={classes.list}>
