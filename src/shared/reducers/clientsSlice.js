@@ -3,7 +3,7 @@ import { API_BASE_URL } from 'shared/constants/api';
 
 /** @type {any} */
 
-const fetchClientsData = createAsyncThunk(
+const getClients = createAsyncThunk(
   'clients/fetchData',
   async (_, thunkApi) => {
     /**  @type {*} */
@@ -32,7 +32,7 @@ const fetchClientsData = createAsyncThunk(
 
 const initialState = {
   isLoading: false,
-  clientsData: null,
+  clients: null,
   errorMessage: '',
 };
 
@@ -41,23 +41,23 @@ const clientsSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
-    [fetchClientsData.pending]: (state) => {
+    [getClients.pending]: (state) => {
       state.isLoading = true;
-      state.clientsData = null;
+      state.clients = null;
       state.errorMessage = '';
     },
-    [fetchClientsData.fulfilled]: (state, { payload }) => {
+    [getClients.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
-      state.clientsData = payload;
+      state.clients = payload;
       state.errorMessage = '';
     },
-    [fetchClientsData.rejected]: (state, { payload }) => {
+    [getClients.rejected]: (state, { payload }) => {
       state.isLoading = false;
-      state.clientsData = null;
+      state.clients = null;
       state.errorMessage = payload;
     }
   }
 });
 
-export { fetchClientsData };
+export { getClients };
 export const { reducer: clientsReducer } = clientsSlice;
