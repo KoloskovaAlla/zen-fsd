@@ -1,19 +1,28 @@
 import { useSelector } from 'react-redux';
 import { getCashback } from '../reducers/cashbackSlice';
 
-/** @type {(store: object) => object} */
+/**
+ * @typedef {import('./types').CashbackState} CashbackState
+ */
+
+/**
+ * @function getState
+ * @param {Object} store
+ * @returns {Object}
+ */
+
 const getState = (store) => store.cashbackReducer;
 
 /**
- * @typedef {import('./types').CashbackState} State
- * @type {() => State}
+ * @functions useCashback
+ * @returns {CashbackState}
  */
 
 export const useCashback = () => {
-  const cashbackState = useSelector(getState);
+  const state = useSelector(getState);
 
   return {
+    ...state,
     getCashback,
-    ...cashbackState,
   };
 };
