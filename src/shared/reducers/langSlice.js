@@ -3,7 +3,7 @@ import { API_BASE_URL } from 'shared/constants/api';
 
 /** @type {any} */
 
-const getLang = createAsyncThunk(
+const getLangs = createAsyncThunk(
   'languages/getData',
   async (_, thunkApi) => {
     /**  @type {*} */
@@ -46,17 +46,17 @@ const langSlice = createSlice({
     },
   },
   extraReducers: {
-    [`${getLang.pending}`]: (state) => {
+    [`${getLangs.pending}`]: (state) => {
       state.isLoading = true;
       state.langs = [];
       state.errorMessage = '';
     },
-    [`${getLang.fulfilled}`]: (state, { payload }) => {
+    [`${getLangs.fulfilled}`]: (state, { payload }) => {
       state.isLoading = false;
       state.langs = payload;
       state.errorMessage = '';
     },
-    [`${getLang.rejected}`]: (state, { payload }) => {
+    [`${getLangs.rejected}`]: (state, { payload }) => {
       state.isLoading = false;
       state.langs = [];
       state.errorMessage = payload;
@@ -64,6 +64,6 @@ const langSlice = createSlice({
   }
 });
 
-export { getLang };
+export { getLangs };
 export const { reducer: langReducer } = langSlice;
 export const { setLang } = langSlice.actions;
