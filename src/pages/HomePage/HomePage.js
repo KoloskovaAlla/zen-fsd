@@ -7,8 +7,8 @@ const HomePage = () => {
   const dispatch = useDispatch();
 
   const {
-    fetchHomePageData,
-    homePageData,
+    getHomePage,
+    homePage,
   } = useHomePage();
 
   const { lang } = useLang();
@@ -19,15 +19,15 @@ const HomePage = () => {
   useDocumentTitle(title);
 
   useEffect(() => {
-    dispatch(fetchHomePageData(lang));
-  }, [lang, fetchHomePageData, dispatch]);
+    dispatch(getHomePage(lang));
+  }, [lang, getHomePage, dispatch]);
 
   return (
     <div>
-      {homePageData?.download && <SectionBase data={homePageData.download} type='primary' />}
-      {homePageData?.warranty && <SectionBase data={homePageData.warranty} type='secondary' reverse />}
-      {homePageData?.care && <SectionBase data={homePageData.care} type='secondary' />}
-      {homePageData?.cashback && <Cashback />}
+      {homePage?.download && <SectionBase data={homePage.download} type='primary' />}
+      {homePage?.warranty && <SectionBase data={homePage.warranty} type='secondary' reverse />}
+      {homePage?.care && <SectionBase data={homePage.care} type='secondary' />}
+      {homePage?.cashback && <Cashback />}
     </div>
   );
 };
