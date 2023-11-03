@@ -1,25 +1,28 @@
 import { useSelector } from 'react-redux';
 import { getColumns } from '../reducers/columnsSlice';
 
-/** @type {(store: object) => object} */
-const callback = (store) => store.columnsReducer;
+/**
+ * @typedef {import('./types').ColumnsState} ColumnsState
+ */
 
 /**
- * @typedef {import('./types').ColumnsState} State
- * @type {() => State}
-  */
+ * @function getState
+ * @param {Object} store
+ * @returns {Object}
+ */
+
+const getState = (store) => store.columnsReducer;
 
 export const useColumns = () => {
-  const {
-    isLoading,
-    columns,
-    errorMessage,
-  } = useSelector(callback);
+  const state = useSelector(getState);
+
+  /**
+   * @function useColumns
+   * @returns {ColumnsState}
+   */
 
   return {
+    ...state,
     getColumns,
-    isLoading,
-    columns,
-    errorMessage,
   };
 };

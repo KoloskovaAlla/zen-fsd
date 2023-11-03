@@ -11,10 +11,10 @@ import { getClientsPage } from '../reducers/clientsPageSlice';
  * @returns {Object}
  */
 
-const getState = (store) => store.clientsPageReducer;
+const getState = (store) => store.clientsPageSlice;
 
 /**
- * @function useDownloadPage
+ * @function useClientsPage
  * @returns {ClientsPageState}
  */
 

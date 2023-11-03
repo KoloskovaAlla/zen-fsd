@@ -112,9 +112,9 @@ export interface HomePage {
 };
 
 export interface HomePageState {
-  fetchHomePageData?: Function;
+  getHomePage?: Function;
   isLoading: boolean,
-  homePageData: null | HomePage,
+  homePage: null | HomePage,
   errorMessage: string,
 };
 
@@ -123,9 +123,9 @@ export interface Client {
   source: string;
 };
 export interface ClientsState {
-  fetchClientsData?: Function;
+  getClients?: Function;
   isLoading: boolean;
-  clientsData: null | Client[];
+  clients: null | Client[];
   errorMessage: string;
 };
 
