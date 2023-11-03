@@ -1,25 +1,28 @@
 import { useSelector } from 'react-redux';
 import { getInfo } from '../reducers/infoSlice';
 
-/** @type {(store: object) => object} */
-const callback = (store) => store.infoReducer;
+/**
+ * @typedef {import('./types').InfoState} InfoState
+ */
 
 /**
- * @typedef {import('./types').InfoState} State
- * @type {() => State}
+ * @function getState
+ * @param {Object} store
+ * @returns {Object}
+ */
+
+const getState = (store) => store.infoReducer;
+
+/**
+ * @function useInfo
+ * @returns {InfoState}
  */
 
 export const useInfo = () => {
-  const {
-    isLoading,
-    info,
-    errorMessage,
-  } = useSelector(callback);
+  const state = useSelector(getState);
 
   return {
+    ...state,
     getInfo,
-    isLoading,
-    info,
-    errorMessage,
   };
 };
