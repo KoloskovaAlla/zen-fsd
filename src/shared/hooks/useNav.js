@@ -10,6 +10,7 @@ import { getNav, setIsNavActive } from '../reducers/navSlice';
  * @param {Object} store
  * @returns {Object}
  */
+
 const getState = (store) => store.navReducer;
 
 /**
