@@ -1,28 +1,29 @@
 import { useSelector } from 'react-redux';
 import { getNav, setIsNavActive } from '../reducers/navSlice';
 
-/** @type {(store: object) => object} */
-const callback = (store) => store.navReducer;
+/**
+ * @typedef {import('./types').NavState} NavState
+ */
 
 /**
- * @typedef {import('./types').NavState} State
- * @type {() => State}
-*/
+ * @function getState
+ * @param {Object} store
+ * @returns {Object}
+ */
+
+const getState = (store) => store.navReducer;
+
+/**
+ * @function useNav
+ * @returns {NavState}
+ */
 
 export const useNav = () => {
-  const {
-    isLoading,
-    navItems,
-    errorMessage,
-    isNavActive
-  } = useSelector(callback);
+  const state = useSelector(getState);
 
   return {
+    ...state,
     getNav,
-    isLoading,
-    navItems,
-    errorMessage,
     setIsNavActive,
-    isNavActive,
   };
 };
