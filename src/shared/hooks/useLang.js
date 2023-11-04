@@ -1,33 +1,35 @@
-import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { getLang, setLang } from '../reducers/langSlice';
-
-/** @type {(store: object) => object} */
-const callback = (store) => store.langReducer;
+import { useSelector } from 'react-redux';
+import { getLangs, setLang } from '../reducers/langSlice';
 
 /**
- * @typedef {import('./types').LangState} State
- * @type {() => State}
+ * @typedef {import('./types').LangState} LangState
+ */
+
+/**
+ * @function getState
+ * @param {Object} store
+ * @returns {Object}
+ */
+
+const getState = (store) => store.langReducer;
+
+/**
+ * @function useLang
+ * @returns {LangState}
  */
 
 export const useLang = () => {
-  const {
-    isLoading,
-    langs,
-    errorMessage,
-    lang,
-  } = useSelector(callback);
+  const state = useSelector(getState);
+  const { lang } = state;
 
   useEffect(() => {
     localStorage.setItem('lang', lang);
   }, [lang]);
 
   return {
-    getLang,
-    isLoading,
-    langs,
-    errorMessage,
+    ...state,
     setLang,
-    lang,
+    getLangs,
   };
 };

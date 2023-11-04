@@ -15,7 +15,7 @@ import { IconLogoHeader } from 'shared/icons';
 export const Header = () => {
   const { theme } = useTheme();
   const { getNav } = useNav();
-  const { getLang } = useLang();
+  const { getLangs } = useLang();
 
   const dispatch = useDispatch();
 
@@ -24,8 +24,8 @@ export const Header = () => {
   }, [dispatch, getNav]);
 
   useEffect(() => {
-    dispatch(getLang());
-  }, [dispatch, getLang]);
+    dispatch(getLangs());
+  }, [dispatch, getLangs]);
 
   const headerClassNames = classNames(classes.header, {
     [classes.dark]: theme === 'dark',

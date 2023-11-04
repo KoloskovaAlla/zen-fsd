@@ -18,7 +18,7 @@ export interface Language {
 };
 
 export interface LangState {
-  getLang: Function;
+  getLangs: Function;
   isLoading: boolean;
   langs: Language[];
   errorMessage: string;
