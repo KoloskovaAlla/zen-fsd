@@ -17,7 +17,7 @@ export interface Language {
   value: string;
 };
 
-export interface LangState {
+export type LangsState = {
   getLang?: Function;
   isLoading: boolean;
   langs: Language[];
@@ -285,4 +285,17 @@ export interface ClientsPageState {
   isClientsPageLoading: boolean;
   clientsPage: null | Object;
   clientsPageErrorMessage: string;
+};
+
+export type ThunkAPI = {
+  getState: () => any;
+  fulfillWithValue: (value: any) => any;
+  rejectWithValue: (value: any) => any;
+};
+
+export type LangsFromAPI = {
+  getLang?: Function;
+  isLoading: boolean;
+  langs: Language[];
+  errorMessage: string;
 };

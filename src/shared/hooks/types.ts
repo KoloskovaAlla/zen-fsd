@@ -256,13 +256,14 @@ export interface Connect {
 };
 
 export interface Option {
-  option: string;
-}
+  value: string;
+  content: string;
+};
 
 export interface Connection {
   className: string
   label: string
-  options: string[];
+  options: Option[];
   isValid: boolean
   invalidMessage: string
   value: string
@@ -322,8 +323,13 @@ export interface OrderState {
   isLoading: boolean;
   orderData: OrderData;
   errorMessage: string;
-  getOrder: Function;     
+  getOrder: Function;
 };
+
+export interface Order {
+  // orderState: ;
+  orderActions: OrderActions;
+}
 export interface CashbackState {
   getCashback: Function;
   isCashbackLoading: boolean;

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { getLangs, setLang } from '../reducers/langSlice';
+import { getLangs, setLang } from '../reducers/langsSlice';
 
 /**
  * @typedef {import('./types').LangState} LangState
@@ -12,7 +12,7 @@ import { getLangs, setLang } from '../reducers/langSlice';
  * @returns {Object}
  */
 
-const getState = (store) => store.langReducer;
+const getState = (store) => store.langsReducer;
 
 /**
  * @function useLang

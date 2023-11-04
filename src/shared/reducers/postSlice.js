@@ -8,7 +8,7 @@ const getPost = createAsyncThunk(
   async (key, thunkApi) => {
     /**  @type {*} */
     const state = thunkApi.getState();
-    const { lang } = state.langReducer;
+    const { lang } = state.langsReducer;
     const url = `${API_BASE_URL}/${lang}/pages/posts/${key}/.json`;
 
     try {

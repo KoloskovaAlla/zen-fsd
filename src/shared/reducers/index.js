@@ -1,4 +1,4 @@
-export { langReducer } from './langSlice';
+export { langsReducer } from './langsSlice';
 export { themeReducer } from './themeSlice';
 export { orderReducer } from './orderSlice';
 export { previewReducer } from './previewSlice';
