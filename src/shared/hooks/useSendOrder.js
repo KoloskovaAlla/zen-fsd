@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { orderActions } from '../reducers/sendOrderSlice';
-import { sendOrder } from '../reducers/sendOrderSlice';
+import { orderActions, sendOrder } from '../reducers/sendOrderSlice';
+
 
 /** @type {(store: object) => object} */
 const getOrderState = (store) => store.sendOrderReducer;

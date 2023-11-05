@@ -286,22 +286,22 @@ export interface OrderData {
   inputPolicy: InputPolicy;
 };
 
-export interface OrderState {
-  name: string,
-  isValidName: boolean,
-  tel: string,
-  isValidTel: boolean,
-  email: string,
-  isValidEmail: boolean,
-  connection: string,
-  isValidConnection: boolean,
-  isChecked: boolean,
-  isSubmitDisabled: boolean,
-  isSending: boolean,
-  errorMessage: string,
-  isOrderSended: boolean,
-  isDataSent: boolean,
-}
+// export interface OrderState {
+//   name: string,
+//   isValidName: boolean,
+//   tel: string,
+//   isValidTel: boolean,
+//   email: string,
+//   isValidEmail: boolean,
+//   connection: string,
+//   isValidConnection: boolean,
+//   isChecked: boolean,
+//   isSubmitDisabled: boolean,
+//   isSending: boolean,
+//   errorMessage: string,
+//   isOrderSended: boolean,
+//   isDataSent: boolean,
+// }
 export interface OrderActions {
   setName: Function;
   setIsValidName: Function;
@@ -316,16 +316,13 @@ export interface OrderActions {
   sendOrder?: any;
 }
 
-export interface Order {
-  // isModalActive: boolean;
-  // setIsModalActive: any;
-  // isLoading: boolean;
-  // orderData: OrderData;
-  // errorMessage: string;
-  // getOrder: Function;   
-  orderState: OrderState;
-  orderActions: OrderActions;
-  sendOrder?: Function
+export interface OrderState {
+  isModalActive: boolean;
+  setIsModalActive: any;
+  isLoading: boolean;
+  orderData: OrderData;
+  errorMessage: string;
+  getOrder: Function;     
 };
 export interface CashbackState {
   getCashback: Function;
