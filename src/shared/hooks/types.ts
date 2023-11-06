@@ -324,6 +324,11 @@ export interface OrderState {
   errorMessage: string;
   getOrder: Function;     
 };
+
+export interface Order {
+  // orderState: ;
+  orderActions: OrderActions;
+}
 export interface CashbackState {
   getCashback: Function;
   isCashbackLoading: boolean;

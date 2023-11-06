@@ -8,7 +8,7 @@ const getOrderState = (store) => store.sendOrderReducer;
 
 /**
  * @typedef {import('./types').Order} Order
- * @type {() => Order}
+ * @type {any}
  */
 
 export const useSendOrder = () => {
@@ -25,5 +25,8 @@ export const useSendOrder = () => {
   }, [dispatch, orderState]);
 
   Object.assign(orderActions, { sendOrder });
-  return { orderState, orderActions };
+  return {
+    orderState,
+    orderActions,
+  };
 };

@@ -138,7 +138,7 @@ export const Order = () => {
 
   const checkboxOptions = {
     isChecked: orderState.isChecked,
-    setIsChecked: orderActions.setIsDataSent,
+    setIsChecked: orderActions.setIsChecked,
     url: orderData?.inputPolicy?.url,
     content: orderData?.inputPolicy?.content,
   };
@@ -157,6 +157,10 @@ export const Order = () => {
     submitOptions,
   };
 
+  useEffect(() => {
+    if (orderState) console.log(orderState.isDataSent);
+  }, [orderState.isDataSent]);
+
   if (!isModalActive || !orderData) return null;
   return (
     <div
@@ -164,7 +168,7 @@ export const Order = () => {
       className={modalClassName}
     >
       <div onClick={handleBodyClick} className={classes.body}>
-        {orderState.isDataSent && <span>Данные отправлены успешно!</span>}
+        {orderState.isDataSent && <span>Данные успешно отправлены!</span>}
 
         {isModalActive && (
           <Button
