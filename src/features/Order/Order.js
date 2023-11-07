@@ -2,7 +2,6 @@ import classes from './Order.module.scss';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useOrder } from 'shared/hooks';
-import { useSendOrder } from 'shared/hooks';
 import {
   validateName,
   validateTel,
@@ -17,30 +16,22 @@ const date = new Date().toLocaleString();
 
 export const Order = () => {
   const dispatch = useDispatch();
-  const {
-    orderData,
-    getOrder,
-    isModalActive,
-    setIsModalActive
-  } = useOrder();
-
-  const { orderState, orderActions } = useSendOrder();
-  const { sendOrder } = orderActions;
+  const orderState = useOrder();
 
   useEffect(() => {
-    dispatch(getOrder());
-  }, [dispatch, getOrder]);
+    dispatch(orderState.orderActions.getOrder());
+  }, [dispatch, orderState.orderActions.getOrder]);
 
   const modalClassName = classNames(classes.modal, {
-    [classes.active]: isModalActive,
+    [classes.active]: orderState.isModalActive,
   });
 
   const handleModalCloseClick = () => {
-    dispatch(setIsModalActive(false));
+    dispatch(orderState.orderActions.setIsModalActive(false));
   };
 
   const handleModalOverlayClick = () => {
-    dispatch(setIsModalActive(false));
+    dispatch(orderState?.orderActions.setIsModalActive(false));
   };
 
   /** @typedef {import('react').SyntheticEvent} Event */
@@ -56,23 +47,23 @@ export const Order = () => {
   };
 
   const onNameChange = ({ target: { value } }) => {
-    dispatch(orderActions.setName(value));
-    dispatch(orderActions.setIsValidName(validateName(value)));
+    dispatch(orderState.orderActions.setName(value));
+    dispatch(orderState.orderActions.setIsValidName(validateName(value)));
   };
 
   const onTelChange = ({ target: { value } }) => {
-    dispatch(orderActions.setTel(value));
-    dispatch(orderActions.setIsValidTel(validateTel(value)));
+    dispatch(orderState.orderActions.setTel(value));
+    dispatch(orderState.orderActions.setIsValidTel(validateTel(value)));
   };
 
   const onEmailChange = ({ target: { value } }) => {
-    dispatch(orderActions.setEmail(value));
-    dispatch(orderActions.setIsValidEmail(validateEmail(value)));
+    dispatch(orderState.orderActions.setEmail(value));
+    dispatch(orderState.orderActions.setIsValidEmail(validateEmail(value)));
   };
 
   const onConnectionChange = ({ target: { value } }) => {
-    dispatch(orderActions.setConnection(value));
-    dispatch(orderActions.setIsValidConnection(validateConnect(value)));
+    dispatch(orderState.orderActions.setConnection(value));
+    dispatch(orderState.orderActions.setIsValidConnection(validateConnect(value)));
   };
 
   const handleFormSubmit = (event) => {
@@ -84,63 +75,63 @@ export const Order = () => {
       email: orderState.email,
       connection: orderState.connection,
     };
-    dispatch(sendOrder(order));
-    dispatch(orderActions.setIsDataSent(true));
+    dispatch(orderState?.orderActions.sendOrder(order));
+    dispatch(orderState.orderActions.setIsDataSent(true));
   };
 
   useEffect(() => {
     if (!orderState.isDataSent) return;
 
     const timerId = setTimeout(() => {
-      dispatch(setIsModalActive(false));
-      dispatch(orderActions.setIsDataSent(false));
+      dispatch(orderState.orderActions.setIsModalActive(false));
+      dispatch(orderState.orderActions.setIsDataSent(false));
     }, 2000);
 
     return () => clearTimeout(timerId);
-  }, [orderState.isDataSent, dispatch, orderActions.setIsDataSent, setIsModalActive]
+  }, [orderState.isDataSent, dispatch, orderState?.orderActions.setIsDataSent, orderState?.orderActions.setIsModalActive]
   );
 
   const nameOptions = {
     value: orderState.name,
     isValidField: orderState.isValidName,
     onFieldChange: onNameChange,
-    invalidMessage: orderData?.inputName.invalidMessage,
-    type: orderData?.inputName.type,
-    placeholder: orderData?.inputName.placeholder,
+    invalidMessage: orderState.orderData?.inputName.invalidMessage,
+    type: orderState.orderData?.inputName.type,
+    placeholder: orderState.orderData?.inputName.placeholder,
   };
 
   const telOptions = {
     value: orderState.tel,
     isValidField: orderState.isValidTel,
     onFieldChange: onTelChange,
-    invalidMessage: orderData?.inputTel.invalidMessage,
-    type: orderData?.inputTel.type,
-    placeholder: orderData?.inputTel.placeholder,
+    invalidMessage: orderState.orderData?.inputTel.invalidMessage,
+    type: orderState.orderData?.inputTel.type,
+    placeholder: orderState.orderData?.inputTel.placeholder,
   };
 
   const emailOptions = {
     value: orderState.email,
     isValidField: orderState.isValidEmail,
     onFieldChange: onEmailChange,
-    invalidMessage: orderData?.inputEmail.invalidMessage,
-    type: orderData?.inputEmail.type,
-    placeholder: orderData?.inputEmail.placeholder,
+    invalidMessage: orderState.orderData?.inputEmail.invalidMessage,
+    type: orderState.orderData?.inputEmail.type,
+    placeholder: orderState.orderData?.inputEmail.placeholder,
   };
 
   const connectOptions = {
     value: orderState.connection,
     isValidField: orderState.isValidConnection,
     onFieldChange: onConnectionChange,
-    errorMessage: orderData?.connection?.invalidMessage,
-    options: orderData?.connection?.options,
-    label: orderData?.connection?.label,
+    errorMessage: orderState.orderData?.connection?.invalidMessage,
+    options: orderState.orderData?.connection?.options,
+    label: orderState.orderData?.connection?.label,
   };
 
   const checkboxOptions = {
     isChecked: orderState.isChecked,
-    setIsChecked: orderActions.setIsChecked,
-    url: orderData?.inputPolicy?.url,
-    content: orderData?.inputPolicy?.content,
+    setIsChecked: orderState.orderActions.setIsChecked,
+    url: orderState.orderData?.inputPolicy?.url,
+    content: orderState.orderData?.inputPolicy?.content,
   };
 
   const submitOptions = {
@@ -157,7 +148,7 @@ export const Order = () => {
     submitOptions,
   };
 
-  if (!isModalActive || !orderData) return null;
+  if (!orderState.isModalActive || !orderState.orderData) return null;
   return (
     <div
       onClick={handleModalOverlayClick}
@@ -166,7 +157,7 @@ export const Order = () => {
       <div onClick={handleBodyClick} className={classes.body}>
         {orderState.isDataSent && <span>Данные успешно отправлены!</span>}
 
-        {isModalActive && (
+        {orderState.isModalActive && (
           <Button
             onClickButton={handleModalCloseClick}
             className={classes.close}
@@ -175,7 +166,7 @@ export const Order = () => {
           />)
         }
         {!orderState.isDataSent && (
-          <h2 className={classes.title}>{orderData?.title?.content}</h2>
+          <h2 className={classes.title}>{orderState.orderData?.title?.content}</h2>
         )}
 
         {!orderState.isDataSent && (

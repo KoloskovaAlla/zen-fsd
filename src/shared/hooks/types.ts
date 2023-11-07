@@ -315,6 +315,8 @@ export interface OrderActions {
   setIsChecked: Function;
   setIsDataSent: Function;
   sendOrder?: any;
+  setIsModalActive: Function;
+  getOrder: Function;
 }
 
 export interface OrderState {
@@ -324,6 +326,18 @@ export interface OrderState {
   orderData: OrderData;
   errorMessage: string;
   getOrder: Function;
+  orderActions: OrderActions;
+  name: string;
+  tel: string;
+  email: string;
+  connection: string;
+  isDataSent: boolean;
+  isValidName: boolean;
+  isValidTel: boolean;
+  isValidEmail: boolean;
+  isValidConnection: boolean;
+  isChecked: boolean;
+  isSubmitDisabled: boolean;
 };
 
 export interface Order {

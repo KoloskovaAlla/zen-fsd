@@ -25,8 +25,6 @@ export const SelectField = ({
     options,
   } = otherProps.options;
 
-  console.log(options);
-
   return (
     <label className={className}>
       {!value && (

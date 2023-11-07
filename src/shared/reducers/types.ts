@@ -154,6 +154,19 @@ export interface OrderState {
   isLoading: boolean;
   orderData: null | ModalData;
   errorMessage: string;
+  name: string;
+  isValidName: boolean;
+  tel: string;
+  isValidTel: boolean;
+  email: string;
+  isValidEmail: boolean;
+  connection: string;
+  isValidConnection: boolean;
+  isChecked: boolean;
+  isSubmitDisabled: boolean;
+  isSending: boolean;
+  isOrderSended: boolean;
+  isDataSent: boolean;
 };
 
 

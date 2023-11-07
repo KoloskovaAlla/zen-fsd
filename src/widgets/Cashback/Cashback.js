@@ -16,7 +16,8 @@ export const Cashback = () => {
   } = useCashback();
   const { cashback } = cashbackState;
 
-  const { setIsModalActive } = useOrder();
+  const { orderActions } = useOrder();
+  const { setIsModalActive } = orderActions;
 
   useEffect(() => {
     dispatch(getCashback());
