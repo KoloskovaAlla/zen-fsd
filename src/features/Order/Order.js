@@ -157,10 +157,6 @@ export const Order = () => {
     submitOptions,
   };
 
-  useEffect(() => {
-    if (orderState) console.log(orderState.isDataSent);
-  }, [orderState.isDataSent]);
-
   if (!isModalActive || !orderData) return null;
   return (
     <div
