@@ -286,3 +286,9 @@ export interface ClientsPageState {
   clientsPage: null | Object;
   clientsPageErrorMessage: string;
 };
+
+export interface ThunkApi {
+  getState: () => any;
+  fulfillWithValue: (value: any) => any;
+  rejectWithValue: (value: any) => any;
+};
