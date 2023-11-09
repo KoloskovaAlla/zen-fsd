@@ -2,7 +2,6 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { API_BASE_URL } from 'shared/constants/api';
 
 /** @type {any} */
-
 const onGetLangs = async (_, thunkApi) => {
   /**  @type {*} */
   const state = thunkApi.getState();
