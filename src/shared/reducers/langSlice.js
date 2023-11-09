@@ -3,26 +3,30 @@ import { API_BASE_URL } from 'shared/constants/api';
 
 /** @type {any} */
 
-const getLangs = createAsyncThunk(
-  'languages/getData',
-  async (_, thunkApi) => {
-    /**  @type {*} */
-    const state = thunkApi.getState();
-    const { lang } = state.langReducer;
-    const url = `${API_BASE_URL}/${lang}/header/languages/.json`;
+const onGetLangs = async (_, thunkApi) => {
+  /**  @type {*} */
+  const state = thunkApi.getState();
+  const { lang } = state.langsReducer;
+  const endpoint = `header/languages`;
+  const url = `${API_BASE_URL}/${lang}/${endpoint}/.json`;
 
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-      if (!Object.values(data).length) throw new Error('Data is empty');
-      return thunkApi.fulfillWithValue(data);
-    } catch (error) {
-      console.error(error);
-      /** @type {*} */
-      const { message } = error;
-      return thunkApi.rejectWithValue(message);
-    }
-  }
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    if (!Object.values(data).length) throw new Error('Data is empty');
+    return thunkApi.fulfillWithValue(data);
+  } catch (error) {
+    console.error(error);
+    /** @type {*} */
+    const { message } = error;
+    return thunkApi.rejectWithValue(message);
+  };
+};
+
+/**  @type {*} */
+const getLangs = createAsyncThunk(
+  'lang/getLangs',
+  onGetLangs,
 );
 
 /**
