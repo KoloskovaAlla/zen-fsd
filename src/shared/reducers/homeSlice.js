@@ -6,7 +6,7 @@ const getHomePage = createAsyncThunk(
   async (_, thunkApi) => {
     /**  @type {*} */
     const state = thunkApi.getState();
-    const { lang } = state.langReducer;
+    const { lang } = state.langsReducer;
     const url = `${API_BASE_URL}/${lang}/pages/homepage/.json`;
 
     try {

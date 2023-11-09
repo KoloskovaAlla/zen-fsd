@@ -104,27 +104,27 @@ export const Order = () => {
     value: orderState.name,
     isValidField: orderState.isValidName,
     onFieldChange: onNameChange,
-    invalidMessage: orderData?.inputName.invalidMessage,
-    type: orderData?.inputName.type,
-    placeholder: orderData?.inputName.placeholder,
+    invalidMessage: orderData?.inputName?.invalidMessage,
+    type: orderData?.inputName?.type,
+    placeholder: orderData?.inputName?.placeholder,
   };
 
   const telOptions = {
     value: orderState.tel,
     isValidField: orderState.isValidTel,
     onFieldChange: onTelChange,
-    invalidMessage: orderData?.inputTel.invalidMessage,
-    type: orderData?.inputTel.type,
-    placeholder: orderData?.inputTel.placeholder,
+    invalidMessage: orderData?.inputTel?.invalidMessage,
+    type: orderData?.inputTel?.type,
+    placeholder: orderData?.inputTel?.placeholder,
   };
 
   const emailOptions = {
     value: orderState.email,
     isValidField: orderState.isValidEmail,
     onFieldChange: onEmailChange,
-    invalidMessage: orderData?.inputEmail.invalidMessage,
-    type: orderData?.inputEmail.type,
-    placeholder: orderData?.inputEmail.placeholder,
+    invalidMessage: orderData?.inputEmail?.invalidMessage,
+    type: orderData?.inputEmail?.type,
+    placeholder: orderData?.inputEmail?.placeholder,
   };
 
   const connectOptions = {
@@ -138,7 +138,7 @@ export const Order = () => {
 
   const checkboxOptions = {
     isChecked: orderState.isChecked,
-    setIsChecked: orderActions.setIsChecked,
+    setIsChecked: orderActions?.setIsChecked,
     url: orderData?.inputPolicy?.url,
     content: orderData?.inputPolicy?.content,
   };
