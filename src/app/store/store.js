@@ -1,6 +1,6 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import {
-  langReducer,
+  langsReducer,
   themeReducer,
   orderReducer,
   previewReducer,
@@ -22,7 +22,7 @@ import {
 } from 'shared/reducers';
 
 const rootReducer = combineReducers({
-  langReducer,
+  langsReducer,
   themeReducer,
   orderReducer,
   previewReducer,
