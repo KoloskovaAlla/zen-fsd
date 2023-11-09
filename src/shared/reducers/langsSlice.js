@@ -25,7 +25,7 @@ const onGetLangs = async (_, thunkApi) => {
 
 /**  @type {*} */
 const getLangs = createAsyncThunk(
-  'lang/getLangs',
+  'langs/getLangs',
   onGetLangs,
 );
 
@@ -41,7 +41,7 @@ const initialState = {
   lang: localStorage.getItem('lang') ?? 'en',
 };
 
-const langSlice = createSlice({
+const langsSlice = createSlice({
   name: 'languages',
   initialState,
   reducers: {
@@ -69,5 +69,5 @@ const langSlice = createSlice({
 });
 
 export { getLangs };
-export const { reducer: langReducer } = langSlice;
-export const { setLang } = langSlice.actions;
+export const { reducer: langsReducer } = langsSlice;
+export const { setLang } = langsSlice.actions;
