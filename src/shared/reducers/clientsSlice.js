@@ -8,7 +8,7 @@ const getClients = createAsyncThunk(
   async (_, thunkApi) => {
     /**  @type {*} */
     const state = thunkApi.getState();
-    const { lang } = state.langReducer;
+    const { lang } = state.langsReducer;
     const { theme } = state.themeReducer;
     const url = `${API_BASE_URL}/${lang}/clients/${theme}/.json`;
     try {
