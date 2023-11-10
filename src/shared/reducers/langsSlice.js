@@ -2,18 +2,19 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { API_BASE_URL } from 'shared/constants/api';
 
 /**
- * @typedef {import('./types').ThunkApi} ThunkApi
+ * @typedef {import('./types').ThunkAPI} ThunkAPI
+ * @typedef {import('./types').LangsState} LangsState
  */
 
 /**
  * @function onGetLangs
  * @param {*} _
- * @param {ThunkApi} thunkApi
- * @returns {Promise<Object | string>}
+ * @param {ThunkAPI} thunkAPI
+ * @returns {Promise<LangsState | string>}
  */
 
-const onGetLangs = async (_, thunkApi) => {
-  const /** @type {*} */ state = thunkApi.getState();
+const onGetLangs = async (_, thunkAPI) => {
+  const /** @type {*} */ state = thunkAPI.getState();
   const { lang } = state.langsReducer;
   const endpoint = `${lang}/header/languages`;
   const url = `${API_BASE_URL}/${endpoint}/.json`;
@@ -22,11 +23,11 @@ const onGetLangs = async (_, thunkApi) => {
     const data = await response.json();
     const isDataEmpty = !Object.values(data).length;
     if (isDataEmpty) throw new Error('Data is empty');
-    return thunkApi.fulfillWithValue(data);
+    return thunkAPI.fulfillWithValue(data);
   } catch (error) {
     console.error(error);
     const /** @type {*} */ { message } = error;
-    return thunkApi.rejectWithValue(message);
+    return thunkAPI.rejectWithValue(message);
   };
 };
 
@@ -37,7 +38,7 @@ const getLangs = createAsyncThunk(
 );
 
 /**
-  * @typedef {import('./types').LangState} State
+  * @typedef {import('./types').LangsState} State
   * @type {State}
 */
 

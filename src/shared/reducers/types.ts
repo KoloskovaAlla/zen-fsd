@@ -17,7 +17,7 @@ export interface Language {
   value: string;
 };
 
-export interface LangState {
+export type LangsState = {
   getLang?: Function;
   isLoading: boolean;
   langs: Language[];
@@ -287,7 +287,7 @@ export interface ClientsPageState {
   clientsPageErrorMessage: string;
 };
 
-export interface ThunkApi {
+export type ThunkAPI = {
   getState: () => any;
   fulfillWithValue: (value: any) => any;
   rejectWithValue: (value: any) => any;
