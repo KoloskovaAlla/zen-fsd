@@ -20,7 +20,7 @@ export const Lang = () => {
 
   return (
     <>
-      {langs.length > 0 && (
+      {langs?.length > 0 && (
         <label className={classes.lang}>
           <Select
             className={classes.select}

@@ -22,10 +22,12 @@ const onGetLangs = async (_, thunkAPI) => {
     const response = await fetch(url);
     const data = await response.json();
     if (data.message) throw new Error(data.message);
+    // showNotice('success');
     return thunkAPI.fulfillWithValue(data.langs);
   } catch (error) {
     const /** @type {*} */ { message } = error;
     console.error(message);
+    // showModal(message);
     return thunkAPI.rejectWithValue(message);
   };
 };
@@ -37,14 +39,14 @@ const getLangs = createAsyncThunk(
 );
 
 /**
-  * @typedef {import('./types').LangsState} State
-  * @type {State}
-*/
+ * @typedef {import('./types').Lang} Lang
+ */
 
 const initialState = {
-  isLoading: false,
+  isLangsLoading: false,
+  /** @type {Lang[] | []} */
   langs: [],
-  errorMessage: '',
+  langsErrorMessage: '',
   lang: localStorage.getItem('lang') ?? 'en',
 };
 
@@ -58,19 +60,19 @@ const langsSlice = createSlice({
   },
   extraReducers: {
     [`${getLangs.pending}`]: (state) => {
-      state.isLoading = true;
+      state.isLangsLoading = true;
       state.langs = [];
-      state.errorMessage = '';
+      state.langsErrorMessage = '';
     },
     [`${getLangs.fulfilled}`]: (state, { payload }) => {
-      state.isLoading = false;
+      state.isLangsLoading = false;
       state.langs = payload;
-      state.errorMessage = '';
+      state.langsErrorMessage = '';
     },
     [`${getLangs.rejected}`]: (state, { payload }) => {
-      state.isLoading = false;
+      state.isLangsLoading = false;
       state.langs = [];
-      state.errorMessage = payload;
+      state.langsErrorMessage = payload;
     },
   }
 });

@@ -19,9 +19,9 @@ export interface Language {
 
 export type LangsState = {
   getLang?: Function;
-  isLoading: boolean;
+  isLangsLoading: boolean;
   langs: Language[];
-  errorMessage: string;
+  langsErrorMessage: string;
   setLang?: object;
   lang: string;
 };
