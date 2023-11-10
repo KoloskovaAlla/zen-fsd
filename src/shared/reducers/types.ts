@@ -292,3 +292,16 @@ export type ThunkAPI = {
   fulfillWithValue: (value: any) => any;
   rejectWithValue: (value: any) => any;
 };
+
+export type Lang = {
+  content: string;
+  value: string;
+};
+
+export type LangsFromAPI = {
+  langs: Lang[];
+};
+
+// export interface LangsFromAPI {
+//   data: Lang[];
+// };

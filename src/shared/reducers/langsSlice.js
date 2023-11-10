@@ -3,30 +3,29 @@ import { API_BASE_URL } from 'shared/constants/api';
 
 /**
  * @typedef {import('./types').ThunkAPI} ThunkAPI
- * @typedef {import('./types').LangsState} LangsState
+ * @typedef {import('./types').LangsFromAPI} LangsFromAPI
  */
 
 /**
  * @function onGetLangs
- * @param {*} _
+ * @param {null} _
  * @param {ThunkAPI} thunkAPI
- * @returns {Promise<LangsState | string>}
+ * @returns {Promise<LangsFromAPI | string>}
  */
 
 const onGetLangs = async (_, thunkAPI) => {
-  const /** @type {*} */ state = thunkAPI.getState();
-  const { lang } = state.langsReducer;
-  const endpoint = `${lang}/header/languages`;
-  const url = `${API_BASE_URL}/${endpoint}/.json`;
   try {
+    const /** @type {*} */ state = thunkAPI.getState();
+    const { lang } = state.langsReducer;
+    const endpoint = `${lang}`;
+    const url = `${API_BASE_URL}/${endpoint}/.json`;
     const response = await fetch(url);
     const data = await response.json();
-    const isDataEmpty = !Object.values(data).length;
-    if (isDataEmpty) throw new Error('Data is empty');
-    return thunkAPI.fulfillWithValue(data);
+    if (data.message) throw new Error(data.message);
+    return thunkAPI.fulfillWithValue(data.langs);
   } catch (error) {
-    console.error(error);
     const /** @type {*} */ { message } = error;
+    console.error(message);
     return thunkAPI.rejectWithValue(message);
   };
 };
