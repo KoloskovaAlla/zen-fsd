@@ -17,13 +17,12 @@ const onGetLangs = async (_, thunkAPI) => {
   try {
     const /** @type {*} */ state = thunkAPI.getState();
     const { lang } = state.langsReducer;
-    const endpoint = `${lang}/header/languages`;
+    const endpoint = `${lang}`;
     const url = `${API_BASE_URL}/${endpoint}/.json`;
     const response = await fetch(url);
     const data = await response.json();
-    const isDataEmpty = !Object.values(data).length;
-    if (isDataEmpty) throw new Error('Data is empty');
-    return thunkAPI.fulfillWithValue(data);
+    if (data.message) throw new Error(data.message);
+    return thunkAPI.fulfillWithValue(data.langs);
   } catch (error) {
     const /** @type {*} */ { message } = error;
     console.error(message);
