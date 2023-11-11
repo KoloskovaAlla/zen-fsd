@@ -1,6 +1,9 @@
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { getOrder, setIsModalActive } from '../reducers/orderSlice';
+
+
+import { useDispatch } from 'react-redux';
+import { orderActions, sendOrder, getOrder, } from '../reducers/orderSlice';
 
 /**
  * @typedef {import('./types').OrderState} OrderState
@@ -19,16 +22,29 @@ const getState = (store) => store.orderReducer;
  */
 
 export const useOrder = () => {
+  const dispatch = useDispatch();
   const state = useSelector(getState);
+  console.log(state);
+
   const { isModalActive } = state;
 
   useEffect(() => {
     localStorage.setItem('isModalActive', isModalActive);
   }, [isModalActive]);
 
+  useEffect(() => {
+    const isFormValid = state.isValidName &&
+      state.isValidTel &&
+      state.isValidEmail &&
+      state.isValidConnection &&
+      state.isChecked;
+    dispatch(orderActions.setIsSubmitDisabled(!isFormValid));
+  }, [dispatch, state]);
+
+  Object.assign(orderActions, { sendOrder, getOrder });
+
   return {
     ...state,
-    getOrder,
-    setIsModalActive,
+    orderActions,
   };
 };
