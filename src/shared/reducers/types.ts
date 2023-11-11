@@ -17,11 +17,11 @@ export interface Language {
   value: string;
 };
 
-export interface LangState {
+export type LangsState = {
   getLang?: Function;
-  isLoading: boolean;
+  isLangsLoading: boolean;
   langs: Language[];
-  errorMessage: string;
+  langsErrorMessage: string;
   setLang?: object;
   lang: string;
 };
@@ -299,3 +299,22 @@ export interface ClientsPageState {
   clientsPage: null | Object;
   clientsPageErrorMessage: string;
 };
+
+export type ThunkAPI = {
+  getState: () => any;
+  fulfillWithValue: (value: any) => any;
+  rejectWithValue: (value: any) => any;
+};
+
+export type Lang = {
+  content: string;
+  value: string;
+};
+
+export type LangsFromAPI = {
+  langs: Lang[];
+};
+
+// export interface LangsFromAPI {
+//   data: Lang[];
+// };
