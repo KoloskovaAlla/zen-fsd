@@ -17,16 +17,17 @@ const onGetLangs = async (_, thunkAPI) => {
   try {
     const /** @type {*} */ state = thunkAPI.getState();
     const { lang } = state.langsReducer;
-    const endpoint = `${lang}/header/languages`;
+    const endpoint = `${lang}`;
     const url = `${API_BASE_URL}/${endpoint}/.json`;
     const response = await fetch(url);
     const data = await response.json();
-    const isDataEmpty = !Object.values(data).length;
-    if (isDataEmpty) throw new Error('Data is empty');
-    return thunkAPI.fulfillWithValue(data);
+    if (data.message) throw new Error(data.message);
+    // showNotice('success');
+    return thunkAPI.fulfillWithValue(data.langs);
   } catch (error) {
     const /** @type {*} */ { message } = error;
     console.error(message);
+    // showModal(message);
     return thunkAPI.rejectWithValue(message);
   };
 };
@@ -38,19 +39,19 @@ const getLangs = createAsyncThunk(
 );
 
 /**
-  * @typedef {import('./types').LangsState} State
-  * @type {State}
-*/
+ * @typedef {import('./types').Lang} Lang
+ */
 
 const initialState = {
-  isLoading: false,
+  isLangsLoading: false,
+  /** @type {[] | Lang[]} */
   langs: [],
-  errorMessage: '',
+  langsErrorMessage: '',
   lang: localStorage.getItem('lang') ?? 'en',
 };
 
 const langsSlice = createSlice({
-  name: 'languages',
+  name: 'langs',
   initialState,
   reducers: {
     setLang: (state, { payload }) => {
@@ -58,20 +59,20 @@ const langsSlice = createSlice({
     },
   },
   extraReducers: {
-    [`${getLangs.pending}`]: (state) => {
-      state.isLoading = true;
+    [getLangs.pending]: (state) => {
+      state.isLangsLoading = true;
       state.langs = [];
-      state.errorMessage = '';
+      state.langsErrorMessage = '';
     },
-    [`${getLangs.fulfilled}`]: (state, { payload }) => {
-      state.isLoading = false;
+    [getLangs.fulfilled]: (state, { payload }) => {
+      state.isLangsLoading = false;
       state.langs = payload;
-      state.errorMessage = '';
+      state.langsErrorMessage = '';
     },
-    [`${getLangs.rejected}`]: (state, { payload }) => {
-      state.isLoading = false;
+    [getLangs.rejected]: (state, { payload }) => {
+      state.isLangsLoading = false;
       state.langs = [];
-      state.errorMessage = payload;
+      state.langsErrorMessage = payload;
     },
   }
 });

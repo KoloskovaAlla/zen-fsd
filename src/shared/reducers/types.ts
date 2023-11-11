@@ -19,9 +19,9 @@ export interface Language {
 
 export type LangsState = {
   getLang?: Function;
-  isLoading: boolean;
+  isLangsLoading: boolean;
   langs: Language[];
-  errorMessage: string;
+  langsErrorMessage: string;
   setLang?: object;
   lang: string;
 };
@@ -293,9 +293,15 @@ export type ThunkAPI = {
   rejectWithValue: (value: any) => any;
 };
 
-export type LangsFromAPI = {
-  getLang?: Function;
-  isLoading: boolean;
-  langs: Language[];
-  errorMessage: string;
+export type Lang = {
+  content: string;
+  value: string;
 };
+
+export type LangsFromAPI = {
+  langs: Lang[];
+};
+
+// export interface LangsFromAPI {
+//   data: Lang[];
+// };
