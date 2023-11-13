@@ -38,8 +38,8 @@ const getCarePage = createAsyncThunk(
 
 const initialState = {
   isCarePageLoading: false,
-  /** @type {null | CarePageFromAPI} */
-  carePage: null,
+  /** @type {{} | CarePageFromAPI} */
+  carePage: {},
   carePageErrorMessage: '',
 };
 
@@ -50,7 +50,7 @@ const carePageSlice = createSlice({
   extraReducers: {
     [getCarePage.pending]: (state) => {
       state.isCarePageLoading = true;
-      state.carePage = null;
+      state.carePage = {};
       state.carePageErrorMessage = '';
     },
     [getCarePage.fulfilled]: (state, { payload }) => {
@@ -60,7 +60,7 @@ const carePageSlice = createSlice({
     },
     [getCarePage.rejected]: (state, { payload }) => {
       state.isCarePageLoading = false;
-      state.carePage = null;
+      state.carePage = {};
       state.carePageErrorMessage = payload;
     },
   }
