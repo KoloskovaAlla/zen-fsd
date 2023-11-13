@@ -254,9 +254,15 @@ export interface CashbackPageState {
   cashbackPageErrorMessage: string;
 }
 
+export interface CarePageFromAPI {
+  intro: Intro;
+  core: Core;
+  final: Final;
+}
+
 export interface CarePageState {
   isCarePageLoading: boolean;
-  carePage: null | CashbackPage;
+  carePage: null | CarePageFromAPI;
   carePageErrorMessage: string;
 }
 
