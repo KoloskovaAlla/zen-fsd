@@ -24,8 +24,6 @@ const getState = (store) => store.orderReducer;
 export const useOrder = () => {
   const dispatch = useDispatch();
   const state = useSelector(getState);
-  console.log(state);
-
   const { isModalActive } = state;
 
   useEffect(() => {

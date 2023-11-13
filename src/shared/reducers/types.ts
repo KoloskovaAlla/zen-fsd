@@ -312,7 +312,16 @@ export type Lang = {
 };
 
 export type LangsFromAPI = {
-  langs: Lang[];
+  langs: null | Lang[];
+};
+
+export type navItem = {
+  target: string;
+  text: string;
+};
+
+export type NavFromAPI = {
+  navItems: null | navItem[];
 };
 
 // export interface LangsFromAPI {

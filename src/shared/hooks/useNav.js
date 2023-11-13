@@ -19,6 +19,7 @@ const getState = (store) => store.navReducer;
 
 export const useNav = () => {
   const state = useSelector(getState);
+  console.log(state);
 
   return {
     ...state,
