@@ -1,7 +1,7 @@
 import classes from './ClientsPage.module.scss';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useLang, useClients, useDocumentTitle } from 'shared/hooks';
+import { useLang, useClientsPage, useDocumentTitle } from 'shared/hooks';
 
 /**
  * @function ClientsPage
@@ -10,7 +10,7 @@ import { useLang, useClients, useDocumentTitle } from 'shared/hooks';
 
 const ClientsPage = () => {
   const dispatch = useDispatch();
-  const clientsState = useClients();
+  const clientsPageState = useClientsPage();
   const { lang } = useLang();
   const title = lang === 'en'
     ? 'ZEN | Clients'
@@ -19,23 +19,24 @@ const ClientsPage = () => {
   useDocumentTitle(title);
 
   useEffect(() => {
-    dispatch(clientsState.fetchClientsData());
+    dispatch(clientsPageState.getClientsPage());
+    // console.log(clientsPageState);
   }, [lang, dispatch]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  if (!clientsState) return null;
+  if (!clientsPageState) return null;
   return (
     <main>
-      {clientsState?.clientsData && (
+      {clientsPageState?.clientsPage && (
         <div className={classes.wrapper}>
           <div className={classes.body}>
             <h2 className={classes.title}>
-              {clientsState.clientsData?.title?.content}
+              {clientsPageState.clientsPage?.title?.content}
             </h2>
-            {clientsState.clientsData?.texts.map((text, index) => (
+            {clientsPageState.clientsPage?.texts.map((text, index) => (
               <p
                 className={classes.copy}
                 key={index}
@@ -47,7 +48,7 @@ const ClientsPage = () => {
           <div className={classes.logos}>
             <div className={classes.logosWrapper}>
               <ul className={classes.list}>
-                {clientsState.clientsData?.logos?.map((client, index) => (
+                {clientsPageState.clientsPage?.logos?.map((client, index) => (
                   <li key={index} className={classes.item}>
                     <img
                       src={client?.source}

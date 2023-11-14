@@ -8,8 +8,8 @@ import { API_BASE_URL } from 'shared/constants/api';
 
 /**
  * @function onGetCashbackPage
- * @param {null} _ 
- * @param {ThunkAPI} thunkAPI 
+ * @param {null} _
+ * @param {ThunkAPI} thunkAPI
  * @returns {Promise<CashbackPageFromAPI | string>}
  */
 
