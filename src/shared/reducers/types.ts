@@ -241,7 +241,6 @@ export interface Core extends SectionBase { };
 
 export interface Final extends SectionBase { };
 
-
 export interface CashbackPage {
   intro: Intro;
   core: Core;
