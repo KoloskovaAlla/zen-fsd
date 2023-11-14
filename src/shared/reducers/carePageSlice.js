@@ -36,10 +36,14 @@ const getCarePage = createAsyncThunk(
   onGetCarePage,
 );
 
+/**
+ * @typedef {import('./types').CarePage} CarePage
+ */
+
 const initialState = {
   isCarePageLoading: false,
-  /** @type {{} | CarePageFromAPI} */
-  carePage: {},
+  /** @type {null | CarePage} */
+  carePage: null,
   carePageErrorMessage: '',
 };
 
@@ -50,7 +54,7 @@ const carePageSlice = createSlice({
   extraReducers: {
     [getCarePage.pending]: (state) => {
       state.isCarePageLoading = true;
-      state.carePage = {};
+      state.carePage = null;
       state.carePageErrorMessage = '';
     },
     [getCarePage.fulfilled]: (state, { payload }) => {
@@ -60,7 +64,7 @@ const carePageSlice = createSlice({
     },
     [getCarePage.rejected]: (state, { payload }) => {
       state.isCarePageLoading = false;
-      state.carePage = {};
+      state.carePage = null;
       state.carePageErrorMessage = payload;
     },
   }
