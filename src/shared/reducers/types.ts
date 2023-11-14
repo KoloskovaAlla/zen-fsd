@@ -241,7 +241,6 @@ export interface Core extends SectionBase { };
 
 export interface Final extends SectionBase { };
 
-
 export interface CashbackPage {
   intro: Intro;
   core: Core;
@@ -259,6 +258,12 @@ export type CarePageFromAPI = {
   core: Core;
   final: Final;
 };
+
+export type CashbackPageFromAPI = {
+  intro: Intro;
+  core: Core;
+  final: Final;
+}
 
 export interface WarrantyPage {
   intro: Intro;
