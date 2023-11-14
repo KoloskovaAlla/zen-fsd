@@ -261,7 +261,7 @@ export type CarePage = {
 }
 
 export type CarePageFromAPI = {
-  carePage: null | CarePage;
+  carePage: CarePage;
 };
 
 export interface WarrantyPage {
