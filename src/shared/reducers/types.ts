@@ -254,14 +254,10 @@ export interface CashbackPageState {
   cashbackPageErrorMessage: string;
 }
 
-export type CarePage = {
+export type CarePageFromAPI = {
   intro: Intro;
   core: Core;
   final: Final;
-}
-
-export type CarePageFromAPI = {
-  carePage: null | CarePage;
 };
 
 export interface WarrantyPage {
