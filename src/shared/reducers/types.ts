@@ -259,6 +259,12 @@ export type CarePageFromAPI = {
   final: Final;
 }
 
+export type CashbackPageFromAPI = {
+  intro: Intro;
+  core: Core;
+  final: Final;
+}
+
 export interface WarrantyPage {
   intro: Intro;
   core: Core;
