@@ -7,9 +7,9 @@ import { API_BASE_URL } from 'shared/constants/api';
  */
 
 /**
- * 
- * @param {null} _ 
- * @param {ThunkAPI} thunkAPI 
+ *
+ * @param {null} _
+ * @param {ThunkAPI} thunkAPI
  * @returns {Promise<ClientsPageFromAPI | string>}
  */
 
