@@ -1,22 +1,34 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { API_BASE_URL } from 'shared/constants/api';
 
-const onGetCashbackPage = async (_, thunkApi) => {
+/**
+ * @typedef {import('./types').ThunkAPI} ThunkAPI
+ */
+
+
+/**
+ * @function onGetCashbackPage
+ * @param {null} _ 
+ * @param {ThunkAPI} thunkAPI 
+ * @returns 
+ */
+
+const onGetCashbackPage = async (_, thunkAPI) => {
   try {
-    const /** @type {*} */ state = thunkApi.getState();
+    const /** @type {*} */ state = thunkAPI.getState();
     const { lang } = state.langsReducer;
-    const url = `${API_BASE_URL}/${lang}/pages/cashback/.json`;
+    const endpoint = `${lang}`; //уточиить
+    const url = `${API_BASE_URL}/${lang}/${endpoint}.json`;
     const response = await fetch(url);
     const data = await response.json();
-    if (!Object.values(data).length) throw new Error('Data is empty');
-    return thunkApi.fulfillWithValue(data);
+    if (data.message) throw new Error(data.message);
+    return thunkAPI.fulfillWithValue(data);
   } catch (error) {
-    console.error(error);
-    /** @type {*} */
-    const { message } = error;
-    return thunkApi.rejectWithValue(message);
-  }
-}
+    const /** @type {*} */ { message } = error;
+    console.error(message);
+    return thunkAPI.rejectWithValue(message);
+  };
+};
 
 /** @type {any} */
 const getCashbackPage = createAsyncThunk(
