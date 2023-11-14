@@ -30,19 +30,15 @@ const onGetCarePage = async (_, thunkAPI) => {
   };
 };
 
-/** @type {any} */
+/** @type {*} */
 const getCarePage = createAsyncThunk(
   'сarePage/getCarePage',
   onGetCarePage,
 );
 
-/**
- * @typedef {import('./types').CarePage} CarePage
- */
-
 const initialState = {
   isCarePageLoading: false,
-  /** @type {null | CarePage} */
+  /** @type {null | CarePageFromAPI} */
   carePage: null,
   carePageErrorMessage: '',
 };
