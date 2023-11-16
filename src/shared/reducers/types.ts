@@ -328,3 +328,9 @@ export type navItem = {
 export type NavFromAPI = {
   navItems: null | navItem[];
 };
+
+export type DownloadPageFromAPI = {
+  intro: Intro;
+  core: Core;
+  final: Final;
+};
