@@ -6,10 +6,7 @@ import { SectionBase, Cashback } from 'widgets';
 const HomePage = () => {
   const dispatch = useDispatch();
 
-  const {
-    getHomePage,
-    homePage,
-  } = useHomePage();
+  const homePageState = useHomePage();
 
   const { lang } = useLang();
   const title = lang === 'en'
@@ -19,15 +16,15 @@ const HomePage = () => {
   useDocumentTitle(title);
 
   useEffect(() => {
-    dispatch(getHomePage(lang));
-  }, [lang, getHomePage, dispatch]);
+    dispatch(homePageState.getHomePage(lang));
+  }, [lang, homePageState.getHomePage, dispatch]);
 
   return (
     <div>
-      {homePage?.download && <SectionBase data={homePage.download} type='primary' />}
-      {homePage?.warranty && <SectionBase data={homePage.warranty} type='secondary' reverse />}
-      {homePage?.care && <SectionBase data={homePage.care} type='secondary' />}
-      {homePage?.cashback && <Cashback />}
+      {homePageState.homePage?.download && <SectionBase data={homePageState.homePage.download} type='primary' />}
+      {homePageState.homePage?.warranty && <SectionBase data={homePageState.homePage.warranty} type='secondary' reverse />}
+      {homePageState.homePage?.care && <SectionBase data={homePageState.homePage.care} type='secondary' />}
+      {homePageState.homePage?.cashback && <Cashback />}
     </div>
   );
 };
