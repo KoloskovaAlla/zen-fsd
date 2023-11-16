@@ -299,10 +299,10 @@ export interface DownloadPageState {
   downloadPageErrorMessage: string;
 };
 
-export interface ClientsPageState {
-  isClientsPageLoading: boolean;
-  clientsPage: null | Object;
-  clientsPageErrorMessage: string;
+export type ClientsPageFromAPI = {
+  intro: Intro;
+  core: Core;
+  final: Final;
 };
 
 export type ThunkAPI = {
@@ -328,7 +328,3 @@ export type navItem = {
 export type NavFromAPI = {
   navItems: null | navItem[];
 };
-
-// export interface LangsFromAPI {
-//   data: Lang[];
-// };

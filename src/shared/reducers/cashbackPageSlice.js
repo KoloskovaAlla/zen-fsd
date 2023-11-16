@@ -8,8 +8,8 @@ import { API_BASE_URL } from 'shared/constants/api';
 
 /**
  * @function onGetCashbackPage
- * @param {null} _ 
- * @param {ThunkAPI} thunkAPI 
+ * @param {null} _
+ * @param {ThunkAPI} thunkAPI
  * @returns {Promise<CashbackPageFromAPI | string>}
  */
 
@@ -17,7 +17,7 @@ const onGetCashbackPage = async (_, thunkAPI) => {
   try {
     const /** @type {*} */ state = thunkAPI.getState();
     const { lang } = state.langsReducer;
-    const endpoint = `${lang}`; //уточиить
+    const endpoint = `${lang}`;
     const url = `${API_BASE_URL}/${lang}/${endpoint}.json`;
     const response = await fetch(url);
     const data = await response.json();

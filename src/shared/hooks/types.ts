@@ -448,7 +448,7 @@ export interface DownloadPageState {
 };
 
 export interface ClientsPage {
-  title: string;
+  title: Title;
   texts: string[];
   logos: Logo[];
 };
@@ -457,4 +457,5 @@ export interface ClientsPageState {
   isClientsPageLoading: boolean;
   clientsPage: null | ClientsPage;
   clientsPageErrorMessage: string;
+  getClientsPage: Function;
 };
