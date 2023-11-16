@@ -1,33 +1,40 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { API_BASE_URL } from 'shared/constants/api';
 
-/** @type {any} */
-const getDownloadPage = createAsyncThunk(
-  'download/getData',
-  async (_, thunkApi) => {
-    /**  @type {*} */
-    const state = thunkApi.getState();
-    const { lang } = state.langsReducer;
-    const url = `${API_BASE_URL}/${lang}/pages/download/.json`;
-
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-      if (!Object.values(data).length) throw new Error('Data is empty');
-      return thunkApi.fulfillWithValue(data);
-    } catch (error) {
-      console.error(error);
-      /** @type {*} */
-      const { message } = error;
-      return thunkApi.rejectWithValue(message);
-    }
-  }
-);
+/**
+ * @typedef {import('./types').ThunkAPI} ThunkAPI
+ * @typedef {import('./types').DownloadPageFromAPI} DownloadPageFromAPI
+ */
 
 /**
- * @typedef {import('./types').DownloadPageState} State
- * @type {State}
+ *
+ * @param {null} _
+ * @param {ThunkAPI} thunkAPI
+ * @returns {Promise<DownloadPageFromAPI | string>}
  */
+
+const onGetDownloadPage = async (_, thunkAPI) => {
+  const /** @type {*} */ state = thunkAPI.getState();
+  const { lang } = state.langsReducer;
+  const endpoint = `${lang}`;
+  const url = `${API_BASE_URL}/${endpoint}/.json`;
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    if (data.message) throw new Error(data.message);
+    return thunkAPI.fulfillWithValue(data.downloadPage);
+  } catch (error) {
+    const /** @type {*} */ { message } = error;
+    console.error(message);
+    return thunkAPI.rejectWithValue(message);
+  };
+};
+
+/** @type {any} */
+const getDownloadPage = createAsyncThunk(
+  'downloadPage/getdownloadPage',
+  onGetDownloadPage,
+);
 
 const initialState = {
   isDownloadPageLoading: false,
@@ -40,17 +47,17 @@ const downloadPageSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
-    [`${getDownloadPage.pending}`]: (state) => {
+    [getDownloadPage.pending]: (state) => {
       state.isDownloadPageLoading = true;
       state.downloadPage = null;
       state.downloadPageErrorMessage = '';
     },
-    [`${getDownloadPage.fulfilled}`]: (state, { payload }) => {
+    [getDownloadPage.fulfilled]: (state, { payload }) => {
       state.isDownloadPageLoading = false;
       state.downloadPage = payload;
       state.downloadPageErrorMessage = '';
     },
-    [`${getDownloadPage.rejected}`]: (state, { payload }) => {
+    [getDownloadPage.rejected]: (state, { payload }) => {
       state.isDownloadPageLoading = false;
       state.downloadPage = null;
       state.downloadPageErrorMessage = payload;
