@@ -1,55 +1,65 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { API_BASE_URL } from 'shared/constants/api';
 
-const getHomePage = createAsyncThunk(
-  'homePage/getData',
-  async (_, thunkApi) => {
-    /**  @type {*} */
-    const state = thunkApi.getState();
-    const { lang } = state.langsReducer;
-    const url = `${API_BASE_URL}/${lang}/pages/homepage/.json`;
-
-    try {
-      const response = await fetch(url);
-      const pageData = await response.json();
-      if (!Object.values(pageData).length) throw new Error('Data is empty');
-      return thunkApi.fulfillWithValue(pageData);
-    } catch (error) {
-      console.error(error);
-      /** @type {*} */
-      const { message } = error;
-      return thunkApi.rejectWithValue(message);
-    }
-  }
-);
+/**
+ * @typedef {import('./types').ThunkAPI} ThunkAPI
+ * @typedef {import('./types').HomePageFromAPI} HomePageFromAPI
+ */
 
 /**
-  * @typedef {import('./types').HomePageState} State
-  * @type {State}
-  */
+ * @function onGetHomePage
+ * @param {null} _
+ * @param {ThunkAPI} thunkAPI
+ * @returns {Promise<HomePageFromAPI | string>}
+ */
+
+const onGetHomePage = async (_, thunkAPI) => {
+  const /** @type {*} */ state = thunkAPI.getState();
+  const { lang } = state.langsReducer;
+  const endpoint = `${lang}`;
+  const url = `${API_BASE_URL}/${endpoint}/.json`;
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    if (data.message) throw new Error(data.message);
+    return thunkAPI.fulfillWithValue(data.homePage);
+  } catch (error) {
+    console.error(error);
+    const /** @type {*} */ { message } = error;
+    return thunkAPI.rejectWithValue(message);
+  }
+};
+
+/** @type {*} */
+const getHomePage = createAsyncThunk(
+  'homePage/getHomePage',
+  onGetHomePage,
+);
 
 const initialState = {
   isLoading: false,
+  /** @type {null | HomePageFromAPI} */
   homePage: null,
   errorMessage: '',
 };
 
+/** @type {*} */
 const homePageSlice = createSlice({
   name: 'homePage',
   initialState,
   reducers: {},
   extraReducers: {
-    [`${getHomePage.pending}`]: (state) => {
+    [getHomePage.pending]: (state) => {
       state.isLoading = true;
       state.homePage = null;
       state.errorMessage = '';
     },
-    [`${getHomePage.fulfilled}`]: (state, { payload }) => {
+    [getHomePage.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
       state.homePage = payload;
       state.errorMessage = '';
     },
-    [`${getHomePage.rejected}`]: (state, { payload }) => {
+    [getHomePage.rejected]: (state, { payload }) => {
       state.isLoading = false;
       state.homePage = null;
       state.errorMessage = payload;
