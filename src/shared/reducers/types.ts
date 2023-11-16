@@ -334,3 +334,9 @@ export type HomePageFromAPI = {
   core: Core;
   final: Final;
 };
+
+export type DownloadPageFromAPI = {
+  intro: Intro;
+  core: Core;
+  final: Final;
+};
