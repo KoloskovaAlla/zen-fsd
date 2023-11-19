@@ -340,3 +340,13 @@ export type DownloadPageFromAPI = {
   core: Core;
   final: Final;
 };
+
+export type CarePost = {};
+export type CashbackPost = {};
+export type WarrantyPost = {};
+
+export type PostsPageFromAPI = {
+  care: CarePost;
+  cashback: CashbackPost,
+  warranty: WarrantyPost;
+};
