@@ -10,18 +10,15 @@ import { useOrder, useCashback } from 'shared/hooks';
 
 export const Cashback = () => {
   const dispatch = useDispatch();
-  const {
-    getCashback,
-    ...cashbackState
-  } = useCashback();
-  const { cashback } = cashbackState;
-
-  const { orderActions } = useOrder();
-  const { setIsModalActive } = orderActions;
+  const cashbackState = useCashback();
 
   useEffect(() => {
-    dispatch(getCashback());
-  }, [dispatch, getCashback]);
+    dispatch(cashbackState.getCashback());
+  }, [dispatch, cashbackState.getCashback]);
+
+  useEffect(() => {
+    console.log(cashbackState.cashback);
+  }, [cashbackState.cashback]);
 
   /**
    * @function handleOrderClick
@@ -29,17 +26,18 @@ export const Cashback = () => {
    */
 
   const handleOrderClick = () => {
-    dispatch(setIsModalActive(true));
+    dispatch(cashbackState.setIsModalActive(true));
   };
 
+  if (!cashbackState.cashback) return;
   return (
     <section className={classes.section}>
       <div className={classes.wrapper}>
-        {cashback && (
+        {cashbackState.cashback && (
           <div className={classes.body}>
-            <h2 className={classes.title}>{cashback.title.content}</h2>
-            {cashback.texts?.length > 0 && (
-              cashback.texts.map((text, index) => (
+            <h2 className={classes.title}>{cashbackState.cashback.title.content}</h2>
+            {cashbackState.cashback.texts?.length > 0 && (
+              cashbackState.cashback.texts.map((text, index) => (
                 <p
                   className={classes.copy}
                   key={index}
@@ -53,7 +51,7 @@ export const Cashback = () => {
               onClick={handleOrderClick}
               type="button"
             >
-              {cashback?.buttonText}
+              {cashbackState.cashback?.buttonText}
             </button>
           </div>
         )}

@@ -341,3 +341,20 @@ export type DownloadPageFromAPI = {
   core: Core;
   final: Final;
 };
+
+export type CashbackFromAPI = {
+  name: string;
+  title: Title;
+  texts: string[];
+  buttonText: string;
+};
+
+export type CarePost = {};
+export type CashbackPost = {};
+export type WarrantyPost = {};
+
+export type PostsPageFromAPI = {
+  care: CarePost;
+  cashback: CashbackPost,
+  warranty: WarrantyPost;
+};

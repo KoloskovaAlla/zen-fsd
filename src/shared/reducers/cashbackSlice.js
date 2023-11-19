@@ -1,37 +1,44 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { API_BASE_URL } from 'shared/constants/api';
 
-/** @type {any} */
-
-const getCashback = createAsyncThunk(
-  'cashback/getData',
-  async (_, thunkApi) => {
-    /**  @type {*} */
-    const state = thunkApi.getState();
-    const { lang } = state.langsReducer;
-    const url = `${API_BASE_URL}/${lang}/cashback/.json`;
-
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-      if (!Object.values(data).length) throw new Error('Data is empty');
-      return thunkApi.fulfillWithValue(data);
-    } catch (error) {
-      console.error(error);
-      /** @type {*} */
-      const { message } = error;
-      return thunkApi.rejectWithValue(message);
-    }
-  }
-);
+/**
+ * @typedef {import('./types').ThunkAPI} ThunkAPI
+ * @typedef {import('./types').CashbackFromAPI} CashbackFromAPI
+ */
 
 /**
- * @typedef {import('./types').CashbackState} State
- * @type {State}
+ * @function onGetCashback
+ * @param {null} _
+ * @param {ThunkAPI} thunkAPI
+ * @returns {Promise<CashbackFromAPI | string>}
  */
+
+const onGetCashback = async (_, thunkAPI) => {
+  const  /**  @type {*} */state = thunkAPI.getState();
+  const { lang } = state.langsReducer;
+  const endpoint = lang;
+  const url = `${API_BASE_URL}/${endpoint}/.json`;
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    if (data.message) throw new Error(data.message);
+    return thunkAPI.fulfillWithValue(data.cashback);
+  } catch (error) {
+    const /** @type {*} */ { message } = error;
+    console.error(message);
+    return thunkAPI.rejectWithValue(message);
+  };
+};
+
+/** @type {*} */
+const getCashback = createAsyncThunk(
+  'cashback/getCashback',
+  onGetCashback,
+);
 
 const initialState = {
   isCashbackLoading: false,
+  /** @type {null | CashbackFromAPI} */
   cashback: null,
   cashbackErrorMessage: '',
 };
@@ -41,17 +48,17 @@ const cashbackSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
-    [`${getCashback.pending}`]: (state) => {
+    [getCashback.pending]: (state) => {
       state.isCashbackLoading = true;
       state.cashback = null;
       state.cashbackErrorMessage = '';
     },
-    [`${getCashback.fulfilled}`]: (state, { payload }) => {
+    [getCashback.fulfilled]: (state, { payload }) => {
       state.isCashbackLoading = false;
       state.cashback = payload;
       state.cashbackErrorMessage = '';
     },
-    [`${getCashback.rejected}`]: (state, { payload }) => {
+    [getCashback.rejected]: (state, { payload }) => {
       state.isCashbackLoading = false;
       state.cashback = null;
       state.cashbackErrorMessage = payload;
