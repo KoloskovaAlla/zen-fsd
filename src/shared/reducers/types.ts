@@ -329,7 +329,6 @@ export type NavFromAPI = {
   navItems: null | navItem[];
 };
 
-
 export type HomePageFromAPI = {
   intro: Intro;
   core: Core;
