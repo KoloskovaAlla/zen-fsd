@@ -341,6 +341,13 @@ export type DownloadPageFromAPI = {
   final: Final;
 };
 
+export type CashbackFromAPI = {
+  name: string;
+  title: Title;
+  texts: string[];
+  buttonText: string;
+};
+
 export type CarePost = {};
 export type CashbackPost = {};
 export type WarrantyPost = {};

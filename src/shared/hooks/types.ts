@@ -349,6 +349,7 @@ export interface CashbackState {
   isCashbackLoading: boolean;
   cashback: null | Cashback;
   cashbackErrorMessage: string;
+  setIsModalActive: Function;
 };
 
 export interface PageSection {
