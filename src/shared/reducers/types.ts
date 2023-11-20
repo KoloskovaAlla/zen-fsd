@@ -122,12 +122,6 @@ export interface Client {
   alternate: string;
   source: string;
 };
-export interface ClientsState {
-  getClients?: Function;
-  isLoading: boolean;
-  clients: null | Client[];
-  errorMessage: string;
-};
 
 export interface PostsData {
   buttonText: string;
@@ -357,6 +351,17 @@ export type PostsPageFromAPI = {
   cashback: CashbackPost,
   warranty: WarrantyPost;
 };
+
+export type Logo = {
+  alternate: string;
+  source: string;
+};
+
+export type ClientsFromAPI = {
+  logos: Logo[];
+  texts: Text[];
+  title: Title;
+}
 
 export type ColumnFromAPI = {
   links: Link[];

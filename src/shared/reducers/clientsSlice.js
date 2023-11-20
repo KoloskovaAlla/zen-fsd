@@ -1,34 +1,42 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { API_BASE_URL } from 'shared/constants/api';
 
-/** @type {any} */
-
-const getClients = createAsyncThunk(
-  'clients/fetchData',
-  async (_, thunkApi) => {
-    /**  @type {*} */
-    const state = thunkApi.getState();
-    const { lang } = state.langsReducer;
-    const { theme } = state.themeReducer;
-    const url = `${API_BASE_URL}/${lang}/clients/${theme}/.json`;
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-      if (!Object.values(data).length) throw new Error('Data is empty');
-      return thunkApi.fulfillWithValue(data);
-    } catch (error) {
-      console.error(error);
-      /** @type {*} */
-      const { message } = error;
-      return thunkApi.rejectWithValue(message);
-    }
-  }
-);
+/**
+ * @typedef {import('./types').ThunkAPI} ThunkAPI
+ * @typedef {import('./types').ClientsFromAPI} ClientsFromAPI
+ */
 
 /**
- * @typedef {import('./types').ClientsState} State
- * @type {State}
+ * @function onGetClients
+ * @param {null} _
+ * @param {ThunkAPI}  thunkAPI
+ * @returns Promise<ClientsFromAPI | string>
  */
+
+const onGetClients = async (_, thunkAPI) => {
+  const /** @type {*} */ state = thunkAPI.getState();
+  const { lang } = state.langsReducer;
+  const { theme } = state.themeReducer;
+  const endpoint = lang;
+  const url = `${API_BASE_URL}/${endpoint}/.json`;
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    if (data.message) throw new Error(data.message);
+    console.log(data.clients[theme]);
+    return thunkAPI.fulfillWithValue(data.clients[theme]);
+  } catch (error) {
+    const /** @type {*} */ { message } = error;
+    console.error(message);
+    return thunkAPI.rejectWithValue(message);
+  };
+};
+
+/** @type {*} */
+const getClients = createAsyncThunk(
+  'clients/getClients',
+  onGetClients,
+);
 
 const initialState = {
   isLoading: false,
