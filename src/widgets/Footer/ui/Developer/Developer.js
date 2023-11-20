@@ -6,15 +6,11 @@ import classes from './Developer.module.scss';
   * @type {({developer}: Props) => ReactElement}
   */
 export const Developer = ({ developer }) => {
-  const { url } = developer;
-  const { source, alternate } = developer.content.image;
   return (
     <>
-      {url && (
-        <a className={classes.developer} href={url}>
-          {source && alternate && (
-            <img src={source} alt={alternate} />
-          )}
+      {developer?.url && (
+        <a className={classes.developer} href={developer?.url}>
+          <img src={developer?.content?.image?.source} alt={developer?.content?.image?.alternate} />
         </a>
       )}
     </>
