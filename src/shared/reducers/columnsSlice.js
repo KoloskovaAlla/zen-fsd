@@ -1,37 +1,44 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { API_BASE_URL } from 'shared/constants/api';
 
-/** @type {any} */
-
-const getColumns = createAsyncThunk(
-  'lists/getData',
-  async (_, thunkApi) => {
-    /**  @type {*} */
-    const state = thunkApi.getState();
-    const { lang } = state.langsReducer;
-    const url = `${API_BASE_URL}/${lang}/columns/.json`;
-
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-      if (!Object.values(data).length) throw new Error('Data is empty');
-      return thunkApi.fulfillWithValue(data);
-    } catch (error) {
-      console.error(error);
-      /** @type {*} */
-      const { message } = error;
-      return thunkApi.rejectWithValue(message);
-    }
-  }
-);
+/**
+ * @typedef {import('./types').ThunkAPI} ThunkAPI
+ * @typedef {import('./types').ColumnFromAPI} ColumnFromAPI
+ */
 
 /**
-  * @typedef {import('./types').ColumnsState} State
-  * @type {State}
-*/
+ * @function onGetColumns
+ * @param {null} _
+ * @param {ThunkAPI} thunkAPI
+ * @returns Promise<ColumnFromAPI[] | string>
+ */
+
+const onGetColumns = async (_, thunkAPI) => {
+  const /** @type {*} */ state = thunkAPI.getState();
+  const { lang } = state.langsReducer;
+  const endpoint = lang;
+  const url = `${API_BASE_URL}/${endpoint}/.json`;
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    if (data.message) throw new Error(data.message);
+    return thunkAPI.fulfillWithValue(data.columns);
+  } catch (error) {
+    const /** @type {*} */ { message } = error;
+    console.error(message);
+    return thunkAPI.rejectWithValue(message);
+  };
+};
+
+/** @type {*} */
+const getColumns = createAsyncThunk(
+  'columns/getColumns',
+  onGetColumns,
+);
 
 const initialState = {
   isLoading: false,
+  /** @type {[] | ColumnFromAPI[]} */
   columns: [],
   errorMessage: '',
 };
@@ -41,17 +48,17 @@ const columnsSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
-    [`${getColumns.pending}`]: (state) => {
+    [getColumns.pending]: (state) => {
       state.isLoading = true;
       state.columns = [];
       state.errorMessage = '';
     },
-    [`${getColumns.fulfilled}`]: (state, { payload }) => {
+    [getColumns.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
       state.columns = payload;
       state.errorMessage = '';
     },
-    [`${getColumns.rejected}`]: (state, { payload }) => {
+    [getColumns.rejected]: (state, { payload }) => {
       state.isLoading = false;
       state.columns = [];
       state.errorMessage = payload;

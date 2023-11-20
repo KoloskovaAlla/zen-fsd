@@ -357,3 +357,9 @@ export type PostsPageFromAPI = {
   cashback: CashbackPost,
   warranty: WarrantyPost;
 };
+
+export type ColumnFromAPI = {
+  links: Link[];
+  name: string;
+  title: Title;
+};
