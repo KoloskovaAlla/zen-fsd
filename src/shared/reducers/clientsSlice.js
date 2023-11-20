@@ -23,7 +23,6 @@ const onGetClients = async (_, thunkAPI) => {
     const response = await fetch(url);
     const data = await response.json();
     if (data.message) throw new Error(data.message);
-    console.log(data.clients[theme]);
     return thunkAPI.fulfillWithValue(data.clients[theme]);
   } catch (error) {
     const /** @type {*} */ { message } = error;
