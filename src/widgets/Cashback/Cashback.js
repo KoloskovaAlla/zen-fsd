@@ -1,11 +1,11 @@
 import classes from './Cashback.module.scss';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useOrder, useCashback } from 'shared/hooks';
+import { useCashback } from 'shared/hooks';
 
 /**
  * @function Cashback
- * @returns {JSX.Element}
+ * @returns {null | JSX.Element}
  */
 
 export const Cashback = () => {
@@ -16,10 +16,6 @@ export const Cashback = () => {
     dispatch(cashbackState.getCashback());
   }, [dispatch, cashbackState.getCashback]);
 
-  useEffect(() => {
-    console.log(cashbackState.cashback);
-  }, [cashbackState.cashback]);
-
   /**
    * @function handleOrderClick
    * @returns {void}
@@ -29,7 +25,7 @@ export const Cashback = () => {
     dispatch(cashbackState.setIsModalActive(true));
   };
 
-  if (!cashbackState.cashback) return;
+  if (!cashbackState.cashback) return null;
   return (
     <section className={classes.section}>
       <div className={classes.wrapper}>
