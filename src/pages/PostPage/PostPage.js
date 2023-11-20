@@ -25,7 +25,8 @@ const PostPage = () => {
   const isMediaTypeVideo = postState.post?.media?.type === 'video';
 
   useEffect(() => {
-    dispatch(postState.getPost(key));
+    // dispatch(postState.getPost(key));
+    dispatch(postState.getPost('Несуществующий ключ'));
   }, [lang, key]);
 
   useEffect(() => {
@@ -34,14 +35,14 @@ const PostPage = () => {
 
   return (
     <>
-      {postState.post && (
+      {postState?.post && (
         <div className={classes.postPage}>
           <div className={classes.header}>
             {isMediaTypeImage && (
               <div className={classes.image}>
                 <img
-                  src={postState.post.media.src}
-                  alt={postState.post.media.alternate}
+                  src={postState?.post?.media?.src}
+                  alt={postState?.post?.media?.alternate}
                 />
               </div>
             )}
@@ -49,7 +50,7 @@ const PostPage = () => {
               <div className={classes.video}>
                 <video controls>
                   <source
-                    src={postState.post.media.src}
+                    src={postState?.post?.media?.src}
                     type="video/mp4"
                   />
                 </video>
@@ -58,7 +59,7 @@ const PostPage = () => {
           </div>
           <div className={classes.body}>
             <h1 className={classes.title}>{postState?.post?.title}</h1>
-            {postState?.post?.texts.map((text, index) => (
+            {postState?.post?.texts?.map((text, index) => (
               <p
                 className={classes.copy}
                 key={index}
