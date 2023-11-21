@@ -66,7 +66,7 @@ export interface Developer {
   url: string;
 };
 
-export interface Info {
+export interface InfoFromAPI {
   developer: Developer;
   texts: string[];
 };
@@ -74,7 +74,7 @@ export interface Info {
 export interface InfoState {
   getInfo?: Function;
   isLoading: boolean;
-  info: null | Info;
+  info: InfoFromAPI;
   errorMessage: string;
 };
 
