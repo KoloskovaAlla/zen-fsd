@@ -23,7 +23,7 @@ export const Footer = () => {
   return (
     <footer className={classes.footer}>
       <div className={classes.wrapper}>
-        {columns.length > 0 && (
+        {columns?.length > 0 && (
           <ul className={classes.columns}>
             {columns.map(({ title, links }, index) =>
               <Column
@@ -39,7 +39,7 @@ export const Footer = () => {
             <IconLogoFooter />
           </div>
 
-          {info?.texts.length > 0 && (
+          {info?.texts?.length > 0 && (
             info.texts.map((text, index) =>
               <p
                 className={classes.copy}
