@@ -1,28 +1,42 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { API_BASE_URL } from 'shared/constants/api';
 
-/** @type {any} */
+/**
+ * @typedef {import('./types').ThunkAPI} ThunkAPI
+ * @typedef {import('./types').PostFromAPI} PostFromAPI
+ */
 
-const getPost = createAsyncThunk(
-  'post/getData',
-  async (key, thunkApi) => {
-    /**  @type {*} */
-    const state = thunkApi.getState();
+/**
+ * @function onGetPost
+ * @param {string} key
+ * @param {ThunkAPI} thunkAPI
+ * @throws {Error} If there is no such post
+ * @returns {Promise<PostFromAPI | string>}
+ */
+
+const onGetPost = async (key, thunkAPI) => {
+  try {
+    const /** @type {*} */ state = thunkAPI.getState();
     const { lang } = state.langsReducer;
-    const url = `${API_BASE_URL}/${lang}/pages/posts/${key}/.json`;
+    const endpoint = `${lang}/posts/${key}`;
+    const url = `${API_BASE_URL}/${endpoint}/.json`;
+    const response = await fetch(url);
+    const data = await response.json();
+    console.log(data);
+    if (!data) throw new Error('There is no such post');
+    return thunkAPI.fulfillWithValue(data);
+  } catch (error) {
+    const /** @type {*} */ { message } = error;
+    console.error(message);
+    showModal(message);
+    return thunkAPI.rejectWithValue(message);
+  };
+};
 
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-      if (!Object.values(data).length) throw new Error('Data is empty');
-      return thunkApi.fulfillWithValue(data);
-    } catch (error) {
-      console.error(error);
-      /** @type {*} */
-      const { message } = error;
-      return thunkApi.rejectWithValue(message);
-    }
-  }
+/** @type {any} */
+const getPost = createAsyncThunk(
+  'post/getPost',
+  onGetPost,
 );
 
 /**
