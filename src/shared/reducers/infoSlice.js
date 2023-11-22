@@ -8,7 +8,7 @@ import { API_BASE_URL } from 'shared/constants/api';
 
 /**
  * @function onGetInfo
- * @param {null} _ 
+ * @param {null} _
  * @param {ThunkAPI} thunkAPI
  * @returns {Promise<InfoFromAPI | string>}
  */
