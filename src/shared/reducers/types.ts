@@ -373,3 +373,7 @@ export type ColumnFromAPI = {
   name: string;
   title: Title;
 };
+
+export type PostFromAPI = {
+
+};
