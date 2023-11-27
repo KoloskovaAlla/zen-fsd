@@ -204,8 +204,13 @@ export interface SliderState {
   setSlides?: any;
 };
 
-export interface ThemeState {
-  theme: string;
+export type Theme =
+  'light' |
+  'dark' |
+  string;
+
+export type ThemeInitState = {
+  theme: Theme;
 };
 
 export interface CurrentPageState {
@@ -367,4 +372,8 @@ export type ColumnFromAPI = {
   links: Link[];
   name: string;
   title: Title;
+};
+
+export type PostFromAPI = {
+
 };
