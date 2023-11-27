@@ -1,27 +1,27 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { API_BASE_URL } from 'shared/constants/api';
 
-const onGetWarrantyPage = async (_, thunkApi) => {
-  try {
-    const /** @type {*} */ state = thunkApi.getState();
-    const { lang } = state.langReducer;
-    const endpoint = lang;
-    const url = `${API_BASE_URL}/${endpoint}/.json`;
-    const response = await fetch(url);
-    const data = await response.json();
-    if (data.message) throw new Error(data.message);
-    return thunkApi.fulfillWithValue(data.warrantyPage);
-  } catch (error) {
-    const /** @type {*} */ { message } = error;
-    console.error(message);
-    return thunkApi.rejectWithValue(message);
-  };
-};
-
 /** @type {any} */
 const getWarrantyPage = createAsyncThunk(
   'warrantyPage/getData',
-  onGetWarrantyPage,
+  async (_, thunkApi) => {
+    /**  @type {*} */
+    const state = thunkApi.getState();
+    const { lang } = state.langReducer;
+    const url = `${API_BASE_URL}/${lang}/pages/warranty/.json`;
+
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      if (!Object.values(data).length) throw new Error('Data is empty');
+      return thunkApi.fulfillWithValue(data);
+    } catch (error) {
+      console.error(error);
+      /** @type {*} */
+      const { message } = error;
+      return thunkApi.rejectWithValue(message);
+    }
+  }
 );
 
 /**
