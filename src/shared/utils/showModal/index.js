@@ -1,1 +1,0 @@
-export { showModal } from './showModal';
