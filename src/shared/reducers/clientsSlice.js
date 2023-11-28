@@ -14,12 +14,12 @@ import { API_BASE_URL } from 'shared/constants/api';
  */
 
 const onGetClients = async (_, thunkAPI) => {
-  const /** @type {*} */ state = thunkAPI.getState();
-  const { lang } = state.langsReducer;
-  const { theme } = state.themeReducer;
-  const endpoint = lang;
-  const url = `${API_BASE_URL}/${endpoint}/.json`;
   try {
+    const /** @type {*} */ state = thunkAPI.getState();
+    const { lang } = state.langsReducer;
+    const { theme } = state.themeReducer;
+    const endpoint = lang;
+    const url = `${API_BASE_URL}/${endpoint}/.json`;
     const response = await fetch(url);
     const data = await response.json();
     if (data.message) throw new Error(data.message);
