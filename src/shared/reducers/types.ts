@@ -377,3 +377,8 @@ export type ColumnFromAPI = {
 export type PostFromAPI = {
 
 };
+
+export type ErrorModalState = {
+  isErrorMessage: boolean;
+  errorMessage: string;
+};
