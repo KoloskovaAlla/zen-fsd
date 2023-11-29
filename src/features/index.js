@@ -4,4 +4,4 @@ export { Navigation } from './Navigation';
 export { Theme } from './Theme';
 export { Burger } from './Burger';
 export { Order } from './Order';
-export { ErrorModal } from './ErrorModal';
+export { Modal } from './Modal';

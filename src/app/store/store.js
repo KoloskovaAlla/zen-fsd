@@ -19,7 +19,6 @@ import {
   postsPageReducer,
   downloadPageReducer,
   clientsPageReducer,
-  errorModalReducer,
 } from 'shared/reducers';
 
 const rootReducer = combineReducers({
@@ -42,7 +41,6 @@ const rootReducer = combineReducers({
   postsPageReducer,
   downloadPageReducer,
   clientsPageReducer,
-  errorModalReducer,
 });
 
 export const store = configureStore({

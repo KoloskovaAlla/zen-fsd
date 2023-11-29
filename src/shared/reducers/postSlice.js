@@ -1,9 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
 import { API_BASE_URL } from 'shared/constants/api';
-import { setIsErrorMessage, setErrorMessage } from './errorModalSlice';
-import { setDispatch } from 'shared/utils/setDispatch/setDispatch';
-import { useError } from '../hooks/useError';
 
 /**
  * @typedef {import('./types').ThunkAPI} ThunkAPI
@@ -31,7 +28,6 @@ const onGetPost = async (key, thunkAPI) => {
   } catch (error) {
     const /** @type {*} */ { message } = error;
     console.error(message);
-    useError(message);
     localStorage.setItem('errorMessage', message);
     return thunkAPI.rejectWithValue(message);
   };
@@ -54,14 +50,7 @@ const initialState = {
 const postSlice = createSlice({
   name: 'post',
   initialState,
-  reducers: {
-    setIsErrorMessagePost: (state, { payload }) => {
-      state.isErrorMessagePost = payload;
-    },
-    setErrorMessagePost: (state, { payload }) => {
-      state.errorMessagePost = payload;
-    },
-  },
+  reducers: {},
   extraReducers: {
     [`${getPost.pending}`]: (state) => {
       state.isPostLoading = true;
@@ -83,4 +72,3 @@ const postSlice = createSlice({
 
 export { getPost };
 export const { reducer: postReducer } = postSlice;
-export const { setErrorMessagePost } = postSlice.actions;
