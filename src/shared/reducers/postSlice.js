@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { useDispatch } from 'react-redux';
 import { API_BASE_URL } from 'shared/constants/api';
-import { showModal } from 'shared/utils';
+import { setIsErrorMessage, setErrorMessage } from './errorModalSlice';
 
 /**
  * @typedef {import('./types').ThunkAPI} ThunkAPI
@@ -16,6 +17,7 @@ import { showModal } from 'shared/utils';
  */
 
 const onGetPost = async (key, thunkAPI) => {
+  const dispatch = useDispatch();
   try {
     const /** @type {*} */ state = thunkAPI.getState();
     const { lang } = state.langsReducer;
@@ -29,7 +31,8 @@ const onGetPost = async (key, thunkAPI) => {
   } catch (error) {
     const /** @type {*} */ { message } = error;
     console.error(message);
-    showModal(message);
+    dispatch(setIsErrorMessage(true));
+    dispatch(setErrorMessage(message));
     return thunkAPI.rejectWithValue(message);
   };
 };
