@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { API_BASE_URL } from 'shared/constants/api';
+import { showModal } from 'shared/utils';
 
 /**
  * @typedef {import('./types').ThunkAPI} ThunkAPI
