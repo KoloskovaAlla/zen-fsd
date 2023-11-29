@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { API_BASE_URL } from 'shared/constants/api';
 import { setIsErrorMessage, setErrorMessage } from './errorModalSlice';
 import { setDispatch } from 'shared/utils/setDispatch/setDispatch';
+import { useError } from '../hooks/useError';
 
 /**
  * @typedef {import('./types').ThunkAPI} ThunkAPI
@@ -30,13 +31,7 @@ const onGetPost = async (key, thunkAPI) => {
   } catch (error) {
     const /** @type {*} */ { message } = error;
     console.error(message);
-    console.log('test');
-    // dispatch(setIsErrorMessage(true));
-    // dispatch(setErrorMessage('changed error'));
-    // store.dispatch(setIsErrorMessage(true));
-    // store.dispatch(setErrorMessage('changed error'));
-    setDispatch(setIsErrorMessage(true));
-    setDispatch(setErrorMessage(message));
+    useError(message);
     return thunkAPI.rejectWithValue(message);
   };
 };
@@ -47,21 +42,25 @@ const getPost = createAsyncThunk(
   onGetPost,
 );
 
-/**
- * @typedef {import('./types').PostState} State
- * @type {State}
- */
-
 const initialState = {
   isPostLoading: false,
   post: null,
   postErrorMessage: '',
+  isErrorMessagePost: false,
+  errorMessagePost: '',
 };
 
 const postSlice = createSlice({
   name: 'post',
   initialState,
-  reducers: {},
+  reducers: {
+    setIsErrorMessagePost: (state, { payload }) => {
+      state.isErrorMessagePost = payload;
+    },
+    setErrorMessage: (state, { payload }) => {
+      state.errorMessagePost = payload;
+    },
+  },
   extraReducers: {
     [`${getPost.pending}`]: (state) => {
       state.isPostLoading = true;
