@@ -7,7 +7,7 @@ import { createSlice } from '@reduxjs/toolkit';
 /** @type InitState */
 const initialState = {
   isErrorMessage: false,
-  errorMessage: 'start error',
+  errorMessage: 'no error',
 };
 
 export const errorModalSlice = createSlice({

@@ -24,6 +24,9 @@ const PostPage = () => {
   const isMediaTypeImage = postState.post?.media?.type === 'image';
   const isMediaTypeVideo = postState.post?.media?.type === 'video';
 
+  const postErrorMessage = postState?.postErrorMessage;
+  console.log(postErrorMessage);
+
   useEffect(() => {
     // dispatch(postState.getPost(key));
     dispatch(postState.getPost('Несуществующий ключ'));
