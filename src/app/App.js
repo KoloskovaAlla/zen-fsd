@@ -1,8 +1,10 @@
 import './styles/index.scss';
-import { useTheme } from 'shared/hooks';
-import { Order } from 'features';
+import { useState } from 'react';
+import { useTheme, usePost } from 'shared/hooks';
+import { Order, Modal } from 'features';
 import { Header, Footer, Clients, Posts } from 'widgets';
 import { Router } from 'pages';
+import { useEffect } from 'react';
 
 /**
  * @function App
@@ -10,7 +12,18 @@ import { Router } from 'pages';
  */
 
 export const App = () => {
+  const [errorMessage, setErrorMessage] = useState('');
+  const [isErrorMessage, setIsErrorMessage] = useState(false);
+
   const { theme } = useTheme();
+  const { postErrorMessage } = usePost();
+
+  useEffect(() => {
+    if (postErrorMessage !== '') {
+      setErrorMessage(postErrorMessage);
+      setIsErrorMessage(true);
+    }
+  }, [postErrorMessage]);
 
   return (
     <div className={`app ${theme}`}>
@@ -20,7 +33,7 @@ export const App = () => {
       <Clients />
       <Footer />
       <Order />
-      {/* <ErrorModal /> */}
+      {isErrorMessage && <Modal content={errorMessage} />}
     </div>
   );
 };
