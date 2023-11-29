@@ -20,7 +20,7 @@ export const App = () => {
       <Clients />
       <Footer />
       <Order />
-      {/* <ErrorModal /> */}
+      <ErrorModal />
     </div>
   );
 };
