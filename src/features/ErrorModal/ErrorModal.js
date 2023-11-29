@@ -1,6 +1,12 @@
-export const ErrorModal = (message, isErrorMessage) => {
+import { useSelector } from 'react-redux';
+
+export const ErrorModal = () => {
+  const callback = (store) => store.errorModalReducer;
+  const { isErrorMessage, errorMessage } = useSelector(callback);
+  console.log(isErrorMessage);
   if (!isErrorMessage) return null;
-  if (isErrorMessage) return (
-    <div>{message}</div>
+  return (
+    // <div>{errorMessage}</div>
+    <div>test</div>
   );
 };

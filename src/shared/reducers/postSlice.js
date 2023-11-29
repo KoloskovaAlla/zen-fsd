@@ -18,6 +18,7 @@ import { setIsErrorMessage, setErrorMessage } from './errorModalSlice';
 
 const onGetPost = async (key, thunkAPI) => {
   const dispatch = useDispatch();
+  console.log('test');
   try {
     const /** @type {*} */ state = thunkAPI.getState();
     const { lang } = state.langsReducer;
@@ -31,8 +32,8 @@ const onGetPost = async (key, thunkAPI) => {
   } catch (error) {
     const /** @type {*} */ { message } = error;
     console.error(message);
-    dispatch(setIsErrorMessage(true));
-    dispatch(setErrorMessage(message));
+    // dispatch(setIsErrorMessage(true));
+    // dispatch(setErrorMessage('changed error'));
     return thunkAPI.rejectWithValue(message);
   };
 };

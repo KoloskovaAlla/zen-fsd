@@ -17,3 +17,4 @@ export { postReducer } from './postSlice';
 export { postsPageReducer } from './postsPageSlice';
 export { downloadPageReducer } from './downloadPageSlice';
 export { clientsPageReducer } from './clientsPageSlice';
+export { errorModalReducer } from './errorModalSlice';
