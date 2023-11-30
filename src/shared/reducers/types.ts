@@ -132,12 +132,13 @@ export interface PostsData {
   warranty: Warranty;
 };
 
-export interface PostsState {
-  etchPostsData?: Function;
-  isLoading: boolean,
-  postsData: null | PostsData,
-  errorMessage: string,
-};
+// export interface PostsState {
+//   isPostLoading: boolean,
+//   post: boolean,
+//   postErrorMessage: string,
+//   isErrorMessagePost: boolean;
+//   errorMessagePost: string;
+// };
 
 export interface ModalData {
 
@@ -281,9 +282,11 @@ export interface Post {
 }
 
 export interface PostState {
-  isPostLoading: boolean;
-  post: null | Post;
-  postErrorMessage: string;
+  isPostLoading: boolean,
+  post: null | Post,
+  postErrorMessage: string,
+  isErrorMessagePost: boolean;
+  errorMessagePost: string;
 }
 
 export interface PostsPageState {

@@ -1,11 +1,11 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import {
+  postsReducer,
   langsReducer,
   themeReducer,
   orderReducer,
   previewReducer,
   homePageReducer,
-  postsReducer,
   clientsReducer,
   navReducer,
   columnsReducer,

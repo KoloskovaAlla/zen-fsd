@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
 import { API_BASE_URL } from 'shared/constants/api';
-import { setIsErrorMessage, setErrorMessage } from './errorModalSlice';
 
 /**
  * @typedef {import('./types').ThunkAPI} ThunkAPI
@@ -17,7 +16,6 @@ import { setIsErrorMessage, setErrorMessage } from './errorModalSlice';
  */
 
 const onGetPost = async (key, thunkAPI) => {
-  const dispatch = useDispatch();
   try {
     const /** @type {*} */ state = thunkAPI.getState();
     const { lang } = state.langsReducer;
@@ -25,14 +23,12 @@ const onGetPost = async (key, thunkAPI) => {
     const url = `${API_BASE_URL}/${endpoint}/.json`;
     const response = await fetch(url);
     const data = await response.json();
-    console.log(data);
     if (!data) throw new Error('There is no such post');
     return thunkAPI.fulfillWithValue(data);
   } catch (error) {
     const /** @type {*} */ { message } = error;
     console.error(message);
-    dispatch(setIsErrorMessage(true));
-    dispatch(setErrorMessage(message));
+    localStorage.setItem('errorMessage', message);
     return thunkAPI.rejectWithValue(message);
   };
 };
@@ -43,15 +39,12 @@ const getPost = createAsyncThunk(
   onGetPost,
 );
 
-/**
- * @typedef {import('./types').PostState} State
- * @type {State}
- */
-
 const initialState = {
   isPostLoading: false,
   post: null,
   postErrorMessage: '',
+  isErrorMessagePost: false,
+  errorMessagePost: '',
 };
 
 const postSlice = createSlice({
