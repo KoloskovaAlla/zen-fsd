@@ -1,10 +1,32 @@
+import classes from './Modal.module.scss';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { usePost } from 'shared/hooks';
+import { Button } from 'shared/ui';
 
-export const Modal = (message) => {
+export const Modal = ({ setIsModalActive, content }) => {
+  const handleModalCloseClick = () => {
+    setIsModalActive(false);
+  };
   return (
-    // <div>{errorMessage}</div>
-    <div>test</div>
+    <div
+    // onClick={handleModalOverlayClick}
+    // className={modalClassName}
+    >
+      {(
+        <Button
+          onClickButton={handleModalCloseClick}
+          className={classes.close}
+          iconName={'close'}
+          content={'icon'}
+        />)
+      }
+      {(
+        <h2 className={classes.title}>Сообщение об ошибке</h2>
+      )}
+
+      <div>{content}</div>
+
+    </div >
   );
 };

@@ -1,10 +1,9 @@
 import './styles/index.scss';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTheme, usePost } from 'shared/hooks';
 import { Order, Modal } from 'features';
 import { Header, Footer, Clients, Posts } from 'widgets';
 import { Router } from 'pages';
-import { useEffect } from 'react';
 
 /**
  * @function App
@@ -19,7 +18,7 @@ export const App = () => {
   const { postErrorMessage } = usePost();
 
   useEffect(() => {
-    if (postErrorMessage !== '') {
+    if (postErrorMessage !== '' && postErrorMessage !== null) {
       setErrorMessage(postErrorMessage);
       setIsErrorMessage(true);
     }
@@ -33,7 +32,7 @@ export const App = () => {
       <Clients />
       <Footer />
       <Order />
-      {isErrorMessage && <Modal content={errorMessage} />}
+      {isErrorMessage && <Modal setIsModalActive={setIsErrorMessage} content={errorMessage} />}
     </div>
   );
 };
