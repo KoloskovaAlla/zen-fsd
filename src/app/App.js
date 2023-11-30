@@ -23,15 +23,7 @@ export const App = () => {
       setErrorMessage(postErrorMessage);
       setIsErrorMessage(true);
     }
-  }, [postErrorMessage]);
-
-  const [errorMessage, setError] = useState('');
-  const [isErrorMessage, setIsErrorMessage] = useState(false)
-
-  const { postErrorMessage } = usePost();
-  useEffect(() => {
-    if (postErrorMessage!='')
-  }, [postErrorMessage]);
+  }, [postErrorMessage]);  
 
   return (
     <div className={`app ${theme}`}>
@@ -41,11 +33,7 @@ export const App = () => {
       <Clients />
       <Footer />
       <Order />
-<<<<<<< HEAD
-      <Modal />
-=======
       {isErrorMessage && <Modal content={errorMessage} />}
->>>>>>> a1fbb03df82cd59afca6cef66fa8cdd61060d5df
     </div>
   );
 };

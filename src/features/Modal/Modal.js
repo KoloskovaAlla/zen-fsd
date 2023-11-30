@@ -13,8 +13,6 @@ export const Modal = ({ content }) => {
     // onClick={handleModalOverlayClick}
     // className={modalClassName}
     >
-
-
       {(
         <Button
           onClickButton={handleModalCloseClick}
