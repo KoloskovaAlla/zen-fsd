@@ -4,9 +4,9 @@ import { useSelector } from 'react-redux';
 import { usePost } from 'shared/hooks';
 import { Button } from 'shared/ui';
 
-export const Modal = ({ content }) => {
+export const Modal = ({ setIsModalActive, content }) => {
   const handleModalCloseClick = () => {
-
+    setIsModalActive(false);
   };
   return (
     <div
