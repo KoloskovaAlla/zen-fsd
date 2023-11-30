@@ -19,7 +19,7 @@ export const App = () => {
   const { postErrorMessage } = usePost();
 
   useEffect(() => {
-    if (postErrorMessage !== '') {
+    if (postErrorMessage !== '' && postErrorMessage !== null) {
       setErrorMessage(postErrorMessage);
       setIsErrorMessage(true);
     }
