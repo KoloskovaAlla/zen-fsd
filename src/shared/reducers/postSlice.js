@@ -28,7 +28,6 @@ const onGetPost = async (key, thunkAPI) => {
   } catch (error) {
     const /** @type {*} */ { message } = error;
     console.error(message);
-    localStorage.setItem('errorMessage', message);
     return thunkAPI.rejectWithValue(message);
   };
 };
@@ -43,8 +42,6 @@ const initialState = {
   isPostLoading: false,
   post: null,
   postErrorMessage: '',
-  isErrorMessagePost: false,
-  errorMessagePost: '',
 };
 
 const postSlice = createSlice({
