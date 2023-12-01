@@ -16,10 +16,11 @@ export const App = () => {
 
   const { theme } = useTheme();
   const { postErrorMessage } = usePost();
+  const postState = usePost();
 
   useEffect(() => {
     if (postErrorMessage !== '' && postErrorMessage !== null) {
-      setErrorMessage(postErrorMessage);
+      setErrorMessage('Поста пока нет, но он скоро здесь появится');
       setIsErrorMessage(true);
     }
   }, [postErrorMessage]);
@@ -32,7 +33,12 @@ export const App = () => {
       <Clients />
       <Footer />
       <Order />
-      {isErrorMessage && <Modal setIsModalActive={setIsErrorMessage} content={errorMessage} />}
+      {/* {isErrorMessage && <Modal setIsModalActive={setIsErrorMessage} content={errorMessage} />} */}
+      {isErrorMessage && <Modal
+        isModalActive={isErrorMessage}
+        setIsModalActive={setIsErrorMessage}
+        content={errorMessage}
+      />}
     </div>
   );
 };
