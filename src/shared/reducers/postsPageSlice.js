@@ -21,7 +21,6 @@ const onGetPostsPage = async (_, thunkAPI) => {
     const url = `${API_BASE_URL}/${endpoint}/.json`;
     const response = await fetch(url);
     const data = await response.json();
-    console.log(data.postsPage);
     if (data.message) throw new Error(data.message);
     return thunkAPI.fulfillWithValue(data.postsPage);
   } catch (error) {

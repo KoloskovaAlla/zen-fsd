@@ -50,7 +50,11 @@ const initialState = {
 const postSlice = createSlice({
   name: 'post',
   initialState,
-  reducers: {},
+  reducers: {
+    resetPostErrorMessage: (state) => {
+      state.postErrorMessage = '';
+    },
+  },
   extraReducers: {
     [`${getPost.pending}`]: (state) => {
       state.isPostLoading = true;
@@ -72,3 +76,4 @@ const postSlice = createSlice({
 
 export { getPost };
 export const { reducer: postReducer } = postSlice;
+export const { resetPostErrorMessage } = postSlice.actions;

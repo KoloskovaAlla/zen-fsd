@@ -1,0 +1,54 @@
+@import 'shared/constants/styles/breakpoints';
+
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transition: all 0.5s;
+  z-index: -1;
+
+  &.active {
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 3;
+
+    div {
+      bottom: 50%;
+    }
+  }  
+}
+
+.body {
+  position: absolute;
+  bottom: -100%;
+  left: 50%;
+  overflow: hidden;
+  padding: 30px 20px;
+  background: var(--bg-color);
+  border: var(--color-border);
+  border-radius: 10px;
+  transform: translate(-50%, 50%);
+  transition: all .5s;
+  width: 90%;
+  z-index: 1;
+
+  @media (min-width: $breakpoint_md) {
+    padding: 30px 25px;
+    width: 400px;
+  }
+}
+
+.close {
+  position: absolute;
+  height: 20px;
+  width: 30px;
+  top: 5px;
+  right: 5px;
+  fill: #000;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 700;
+}
