@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { useDispatch } from 'react-redux';
 import { API_BASE_URL } from 'shared/constants/api';
 
 /**
@@ -28,7 +27,6 @@ const onGetPost = async (key, thunkAPI) => {
   } catch (error) {
     const /** @type {*} */ { message } = error;
     console.error(message);
-    localStorage.setItem('errorMessage', message);
     return thunkAPI.rejectWithValue(message);
   };
 };
@@ -41,10 +39,9 @@ const getPost = createAsyncThunk(
 
 const initialState = {
   isPostLoading: false,
+  /** @type {null | PostFromAPI} */
   post: null,
   postErrorMessage: '',
-  isErrorMessagePost: false,
-  errorMessagePost: '',
 };
 
 const postSlice = createSlice({
@@ -56,17 +53,17 @@ const postSlice = createSlice({
     },
   },
   extraReducers: {
-    [`${getPost.pending}`]: (state) => {
+    [getPost.pending]: (state) => {
       state.isPostLoading = true;
       state.post = null;
       state.postErrorMessage = '';
     },
-    [`${getPost.fulfilled}`]: (state, { payload }) => {
+    [getPost.fulfilled]: (state, { payload }) => {
       state.isPostLoading = false;
       state.post = payload;
       state.postErrorMessage = '';
     },
-    [`${getPost.rejected}`]: (state, { payload }) => {
+    [getPost.rejected]: (state, { payload }) => {
       state.isPostLoading = false;
       state.post = null;
       state.postErrorMessage = payload;

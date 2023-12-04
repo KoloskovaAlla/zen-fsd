@@ -38,7 +38,8 @@ export const App = () => {
         isModalActive={isErrorMessage}
         setIsModalActive={setIsErrorMessage}
         content={errorMessage}
-      />}
-    </div>
+      />
+      }
+    </div >
   );
 };
