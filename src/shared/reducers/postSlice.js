@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { useDispatch } from 'react-redux';
 import { API_BASE_URL } from 'shared/constants/api';
 
 /**
@@ -40,6 +39,7 @@ const getPost = createAsyncThunk(
 
 const initialState = {
   isPostLoading: false,
+  /** @type {null | PostFromAPI} */
   post: null,
   postErrorMessage: '',
 };
