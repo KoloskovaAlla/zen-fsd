@@ -1,6 +1,5 @@
 import { useSelector } from 'react-redux';
-import { getPost } from '../reducers/postSlice';
-import { useDispatch } from 'react-redux';
+import { getPost, resetPostErrorMessage } from '../reducers/postSlice';
 
 /**
  * @typedef {import('./types').PostState} PostState
@@ -25,5 +24,6 @@ export const usePost = () => {
   return {
     ...state,
     getPost,
+    resetPostErrorMessage,
   };
 };

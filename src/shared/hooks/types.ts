@@ -423,7 +423,8 @@ export interface PostState {
   isPostLoading: boolean;
   post: null | Post;
   postErrorMessage: string;
-  getPost: Function;  
+  getPost: Function;
+  resetPostErrorMessage: Function;
 };
 
 export interface PostsPageState {

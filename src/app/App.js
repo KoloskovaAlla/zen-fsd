@@ -34,12 +34,14 @@ export const App = () => {
       <Footer />
       <Order />
       {/* {isErrorMessage && <Modal setIsModalActive={setIsErrorMessage} content={errorMessage} />} */}
-      {isErrorMessage && <Modal
-        isModalActive={isErrorMessage}
-        setIsModalActive={setIsErrorMessage}
-        content={errorMessage}
-      />
-      }
+      {isErrorMessage && (
+        <Modal
+          isModalActive={isErrorMessage}
+          setIsModalActive={setIsErrorMessage}
+          title={`Сообщение об ошибке`}
+          content={errorMessage}
+        />
+      )}
     </div >
   );
 };
