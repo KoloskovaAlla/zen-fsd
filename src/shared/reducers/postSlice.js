@@ -47,19 +47,23 @@ const initialState = {
 const postSlice = createSlice({
   name: 'post',
   initialState,
-  reducers: {},
+  reducers: {
+    resetPostErrorMessage: (state) => {
+      state.postErrorMessage = '';
+    },
+  },
   extraReducers: {
-    [`${getPost.pending}`]: (state) => {
+    [getPost.pending]: (state) => {
       state.isPostLoading = true;
       state.post = null;
       state.postErrorMessage = '';
     },
-    [`${getPost.fulfilled}`]: (state, { payload }) => {
+    [getPost.fulfilled]: (state, { payload }) => {
       state.isPostLoading = false;
       state.post = payload;
       state.postErrorMessage = '';
     },
-    [`${getPost.rejected}`]: (state, { payload }) => {
+    [getPost.rejected]: (state, { payload }) => {
       state.isPostLoading = false;
       state.post = null;
       state.postErrorMessage = payload;
@@ -69,3 +73,4 @@ const postSlice = createSlice({
 
 export { getPost };
 export const { reducer: postReducer } = postSlice;
+export const { resetPostErrorMessage } = postSlice.actions;

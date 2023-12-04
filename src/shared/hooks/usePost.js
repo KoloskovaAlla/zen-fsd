@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import { getPost } from '../reducers/postSlice';
+import { useDispatch } from 'react-redux';
 
 /**
  * @typedef {import('./types').PostState} PostState

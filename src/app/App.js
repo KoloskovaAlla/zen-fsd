@@ -19,10 +19,6 @@ export const App = () => {
   const postState = usePost();
 
   useEffect(() => {
-    console.log(postState);
-  }, [postState]);
-
-  useEffect(() => {
     if (postErrorMessage !== '' && postErrorMessage !== null) {
       setErrorMessage('Поста пока нет, но он скоро здесь появится');
       setIsErrorMessage(true);
@@ -38,11 +34,12 @@ export const App = () => {
       <Footer />
       <Order />
       {/* {isErrorMessage && <Modal setIsModalActive={setIsErrorMessage} content={errorMessage} />} */}
-      {<Modal
+      {isErrorMessage && <Modal
         isModalActive={isErrorMessage}
         setIsModalActive={setIsErrorMessage}
         content={errorMessage}
-      />}
-    </div>
+      />
+      }
+    </div >
   );
 };
