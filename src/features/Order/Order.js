@@ -88,8 +88,7 @@ export const Order = () => {
     }, 2000);
 
     return () => clearTimeout(timerId);
-  }, [orderState.isDataSent, dispatch, orderState?.orderActions.setIsDataSent, orderState?.orderActions.setIsModalActive]
-  );
+  }, [orderState.isDataSent, dispatch, orderState?.orderActions.setIsDataSent, orderState?.orderActions.setIsModalActive]);
 
   const nameOptions = {
     value: orderState.name,

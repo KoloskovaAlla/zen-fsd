@@ -12,16 +12,15 @@ import { Router } from 'pages';
 
 export const App = () => {
   const [errorMessage, setErrorMessage] = useState('');
-  const [isErrorMessage, setIsErrorMessage] = useState(false);
+  const [isModalActive, setIsModalActive] = useState(false);
 
   const { theme } = useTheme();
   const { postErrorMessage } = usePost();
-  const postState = usePost();
 
   useEffect(() => {
     if (postErrorMessage !== '' && postErrorMessage !== null) {
       setErrorMessage('Поста пока нет, но он скоро здесь появится');
-      setIsErrorMessage(true);
+      setIsModalActive(true);
     }
   }, [postErrorMessage]);
 
@@ -33,11 +32,10 @@ export const App = () => {
       <Clients />
       <Footer />
       <Order />
-      {/* {isErrorMessage && <Modal setIsModalActive={setIsErrorMessage} content={errorMessage} />} */}
-      {isErrorMessage && (
+      {isModalActive && (
         <Modal
-          isModalActive={isErrorMessage}
-          setIsModalActive={setIsErrorMessage}
+          isModalActive={isModalActive}
+          setIsModalActive={setIsModalActive}
           title={`Сообщение об ошибке`}
           content={errorMessage}
         />
