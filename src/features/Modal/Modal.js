@@ -31,6 +31,7 @@ export const Modal = ({
 
   const handleModalCloseClick = () => {
     setIsModalActive(false);
+    dispatch(resetPostErrorMessage());
   };
 
   const handleModalOverlayClick = () => {
@@ -38,7 +39,9 @@ export const Modal = ({
     dispatch(resetPostErrorMessage());
   };
 
-  /** @typedef {import('react').SyntheticEvent} Event */
+  /**
+   * @typedef {import('react').SyntheticEvent} Event
+   */
 
   /**
    * @function handleBodyClick
@@ -52,8 +55,8 @@ export const Modal = ({
 
   return (
     <div
-      onClick={handleModalOverlayClick}
       className={modalClassName}
+      onClick={handleModalOverlayClick}
     >
       <div
         className={classes.body}
