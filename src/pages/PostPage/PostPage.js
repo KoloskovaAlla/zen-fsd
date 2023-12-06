@@ -25,8 +25,7 @@ const PostPage = () => {
   const isMediaTypeVideo = postState.post?.media?.type === 'video';
 
   useEffect(() => {
-    // dispatch(postState.getPost(key));
-    dispatch(postState.getPost('Несуществующий ключ'));
+    dispatch(postState.getPost(key));
   }, [lang, key]);
 
   useEffect(() => {
