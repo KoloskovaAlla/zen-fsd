@@ -1,4 +1,5 @@
 import classes from './Modal.module.scss';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { usePost } from 'shared/hooks';
 import { Button } from 'shared/ui';
@@ -52,6 +53,17 @@ export const Modal = ({
   const handleBodyClick = (event) => {
     event.stopPropagation();
   };
+
+  useEffect(() => {
+    if (!isModalActive) return;
+
+    const timerId = setTimeout(() => {
+      setIsModalActive(false);
+      dispatch(resetPostErrorMessage());
+    }, 2000);
+
+    return () => clearTimeout(timerId);
+  }, [dispatch, setIsModalActive, isModalActive]);
 
   return (
     <div
