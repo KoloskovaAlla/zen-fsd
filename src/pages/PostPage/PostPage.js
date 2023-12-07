@@ -1,6 +1,7 @@
 import classes from './PostPage.module.scss';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { usePost, useLang, useDocumentTitle } from 'shared/hooks';
 
@@ -14,6 +15,7 @@ const PostPage = () => {
   const params = useParams();
   const { key } = params;
   const postState = usePost();
+  const { post } = postState;
   const { lang } = useLang();
   const title = postState?.post?.title
     ? `ZEN | ${postState.post.title}`
@@ -27,6 +29,14 @@ const PostPage = () => {
   useEffect(() => {
     dispatch(postState.getPost(key));
   }, [lang, key]);
+
+  const navigate = useNavigate(); // 
+
+  useEffect(() => {
+    if (!post) {
+      navigate('/'); // Редирект на главную, если данные отсутствуют
+    }
+  }, [post, navigate]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
