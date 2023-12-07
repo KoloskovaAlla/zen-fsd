@@ -15,7 +15,7 @@ const PostPage = () => {
   const params = useParams();
   const { key } = params;
   const postState = usePost();
-  const { post } = postState;
+  const { post, isPostLoading, postErrorMessage } = postState;
   const { lang } = useLang();
   const title = postState?.post?.title
     ? `ZEN | ${postState.post.title}`
@@ -30,13 +30,14 @@ const PostPage = () => {
     dispatch(postState.getPost(key));
   }, [lang, key]);
 
-  const navigate = useNavigate(); // 
+  const navigate = useNavigate(); //
 
   useEffect(() => {
-    if (!post) {
+    console.log(isPostLoading);
+    if (postErrorMessage !== '' && postErrorMessage !== null) {
       navigate('/'); // Редирект на главную, если данные отсутствуют
     }
-  }, [post, navigate]);
+  }, [post, navigate, isPostLoading]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
