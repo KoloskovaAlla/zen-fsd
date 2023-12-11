@@ -393,3 +393,7 @@ export type OrderFromAPI = {
 export type Order = {
 
 };
+
+export type OrderData = {
+
+};

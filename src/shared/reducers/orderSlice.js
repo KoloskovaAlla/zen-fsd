@@ -74,12 +74,13 @@ const sendOrder = createAsyncThunk(
 );
 
 /**
- * @typedef {import('./types').OrderState} State
- * @type {State}
+ * @typedef {import('./types').OrderData} OrderData
  */
+
 const initialState = {
   isModalActive: false,
   isLoading: false,
+  /** @type {null | OrderData} */
   orderData: null,
   errorMessage: '',
   name: '',
