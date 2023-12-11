@@ -1,6 +1,6 @@
 import classes from './PostPage.module.scss';
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { usePost, useLang, useDocumentTitle } from 'shared/hooks';
 
@@ -10,67 +10,69 @@ import { usePost, useLang, useDocumentTitle } from 'shared/hooks';
  */
 
 const PostPage = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const params = useParams();
   const { key } = params;
   const postState = usePost();
+  const { post, isPostLoading, postErrorMessage } = postState;
   const { lang } = useLang();
-  const title = postState?.post?.title
-    ? `ZEN | ${postState.post.title}`
+  const title = post?.title
+    ? `ZEN | ${post.title}`
     : 'ZEN';
 
   useDocumentTitle(title);
 
-  const isMediaTypeImage = postState.post?.media?.type === 'image';
-  const isMediaTypeVideo = postState.post?.media?.type === 'video';
+  const isMediaTypeImage = post?.media?.type === 'image';
+  const isMediaTypeVideo = post?.media?.type === 'video';
 
   useEffect(() => {
-    // dispatch(postState.getPost(key));
-    dispatch(postState.getPost('Несуществующий ключ'));
+    dispatch(postState.getPost(key));
   }, [lang, key]);
+
+  useEffect(() => {
+    if (postErrorMessage !== '' && postErrorMessage !== null) navigate('/');
+  }, [post, navigate, isPostLoading]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  if (!post) return null;
   return (
-    <>
-      {postState?.post && (
-        <div className={classes.postPage}>
-          <div className={classes.header}>
-            {isMediaTypeImage && (
-              <div className={classes.image}>
-                <img
-                  src={postState?.post?.media?.src}
-                  alt={postState?.post?.media?.alternate}
-                />
-              </div>
-            )}
-            {isMediaTypeVideo && (
-              <div className={classes.video}>
-                <video controls>
-                  <source
-                    src={postState?.post?.media?.src}
-                    type="video/mp4"
-                  />
-                </video>
-              </div>
-            )}
+    <div className={classes.postPage}>
+      <div className={classes.header}>
+        {isMediaTypeImage && (
+          <div className={classes.image}>
+            <img
+              src={post?.media?.src}
+              alt={post?.media?.alternate}
+            />
           </div>
-          <div className={classes.body}>
-            <h1 className={classes.title}>{postState?.post?.title}</h1>
-            {postState?.post?.texts?.map((text, index) => (
-              <p
-                className={classes.copy}
-                key={index}
-              >
-                {text}
-              </p>
-            ))}
+        )}
+        {isMediaTypeVideo && (
+          <div className={classes.video}>
+            <video controls>
+              <source
+                src={post?.media?.src}
+                type="video/mp4"
+              />
+            </video>
           </div>
-        </div>
-      )}
-    </>
+        )}
+      </div>
+      <div className={classes.body}>
+        <h1 className={classes.title}>{post?.title}</h1>
+        {post?.texts?.map((text, index) => (
+          <p
+            className={classes.copy}
+            key={index}
+          >
+            {text}
+          </p>
+        ))}
+      </div>
+    </div>
   );
 };
 
