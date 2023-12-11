@@ -1,7 +1,7 @@
 import classes from './Cashback.module.scss';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useCashback } from 'shared/hooks';
+import { useCashback, useOrder } from 'shared/hooks';
 
 /**
  * @function Cashback
@@ -11,6 +11,7 @@ import { useCashback } from 'shared/hooks';
 export const Cashback = () => {
   const dispatch = useDispatch();
   const cashbackState = useCashback();
+  const orderState = useOrder();
 
   useEffect(() => {
     dispatch(cashbackState.getCashback());
@@ -22,7 +23,7 @@ export const Cashback = () => {
    */
 
   const handleOrderClick = () => {
-    dispatch(cashbackState.setIsModalActive(true));
+    dispatch(orderState.orderActions.setIsModalActive(true));
   };
 
   if (!cashbackState.cashback) return null;
