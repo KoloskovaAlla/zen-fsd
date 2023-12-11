@@ -1,60 +1,86 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { API_BASE_URL } from 'shared/constants/api';
 
+/**
+ * @typedef {import('./types').OrderFromAPI} OrderFromAPI
+ * @typedef {import('./types').ThunkAPI} ThunkAPI
+ */
+
+/**
+ * @function onGetOrder
+ * @param {null} _
+ * @param {ThunkAPI} thunkAPI
+ * @returns {Promise<OrderFromAPI | string>}
+ */
+
+const onGetOrder = async (_, thunkAPI) => {
+  try {
+    const /** @type {*} */ state = thunkAPI.getState();
+    const { lang } = state.langsReducer;
+    const endpoint = lang;
+    const url = `${API_BASE_URL}/${endpoint}/.json`;
+    const response = await fetch(url);
+    const data = await response.json();
+    if (data.message) throw new Error(data.message);
+    return thunkAPI.fulfillWithValue(data.modal);
+  } catch (error) {
+    const /** @type {*} */ { message } = error;
+    console.error(message);
+    return thunkAPI.rejectWithValue(message);
+  }
+};
+
 /** @type {any} */
 const getOrder = createAsyncThunk(
   'order/getData',
-  async (_, thunkApi) => {
-    /**  @type {*} */
-    const state = thunkApi.getState();
-    const { lang } = state.langsReducer;
-    const url = `${API_BASE_URL}/${lang}/modal/.json`;
-
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-      if (!Object.values(data).length) throw new Error('Data is empty');
-      return thunkApi.fulfillWithValue(data);
-    } catch (error) {
-      console.error(error);
-      /** @type {*} */
-      const { message } = error;
-      return thunkApi.rejectWithValue(message);
-    }
-  }
+  onGetOrder
 );
+
+/**
+ * @typedef {import('./types').Order} Order
+ */
+
+/**
+ * @function onSendOrder
+ * @param {Order} order
+ * @param {ThunkAPI} thunkAPI
+ * @returns {Promise<boolean | string>}}
+ */
+
+const onSendOrder = async (order, thunkAPI) => {
+  try {
+    const endpoint = 'orders';
+    const url = `${API_BASE_URL}/${endpoint}/.json`;
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(order)
+    });
+    if (!response.ok) throw new Error('Failed to fetch');
+    return thunkAPI.fulfillWithValue(response.ok);
+  } catch (error) {
+    const /** @type {*} */ { message } = error;
+    console.error(message);
+    return thunkAPI.rejectWithValue(message);
+  }
+};
 
 /** @type {any} */
 const sendOrder = createAsyncThunk(
   'order/sendData',
-  async (order, thunkApi) => {
-    const url = `${API_BASE_URL}/orders/.json`;
-    try {
-      const response = await fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(order)
-      });
-      if (!response.ok) throw new Error('Failed to fetch');
-      return thunkApi.fulfillWithValue(response.ok);
-    } catch (error) {
-      console.error(error);
-      /** @type {*} */
-      const { message } = error;
-      return thunkApi.rejectWithValue(message);
-    }
-  }
+  onSendOrder
 );
 
 /**
- * @typedef {import('./types').OrderState} State
- * @type {State}
+ * @typedef {import('./types').OrderData} OrderData
  */
+
 const initialState = {
   isModalActive: false,
   isLoading: false,
+  /** @type {null | OrderData} */
   orderData: null,
   errorMessage: '',
   name: '',

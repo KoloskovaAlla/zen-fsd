@@ -385,3 +385,15 @@ export type ErrorModalState = {
   isErrorMessage: boolean;
   errorMessage: string;
 };
+
+export type OrderFromAPI = {
+
+};
+
+export type Order = {
+
+};
+
+export type OrderData = {
+
+};
