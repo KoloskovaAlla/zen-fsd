@@ -68,15 +68,23 @@ export const Order = () => {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    const order = {
-      date,
-      name: orderState.name,
-      tel: orderState.tel,
-      email: orderState.email,
-      connection: orderState.connection,
+    const isOrderValid = orderState.isValidName &&
+      orderState.isValidTel &&
+      orderState.isValidEmail &&
+      orderState.isValidConnection &&
+      orderState.isChecked;
+
+    if (isOrderValid) {
+      const order = {
+        date,
+        name: orderState.name,
+        tel: orderState.tel,
+        email: orderState.email,
+        connection: orderState.connection,
+      };
+      dispatch(orderState?.orderActions.sendOrder(order));
+      dispatch(orderState.orderActions.setIsDataSent(true));
     };
-    dispatch(orderState?.orderActions.sendOrder(order));
-    dispatch(orderState.orderActions.setIsDataSent(true));
   };
 
   useEffect(() => {
@@ -89,6 +97,7 @@ export const Order = () => {
       dispatch(orderState.orderActions.setTel(''));
       dispatch(orderState.orderActions.setEmail(''));
       dispatch(orderState.orderActions.setConnection(''));
+      dispatch(orderState.orderActions.setIsChecked(false));
     }, 2000);
 
     return () => clearTimeout(timerId);

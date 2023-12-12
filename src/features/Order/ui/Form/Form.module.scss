@@ -322,4 +322,8 @@
   height: 40px;
   width: 100%;
   color: #222222;
+
+  &:disabled {
+    opacity: 0.5
+  }
 }
