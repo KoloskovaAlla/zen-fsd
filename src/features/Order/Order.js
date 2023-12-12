@@ -85,6 +85,10 @@ export const Order = () => {
     const timerId = setTimeout(() => {
       dispatch(orderState.orderActions.setIsModalActive(false));
       dispatch(orderState.orderActions.setIsDataSent(false));
+      dispatch(orderState.orderActions.setName(''));
+      dispatch(orderState.orderActions.setTel(''));
+      dispatch(orderState.orderActions.setEmail(''));
+      dispatch(orderState.orderActions.setConnection(''));
     }, 2000);
 
     return () => clearTimeout(timerId);
