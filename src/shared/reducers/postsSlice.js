@@ -1,36 +1,45 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { API_BASE_URL } from 'shared/constants/api';
 
-const getPosts = createAsyncThunk(
-  'posts/fetchData',
-  async (_, thunkApi) => {
-    /**  @type {*} */
-    const state = thunkApi.getState();
-    const { lang } = state.langsReducer;
-    const url = `${API_BASE_URL}/${lang}/sectionPosts/.json`;
-
-    try {
-      const response = await fetch(url);
-      const postsData = await response.json();
-      if (!Object.values(postsData).length) throw new Error('Data is empty');
-      return thunkApi.fulfillWithValue(postsData);
-    } catch (error) {
-      console.error(error);
-      /** @type {*} */
-      const { message } = error;
-      return thunkApi.rejectWithValue(message);
-    }
-  }
-);
+/**
+ * @typedef {import('./types').ThunkAPI} ThunkAPI
+ * @typedef {import('./types').PostsFromAPI} PostsFromAPI
+ */
 
 /**
- * @typedef {import('./types').PostsState} State
- * @type {State}
+ * @function onGetPosts
+ * @param {null} _
+ * @param {ThunkAPI} thunkAPI
+ * @returns Promise<PostsFromAPI | string>
  */
+
+const onGetPosts = async (_, thunkAPI) => {
+  try {
+    const /** @type {*} */ state = thunkAPI.getState();
+    const { lang } = state.langsReducer;
+    const endpoint = lang;
+    const url = `${API_BASE_URL}/${endpoint}/.json`;
+    const response = await fetch(url);
+    const data = await response.json();
+    if (data.message) throw new Error(data.message);
+    return thunkAPI.fulfillWithValue(data.sectionPosts);
+  } catch (error) {
+    const /** @type {*} */ { message } = error;
+    console.error(message);
+    return thunkAPI.rejectWithValue(message);
+  }
+};
+
+/** @type {*} */
+const getPosts = createAsyncThunk(
+  'posts/getPosts',
+  onGetPosts
+);
 
 const initialState = {
   isLoading: false,
-  postsData: null,
+  /** @type {null | PostsFromAPI} */
+  postsSection: null,
   errorMessage: '',
 };
 
@@ -39,19 +48,19 @@ const postsSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
-    [`${getPosts.pending}`]: (state) => {
+    [getPosts.pending]: (state) => {
       state.isLoading = true;
-      state.postsData = null;
+      state.postsSection = null;
       state.errorMessage = '';
     },
-    [`${getPosts.fulfilled}`]: (state, { payload }) => {
+    [getPosts.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
-      state.postsData = payload;
+      state.postsSection = payload;
       state.errorMessage = '';
     },
-    [`${getPosts.rejected}`]: (state, { payload }) => {
+    [getPosts.rejected]: (state, { payload }) => {
       state.isLoading = false;
-      state.postsData = null;
+      state.postsSection = null;
       state.errorMessage = payload;
     },
   }
