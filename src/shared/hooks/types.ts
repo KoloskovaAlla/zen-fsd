@@ -176,7 +176,7 @@ export interface Posts {
   warranty: WarrantyPost;
 }
 
-export interface postsData {
+export interface PostsSection {
   posts: Posts;
   buttonText: string;
   title: Title;
@@ -185,7 +185,7 @@ export interface postsData {
 export interface PostsState {
   getPosts: Function,
   isLoading: boolean,
-  postsData: null | postsData,
+  postsSection: PostsSection,
   errorMessage: string,
 };
 

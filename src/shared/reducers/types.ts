@@ -165,20 +165,13 @@ export interface OrderState {
 };
 
 
-export interface PostsData {
+export interface PostsFromAPI {
   buttonText: string;
   title: Title;
   care: Care;
   cashback: Cashback;
   clients: Client[];
   warranty: Warranty;
-};
-
-export interface PostsState {
-  etchPostsData?: Function;
-  isLoading: boolean,
-  postsData: null | PostsData,
-  errorMessage: string,
 };
 
 export interface PreviewDetails {
