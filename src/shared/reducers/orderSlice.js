@@ -32,7 +32,7 @@ const onGetOrder = async (_, thunkAPI) => {
 
 /** @type {any} */
 const getOrder = createAsyncThunk(
-  'order/getData',
+  'order/getOrder',
   onGetOrder
 );
 
@@ -69,7 +69,7 @@ const onSendOrder = async (order, thunkAPI) => {
 
 /** @type {any} */
 const sendOrder = createAsyncThunk(
-  'order/sendData',
+  'order/sendOrder',
   onSendOrder
 );
 
@@ -140,32 +140,32 @@ export const orderSlice = createSlice({
     },
   },
   extraReducers: {
-    [`${getOrder.pending}`]: (state) => {
+    [getOrder.pending]: (state) => {
       state.isLoading = true;
       state.orderData = null;
       state.errorMessage = '';
     },
-    [`${getOrder.fulfilled}`]: (state, { payload }) => {
+    [getOrder.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
       state.orderData = payload;
       state.errorMessage = '';
     },
-    [`${getOrder.rejected}`]: (state, { payload }) => {
+    [getOrder.rejected]: (state, { payload }) => {
       state.isLoading = false;
       state.orderData = {};
       state.errorMessage = payload;
     },
-    [`${sendOrder.pending}`]: (state) => {
+    [sendOrder.pending]: (state) => {
       state.isSending = true;
       state.isOrderSended = false;
       state.errorMessage = '';
     },
-    [`${sendOrder.fulfilled}`]: (state) => {
+    [sendOrder.fulfilled]: (state) => {
       state.isSending = false;
       state.isOrderSended = true;
       state.errorMessage = '';
     },
-    [`${sendOrder.rejected}`]: (state, { payload }) => {
+    [sendOrder.rejected]: (state, { payload }) => {
       state.isSending = false;
       state.isOrderSended = false;
       state.errorMessage = payload;
