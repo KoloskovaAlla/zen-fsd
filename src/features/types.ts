@@ -1,0 +1,1 @@
+export type MouseClickOrTouchEvent = React.MouseEvent<HTMLDivElement, MouseEvent> | React.TouchEvent<HTMLDivElement>;
