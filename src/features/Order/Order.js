@@ -18,8 +18,6 @@ export const Order = () => {
   const dispatch = useDispatch();
   const orderState = useOrder();
 
-  console.log(orderState);
-
   useEffect(() => {
     dispatch(orderState.orderActions.getOrder());
   }, [dispatch, orderState.orderActions.getOrder]);
