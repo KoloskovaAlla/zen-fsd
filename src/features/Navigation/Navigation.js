@@ -5,11 +5,9 @@ import { NavLink } from 'react-router-dom';
 import { useNav, useLang, useTheme } from 'shared/hooks';
 import { classNames } from 'shared/utils';
 
-/** @typedef {import('react').ReactElement} Element */
-
 /**
  * @function Navigation
- * @returns {Element}
+ * @returns {null | JSX.Element}
  */
 
 export const Navigation = () => {
@@ -42,27 +40,26 @@ export const Navigation = () => {
 
   const getLinkClassName = ({ isActive }) => isActive ? 'active' : '';
 
+  if (!navItems) return null;
   return (
     <nav className={classes.navigation}>
-      {navItems && (
-        <ul className={menuClassNames}>
-          {navItems.length > 0 &&
-            navItems.map((menuItem, index) => (
-              <li
-                className={classes.item}
-                key={index}
+      <ul className={menuClassNames}>
+        {navItems.length > 0 &&
+          navItems.map((menuItem, index) => (
+            <li
+              className={classes.item}
+              key={index}
+            >
+              <NavLink
+                className={getLinkClassName}
+                to={`/${menuItem.target}`}
+                onClick={handleLinkClick}
               >
-                <NavLink
-                  className={getLinkClassName}
-                  to={`/${menuItem.target}`}
-                  onClick={handleLinkClick}
-                >
-                  {menuItem.text}
-                </NavLink>
-              </li>
-            ))}
-        </ul>
-      )}
+                {menuItem.text}
+              </NavLink>
+            </li>
+          ))}
+      </ul>
     </nav>
   );
 };
