@@ -4,7 +4,9 @@ import { useLang } from 'shared/hooks';
 import { Select } from 'shared/ui';
 import { IconArrow } from 'shared/icons';
 
-/** @typedef {import('react').ReactElement} Element */
+/**
+ * @typedef {import('react').ReactElement} Element
+ */
 
 /**
  * @function Lang

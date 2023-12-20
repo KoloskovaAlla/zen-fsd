@@ -15,7 +15,7 @@ const getState = (store) => store.cashbackPageReducer;
 
 /**
  * @function useCashbackPage
- * @returns
+ * @returns {CashbackPageState}
  */
 
 export const useCashbackPage = () => {

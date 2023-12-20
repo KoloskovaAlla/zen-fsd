@@ -1,7 +1,8 @@
-import classes from './Modal.module.scss';
-import { useEffect } from 'react';
+import classes from './ErrorModal.module.scss';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { usePost } from 'shared/hooks';
+import { usePost, useLang } from 'shared/hooks';
+import { ERROR_MODAL_TITLE, POST_ERRORS } from 'shared/constants/api';
 import { Button } from 'shared/ui';
 import { classNames } from 'shared/utils';
 
@@ -12,17 +13,23 @@ import { classNames } from 'shared/utils';
 
 /**
  * @function Modal
- * @param {ModalProps} props
  * @returns {Element}
  */
 
-export const Modal = ({
-  isModalActive,
-  setIsModalActive,
-  title,
-  content,
-}) => {
+export const ErrorModal = () => {
+  const [isModalActive, setIsModalActive] = useState(false);
+  const [content, setContent] = useState('');
   const dispatch = useDispatch();
+  const { lang } = useLang();
+  const { postErrorMessage } = usePost();
+  const { postErrorModalMessage } = POST_ERRORS[lang];
+
+  useEffect(() => {
+    if (postErrorMessage !== '') {
+      setIsModalActive(true);
+      setContent(postErrorModalMessage);
+    }
+  }, [postErrorMessage, lang]);
 
   const { resetPostErrorMessage } = usePost();
 
@@ -30,23 +37,23 @@ export const Modal = ({
     [classes.active]: isModalActive,
   });
 
-  const handleModalCloseClick = () => {
+  const handleCloseClick = () => {
     setIsModalActive(false);
     dispatch(resetPostErrorMessage());
   };
 
-  const handleModalOverlayClick = () => {
+  const handleOverlayClick = () => {
     setIsModalActive(false);
     dispatch(resetPostErrorMessage());
   };
 
   /**
-   * @typedef {import('react').SyntheticEvent} Event
+   * @typedef {import('../types').MouseClickOrTouchEvent} MouseClickOrTouchEvent
    */
 
   /**
    * @function handleBodyClick
-   * @param {Event} event
+   * @param {MouseClickOrTouchEvent} event
    * @returns {void}
    */
 
@@ -68,7 +75,7 @@ export const Modal = ({
   return (
     <div
       className={modalClassName}
-      onClick={handleModalOverlayClick}
+      onClick={handleOverlayClick}
     >
       <div
         className={classes.body}
@@ -76,11 +83,11 @@ export const Modal = ({
       >
         <Button
           className={classes.close}
-          onClickButton={handleModalCloseClick}
+          onClickButton={handleCloseClick}
           iconName={'close'}
           content={'icon'}
         />
-        <h2 className={classes.title}>{title}</h2>
+        <h2 className={classes.title}>{ERROR_MODAL_TITLE}</h2>
         <div className={classes.content}>{content}</div>
       </div>
     </div >
