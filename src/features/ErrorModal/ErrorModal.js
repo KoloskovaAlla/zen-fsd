@@ -37,12 +37,12 @@ export const ErrorModal = () => {
     [classes.active]: isModalActive,
   });
 
-  const handleModalCloseClick = () => {
+  const handleCloseClick = () => {
     setIsModalActive(false);
     dispatch(resetPostErrorMessage());
   };
 
-  const handleModalOverlayClick = () => {
+  const handleOverlayClick = () => {
     setIsModalActive(false);
     dispatch(resetPostErrorMessage());
   };
@@ -75,7 +75,7 @@ export const ErrorModal = () => {
   return (
     <div
       className={modalClassName}
-      onClick={handleModalOverlayClick}
+      onClick={handleOverlayClick}
     >
       <div
         className={classes.body}
@@ -83,7 +83,7 @@ export const ErrorModal = () => {
       >
         <Button
           className={classes.close}
-          onClickButton={handleModalCloseClick}
+          onClickButton={handleCloseClick}
           iconName={'close'}
           content={'icon'}
         />
