@@ -15,9 +15,7 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": false,
     "experimentalDecorators": false,
-    "paths": {
-      "@entities/*": ["entities/*"]
-    },
+    "paths": {},
     "strict": true,
     "alwaysStrict": true,
     "allowUnreachableCode": true,
@@ -30,5 +28,6 @@
   "include": [
     "src",
     "config.d.ts",
+    "types.d.ts",
   ]
 }
