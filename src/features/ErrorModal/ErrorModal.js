@@ -1,4 +1,5 @@
 import classes from './ErrorModal.module.scss';
+import React from 'react';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { usePost, useLang } from 'shared/hooks';
@@ -48,12 +49,8 @@ export const ErrorModal = () => {
   };
 
   /**
-   * @typedef {import('../types').MouseClickOrTouchEvent} MouseClickOrTouchEvent
-   */
-
-  /**
    * @function handleBodyClick
-   * @param {MouseClickOrTouchEvent} event
+   * @param {DivClickEvent} event
    * @returns {void}
    */
 
