@@ -17,3 +17,5 @@ declare module '*.scss' {
 type DivClickEvent = 
   React.MouseEvent<HTMLDivElement, MouseEvent> | 
   React.TouchEvent<HTMLDivElement>;
+
+type LinkClickEvent = React.MouseEvent<HTMLAnchorElement, MouseEvent>

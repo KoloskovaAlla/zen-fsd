@@ -1,6 +1,10 @@
 import classes from './PostLink.module.scss';
-import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { trimString } from 'shared/utils';
+import { usePost } from 'shared/hooks';
+import { useState } from 'react';
 
 /**
  * @typedef {import('react').ReactElement} Element
@@ -13,11 +17,35 @@ import { trimString } from 'shared/utils';
  */
 
 export const PostLink = ({ postKey, post }) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const postState = usePost();
   const fullPostText = post.article.join(' ');
   const previewPostText = trimString(fullPostText, 40);
 
+  useEffect(() => {
+    const currentPath = window.location.pathname;
+    const targetPath = `/posts/${postKey}`;
+    const isNavToPost = postState.post &&
+      postState.post.key === postKey &&
+      currentPath !== targetPath;
+
+    if (isNavToPost) navigate(targetPath);
+  }, [postKey, postState.post]);
+
+  /**
+   * @function handlePreviewClick
+   * @param {LinkClickEvent} event
+   * @return {void}
+   */
+
+  const handlePreviewClick = (event) => {
+    event.preventDefault();
+    dispatch(postState.getPost(postKey));
+  };
+
   return (
-    <Link className={classes.post} to={`/posts/${postKey}`}>
+    <Link className={classes.post} onClick={handlePreviewClick} to={`/posts/${postKey}`}>
       <button className={classes.image}>
         <img src={post?.image?.source} alt='alternate img' />
       </button>

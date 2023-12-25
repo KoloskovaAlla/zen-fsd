@@ -264,11 +264,11 @@ export interface WarrantyPage {
   final: Final;
 }
 
-export interface WarrantyPageState {
+export type WarrantyPageFromAPI = {
   isWarrantyPageLoading: boolean;
-  warrantyPage: null | WarrantyPage;
+  warrantyPage: WarrantyPage;
   warrantyPageErrorMessage: string;
-}
+};
 
 export interface Post {
 

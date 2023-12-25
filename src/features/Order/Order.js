@@ -14,6 +14,11 @@ import { Form } from './ui';
 
 const date = new Date().toLocaleString();
 
+/**
+ * @function Order
+ * @returns {null | JSX.Element}
+ */
+
 export const Order = () => {
   const dispatch = useDispatch();
   const orderState = useOrder();
