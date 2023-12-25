@@ -1,6 +1,5 @@
 export { useLang } from './useLang';
 export { useTheme } from './useTheme';
-export { usePreview } from './usePreview';
 export { useHomePage } from './useHomePage';
 export { usePosts } from './usePosts';
 export { useClients } from './useClients';

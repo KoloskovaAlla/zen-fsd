@@ -1,7 +1,6 @@
 export { langsReducer } from './langsSlice';
 export { themeReducer } from './themeSlice';
 export { orderReducer } from './orderSlice';
-export { previewReducer } from './previewSlice';
 export { homePageReducer } from './homeSlice';
 export { clientsReducer } from './clientsSlice';
 export { postsReducer } from './postsSlice';
