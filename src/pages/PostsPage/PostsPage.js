@@ -16,6 +16,7 @@ const PostsPage = () => {
     ...postsPageState
   } = usePostsPage();
   const { postsPage } = postsPageState;
+
   const { lang } = useLang();
   const title = lang === 'en'
     ? 'ZEN | Blog'
