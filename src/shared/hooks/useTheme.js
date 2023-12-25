@@ -4,17 +4,23 @@ import { setTheme } from '../reducers/themeSlice';
 import { useSelector } from 'react-redux';
 
 /**
- * @type {(store: object) => object}
+ * @typedef {import('./types').ThemeState} ThemeState
  */
-const callback = (store) => store.themeReducer;
 
 /**
- * @typedef {import('./types').ThemeState} State
- * @type {() => State}
+ * @function getState
+ * @param {Object} store
+ * @returns {Object}
+ */
+const getState = (store) => store.themeReducer;
+
+/**
+ * @function useTheme
+ * @returns {ThemeState}
  */
 
 export const useTheme = () => {
-  const { theme } = useSelector(callback);
+  const { theme } = useSelector(getState);
 
   useEffect(() => {
     localStorage.setItem('theme', theme);
