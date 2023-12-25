@@ -408,13 +408,15 @@ export interface PostState {
   resetPostErrorMessage: Function;
 };
 
-export interface PostsPageState {
-  posts: Posts[];
+export type PostsPage = {
+  care: Care;
+  cashback: Cashback;
+  warranty: Warranty;
 };
 
 export interface postsPageState {
+  postsPage: PostsPage;
   getPostsPage: Function;
-  postsPage: PostsPageState;
 };
 
 export interface DownloadPage {
