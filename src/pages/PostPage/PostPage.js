@@ -30,9 +30,9 @@ const PostPage = () => {
     dispatch(postState.getPost(key));
   }, [lang, key]);
 
-  useEffect(() => {
-    if (postErrorMessage !== '' && postErrorMessage !== null) navigate('/');
-  }, [post, navigate, isPostLoading]);
+  // useEffect(() => {
+  //   if (postErrorMessage !== '') navigate('/posts');
+  // }, [post, navigate, isPostLoading]);
 
   useEffect(() => {
     window.scrollTo(0, 0);

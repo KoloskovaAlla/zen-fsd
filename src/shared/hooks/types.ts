@@ -398,6 +398,7 @@ export interface Post {
   title: string;
   texts: string[];
   media: Media;
+  key?: string;
 };
 
 export interface PostState {
