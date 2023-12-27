@@ -23,6 +23,6 @@ export const useWarrantyPage = () => {
 
   return {
     ...state,
-    getState,
+    getWarrantyPage,
   };
 };
