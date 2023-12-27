@@ -7,7 +7,7 @@ import { API_BASE_URL } from 'shared/constants/api';
 
 /**
  * @function onGetWarrantyPage
- * @param {null} _ 
+ * @param {null} _
  * @param {*} thunkAPI
  * @returns {Promise<WarrantyPageFromAPI | null>}
  */
@@ -15,7 +15,7 @@ import { API_BASE_URL } from 'shared/constants/api';
 const onGetWarrantyPage = async (_, thunkAPI) => {
   try {
     const /** @type {*} */ state = thunkAPI.getState();
-    const { lang } = state.langReducer;
+    const { lang } = state.langsReducer;
     const endpoint = lang;
     const url = `${API_BASE_URL}/${endpoint}/.json`;
     const response = await fetch(url);

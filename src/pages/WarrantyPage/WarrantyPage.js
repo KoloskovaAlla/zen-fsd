@@ -10,10 +10,8 @@ import { SectionBase } from 'widgets';
 
 const WarrantyPage = () => {
   const dispatch = useDispatch();
-  const {
-    getWarrantyPage,
-    ...warrantyPageState
-  } = useWarrantyPage();
+  const warrantyPageState = useWarrantyPage();
+  console.log(warrantyPageState);
 
   const { warrantyPage } = warrantyPageState;
 
@@ -25,8 +23,8 @@ const WarrantyPage = () => {
   useDocumentTitle(title);
 
   useEffect(() => {
-    dispatch(getWarrantyPage());
-  }, [dispatch, getWarrantyPage, lang]);
+    dispatch(warrantyPageState.getWarrantyPage());
+  }, [dispatch, warrantyPageState.getWarrantyPage, lang]);
 
   if (!warrantyPage) return null;
   return (
