@@ -4,7 +4,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { trimString } from 'shared/utils';
 import { usePost } from 'shared/hooks';
-import { useState } from 'react';
 
 /**
  * @typedef {import('react').ReactElement} Element
