@@ -1,5 +1,8 @@
 import classes from './PostPreview.module.scss';
-import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { usePost } from 'shared/hooks';
 
 /**
  * @function PostsPreview
@@ -7,11 +10,29 @@ import { Link } from 'react-router-dom';
  */
 
 
-export const PostPreview = ({ details }) => {
-  const { image, title, key } = details;
+export const PostPreview = ({ details: { image, title, postKey } }) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const postState = usePost();
+
+  const handlePreviewClick = (event) => {
+    event.preventDefault();
+    dispatch(postState.getPost(postKey));
+  };
+
+  useEffect(() => {
+    const currentPath = window.location.pathname;
+
+    const targetPath = `/posts/${postKey}`;
+    const isNavToPost = postState.post &&
+      postState.post.key === postKey &&
+      currentPath !== targetPath;
+
+    if (isNavToPost) navigate(targetPath);
+  }, [postKey, postState.post]);
 
   return (
-    <Link to={`/posts/${key}`}>
+    <Link onClick={handlePreviewClick} to={`/posts/${postKey}`}>
       <div className={classes.postPreview}>
         <div className={classes.header}>
           <div className={classes.image}>
