@@ -3,6 +3,8 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { usePostsPage, useLang, useDocumentTitle } from 'shared/hooks';
 import { PostPreview } from './ui';
+import { useLocation } from 'react-router-dom';
+import { usePost } from 'shared/hooks';
 
 /**
  * @function PostsPage
@@ -31,6 +33,13 @@ const PostsPage = () => {
   useEffect(() => {
     dispatch(getPostsPage());
   }, [dispatch, getPostsPage, lang]);
+
+  const location = useLocation();
+  const currentPage = location.pathname;
+
+  useEffect(() => {
+    console.log(currentPage);
+  }, [currentPage]);
 
   if (!postsPage) return null;
   return (
