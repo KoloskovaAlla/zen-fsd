@@ -10,26 +10,30 @@ import { usePost } from 'shared/hooks';
  */
 
 
-export const PostPreview = ({ details: { image, title, postKey } }) => {
+export const PostPreview = ({ details }) => {
+  const { image, title, postKey } = details;
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const postState = usePost();
+
+  useEffect(() => {
+    const currentPath = window.location.pathname;
+    const targetPath = `/posts/${postKey}`;
+
+    const isNavToPost = postState.post &&
+      postState.post.key === postKey &&
+      currentPath !== targetPath;
+
+    if (isNavToPost) {
+      navigate(targetPath);
+      console.log('сейчас перейдем');
+    };
+  }, [postKey, postState.post]);
 
   const handlePreviewClick = (event) => {
     event.preventDefault();
     dispatch(postState.getPost(postKey));
   };
-
-  useEffect(() => {
-    const currentPath = window.location.pathname;
-
-    const targetPath = `/posts/${postKey}`;
-    const isNavToPost = postState.post &&
-      postState.post.key === postKey &&
-      currentPath !== targetPath;
-
-    if (isNavToPost) navigate(targetPath);
-  }, [postKey, postState.post]);
 
   return (
     <Link onClick={handlePreviewClick} to={`/posts/${postKey}`}>
