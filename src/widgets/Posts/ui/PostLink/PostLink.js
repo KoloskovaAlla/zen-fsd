@@ -29,6 +29,8 @@ export const PostLink = ({ postKey, post }) => {
       postState.post.key === postKey &&
       currentPath !== targetPath;
 
+    if (isNavToPost) console.log(isNavToPost);
+
     if (isNavToPost) navigate(targetPath);
   }, [postKey, postState.post]);
 

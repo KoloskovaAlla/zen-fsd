@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { usePost, useLang, useDocumentTitle } from 'shared/hooks';
+import { useLocation } from 'react-router-dom';
 
 /**
  * @function PostPage
@@ -15,7 +16,7 @@ const PostPage = () => {
   const params = useParams();
   const { key } = params;
   const postState = usePost();
-  const { post, isPostLoading, postErrorMessage } = postState;
+  const { post } = postState;
   const { lang } = useLang();
   const title = post?.title
     ? `ZEN | ${post.title}`
@@ -30,9 +31,12 @@ const PostPage = () => {
     dispatch(postState.getPost(key));
   }, [lang, key]);
 
-  // useEffect(() => {
-  //   if (postErrorMessage !== '') navigate('/posts');
-  // }, [post, navigate, isPostLoading]);
+
+  const location = useLocation();
+  const currentPage = location.pathname;
+  useEffect(() => {
+    console.log(currentPage);
+  }, [currentPage]);
 
   useEffect(() => {
     window.scrollTo(0, 0);

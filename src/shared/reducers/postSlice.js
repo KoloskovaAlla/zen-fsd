@@ -51,6 +51,10 @@ const postSlice = createSlice({
     resetPostErrorMessage: (state) => {
       state.postErrorMessage = '';
     },
+    clearPostPage: (state) => {
+      console.log('Очищаем данные страницы поста');
+      state.post = null;
+    },
   },
   extraReducers: {
     [getPost.pending]: (state) => {
@@ -73,4 +77,4 @@ const postSlice = createSlice({
 
 export { getPost };
 export const { reducer: postReducer } = postSlice;
-export const { resetPostErrorMessage } = postSlice.actions;
+export const { resetPostErrorMessage, clearPostPage } = postSlice.actions;
