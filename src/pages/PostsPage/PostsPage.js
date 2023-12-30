@@ -5,6 +5,7 @@ import { usePostsPage, useLang, useDocumentTitle } from 'shared/hooks';
 import { PostPreview } from './ui';
 import { useLocation } from 'react-router-dom';
 import { usePost } from 'shared/hooks';
+import { useNavigate } from 'react-router-dom';
 
 /**
  * @function PostsPage
@@ -18,6 +19,8 @@ const PostsPage = () => {
     ...postsPageState
   } = usePostsPage();
   const { postsPage } = postsPageState;
+
+
 
   const { lang } = useLang();
   const title = lang === 'en'
@@ -36,6 +39,19 @@ const PostsPage = () => {
 
   const location = useLocation();
   const currentPage = location.pathname;
+
+  const postState = usePost();
+
+  useEffect(() => {
+    dispatch(postState.clearPostPage());
+    console.log('должен очиститься');
+  }, [currentPage]);
+
+  const navigate = useNavigate();
+
+
+
+
 
   useEffect(() => {
     console.log(currentPage);

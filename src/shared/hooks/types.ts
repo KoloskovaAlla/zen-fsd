@@ -407,6 +407,7 @@ export interface PostState {
   postErrorMessage: string;
   getPost: Function;
   resetPostErrorMessage: Function;
+  clearPostPage: Function;
 };
 
 export type PostsPage = {
