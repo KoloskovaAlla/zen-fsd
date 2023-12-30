@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { usePost } from 'shared/hooks';
+import { useLocation } from 'react-router-dom';
 
 /**
  * @function PostsPreview
@@ -16,6 +17,15 @@ export const PostPreview = ({ details }) => {
   const navigate = useNavigate();
   const postState = usePost();
 
+  const location = useLocation();
+  const currentPage = location.pathname;
+
+  useEffect(() => {
+    dispatch(postState.clearPostPage());
+    console.log('должен очиститься');
+  }, [currentPage]);
+
+  console.log(postState.post);
   useEffect(() => {
     const currentPath = window.location.pathname;
     const targetPath = `/posts/${postKey}`;
@@ -23,12 +33,12 @@ export const PostPreview = ({ details }) => {
     const isNavToPost = postState.post &&
       postState.post.key === postKey &&
       currentPath !== targetPath;
-
     if (isNavToPost) {
       navigate(targetPath);
-      console.log('сейчас перейдем');
     };
   }, [postKey, postState.post]);
+
+
 
   const handlePreviewClick = (event) => {
     event.preventDefault();
