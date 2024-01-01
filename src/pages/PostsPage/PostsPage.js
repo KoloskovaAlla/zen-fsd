@@ -42,10 +42,10 @@ const PostsPage = () => {
 
   const postState = usePost();
 
-  useEffect(() => {
-    dispatch(postState.clearPostPage());
-    console.log('должен очиститься');
-  }, [currentPage]);
+  // useEffect(() => {
+  //   dispatch(postState.clearPostPage());
+  //   console.log('должен очиститься');
+  // }, [currentPage]);
 
   const navigate = useNavigate();
 

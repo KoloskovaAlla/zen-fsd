@@ -20,10 +20,10 @@ export const PostPreview = ({ details }) => {
   const location = useLocation();
   const currentPage = location.pathname;
 
-  useEffect(() => {
-    dispatch(postState.clearPostPage());
-    console.log('должен очиститься');
-  }, [currentPage]);
+  // useEffect(() => {
+  //   dispatch(postState.clearPostPage());
+  //   console.log('должен очиститься');
+  // }, [currentPage]);
 
   console.log(postState.post);
   useEffect(() => {

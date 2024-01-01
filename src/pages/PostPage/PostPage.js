@@ -42,6 +42,14 @@ const PostPage = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  useEffect(() => {
+    dispatch(postState.getPost(key));
+
+    return () => {
+      dispatch(postState.clearPostPage());
+    };
+  }, [key, lang]);
+
   if (!post) return null;
   return (
     <div className={classes.postPage}>
