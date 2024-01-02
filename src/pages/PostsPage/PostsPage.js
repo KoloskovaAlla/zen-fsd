@@ -29,33 +29,27 @@ const PostsPage = () => {
 
   useDocumentTitle(title);
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
-  useEffect(() => {
-    dispatch(getPostsPage());
-  }, [dispatch, getPostsPage, lang]);
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, []);
 
   const location = useLocation();
   const currentPage = location.pathname;
 
-  const postState = usePost();
+  // const postState = usePost();
 
   // useEffect(() => {
   //   dispatch(postState.clearPostPage());
-  //   console.log('должен очиститься');
   // }, [currentPage]);
 
-  const navigate = useNavigate();
-
-
-
-
+  // useEffect(() => {
+  //   console.log(currentPage);
+  // }, [currentPage]);
 
   useEffect(() => {
-    console.log(currentPage);
-  }, [currentPage]);
+    console.log('Dispatching getPostsPage');
+    dispatch(getPostsPage());
+  }, [dispatch, getPostsPage, lang, currentPage]);
 
   if (!postsPage) return null;
   return (

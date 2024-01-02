@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { usePost } from 'shared/hooks';
 import { useLocation } from 'react-router-dom';
+import { useState } from 'react';
 
 /**
  * @function PostsPreview
@@ -20,29 +21,36 @@ export const PostPreview = ({ details }) => {
   const location = useLocation();
   const currentPage = location.pathname;
 
-  // useEffect(() => {
-  //   dispatch(postState.clearPostPage());
-  //   console.log('должен очиститься');
-  // }, [currentPage]);
+  useEffect(() => {
+    console.log('рендеринг');
+  }, [currentPage]);
 
-  console.log(postState.post);
+  const [isPreviewClicked, setIsPreviewClicked] = useState(false);
+
   useEffect(() => {
     const currentPath = window.location.pathname;
     const targetPath = `/posts/${postKey}`;
 
     const isNavToPost = postState.post &&
       postState.post.key === postKey &&
-      currentPath !== targetPath;
+      currentPath !== targetPath &&
+      isPreviewClicked;
     if (isNavToPost) {
       navigate(targetPath);
+      setIsPreviewClicked(false);
     };
   }, [postKey, postState.post]);
 
-
+  /**
+   * @function handleBodyClick
+   * @param {LinkClickEvent} event
+   * @returns {void}
+   */
 
   const handlePreviewClick = (event) => {
     event.preventDefault();
     dispatch(postState.getPost(postKey));
+    setIsPreviewClicked(true);
   };
 
   return (

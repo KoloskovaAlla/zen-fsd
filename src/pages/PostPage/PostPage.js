@@ -26,17 +26,11 @@ const PostPage = () => {
 
   const isMediaTypeImage = post?.media?.type === 'image';
   const isMediaTypeVideo = post?.media?.type === 'video';
-
-  useEffect(() => {
-    dispatch(postState.getPost(key));
-  }, [lang, key]);
-
-
   const location = useLocation();
   const currentPage = location.pathname;
-  useEffect(() => {
-    console.log(currentPage);
-  }, [currentPage]);
+  // useEffect(() => {
+  //   console.log(currentPage);
+  // }, [currentPage]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -47,8 +41,13 @@ const PostPage = () => {
 
     return () => {
       dispatch(postState.clearPostPage());
+      console.log('вызов clearPostPage');
     };
   }, [key, lang]);
+
+  useEffect(() => {
+    console.log(post);
+  }, [postState]);
 
   if (!post) return null;
   return (
