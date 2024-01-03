@@ -52,7 +52,6 @@ const postSlice = createSlice({
       state.postErrorMessage = '';
     },
     clearPostPage: (state) => {
-      console.log('Очищаем данные страницы поста');
       state.post = null;
     },
   },
@@ -61,16 +60,19 @@ const postSlice = createSlice({
       state.isPostLoading = true;
       state.post = null;
       state.postErrorMessage = '';
+      console.log('Dispatching getPost.pending');
     },
     [getPost.fulfilled]: (state, { payload }) => {
       state.isPostLoading = false;
       state.post = payload;
       state.postErrorMessage = '';
+      console.log('Dispatching getPost.fulfilled');
     },
     [getPost.rejected]: (state, { payload }) => {
       state.isPostLoading = false;
       state.post = null;
       state.postErrorMessage = payload;
+      console.log('Dispatching getPost.rejected');
     },
   }
 });
