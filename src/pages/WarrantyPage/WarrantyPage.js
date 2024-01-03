@@ -11,10 +11,7 @@ import { SectionBase } from 'widgets';
 const WarrantyPage = () => {
   const dispatch = useDispatch();
   const warrantyPageState = useWarrantyPage();
-  console.log(warrantyPageState);
-
   const { warrantyPage } = warrantyPageState;
-
   const { lang } = useLang();
   const title = lang === 'en'
     ? 'ZEN | Warranty'

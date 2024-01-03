@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { usePost, useLang, useDocumentTitle } from 'shared/hooks';
+import { useLocation } from 'react-router-dom';
 
 /**
  * @function PostPage
@@ -15,7 +16,7 @@ const PostPage = () => {
   const params = useParams();
   const { key } = params;
   const postState = usePost();
-  const { post, isPostLoading, postErrorMessage } = postState;
+  const { post } = postState;
   const { lang } = useLang();
   const title = post?.title
     ? `ZEN | ${post.title}`
@@ -25,18 +26,28 @@ const PostPage = () => {
 
   const isMediaTypeImage = post?.media?.type === 'image';
   const isMediaTypeVideo = post?.media?.type === 'video';
-
-  useEffect(() => {
-    dispatch(postState.getPost(key));
-  }, [lang, key]);
-
+  const location = useLocation();
+  const currentPage = location.pathname;
   // useEffect(() => {
-  //   if (postErrorMessage !== '') navigate('/posts');
-  // }, [post, navigate, isPostLoading]);
+  //   console.log(currentPage);
+  // }, [currentPage]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  useEffect(() => {
+    dispatch(postState.getPost(key));
+
+    return () => {
+      dispatch(postState.clearPostPage());
+      console.log('вызов clearPostPage');
+    };
+  }, [key, lang]);
+
+  useEffect(() => {
+    console.log(post);
+  }, [postState]);
 
   if (!post) return null;
   return (

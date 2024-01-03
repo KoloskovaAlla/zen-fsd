@@ -3,6 +3,9 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { usePostsPage, useLang, useDocumentTitle } from 'shared/hooks';
 import { PostPreview } from './ui';
+import { useLocation } from 'react-router-dom';
+import { usePost } from 'shared/hooks';
+import { useNavigate } from 'react-router-dom';
 
 /**
  * @function PostsPage
@@ -17,6 +20,8 @@ const PostsPage = () => {
   } = usePostsPage();
   const { postsPage } = postsPageState;
 
+
+
   const { lang } = useLang();
   const title = lang === 'en'
     ? 'ZEN | Blog'
@@ -24,13 +29,27 @@ const PostsPage = () => {
 
   useDocumentTitle(title);
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, []);
+
+  const location = useLocation();
+  const currentPage = location.pathname;
+
+  // const postState = usePost();
+
+  // useEffect(() => {
+  //   dispatch(postState.clearPostPage());
+  // }, [currentPage]);
+
+  // useEffect(() => {
+  //   console.log(currentPage);
+  // }, [currentPage]);
 
   useEffect(() => {
+    console.log('Dispatching getPostsPage');
     dispatch(getPostsPage());
-  }, [dispatch, getPostsPage, lang]);
+  }, [dispatch, getPostsPage, lang, currentPage]);
 
   if (!postsPage) return null;
   return (

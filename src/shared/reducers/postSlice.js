@@ -51,26 +51,32 @@ const postSlice = createSlice({
     resetPostErrorMessage: (state) => {
       state.postErrorMessage = '';
     },
+    clearPostPage: (state) => {
+      state.post = null;
+    },
   },
   extraReducers: {
     [getPost.pending]: (state) => {
       state.isPostLoading = true;
       state.post = null;
       state.postErrorMessage = '';
+      console.log('Dispatching getPost.pending');
     },
     [getPost.fulfilled]: (state, { payload }) => {
       state.isPostLoading = false;
       state.post = payload;
       state.postErrorMessage = '';
+      console.log('Dispatching getPost.fulfilled');
     },
     [getPost.rejected]: (state, { payload }) => {
       state.isPostLoading = false;
       state.post = null;
       state.postErrorMessage = payload;
+      console.log('Dispatching getPost.rejected');
     },
   }
 });
 
 export { getPost };
 export const { reducer: postReducer } = postSlice;
-export const { resetPostErrorMessage } = postSlice.actions;
+export const { resetPostErrorMessage, clearPostPage } = postSlice.actions;
