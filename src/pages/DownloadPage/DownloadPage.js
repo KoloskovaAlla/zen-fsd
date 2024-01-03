@@ -26,32 +26,31 @@ const DownloadPage = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  if (!downloadPageState) return null;
   return (
-    <>
-      <main>
-        {downloadPageState?.downloadPage?.intro && (
-          <SectionBase
-            data={downloadPageState?.downloadPage?.intro}
-            type="primary"
-            reverse={false}
-          />
-        )}
-        {downloadPageState?.downloadPage?.core && (
-          <SectionBase
-            data={downloadPageState?.downloadPage?.core}
-            type="secondary"
-            reverse
-          />
-        )}
-        {downloadPageState?.downloadPage?.final && (
-          <SectionBase
-            data={downloadPageState?.downloadPage?.final}
-            type="secondary"
-            reverse={false}
-          />
-        )}
-      </main>
-    </>
+    <main>
+      {downloadPageState?.downloadPage?.intro && (
+        <SectionBase
+          data={downloadPageState?.downloadPage?.intro}
+          type="primary"
+          reverse={false}
+        />
+      )}
+      {downloadPageState?.downloadPage?.core && (
+        <SectionBase
+          data={downloadPageState?.downloadPage?.core}
+          type="secondary"
+          reverse
+        />
+      )}
+      {downloadPageState?.downloadPage?.final && (
+        <SectionBase
+          data={downloadPageState?.downloadPage?.final}
+          type="secondary"
+          reverse={false}
+        />
+      )}
+    </main>
   );
 };
 
