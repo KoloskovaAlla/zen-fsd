@@ -6,7 +6,7 @@ import { useClients } from 'shared/hooks';
 
 /**
  * @function Clients
- * @returns {JSX.Element}
+ * @returns {null | JSX.Element}
  */
 
 export const Clients = () => {

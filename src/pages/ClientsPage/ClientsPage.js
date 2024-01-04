@@ -5,7 +5,7 @@ import { useLang, useClientsPage, useDocumentTitle } from 'shared/hooks';
 
 /**
  * @function ClientsPage
- * @returns {JSX.Element | null}
+ * @returns {null | JSX.Element}
  */
 
 const ClientsPage = () => {
@@ -20,7 +20,6 @@ const ClientsPage = () => {
 
   useEffect(() => {
     dispatch(clientsPageState.getClientsPage());
-    // console.log(clientsPageState);
   }, [lang, dispatch]);
 
   useEffect(() => {

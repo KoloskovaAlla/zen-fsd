@@ -7,7 +7,7 @@ import { IconLogoFooter } from 'shared/icons';
 
 /**
  * @function Footer
- * @returns {JSX.Element}
+ * @returns {null | JSX.Element}
  */
 
 export const Footer = () => {

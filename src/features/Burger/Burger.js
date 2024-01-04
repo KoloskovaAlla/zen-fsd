@@ -4,12 +4,8 @@ import { useNav } from 'shared/hooks';
 import { classNames } from 'shared/utils';
 
 /**
- * @typedef {import('react').ReactElement} Element
- */
-
-/**
  * @function Burger
- * @returns {Element}
+ * @returns {null | JSX.Element}
  */
 
 export const Burger = () => {
