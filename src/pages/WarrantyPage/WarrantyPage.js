@@ -5,7 +5,7 @@ import { SectionBase } from 'widgets';
 
 /**
  * @function WarrantyPage
- * @returns {JSX.Element | null}
+ * @returns {null | JSX.Element}
  */
 
 const WarrantyPage = () => {

@@ -8,7 +8,7 @@ import { useState } from 'react';
 
 /**
  * @function PostsPreview
- * @returns {JSX.Element | null}
+ * @returns {null | JSX.Element}
  */
 
 

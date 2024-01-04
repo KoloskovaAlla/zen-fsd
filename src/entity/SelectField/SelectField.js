@@ -3,13 +3,12 @@ import { Select } from 'shared/ui';
 
 /**
  * @typedef {import('./types').SelectFieldProps} SelectFieldProps
- * @typedef {import('react').ReactElement} Element
  */
 
 /**
  * @function SelectField
  * @param {SelectFieldProps} props
- * @returns {Element}
+ * @returns {JSX.Element}
  */
 
 export const SelectField = ({

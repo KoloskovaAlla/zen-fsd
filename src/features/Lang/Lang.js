@@ -5,12 +5,8 @@ import { Select } from 'shared/ui';
 import { IconArrow } from 'shared/icons';
 
 /**
- * @typedef {import('react').ReactElement} Element
- */
-
-/**
  * @function Lang
- * @returns {Element}
+ * @returns {null | JSX.Element}
  */
 
 export const Lang = () => {

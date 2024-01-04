@@ -3,12 +3,8 @@ import { useTheme } from 'shared/hooks';
 import { IconSun, IconMoon } from 'shared/icons';
 
 /**
- * @typedef {import('react').ReactElement} Element
- */
-
-/**
  * @function Theme
- * @returns {Element}
+ * @returns {null | JSX.Element}
  */
 
 export const Theme = () => {

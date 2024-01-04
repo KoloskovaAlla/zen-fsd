@@ -5,7 +5,7 @@ import { SectionBase } from 'widgets';
 
 /**
  * @function CashbackPage
- * @returns {JSX.Element | null}
+ * @returns {null | JSX.Element}
  */
 
 const CashbackPage = () => {

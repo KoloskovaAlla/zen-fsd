@@ -9,7 +9,7 @@ import { IconLogoHeader } from 'shared/icons';
 
 /**
  * @function Header
- * @returns {JSX.Element}
+ * @returns {null | JSX.Element}
  */
 
 export const Header = () => {

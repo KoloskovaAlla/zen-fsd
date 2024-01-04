@@ -5,7 +5,7 @@ import { useLang, useClientsPage, useDocumentTitle } from 'shared/hooks';
 
 /**
  * @function ClientsPage
- * @returns {JSX.Element | null}
+ * @returns {null | JSX.Element}
  */
 
 const ClientsPage = () => {

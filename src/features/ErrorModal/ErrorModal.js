@@ -9,12 +9,11 @@ import { classNames } from 'shared/utils';
 
 /**
  * @typedef {import('./types').ModalProps} ModalProps
- * @typedef {import('react').ReactElement} Element
  */
 
 /**
  * @function Modal
- * @returns {Element}
+ * @returns {null | JSX.Element}
  */
 
 export const ErrorModal = () => {
