@@ -7,7 +7,7 @@ import { useLocation } from 'react-router-dom';
 
 /**
  * @function PostPage
- * @returns {JSX.Element | null}
+ * @returns {null | JSX.Element}
  */
 
 const PostPage = () => {

@@ -3,6 +3,11 @@ import { useDispatch } from 'react-redux';
 import { useLang, useHomePage, useDocumentTitle } from 'shared/hooks';
 import { SectionBase, Cashback } from 'widgets';
 
+/**
+ * @function HomePage
+ * @returns {null | JSX.Element}
+ */
+
 const HomePage = () => {
   const dispatch = useDispatch();
 

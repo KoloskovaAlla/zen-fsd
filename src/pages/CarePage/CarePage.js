@@ -5,7 +5,7 @@ import { SectionBase } from 'widgets';
 
 /**
  * @function CarePage
- * @returns {JSX.Element | null}
+ * @returns {null | JSX.Element}
  */
 
 const CarePage = () => {
