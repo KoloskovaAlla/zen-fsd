@@ -20,7 +20,6 @@ const ClientsPage = () => {
 
   useEffect(() => {
     dispatch(clientsPageState.getClientsPage());
-    // console.log(clientsPageState);
   }, [lang, dispatch]);
 
   useEffect(() => {

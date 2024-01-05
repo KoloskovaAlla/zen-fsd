@@ -39,11 +39,9 @@ export const Order = () => {
     dispatch(orderState?.orderActions.setIsModalActive(false));
   };
 
-  /** @typedef {import('react').SyntheticEvent} Event */
-
   /**
    * @function handleBodyClick
-   * @param {Event} event
+   * @param {DivClickEvent} event
    * @returns {void}
    */
 
