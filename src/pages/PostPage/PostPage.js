@@ -1,9 +1,8 @@
 import classes from './PostPage.module.scss';
 import { useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { usePost, useLang, useDocumentTitle } from 'shared/hooks';
-import { useLocation } from 'react-router-dom';
 
 /**
  * @function PostPage
@@ -11,7 +10,6 @@ import { useLocation } from 'react-router-dom';
  */
 
 const PostPage = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const params = useParams();
   const { key } = params;
@@ -26,11 +24,6 @@ const PostPage = () => {
 
   const isMediaTypeImage = post?.media?.type === 'image';
   const isMediaTypeVideo = post?.media?.type === 'video';
-  const location = useLocation();
-  const currentPage = location.pathname;
-  // useEffect(() => {
-  //   console.log(currentPage);
-  // }, [currentPage]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -41,7 +34,6 @@ const PostPage = () => {
 
     return () => {
       dispatch(postState.clearPostPage());
-      console.log('вызов clearPostPage');
     };
   }, [key, lang]);
 
