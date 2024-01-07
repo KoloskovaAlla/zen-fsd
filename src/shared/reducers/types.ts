@@ -1,9 +1,9 @@
-export interface NavItem {
+export type NavItem = {
   target: string;
   text: string;
 };
 
-export interface NavState {
+export type NavState = {
   getNav?: Function;
   isLoading: boolean;
   navItems: NavItem[] | null;
@@ -12,7 +12,7 @@ export interface NavState {
   isNavActive: boolean;
 };
 
-export interface Language {
+export type Language = {
   text: string;
   value: string;
 };
@@ -26,68 +26,68 @@ export type LangsState = {
   lang: string;
 };
 
-export interface Image {
+export type Image = {
   alternate: string;
   source: string;
 };
 
-export interface Content {
+export type Content = {
   text: string;
   image: Image;
   email: string;
 };
 
-export interface Link {
+export type ColumnLink = {
   content: Content;
   type: string;
   url: string;
 };
 
-export interface Title {
+export type Title = {
   content: string;
   priority: number;
 };
 
-export interface Column {
-  links: Link[];
+export type Column = {
+  links:ColumnLink[];
   name: string;
   title: Title;
 };
 
-export interface ColumnsState {
+export type ColumnsState = {
   getLists?: Function;
   isLoading: boolean;
   columns: Column[];
   errorMessage: string;
 };
 
-export interface Developer {
+export type Developer = {
   content: Content;
   url: string;
 };
 
-export interface InfoFromAPI {
+export type InfoFromAPI = {
   developer: Developer;
   texts: string[];
 };
 
-export interface InfoState {
+export type InfoState = {
   getInfo?: Function;
   isLoading: boolean;
   info: InfoFromAPI;
   errorMessage: string;
 };
 
-export interface Link {
+export type SectionBaseLink = {
   name: string;
   url: string;
 };
 
-export interface SectionBase {
+export type SectionBase = {
   name: string;
   title: Title;
   texts: string[];
-  links?: Link[];
+  links?: SectionBaseLink[];
   image: Image;
 }
 
@@ -97,33 +97,33 @@ export interface Warranty extends SectionBase { };
 
 export interface Care extends SectionBase { };
 
-export interface Cashback {
+export type Cashback = {
   name: string;
   title: Title;
   texts: string[];
   buttonText: string;
 };
 
-export interface HomePage {
+export type HomePage = {
   download: Download;
   warranty: Warranty;
   care: Care;
   cashback: Cashback;
 };
 
-export interface HomePageState {
+export type HomePageState = {
   getHomePage?: Function;
   isLoading: boolean,
   homePage: null | HomePage,
   errorMessage: string,
 };
 
-export interface Client {
+export type Client = {
   alternate: string;
   source: string;
 };
 
-export interface PostsData {
+export type PostsData = {
   buttonText: string;
   title: Title;
   care: Care;
@@ -132,19 +132,11 @@ export interface PostsData {
   warranty: Warranty;
 };
 
-// export interface PostsState {
-//   isPostLoading: boolean,
-//   post: boolean,
-//   postErrorMessage: string,
-//   isErrorMessagePost: boolean;
-//   errorMessagePost: string;
-// };
-
-export interface ModalData {
+export type ModalData = {
 
 };
 
-export interface OrderState {
+export type OrderState = {
   isModalActive: boolean;
   isLoading: boolean;
   orderData: null | ModalData;
@@ -164,8 +156,7 @@ export interface OrderState {
   isDataSent: boolean;
 };
 
-
-export interface PostsFromAPI {
+export type PostsFromAPI = {
   buttonText: string;
   title: Title;
   care: Care;
@@ -174,7 +165,7 @@ export interface PostsFromAPI {
   warranty: Warranty;
 };
 
-export interface PreviewDetails {
+export type PreviewDetails = {
   x: string,
   y: string,
   width: string,
@@ -183,16 +174,16 @@ export interface PreviewDetails {
   id: number,
 };
 
-export interface PreviewState {
+export type PreviewState = {
   previewDetails: null | PreviewDetails,
 };
-export interface Slide {
+export type Slide = {
   alternate: string;
   id: number;
   source: string;
 };
 
-export interface SliderState {
+export type SliderState = {
   slides: Slide[];
   sliderDescription: null | string;
   setSlides?: any;
@@ -207,23 +198,17 @@ export type ThemeInitState = {
   theme: Theme;
 };
 
-export interface CurrentPageState {
+export type CurrentPageState = {
   currentPage: string;
 };
 
-export interface CashbackState {
+export type CashbackState = {
   isCashbackLoading: boolean;
   cashback: null | Cashback;
   cashbackErrorMessage: string;
 };
 
-export interface CashbackState {
-  isCashbackLoading: boolean;
-  cashback: null | Cashback;
-  cashbackErrorMessage: string;
-};
-
-export interface CashbackData {
+export type CashbackData = {
   getCashback: Function;
   cashbackState: CashbackState;
 };
@@ -234,13 +219,13 @@ export interface Core extends SectionBase { };
 
 export interface Final extends SectionBase { };
 
-export interface CashbackPage {
+export type CashbackPage = {
   intro: Intro;
   core: Core;
   final: Final;
 }
 
-export interface CashbackPageState {
+export type CashbackPageState = {
   isCashbackPageLoading: boolean;
   cashbackPage: null | CashbackPage;
   cashbackPageErrorMessage: string;
@@ -258,7 +243,7 @@ export type CashbackPageFromAPI = {
   final: Final;
 }
 
-export interface WarrantyPage {
+export type WarrantyPage = {
   intro: Intro;
   core: Core;
   final: Final;
@@ -270,11 +255,11 @@ export type WarrantyPageFromAPI = {
   warrantyPageErrorMessage: string;
 };
 
-export interface Post {
+export type Post = {
 
 }
 
-export interface PostState {
+export type PostState = {
   isPostLoading: boolean,
   post: null | Post,
   postErrorMessage: string,
@@ -282,13 +267,13 @@ export interface PostState {
   errorMessagePost: string;
 }
 
-export interface PostsPageState {
+export type PostsPageState = {
   isPostsPageLoading: boolean;
   postsPage: null | Object;
   postsPageErrorMessage: string;
 };
 
-export interface DownloadPageState {
+export type DownloadPageState = {
   isDownloadPageLoading: boolean;
   downloadPage: null | Object;
   downloadPageErrorMessage: string;
@@ -365,7 +350,7 @@ export type ClientsFromAPI = {
 }
 
 export type ColumnFromAPI = {
-  links: Link[];
+  links: ColumnLink[];
   name: string;
   title: Title;
 };
