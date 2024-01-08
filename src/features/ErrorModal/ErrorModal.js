@@ -3,7 +3,7 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { usePost, useLang } from 'shared/hooks';
-import { ERROR_MODAL_TITLE, POST_ERRORS } from 'shared/constants/api';
+import { POST_ERRORS } from 'shared/constants/api';
 import { Button } from 'shared/ui';
 import { classNames } from 'shared/utils';
 
@@ -22,7 +22,7 @@ export const ErrorModal = () => {
   const dispatch = useDispatch();
   const { lang } = useLang();
   const { postErrorMessage } = usePost();
-  const { postErrorModalMessage } = POST_ERRORS[lang];
+  const { postErrorModalMessage, errorModalTitle } = POST_ERRORS[lang];
 
   useEffect(() => {
     if (postErrorMessage !== '') {
@@ -83,7 +83,7 @@ export const ErrorModal = () => {
           iconName={'close'}
           content={'icon'}
         />
-        <h2 className={classes.title}>{ERROR_MODAL_TITLE}</h2>
+        <h2 className={classes.title}>{errorModalTitle}</h2>
         <div className={classes.content}>{content}</div>
       </div>
     </div >
