@@ -37,10 +37,6 @@ const PostPage = () => {
     };
   }, [key, lang]);
 
-  useEffect(() => {
-    console.log(post);
-  }, [postState]);
-
   if (!post) return null;
   return (
     <div className={classes.postPage}>
