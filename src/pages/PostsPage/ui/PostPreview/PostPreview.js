@@ -15,17 +15,9 @@ import { useState } from 'react';
 export const PostPreview = ({ details }) => {
   const { image, title, postKey } = details;
   const dispatch = useDispatch();
+  const [isPreviewClicked, setIsPreviewClicked] = useState(false);
   const navigate = useNavigate();
   const postState = usePost();
-
-  const location = useLocation();
-  const currentPage = location.pathname;
-
-  useEffect(() => {
-    console.log('рендеринг');
-  }, [currentPage]);
-
-  const [isPreviewClicked, setIsPreviewClicked] = useState(false);
 
   useEffect(() => {
     const currentPath = window.location.pathname;
