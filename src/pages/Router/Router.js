@@ -1,5 +1,5 @@
-import { Routes, Route } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
+import { Routes, Route } from 'react-router-dom';
 
 const LazyHomePage = lazy(() => import('../HomePage'));
 const LazyDownloadPage = lazy(() => import('../DownloadPage'));
@@ -9,6 +9,15 @@ const LazyCashbackPage = lazy(() => import('../CashbackPage'));
 const LazyClientsPage = lazy(() => import('../ClientsPage'));
 const LazyPostsPage = lazy(() => import('../PostsPage'));
 const LazyPostPage = lazy(() => import('../PostPage'));
+
+/**
+ * @typedef {import('react-router-dom').RouteProps['element']} RouteElement
+ */
+
+/**
+ * @function Router
+ * @returns {RouteElement}
+ */
 
 export const Router = () => {
   return (
@@ -21,7 +30,7 @@ export const Router = () => {
         <Route path="/cashback" element={<LazyCashbackPage />} />
         <Route path="/clients" element={<LazyClientsPage />} />
         <Route path="/posts" element={<LazyPostsPage />} />
-        <Route path='/posts/:key' element={<LazyPostPage />} />
+        <Route path="/posts/:key" element={<LazyPostPage />} />
       </Routes>
     </Suspense>
   );
