@@ -18,7 +18,7 @@ const onGetCashbackPage = async (_, thunkAPI) => {
     const /** @type {*} */ state = thunkAPI.getState();
     const { lang } = state.langsReducer;
     const endpoint = `${lang}`;
-    const url = `${API_BASE_URL}/${lang}/${endpoint}.json`;
+    const url = `${API_BASE_URL}/${endpoint}.json`;
     const response = await fetch(url);
     const data = await response.json();
     if (data.message) throw new Error(data.message);
