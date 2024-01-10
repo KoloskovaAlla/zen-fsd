@@ -8,5 +8,6 @@ import CashbackPage from 'pages/CashbackPage';
 import ClientsPage from 'pages/ClientsPage';
 import PostsPage from 'pages/PostsPage';
 import PostPage from 'pages/PostPage';
+import NotFoundPage from './NotFoundPage';
 
-export { HomePage, DownloadPage, WarrantyPage, CarePage, CashbackPage, ClientsPage, PostsPage, PostPage };
+export { HomePage, DownloadPage, WarrantyPage, CarePage, CashbackPage, ClientsPage, PostsPage, PostPage, NotFoundPage };
