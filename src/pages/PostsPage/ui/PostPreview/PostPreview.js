@@ -14,6 +14,7 @@ import { useState } from 'react';
 
 export const PostPreview = ({ details }) => {
   const { image, title, postKey } = details;
+  console.log(details);
   const dispatch = useDispatch();
   const [isPreviewClicked, setIsPreviewClicked] = useState(false);
   const navigate = useNavigate();
