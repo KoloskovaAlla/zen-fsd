@@ -1,14 +1,14 @@
 import { Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { HomePage } from 'pages';
-import { DownloadPage } from 'pages';
-import { WarrantyPage } from 'pages';
-import { CarePage } from 'pages';
-import { CashbackPage } from 'pages';
-import { ClientsPage } from 'pages';
-import { PostsPage } from 'pages';
-import { PostPage } from 'pages';
-import { NotFoundPage } from 'pages';
+import HomePage from './HomePage';
+import DownloadPage from './DownloadPage';
+import WarrantyPage from './WarrantyPage';
+import CarePage from './CarePage';
+import CashbackPage from './CashbackPage';
+import ClientsPage from './ClientsPage';
+import PostsPage from './PostsPage';
+import PostPage from './PostPage';
+import NotFoundPage from './NotFoundPage';
 
 /**
  * @function Router
