@@ -21,12 +21,13 @@ export const Footer = () => {
     dispatch(getInfo());
   }, [dispatch, getColumns, getInfo, lang]);
 
+  if (!columns) return null;
   return (
     <footer className={classes.footer}>
       <div className={classes.wrapper}>
         {columns?.length > 0 && (
           <ul className={classes.columns}>
-            {columns.map(({ title, links }, index) =>
+            {columns.map(({ title, links }, /** @type {number} */ index) =>
               <Column
                 key={index}
                 column={{ title, links }}
