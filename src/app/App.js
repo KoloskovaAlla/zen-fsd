@@ -1,6 +1,5 @@
 import './styles/index.scss';
-import { useState, useEffect } from 'react';
-import { useTheme, usePost, useLang } from 'shared/hooks';
+import { useTheme } from 'shared/hooks';
 import { Order, ErrorModal } from 'features';
 import { Header, Footer, Clients, Posts } from 'widgets';
 import { Router } from 'pages';
