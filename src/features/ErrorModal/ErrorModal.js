@@ -1,5 +1,4 @@
 import classes from './ErrorModal.module.scss';
-import React from 'react';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { usePost, useLang } from 'shared/hooks';
