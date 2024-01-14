@@ -1,6 +1,6 @@
 import classes from './PostPage.module.scss';
 import { useEffect } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { usePost, useLang, useDocumentTitle } from 'shared/hooks';
 
