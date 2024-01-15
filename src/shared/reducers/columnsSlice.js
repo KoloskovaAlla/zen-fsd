@@ -19,6 +19,7 @@ const onGetColumns = async (_, thunkAPI) => {
     const { lang } = state.langsReducer;
     const endpoint = lang;
     const url = `${API_BASE_URL}/${endpoint}/.json`;
+    console.log(url);
     const response = await fetch(url);
     const data = await response.json();
     if (data.message) throw new Error(data.message);

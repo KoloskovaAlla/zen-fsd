@@ -1,7 +1,7 @@
 import classes from './Footer.module.scss';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useColumns, useInfo } from 'shared/hooks';
+import { useColumns, useInfo, useLang } from 'shared/hooks';
 import { Column, Developer } from './ui';
 import { IconLogoFooter } from 'shared/icons';
 
@@ -14,18 +14,20 @@ export const Footer = () => {
   const dispatch = useDispatch();
   const { getColumns, columns } = useColumns();
   const { getInfo, info } = useInfo();
+  const { lang } = useLang();
 
   useEffect(() => {
     dispatch(getColumns());
     dispatch(getInfo());
-  }, [dispatch, getColumns, getInfo]);
+  }, [dispatch, getColumns, getInfo, lang]);
 
+  if (!columns) return null;
   return (
     <footer className={classes.footer}>
       <div className={classes.wrapper}>
         {columns?.length > 0 && (
           <ul className={classes.columns}>
-            {columns.map(({ title, links }, index) =>
+            {columns.map(({ title, links }, /** @type {number} */ index) =>
               <Column
                 key={index}
                 column={{ title, links }}
