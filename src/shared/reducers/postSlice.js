@@ -22,7 +22,6 @@ const onGetPost = async (key, thunkAPI) => {
     const url = `${API_BASE_URL}/${endpoint}/.json`;
     const response = await fetch(url);
     const data = await response.json();
-    console.log(url);
     if (!data) throw new Error('There is no such post');
     return thunkAPI.fulfillWithValue(data);
   } catch (error) {
