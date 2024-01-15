@@ -7,7 +7,7 @@ import { PostPreview } from './ui';
 
 /**
  * @function PostsPage
- * @returns {JSX.Element | null}
+ * @returns {null | JSX.Element}
  */
 
 const PostsPage = () => {

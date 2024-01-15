@@ -7,7 +7,7 @@ import { InputText } from 'shared/ui';
 /**
  * @function TextField
  * @param {TextFieldProps} props
- * @returns {JSX.Element}
+ * @returns {null | JSX.Element}
  */
 
 export const TextField = ({ className, options }) => {

@@ -1,10 +1,8 @@
-export interface Link {
+export type Link = {
   url: string;
   name: string;
 };
 
-export interface Image {
-  alternate: string;
-  id: number;
-  source: string;
+export type LinksProps = {
+  links: [] | Link[];
 };
