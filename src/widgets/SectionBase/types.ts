@@ -17,7 +17,7 @@ export interface Image {
 export interface Data {
   title: Title;
   texts: string[];
-  links?: Object;
+  links?: [] | Link[];
   image: Image;
 };
 
