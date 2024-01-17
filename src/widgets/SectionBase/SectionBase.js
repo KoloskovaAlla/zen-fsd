@@ -9,7 +9,7 @@ import { classNames } from 'shared/utils';
 /**
  * @function SectionBase
  * @param {SectionBaseProps} props
- * @returns {JSX.Element}
+ * @returns {null | JSX.Element}
  */
 
 export const SectionBase = ({ data, type, reverse }) => {

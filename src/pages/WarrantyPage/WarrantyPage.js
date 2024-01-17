@@ -24,6 +24,7 @@ const WarrantyPage = () => {
   }, [dispatch, warrantyPageState.getWarrantyPage, lang]);
 
   if (!warrantyPage) return null;
+
   return (
     <main>
       {warrantyPage?.intro && (

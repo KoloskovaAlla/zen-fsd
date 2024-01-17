@@ -8,7 +8,7 @@ import { Select } from 'shared/ui';
 /**
  * @function SelectField
  * @param {SelectFieldProps} props
- * @returns {JSX.Element}
+ * @returns {null | JSX.Element}
  */
 
 export const SelectField = ({
