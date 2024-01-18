@@ -1,0 +1,44 @@
+@import 'shared/constants/styles/breakpoints';
+@import 'shared/constants/styles/varsForSections';
+
+.wrapper {
+  margin: 0 auto;
+  max-width: $container_max_width;
+  padding: 30px 15px;
+
+  display: flex;
+  flex-direction: column;
+  display: flex;
+  flex-direction: column;
+
+   @media (min-width: $breakpoint_md) {
+    max-width: 500px;
+    align-items: center;
+    text-align: center;
+  }
+
+  @media (min-width: $breakpoint_lg) {
+    max-width: $container_max_width_lg;
+  }
+
+  @media (min-width: $breakpoint_xl) {
+    max-width: $container_max_width_xl;
+  }
+}
+
+.title {
+  font-size: $title_fz;
+  font-weight: 700;
+
+  @media (min-width: $breakpoint_md) {
+    font-size: $title_fz;
+  }
+
+  @media (min-width: $breakpoint_lg) {
+    font-size: $title_fz_lg;
+  }
+
+  @media (min-width: $breakpoint_xl) {
+    font-size: $title_fz-xl;
+  }
+}
