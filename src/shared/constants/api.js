@@ -11,3 +11,12 @@ export const POST_ERRORS = {
     errorModalTitle: 'Ошибка!'
   },
 };
+
+export const NOT_FOUND_PAGE = {
+  en: {
+    title: 'The page was not found'
+  },
+  ru: {
+    title: 'Страница не найдена'
+  }
+};
